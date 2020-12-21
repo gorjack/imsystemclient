@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{0ec07b8e-922c-4c05-b0ae-271881cebcd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="utils\源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{93cdb614-107a-4a1f-ba31-24d186047d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\头文件">
+      <UniqueIdentifier>{b6757762-1f8a-4600-9702-f5e30516b20a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\源文件">
+      <UniqueIdentifier>{a2f1c58d-365c-4b8c-a142-7d63189202e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\utils\DaemonRun.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\MD5.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\StringUtil.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\URLEncodeUtil.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\UUIDGenerator.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\AsyncLog.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\ConfigFileReader.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\CountDownLatch.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\Platform.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\RAIIWrapper.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\Singleton.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\base\Timestamp.h">
+      <Filter>base\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\CSingletonT.h">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\utils\CSingletonT.hpp">
+      <Filter>utils\头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\utils\DaemonRun.cpp">
+      <Filter>utils\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\utils\MD5.cpp">
+      <Filter>utils\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\utils\StringUtil.cpp">
+      <Filter>utils\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\utils\URLEncodeUtil.cpp">
+      <Filter>utils\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\utils\UUIDGenerator.cpp">
+      <Filter>utils\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\base\AsyncLog.cpp">
+      <Filter>base\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\base\ConfigFileReader.cpp">
+      <Filter>base\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\base\CountDownLatch.cpp">
+      <Filter>base\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\base\Platform.cpp">
+      <Filter>base\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\base\Timestamp.cpp">
+      <Filter>base\源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
