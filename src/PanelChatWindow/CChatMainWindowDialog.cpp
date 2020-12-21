@@ -26,6 +26,10 @@ CChatMainWindowDialog::CChatMainWindowDialog(QWidget *parent /*= nullptr*/)
 
 void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
 {
+    if (m_setId.contains(user.m_nTargetId))
+    {
+        return;
+    }
     CChatMessageWindowWidget* pBuddy = new CChatMessageWindowWidget(this);
     pBuddy->setTargetId(user.m_nTargetId);
     int nIndex = m_pStackWidget->addWidget(pBuddy);
@@ -40,6 +44,7 @@ void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
     m_pUserDataList->setItemWidget(pItem, pUser);
 
     m_mapIndex2BuddyWindow.insert(pItem, pBuddy);
+    m_setId.insert(user.m_nTargetId);
     m_pUserDataList->setCurrentRow(m_pUserDataList->count() - 1);
 }
 
@@ -60,6 +65,7 @@ void CChatMainWindowDialog::slotClose()
         m_pStackWidget->removeWidget(pWindow);
         pWindow->deleteLater();
         m_mapIndex2BuddyWindow.remove(pItem);
+        m_setId.remove(pWindow->id());
     }
     m_pUserDataList->takeItem(m_pUserDataList->row(pItem));
 

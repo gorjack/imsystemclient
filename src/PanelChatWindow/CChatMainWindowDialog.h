@@ -51,6 +51,7 @@ private:
     QStackedWidget                          *m_pStackWidget = NULL;
     XP::CSplitContainer                     *m_pSplit = NULL;
     QMap<QListWidgetItem*, CChatMessageWindowWidget*>     m_mapIndex2BuddyWindow;
+    QSet<int>                                m_setId;      //用于判断是否重复点了item
     CShowRightWidget                        *m_pRightWidget = NULL;
 };
 

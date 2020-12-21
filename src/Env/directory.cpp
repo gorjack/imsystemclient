@@ -27,6 +27,11 @@ namespace QF
         return getRootDir() + QDir::separator() + "userdata" + QDir::separator() + "users";
     }
 
+    QString getLogDir()
+    {
+        return getRootDir() + QDir::separator() + "userdata" + QDir::separator() + "logs";
+    }
+
 
     QString getConfigDir()
     {

@@ -6,8 +6,8 @@
 enum SERVERTYPE
 {
     CHAT_SERVER,
-    IMAGE_SERVER,
     FILE_SERVER,
+    IMAGE_SERVER,
 };
 class DLL_EXPORT_ENV CConfig : public utils::CSingletonT<CConfig>
 {

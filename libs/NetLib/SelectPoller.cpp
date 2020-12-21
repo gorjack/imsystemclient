@@ -107,7 +107,7 @@ Timestamp SelectPoller::poll(int timeoutMs, ChannelList* activeChannels)
         savedErrno = errno;
 #endif
                      
-        LOGSYSE("SelectPoller::poll() error, errno: %d", savedErrno);
+        //LOGSYSE("SelectPoller::poll() error, errno: %d", savedErrno);
     }
 
     return now;

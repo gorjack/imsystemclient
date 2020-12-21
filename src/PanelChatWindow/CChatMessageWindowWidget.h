@@ -22,6 +22,7 @@ class CChatMessageWindowWidget : public QWidget
 public:
     explicit CChatMessageWindowWidget(QWidget *parent = 0);
 
+    int id() { return m_nTargetId; }
     void setTargetId(const int& nId) { m_nTargetId = nId; }
 Q_SIGNALS:
     void sigHandleChatMsg(const net::CBuddyMessagePtr&);

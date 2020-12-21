@@ -12,4 +12,5 @@ namespace QF
     DLL_EXPORT_ENV QString getUserDir(QString qsUserName);
     DLL_EXPORT_ENV QString getCurrentResourceDir();
     DLL_EXPORT_ENV QString getPluginDir();
+    DLL_EXPORT_ENV QString getLogDir();
 }

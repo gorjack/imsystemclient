@@ -36,7 +36,7 @@ public:
     void connect_async(int nType);
     void regist_async(const net::CRegisterRequest &req);
 
-    const QString& sendFileToServer(const QString& strFileName);
+    const QString sendFileToServer(const QString& strFileName);
 
     bool request_async(const net::IDataPtr& req, RequestCallBack _func = RequestCallBack());
     void registCallBack(int id, RequestCallBack cb);
@@ -68,7 +68,7 @@ private:
     void onErrorCBFile(const std::string &msg);
 
 
-    std::unordered_map<int, net::TcpClient*>     m_pClients;     //没用智能指针需要析构的地方手动delete目前没有给delete
+    std::map<int, net::TcpClient*>     m_pClients;     //没用智能指针需要析构的地方手动delete目前没有给delete
     std::map<std::string, std::pair<std::string, int>>           m_mapKey2FileName; 
     net::InetAddress*                         m_pAddress = NULL;
     net::EventLoop*                           m_loopObj;

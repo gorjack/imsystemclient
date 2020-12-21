@@ -29,7 +29,7 @@ int32_t CFlamingoClientCenter::m_seq = 0;
 CFlamingoClientCenter::CFlamingoClientCenter()
     :m_readMaxFileSize(5*1024)
 {
-
+    int p = m_seq;
 }
 
 CFlamingoClientCenter::~CFlamingoClientCenter()
@@ -398,7 +398,7 @@ void CFlamingoClientCenter::onPackageDecode(const net::TcpConnectionPtr& conn, n
     }// end while-loop
 }
 
-const QString& CFlamingoClientCenter::sendFileToServer(const QString& strFileName)
+const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName)
 {
     if (NULL != m_pClients[FILE_SERVER] && !m_pClients[FILE_SERVER]->isConnected())
     {
@@ -411,8 +411,10 @@ const QString& CFlamingoClientCenter::sendFileToServer(const QString& strFileNam
     //文件md5值
     int64_t nFileSize;
     char szMd5[64] = { 0 };
-    const char* pszFileName = utils::qsToS(strFileName).c_str();
-    long nRetCode = utils::GetFileMd5ValueA((PCTSTR)pszFileName, szMd5, ARRAYSIZE(szMd5), nFileSize);
+    //const wchar_t* pszFileName = strFileName.toStdWString().c_str();   //直接这么写就不行 得像下面那样拆开才可以
+    std::wstring ss = strFileName.toStdWString();
+    const wchar_t* ssw = ss.c_str();
+    long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
     if (nRetCode == utils::GET_FILE_MD5_FAILED)
     {
         return QString("Failed to upload file:%1 as unable to get file md5.").arg(strFileName);
@@ -445,6 +447,8 @@ const QString& CFlamingoClientCenter::sendFileToServer(const QString& strFileNam
 
     m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(strFileName), eachSize);
     request_async(pData);
+
+    return QString("");
 }
 
 void CFlamingoClientCenter::onErrorCB(const std::string &msg)
@@ -454,7 +458,11 @@ void CFlamingoClientCenter::onErrorCB(const std::string &msg)
 
 void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
 {
-    //will do not
+    if (pData->connected())
+    {
+        //链接失败报告给用户 目前只有链接成功会回来，失败的处理都写在日志里了。
+        emit sigLogindStatus(STATUS_CONNECTED, "");
+    }
 }
 
 void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& conn, net::Buffer* pBuffer, Timestamp time)

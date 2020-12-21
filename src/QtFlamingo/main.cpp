@@ -10,6 +10,7 @@
 #include <Env/appUtil.h>
 #include <User/userdatas.h>
 #include <Env/CConfig.h>
+#include <Env/directory.h>
 
 net::EventLoop *g_pEventLoop = NULL;
 std::condition_variable g_cvForLoop;
@@ -84,7 +85,7 @@ int main(int argc, char *argv[])
 
     CConfig::instance()->loadData();
 
-    QString fileName = QDir::toNativeSeparators(qApp->applicationDirPath()) + QDir::separator() + "logs" + QDir::separator();
+    QString fileName = QF::getLogDir();
     CAsyncLog::init(fileName.toStdString().c_str());
     CFlamingoClientCenter::instance()->init(g_pEventLoop);
 

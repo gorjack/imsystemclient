@@ -61,14 +61,13 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
 
         for (auto& iter2 : iter.second)
         {
-            //will to to gaojie
-            //EncodeUtil::Utf8ToUnicode(iter2->szAccountName, szAccountName, ARRAYSIZE(szAccountName));
-            //EncodeUtil::Utf8ToUnicode(iter2->szNickName, szNickName, ARRAYSIZE(szNickName));
-            //EncodeUtil::Utf8ToUnicode(iter2->szMarkName, szMarkName, ARRAYSIZE(szMarkName));
-            //EncodeUtil::Utf8ToUnicode(iter2->szSignature, szSignature, ARRAYSIZE(szSignature));
-            //EncodeUtil::Utf8ToUnicode(iter2->szPhoneNumber, szPhoneNumber, ARRAYSIZE(szPhoneNumber));
-            //EncodeUtil::Utf8ToUnicode(iter2->szMail, szMail, ARRAYSIZE(szMail));
-            //EncodeUtil::Utf8ToUnicode(iter2->szAddress, szAddress, ARRAYSIZE(szAddress));
+            EncodeUtil::Utf8ToUnicode(iter2->szAccountName, szAccountName, sizeof(szAccountName)/sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szNickName, szNickName, sizeof(szNickName) / sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szMarkName, szMarkName, sizeof(szNickName) / sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szSignature, szSignature, sizeof(szSignature) / sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szPhoneNumber, szPhoneNumber, sizeof(szPhoneNumber) / sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szMail, szMail, sizeof(szMail) / sizeof(wchar_t));
+            EncodeUtil::Utf8ToUnicode(iter2->szAddress, szAddress, sizeof(szAddress) / sizeof(wchar_t));
 
             pBuddyInfo = new CBuddyInfo();
             pBuddyInfo->m_uUserID = iter2->uAccountID;

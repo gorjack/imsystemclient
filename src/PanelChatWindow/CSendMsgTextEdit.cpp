@@ -91,7 +91,7 @@ void CSendMsgTextEdit::paintEvent(QPaintEvent *event)
 
 void CSendMsgTextEdit::upLoadFile(const QString& fileName)
 {
-    const QString &error = CFlamingoClientCenter::instance()->sendFileToServer(fileName);
+    const QString error = CFlamingoClientCenter::instance()->sendFileToServer(fileName);
     if (!error.isEmpty())
     {
         QMessageBox::information(this, "info", error);
