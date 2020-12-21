@@ -446,6 +446,8 @@ const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName
     pData->m_strMd5.append(szMd5, 32);
 
     m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(strFileName), eachSize);
+
+    LOG_INFO("will send to server filesize=%d", nFileSize);
     request_async(pData);
 
     return QString("");

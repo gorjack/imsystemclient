@@ -274,13 +274,14 @@ bool CAsyncLog::output(long nLevel, const char* pszFileName, int nLineNo, const 
 #else
                 localtime_r(&now, &time);
 #endif
-                strftime(szNow, sizeof(szNow), "%Y_%m_%d_%H_%M_%S", &time);
+                strftime(szNow, sizeof(szNow), "%Y%m%d", &time);
 
                 std::string strNewFileName(m_strFileName);
-                //strNewFileName += ".";
-                strNewFileName += szNow;
+                strNewFileName += "\\client";
                 strNewFileName += "_";
-                strNewFileName += m_strFileNamePID;
+                strNewFileName += szNow;
+                //strNewFileName += "_";
+                //strNewFileName += m_strFileNamePID;
                 strNewFileName += ".log";
                 if (!createNewFile(strNewFileName.c_str()))
                     return false;
@@ -506,13 +507,13 @@ void CAsyncLog::writeThreadProc()
 #else
                 localtime_r(&now, &time);
 #endif
-                strftime(szNow, sizeof(szNow), "%Y_%m_%d__%H.%M.%S", &time);
+                strftime(szNow, sizeof(szNow), "%Y_%m.%d", &time);
 
                 std::string strNewFileName(m_strFileName);
-                //strNewFileName += ".";
+                strNewFileName += "\\client_";
                 strNewFileName += szNow;
-                strNewFileName += "_";
-                strNewFileName += m_strFileNamePID;
+                //strNewFileName += "_";
+                //strNewFileName += m_strFileNamePID;
                 strNewFileName += ".log";
                 if (!createNewFile(strNewFileName.c_str()))
                     return;

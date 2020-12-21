@@ -5,6 +5,7 @@
 #include <mutex>
 #include <user/CFlamingoClientCenter.h>
 #include <winlog/AsyncLog.h>
+#include <winlog/IULog.h>
 #include <QtCore/QDir>
 #include <iostream>
 #include <Env/appUtil.h>
@@ -87,6 +88,11 @@ int main(int argc, char *argv[])
 
     QString fileName = QF::getLogDir();
     CAsyncLog::init(fileName.toStdString().c_str());
+
+    fileName += QDir::separator() + QString("logs.txt");
+    CIULog::Init(true, false, fileName.toStdString().c_str());
+
+
     CFlamingoClientCenter::instance()->init(g_pEventLoop);
 
     RotateWidget *pLoginD = new RotateWidget(NULL);
@@ -96,6 +102,8 @@ int main(int argc, char *argv[])
     UnInitSocket();
     g_pEventLoop->quit();
     CAsyncLog::uninit();
+    CIULog::Uninit();
+
     if (t.joinable())
     {
         t.join();

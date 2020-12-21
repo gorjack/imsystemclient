@@ -132,6 +132,7 @@ namespace net
 		Buffer                      inputBuffer_;
 		Buffer                      outputBuffer_; // FIXME: use list<Buffer> as output buffer.
         unsigned int                m_nTimeOut = (std::numeric_limits<unsigned int>::max)();
+        std::string                 m_tcpTuple;
 		// FIXME: creationTime_, lastReceiveTime_
 		//        bytesReceived_, bytesSent_
 	};
