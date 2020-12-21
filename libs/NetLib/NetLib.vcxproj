@@ -96,12 +96,16 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <OutputFile>$(SolutionDir)Bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(SolutionDir)Bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(SolutionDir)Bin\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# vs
+.vs
+_builder/Win32.Debug/*
+_runtime/Win32.Debug

@@ -60,6 +60,7 @@
       <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -72,6 +73,9 @@
       <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
       <IncludePath>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;%(AdditionalIncludeDirectories)</IncludePath>
     </QtMoc>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
