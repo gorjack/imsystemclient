@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CSendMsgTextEdit_t {
-    QByteArrayData data[7];
-    char stringdata0[102];
+    QByteArrayData data[6];
+    char stringdata0[86];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,13 +34,12 @@ QT_MOC_LITERAL(1, 17, 10), // "sigSendMsg"
 QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 15), // "slotSendMessage"
 QT_MOC_LITERAL(4, 45, 20), // "slotOnHandleSendFile"
-QT_MOC_LITERAL(5, 66, 19), // "onHandleErrorStatus"
-QT_MOC_LITERAL(6, 86, 15) // "UserLoginStatus"
+QT_MOC_LITERAL(5, 66, 19) // "onHandleErrorStatus"
 
     },
     "CSendMsgTextEdit\0sigSendMsg\0\0"
     "slotSendMessage\0slotOnHandleSendFile\0"
-    "onHandleErrorStatus\0UserLoginStatus"
+    "onHandleErrorStatus"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +70,7 @@ static const uint qt_meta_data_CSendMsgTextEdit[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
 
        0        // eod
 };
@@ -86,7 +85,7 @@ void CSendMsgTextEdit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0: _t->sigSendMsg((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->slotSendMessage(); break;
         case 2: _t->slotOnHandleSendFile(); break;
-        case 3: _t->onHandleErrorStatus((*reinterpret_cast< UserLoginStatus(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 3: _t->onHandleErrorStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

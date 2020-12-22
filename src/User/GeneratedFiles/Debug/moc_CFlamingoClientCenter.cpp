@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CFlamingoClientCenter_t {
-    QByteArrayData data[5];
-    char stringdata0[65];
+    QByteArrayData data[6];
+    char stringdata0[79];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,11 +33,12 @@ QT_MOC_LITERAL(0, 0, 21), // "CFlamingoClientCenter"
 QT_MOC_LITERAL(1, 22, 15), // "sigLogindStatus"
 QT_MOC_LITERAL(2, 38, 0), // ""
 QT_MOC_LITERAL(3, 39, 15), // "UserLoginStatus"
-QT_MOC_LITERAL(4, 55, 9) // "sigStatus"
+QT_MOC_LITERAL(4, 55, 13), // "sigFileStatus"
+QT_MOC_LITERAL(5, 69, 9) // "sigStatus"
 
     },
     "CFlamingoClientCenter\0sigLogindStatus\0"
-    "\0UserLoginStatus\0sigStatus"
+    "\0UserLoginStatus\0sigFileStatus\0sigStatus"
 };
 #undef QT_MOC_LITERAL
 
@@ -47,19 +48,21 @@ static const uint qt_meta_data_CFlamingoClientCenter[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   24,    2, 0x06 /* Public */,
-       4,    2,   29,    2, 0x06 /* Public */,
+       1,    2,   29,    2, 0x06 /* Public */,
+       4,    2,   34,    2, 0x06 /* Public */,
+       5,    2,   39,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::QString,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
     QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
 
        0        // eod
@@ -73,7 +76,8 @@ void CFlamingoClientCenter::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sigLogindStatus((*reinterpret_cast< UserLoginStatus(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 1: _t->sigStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 1: _t->sigFileStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 2: _t->sigStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -88,8 +92,15 @@ void CFlamingoClientCenter::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         }
         {
             typedef void (CFlamingoClientCenter::*_t)(int , QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CFlamingoClientCenter::sigStatus)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CFlamingoClientCenter::sigFileStatus)) {
                 *result = 1;
+                return;
+            }
+        }
+        {
+            typedef void (CFlamingoClientCenter::*_t)(int , QString );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CFlamingoClientCenter::sigStatus)) {
+                *result = 2;
                 return;
             }
         }
@@ -123,13 +134,13 @@ int CFlamingoClientCenter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
@@ -142,9 +153,16 @@ void CFlamingoClientCenter::sigLogindStatus(UserLoginStatus _t1, QString _t2)
 }
 
 // SIGNAL 1
-void CFlamingoClientCenter::sigStatus(int _t1, QString _t2)
+void CFlamingoClientCenter::sigFileStatus(int _t1, QString _t2)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void CFlamingoClientCenter::sigStatus(int _t1, QString _t2)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_END_MOC_NAMESPACE
