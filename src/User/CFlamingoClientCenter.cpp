@@ -142,8 +142,8 @@ bool CFlamingoClientCenter::request_async(const net::IDataPtr& req, RequestCallB
     net::TcpConnectionPtr pConn = m_pClients[req->m_nType]->connection();
     if (NULL != pConn)
     {
+        LOGI(pConn->key().c_str());
         pConn->send(reqData);
-        //_requestfunc = _func;
         return true;
     }
     else
@@ -221,10 +221,10 @@ void CFlamingoClientCenter::onHandleLogin(const std::string &data)
     switch (nLoginResultCode)
     {
     case protocol::LOGIN_UNREGISTERED:
-        emit sigLogindStatus(STATUS_ERROR, "用户未注册");
+        emit sigLogindStatus(STATUS_ERROR, QString::fromLocal8Bit("用户未注册"));
         break;
     case protocol::LOGIN_PASSWORD_ERROR:
-        emit sigLogindStatus(STATUS_ERROR, "用户名密码错误");
+        emit sigLogindStatus(STATUS_ERROR, QString::fromLocal8Bit("用户名密码错误"));
         break;
     case protocol::LOGIN_SUCCESS:
     {
@@ -447,7 +447,7 @@ const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName
 
     m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(strFileName), eachSize);
 
-    LOG_INFO("will send to server filesize=%d", nFileSize);
+    LOG_INFO("will send to server filesize=%d, filemd5=%s", nFileSize, szMd5);
     request_async(pData);
 
     return QString("");
@@ -455,7 +455,7 @@ const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName
 
 void CFlamingoClientCenter::onErrorCB(const std::string &msg)
 {
-    emit sigLogindStatus(STATUS_ERROR, utils::sToQs(msg));
+    emit sigFileStatus(FILE_STATUS_ERROR, utils::sToQs(msg));
 }
 
 void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
@@ -463,7 +463,12 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
     if (pData->connected())
     {
         //链接失败报告给用户 目前只有链接成功会回来，失败的处理都写在日志里了。
-        emit sigLogindStatus(STATUS_CONNECTED, "");
+        stringstream ss;
+        ss << pData->key();
+
+        net::TcpConnection* pc = pData.get();
+        ss << "connecter addr: " << to_string(reinterpret_cast<int>(pc));
+        LOGI(ss.str().c_str());
     }
 }
 
@@ -481,7 +486,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
 
         //取包头信息
         //msg header;
-        memcpy(&header, pBuffer->peek(), sizeof(msg));
+        memcpy(&header, pBuffer->peek(), sizeof(header));
         {
             //收到的数据不够一个完整的包
             if (pBuffer->readableBytes() < (size_t)header.packagesize + sizeof(header))
@@ -503,7 +508,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
 
             if (res.errorCode == protocol::file_msg_error_complete)
             {
-                emit sigLogindStatus(FILE_STATUS_SUCCESS, "");
+                emit sigFileStatus(FILE_STATUS_SUCCESS, "");
             }
             else
             {
@@ -516,7 +521,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
                 unsigned nSize = (totalSize - nReadSize) > m_readMaxFileSize ? m_readMaxFileSize : (totalSize - nReadSize);
                 if (!utils::FileHelper::open(res.fileName, content, nReadSize, nSize))
                 {
-                    emit sigLogindStatus(FILE_STATUS_ERROR, "读取文件失败");
+                    emit sigFileStatus(FILE_STATUS_ERROR, "读取文件失败");
                 }
 
                 net::CUpLoadFileRequestPtr pData(new net::CUpLoadFileRequest);
@@ -541,7 +546,7 @@ bool CFlamingoClientCenter::processFileDatas(const char* inbuf, size_t buflength
 
 void CFlamingoClientCenter::onErrorCBFile(const std::string &msg)
 {
-    emit sigLogindStatus(FILE_STATUS_ERROR, utils::sToQs(msg));
+    emit sigFileStatus(FILE_STATUS_ERROR, utils::sToQs(msg));
 }
 
 #endif

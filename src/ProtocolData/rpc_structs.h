@@ -84,12 +84,18 @@ namespace net
         IData();
         ~IData();
 
+        enum SendServeType
+        {
+            CHAT_SERVER,
+            FILE_SERVER,
+            IMAGE_SERVER,
+        };
+
         void appendPackageHeader(std::string& str) const ;
         virtual void encodePackage(std::string& str, int32_t nSeq) const {};
         virtual bool decodePackage(const std::string& data) { return true; };
 
-        int m_nType = 0;        //此数据要走的服务类型默认未CHAT_SERVER.
-
+        SendServeType m_nType = CHAT_SERVER;        //此数据要走的服务类型默认未CHAT_SERVER.
     };
 
     typedef boost::shared_ptr<IData> IDataPtr;
@@ -245,7 +251,7 @@ namespace net
     class PROTOCOLDATA_EXPORT CUpLoadFileRequest : public IData
     {
     public:
-        CUpLoadFileRequest(void) = default;
+        CUpLoadFileRequest(void) { m_nType = FILE_SERVER; };
         ~CUpLoadFileRequest(void) = default;
 
         static bool decodePackage(const char* inbuf, size_t buflength, FileSendResult& errorCode);

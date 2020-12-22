@@ -636,6 +636,8 @@ namespace net
         writeStream.Flush();
         file_msg headerx = { outbuf.length() };
         outbuf.insert(0, (const char*)& headerx, sizeof(headerx));
+
+        LOG_INFO("Request to upload file, type=%d, filemd5=%s", protocol::msg_type_upload_req, m_strMd5);
     }
 
 }

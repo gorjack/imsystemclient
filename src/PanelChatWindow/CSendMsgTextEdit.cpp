@@ -1,4 +1,4 @@
-#include "CSendMsgTextEdit.h"
+Ôªø#include "CSendMsgTextEdit.h"
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QToolBar>
@@ -23,8 +23,8 @@ CSendMsgTextEdit::CSendMsgTextEdit(QWidget *parent /*= nullptr*/)
     //setStyleSheet("border-top-width:1px;border-top-color:rgb(128,128,128);border-style:outset");
 
     connect(m_pSendMsgBtn, SIGNAL(clicked()), this, SLOT(slotSendMessage()));
-    connect(CFlamingoClientCenter::instance(), SIGNAL(sigLogindStatus(UserLoginStatus, QString)),
-        this, SLOT(onHandleErrorStatus(UserLoginStatus, QString)));
+    connect(CFlamingoClientCenter::instance(), SIGNAL(sigFileStatus(int, QString)),
+        this, SLOT(onHandleErrorStatus(int, QString)));
 }
 
 void CSendMsgTextEdit::setText(const QString& msg)
@@ -39,7 +39,7 @@ void CSendMsgTextEdit::slotSendMessage()
 
 void CSendMsgTextEdit::slotOnHandleSendFile()
 {
-    CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
+    //CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
 
     using namespace protocol;
     QString fileName = QFileDialog::getOpenFileName(this, "file", ".", "files (*.*)");
@@ -51,7 +51,7 @@ void CSendMsgTextEdit::slotOnHandleSendFile()
     upLoadFile(fileName);
 }
 
-void CSendMsgTextEdit::onHandleErrorStatus(UserLoginStatus status, QString msg)
+void CSendMsgTextEdit::onHandleErrorStatus(int status, QString msg)
 {
     switch (status)
     {
@@ -63,7 +63,7 @@ void CSendMsgTextEdit::onHandleErrorStatus(UserLoginStatus status, QString msg)
         QMessageBox::information(this, "info", msg);
         break;
     case FILE_STATUS_SUCCESS:
-        QMessageBox::information(this, "info", "…œ¥´Œƒº˛≥…π¶");
+        QMessageBox::information(this, "info", "‰∏ä‰º†Êñá‰ª∂ÊàêÂäü");
         break;
     default:
         break;

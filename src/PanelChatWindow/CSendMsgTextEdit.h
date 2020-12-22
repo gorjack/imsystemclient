@@ -21,7 +21,7 @@ Q_SIGNALS:
 protected Q_SLOTS:
     void slotSendMessage();
     void slotOnHandleSendFile();
-    void onHandleErrorStatus(UserLoginStatus, QString);
+    void onHandleErrorStatus(int, QString);
 
 protected:
     void resizeEvent(QResizeEvent *event);

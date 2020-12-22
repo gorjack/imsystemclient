@@ -1,4 +1,4 @@
-#include "LoginWindow.h"
+Ôªø#include "LoginWindow.h"
 #include "ui_LoginWindow.h"
 #include <QPainter>
 #include <QMovie>
@@ -52,6 +52,7 @@ LoginWindow::LoginWindow(QWidget *parent)
 
     CFlamingoClientCenter::instance()->resetClient();
     CFlamingoClientCenter::instance()->connect_async(CHAT_SERVER);
+    CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
 }
 
 LoginWindow::~LoginWindow()
@@ -61,13 +62,13 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::initMyTitle()
 {
-	// “ÚŒ™’‚¿Ô”–øÿº˛≤„µ˛¡À£¨À˘“‘“™◊¢“‚øÿº˛raise()∑Ω∑®µƒµ˜”√À≥–Ú;
+	// Âõ†‰∏∫ËøôÈáåÊúâÊéß‰ª∂Â±ÇÂè†‰∫ÜÔºåÊâÄ‰ª•Ë¶ÅÊ≥®ÊÑèÊéß‰ª∂raise()ÊñπÊ≥ïÁöÑË∞ÉÁî®È°∫Â∫è;
 	m_titleBar->move(0, 0);
 	m_titleBar->raise();
 	m_titleBar->setBackgroundColor(0, 0, 0, true);
 	m_titleBar->setButtonType(MIN_BUTTON);
 	m_titleBar->setTitleWidth(this->width());
-	// ’‚¿Ô–Ë“™…Ë÷√≥…false£¨≤ª‘ –ÌÕ®π˝±ÍÃ‚¿∏Õœ∂Ø¿¥“∆∂Ø¥∞ø⁄Œª÷√,∑Ò‘Úª·‘Ï≥…¥∞ø⁄Œª÷√¥ÌŒÛ;
+	// ËøôÈáåÈúÄË¶ÅËÆæÁΩÆÊàêfalseÔºå‰∏çÂÖÅËÆ∏ÈÄöËøáÊ†áÈ¢òÊ†èÊãñÂä®Êù•ÁßªÂä®Á™óÂè£‰ΩçÁΩÆ,Âê¶Âàô‰ºöÈÄ†ÊàêÁ™óÂè£‰ΩçÁΩÆÈîôËØØ;
 	m_titleBar->setMoveParentWindowFlag(false);
 	ui->pButtonArrow->raise();
 }
@@ -83,8 +84,8 @@ void LoginWindow::initWindow()
 
 	ui->accountComboBox->setEditable(true);
 	QLineEdit* lineEdit = ui->accountComboBox->lineEdit();
-	lineEdit->setPlaceholderText(("QQ∫≈¬Î/ ÷ª˙/” œ‰"));
-	ui->passwordEdit->setPlaceholderText(("√‹¬Î"));
+	lineEdit->setPlaceholderText(("QQÂè∑Á†Å/ÊâãÊú∫/ÈÇÆÁÆ±"));
+	ui->passwordEdit->setPlaceholderText(("ÂØÜÁ†Å"));
 
 	m_keyboardButton = new QPushButton();
 	m_keyboardButton->setObjectName("pButtonKeyboard");
@@ -112,7 +113,7 @@ void LoginWindow::initWindow()
 
 void LoginWindow::initAccountList()
 {
-	// …Ë÷√¥˙¿Ì;
+	// ËÆæÁΩÆ‰ª£ÁêÜ;
 	m_Accountlist = new QListWidget(this);
 	ui->accountComboBox->setModel(m_Accountlist->model());
 	ui->accountComboBox->setView(m_Accountlist);
@@ -241,15 +242,15 @@ void LoginWindow::saveUser(const QString& strUser)
 void LoginWindow::onLoginStateClicked()
 {
 	m_loginStateMemu = new QMenu();
-	QAction *pActionOnline = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_online.png"), ("Œ“‘⁄œﬂ…œ"));
-	QAction *pActionActive = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_Qme.png"), ("QŒ“∞…"));
+	QAction *pActionOnline = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_online.png"), ("ÊàëÂú®Á∫ø‰∏ä"));
+	QAction *pActionActive = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_Qme.png"), ("QÊàëÂêß"));
 	m_loginStateMemu->addSeparator();
-	QAction *pActionAway = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_away.png"), ("¿Îø™"));
-	QAction *pActionBusy = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_busy.png"), ("√¶¬µ"));
-	QAction *pActionNoDisturb = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_notdisturb.png"), ("«ÎŒ¥Ú»≈"));
+	QAction *pActionAway = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_away.png"), ("Á¶ªÂºÄ"));
+	QAction *pActionBusy = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_busy.png"), ("ÂøôÁ¢å"));
+	QAction *pActionNoDisturb = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_notdisturb.png"), ("ËØ∑ÂãøÊâìÊâ∞"));
 	m_loginStateMemu->addSeparator();
-	QAction *pActionHide = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_hide.png"), ("“˛…Ì"));
-	// …Ë÷√◊¥Ã¨÷µ;
+	QAction *pActionHide = m_loginStateMemu->addAction(QIcon(":/Resources/LoginWindow/LoginState/state_hide.png"), ("ÈöêË∫´"));
+	// ËÆæÁΩÆÁä∂ÊÄÅÂÄº;
 	pActionOnline->setData(ONLINE);
 	pActionActive->setData(ACTIVE);
 	pActionAway->setData(AWAY);
@@ -268,7 +269,7 @@ void LoginWindow::onLoginStateClicked()
 void LoginWindow::onMenuClicked(QAction * action)
 {
 	ui->loginState->setIcon(action->icon());
-	// ªÒ»°◊¥Ã¨÷µ;
+	// Ëé∑ÂèñÁä∂ÊÄÅÂÄº;
 	m_loginState = (LoginState)action->data().toInt();
 	qDebug() << "onMenuClicked" << m_loginState;
 }
@@ -279,7 +280,7 @@ void LoginWindow::onShowAccountInfo(int index, QString accountName)
 	ui->accountComboBox->setEditText(accountName);
 	ui->accountComboBox->hidePopup();
 
-	// ∏¸ªª”√ªßÕ∑œÒ;
+	// Êõ¥Êç¢Áî®Êà∑Â§¥ÂÉè;
 	QString fileName = QString(":/Resources/LoginWindow/headImage/head_%1.png").arg(index);
 	ui->userHead->setPixmap(QPixmap(fileName).scaled(ui->userHead->width(), ui->userHead->height()));
 }
@@ -289,7 +290,7 @@ void LoginWindow::onNetWorkSet()
 	emit rotateWindow();
 }
 
-// “‘œ¬Õ®π˝mousePressEvent°¢mouseMoveEvent°¢mouseReleaseEvent»˝∏ˆ ¬º˛ µœ÷¡À Û±ÍÕœ∂Ø±ÍÃ‚¿∏“∆∂Ø¥∞ø⁄µƒ–ßπ˚;
+// ‰ª•‰∏ãÈÄöËøámousePressEvent„ÄÅmouseMoveEvent„ÄÅmouseReleaseEvent‰∏â‰∏™‰∫ã‰ª∂ÂÆûÁé∞‰∫ÜÈº†Ê†áÊãñÂä®Ê†áÈ¢òÊ†èÁßªÂä®Á™óÂè£ÁöÑÊïàÊûú;
 void LoginWindow::mousePressEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton)
@@ -344,7 +345,7 @@ void LoginWindow::onLoginsStatus(UserLoginStatus status, QString msg)
     {
     case STATUS_LOGINING:
     {
-        ui->loginButton->setText("µ«¬º÷–...");
+        ui->loginButton->setText("ÁôªÂΩï‰∏≠...");
         ui->loginButton->setEnabled(false);
         break;
     }
@@ -365,20 +366,20 @@ void LoginWindow::onLoginsStatus(UserLoginStatus status, QString msg)
     }
     case STATUS_ERROR:
     {
-        ui->loginButton->setText("µ«¬º");
+        ui->loginButton->setText("ÁôªÂΩï");
         ui->loginButton->setEnabled(true);
-        QMessageBox::information(this, "Ã· æ", msg);
+        QMessageBox::information(this, "ÊèêÁ§∫", msg);
         break;
     }
     case STATUS_CONNECTING:
     {
-        ui->loginButton->setText("¡¨Ω”÷–...");
+        ui->loginButton->setText("ËøûÊé•‰∏≠...");
         ui->loginButton->setEnabled(false);
         break;
     }
     case STATUS_CONNECTED:
     {
-        ui->loginButton->setText("µ«¬º");
+        ui->loginButton->setText("ÁôªÂΩï");
         ui->loginButton->setEnabled(true);
         break;
     }
@@ -398,9 +399,9 @@ void LoginWindow::onLogin()
         m_timer->stop();
     }
 
-    if (ui->loginButton->text().contains("»°œ˚"))
+    if (ui->loginButton->text().contains("ÂèñÊ∂à"))
     {
-        ui->loginButton->setText("µ«¬º");
+        ui->loginButton->setText("ÁôªÂΩï");
         return;
     }
 
@@ -438,7 +439,7 @@ void LoginWindow::slot_timeout()
     {
         if (NULL != ui->loginButton)
         {
-            ui->loginButton->setText(QString("»°œ˚") + "(" + QString::number(m_remainSecond) + ")");
+            ui->loginButton->setText(QString("ÂèñÊ∂à") + "(" + QString::number(m_remainSecond) + ")");
         }
         --m_remainSecond;
     }

@@ -36,7 +36,7 @@ TcpConnection::TcpConnection(EventLoop* loop, const string& nameArg, int sockfd,
     peerAddr_(peerAddr),
     highWaterMark_(64 * 1024 * 1024)
 { 
-    m_tcpTuple = localAddr_.toIpPort() + " || " + peerAddr.toIpPort();
+    m_tcpTuple = "sockfd: " + to_string(sockfd) + "  " + localAddr_.toIpPort() + "-->" + peerAddr.toIpPort();
     channel_->setReadCallback(std::bind(&TcpConnection::handleRead, this, std::placeholders::_1));
     channel_->setWriteCallback(std::bind(&TcpConnection::handleWrite, this));
     channel_->setCloseCallback(std::bind(&TcpConnection::handleClose, this));
@@ -147,8 +147,6 @@ void TcpConnection::sendInLoop(const void* data, size_t len)
     {
         int startTime = time(NULL);
         nwrote = sockets::write(channel_->fd(), data, len);
-
-        LOGI("finish send to socket size=%d, tuple=%s", nwrote, m_tcpTuple);
         //TODO: 打印threadid用于调试，后面去掉
         //std::stringstream ss;
         //ss << std::this_thread::get_id();

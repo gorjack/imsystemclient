@@ -43,6 +43,7 @@ public:
 
 Q_SIGNALS:
     void sigLogindStatus(UserLoginStatus, QString);
+    void sigFileStatus(int, QString);
     void sigStatus(int, QString);
 
 private:

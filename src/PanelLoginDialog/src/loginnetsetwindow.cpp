@@ -66,9 +66,9 @@ void LoginNetSetWindow::initWindow()
 	movie->start();
 	pBack->move(0, 0);
 
-    ui.chatAddr->setInputMask("000.000.000.000:0000");
-    ui.imageAddr->setInputMask("000.000.000.000:0000");
-    ui.fileAddr->setInputMask("000.000.000.000:0000");
+    ui.chatAddr->setInputMask("000.000.000.000:00000");
+    ui.imageAddr->setInputMask("000.000.000.000:00000");
+    ui.fileAddr->setInputMask("000.000.000.000:00000");
 
     const auto& servers = CConfig::instance()->getServers();
     for (auto& iter: servers)

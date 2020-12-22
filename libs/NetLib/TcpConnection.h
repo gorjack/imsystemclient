@@ -35,6 +35,8 @@ namespace net
 
 		EventLoop* getLoop() const { return loop_; }
 		const string& name() const { return name_; }
+        const string& key() const { return m_tcpTuple; }
+
 		const InetAddress& localAddress() const { return localAddr_; }
 		const InetAddress& peerAddress() const { return peerAddr_; }
 		bool connected() const { return state_ == kConnected; }
