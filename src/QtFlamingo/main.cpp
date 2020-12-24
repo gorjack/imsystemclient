@@ -59,6 +59,9 @@ int main(int argc, char *argv[])
     qRegisterMetaType<net::CBuddyMessagePtr>();
     qRegisterMetaType<UserLoginStatus>();
 
+
+    LOGI("%sstart client%s", "==========", "==========");
+
     QApplication a(argc, argv);
 
     QFile qss(":/BuddyList/Resources/buddy.qss");

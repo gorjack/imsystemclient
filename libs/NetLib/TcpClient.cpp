@@ -160,7 +160,7 @@ void TcpClient::newConnection(int sockfd)
     }
 
     conn->connectEstablished();
-    LOGD("finish connecting to====> %s, address=>%s", connector_->serverAddress().toIpPort().c_str(), this);
+    LOGD("finish connecting to====> %s, address=>%p", connector_->serverAddress().toIpPort().c_str(), this);
 
 }
 

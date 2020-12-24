@@ -390,17 +390,17 @@ char* CAsyncLog::formLog(int& index, char* szbuf, size_t size_buf, unsigned char
 void CAsyncLog::makeLinePrefix(long nLevel, std::string& strPrefix)
 {
     //级别
-    strPrefix = "[INFO]";
+    strPrefix = "[ INFO]";
     if (nLevel == LOG_LEVEL_TRACE_ASYNC)
         strPrefix = "[TRACE]";
     else if (nLevel == LOG_LEVEL_DEBUG_ASYNC)
         strPrefix = "[DEBUG]";
     else if (nLevel == LOG_LEVEL_WARNING_ASYNC)
-        strPrefix = "[WARN]";
+        strPrefix = "[ WARN]";
     else if (nLevel == LOG_LEVEL_ERROR_ASYNC)
         strPrefix = "[ERROR]";
     else if (nLevel == LOG_LEVEL_SYSERROR_ASYNC)
-        strPrefix = "[SYSE]";
+        strPrefix = "[ SYSE]";
     else if (nLevel == LOG_LEVEL_FATAL_ASYNC)
         strPrefix = "[FATAL]";
     else if (nLevel == LOG_LEVEL_CRITICAL_ASYNC)
