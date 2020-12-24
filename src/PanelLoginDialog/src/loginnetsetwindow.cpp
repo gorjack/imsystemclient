@@ -3,6 +3,7 @@
 #include <QMovie>
 #include <QMouseEvent>
 #include <Env/CConfig.h>
+#include <User/CFlamingoClientCenter.h>
 
 
 LoginNetSetWindow::LoginNetSetWindow(QWidget *parent)
@@ -29,6 +30,7 @@ void LoginNetSetWindow::slotOnOk()
     servers[CHAT_SERVER] = chatServer;
     servers[IMAGE_SERVER] = imageServer;
     servers[FILE_SERVER] = fileServer;
+    CFlamingoClientCenter::instance()->resetAddress();
 }
 
 void LoginNetSetWindow::on_chatTestBtn_clicked()
@@ -87,7 +89,8 @@ void LoginNetSetWindow::initWindow()
         }
     }
 
-	connect(ui.pButtonOk, SIGNAL(clicked()), this, SIGNAL(rotateWindow()));
+    connect(ui.pButtonOk, SIGNAL(clicked()), this, SIGNAL(rotateWindow()));
+    connect(ui.pButtonOk, SIGNAL(clicked()), this, SLOT(slotOnOk()));
 	connect(ui.pButtonCancel, SIGNAL(clicked()), this, SIGNAL(rotateWindow()));
 }
 

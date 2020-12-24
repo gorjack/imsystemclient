@@ -145,9 +145,9 @@ void Connector::connecting(int sockfd)
     channel_->setWriteCallback(std::bind(&Connector::handleWrite, this)); // FIXME: unsafe
     channel_->setErrorCallback(std::bind(&Connector::handleError, this)); // FIXME: unsafe
     channel_->setConnectFd(true);
-    // channel_->tie(shared_from_this()); is not working,
-    // as channel_ is not managed by shared_ptr
     channel_->enableWriting();
+
+    LOGI("connect to socket id: %d", sockfd);
 }
 
 int Connector::removeAndResetChannel()
@@ -236,4 +236,12 @@ void Connector::retry(int sockfd)
     {
         LOGD("do not connect");
     }
+}
+
+void net::Connector::setAddress(const string& ip, uint16_t& port)
+{
+    struct sockaddr_in addr;
+    memset(&addr, 0, sizeof addr);
+    sockets::fromIpPort(ip.c_str(), port, &addr);
+    serverAddr_.setSockAddrInet(addr);
 }

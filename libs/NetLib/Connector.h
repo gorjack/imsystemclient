@@ -31,7 +31,8 @@ namespace net
 		void restart();  // must be called in loop thread
 		void stop();  // can be called in any thread
 
-		const InetAddress& serverAddress() const { return serverAddr_; }
+        const InetAddress& serverAddress() const { return serverAddr_; }
+        void setAddress(const string& ip, uint16_t& port);
 
 	private:
 		enum States { kDisconnected, kConnecting, kConnected };

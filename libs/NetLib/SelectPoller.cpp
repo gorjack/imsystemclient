@@ -68,7 +68,7 @@ Timestamp SelectPoller::poll(int timeoutMs, ChannelList* activeChannels)
     struct timeval timeout;
     if (isConnectFd)
     {
-        timeout.tv_sec = 3;
+        timeout.tv_sec = 10;
         timeout.tv_usec = 0;
     }
     else
@@ -88,14 +88,17 @@ Timestamp SelectPoller::poll(int timeoutMs, ChannelList* activeChannels)
             events_.resize(events_.size() * 2);
         }
     }
-    else if (numEvents == 0 && isConnectFd)
+    else if (numEvents == 0)
     {
         //LOG_TRACE << " nothing happended";
         for (const auto& iter : channels_)
         {
-            iter.second->add_revents(XPOLLERR);
+            if (iter.second->isConnectFd())
+            {
+                iter.second->add_revents(XPOLLERR);
+                activeChannels->push_back(iter.second);
+            }
 
-            activeChannels->push_back(iter.second);
         }// end for-loop
     }
     else

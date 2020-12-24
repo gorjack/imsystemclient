@@ -38,6 +38,11 @@ namespace net
 
     }
 
+    void TcpClient::setAddress(const string& ip, uint16_t& port)
+    {
+        connector_->setAddress(ip, port);
+    }
+
     void TcpClient::setErrorMegCallBack(const ErrorMessageCallBack&cb)
     {
         m_errorCallbackCB = cb;
