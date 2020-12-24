@@ -55,7 +55,7 @@ CFlamingoClientCenter::~CFlamingoClientCenter()
 void CFlamingoClientCenter::resetClient()
 {
     std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
-    std::map<SERVERTYPE, QString>::const_iterator iter = servers.find(CHAT_SERVER);
+    std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
     for (; iter != servers.end(); ++iter)
     {
         std::string ip;
@@ -81,6 +81,24 @@ void CFlamingoClientCenter::resetClient()
         break;
         }
         m_pClients[iter->first] = pClient;
+    }
+}
+
+void CFlamingoClientCenter::resetAddress()
+{
+    std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
+    std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
+    for (; iter != servers.end(); ++iter)
+    {
+        std::string ip;
+        unsigned short port;
+        utils::getIpPort(iter->second.toStdString(), ip, port);
+
+        auto iterT = m_pClients.find(iter->first);
+        if (iterT != m_pClients.end())
+        {
+            iterT->second->setAddress(ip, port);
+        }
     }
 }
 
@@ -455,7 +473,8 @@ const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName
 
 void CFlamingoClientCenter::onErrorCB(const std::string &msg)
 {
-    emit sigFileStatus(FILE_STATUS_ERROR, utils::sToQs(msg));
+    //connect 错误时的回调
+    emit sigLogindStatus(STATUS_ERROR, utils::sToQs(msg));
 }
 
 void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)

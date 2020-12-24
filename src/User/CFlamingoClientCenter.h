@@ -29,6 +29,7 @@ public:
     ~CFlamingoClientCenter();
 
     void resetClient();
+    void resetAddress();
     void init(net::EventLoop* loopObj);
     void setRequestCallBack(RequestCallBack func);
    
