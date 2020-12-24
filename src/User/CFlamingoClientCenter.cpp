@@ -86,6 +86,18 @@ void CFlamingoClientCenter::resetClient()
 
 void CFlamingoClientCenter::resetAddress()
 {
+    net::TcpClient *pclient = m_pClients[CHAT_SERVER];
+    if (NULL != pclient)
+    {
+        if (NULL != pclient->connection() && pclient->connection()->connected())
+        {
+            pclient->connection()->forceClose();
+        }
+    }
+    else
+        LOGI("reset address chatserver is NULL");
+
+
     std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
     std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
     for (; iter != servers.end(); ++iter)
@@ -100,6 +112,9 @@ void CFlamingoClientCenter::resetAddress()
             iterT->second->setAddress(ip, port);
         }
     }
+
+    connect_async(CHAT_SERVER);
+    m_bLoginEnable = false;
 }
 
 void CFlamingoClientCenter::init(net::EventLoop* loopObj)
@@ -193,12 +208,14 @@ void CFlamingoClientCenter::registCallBack(int id, RequestCallBack cb)
 
 void CFlamingoClientCenter::login_async(const net::CLoginRequest &req)
 {
+    m_bLoginEnable = true;
     net::TcpClient *pClient = m_pClients[CHAT_SERVER];
     if (pClient == NULL)
     {
         return;
     }
 
+    req.encodePackage(m_loginParam);
     if (!m_pClients[CHAT_SERVER]->isConnected())
     {
         m_pClients[CHAT_SERVER]->connect();
@@ -206,14 +223,10 @@ void CFlamingoClientCenter::login_async(const net::CLoginRequest &req)
         return;
     }
 
-
-    std::string loginReq;
-    req.encodePackage(loginReq);
-
     net::TcpConnectionPtr pConn = m_pClients[CHAT_SERVER]->connection();
     if (NULL != pConn)
     {
-        pConn->send(loginReq);
+        pConn->send(m_loginParam);
         emit sigLogindStatus(STATUS_LOGINING, "");
     }
 
@@ -327,8 +340,15 @@ void CFlamingoClientCenter::onConnect(const net::TcpConnectionPtr& pData)
 {
     if (pData->connected())
     {
-        //链接失败报告给用户 目前只有链接成功会回来，失败的处理都写在日志里了。
-        emit sigLogindStatus(STATUS_CONNECTED, "");
+        if (m_bLoginEnable && !m_loginParam.empty())
+        {
+            pData->send(m_loginParam);
+            emit sigLogindStatus(STATUS_LOGINING, "");
+        }
+        else
+        {
+            emit sigLogindStatus(STATUS_CONNECTED, "");
+        }
     }
 }
 

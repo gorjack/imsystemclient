@@ -52,7 +52,7 @@ LoginWindow::LoginWindow(QWidget *parent)
 
     CFlamingoClientCenter::instance()->resetClient();
     CFlamingoClientCenter::instance()->connect_async(CHAT_SERVER);
-    CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
+    //CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
 }
 
 LoginWindow::~LoginWindow()

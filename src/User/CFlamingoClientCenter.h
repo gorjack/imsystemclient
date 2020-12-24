@@ -90,6 +90,9 @@ private:
     std::list<string>                         m_strSendFiles;
    // unsigned                                  m_offReadFile = 0;
     const unsigned                            m_readMaxFileSize;
-    unsigned                            m_nTotolFileSize = -1;
+    unsigned                                  m_nTotolFileSize = -1;
+
+    string                                    m_loginParam;
+    bool                                      m_bLoginEnable = true;
 };
 #endif

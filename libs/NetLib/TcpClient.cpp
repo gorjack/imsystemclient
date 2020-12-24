@@ -103,9 +103,7 @@ TcpClient::~TcpClient()
 
 void TcpClient::connect()
 {
-    // FIXME: check state
-    //LOGD("TcpClient::connect[%s] - connecting to %s", name_.c_str(), connector_->serverAddress().toIpPort().c_str());
-    LOGD("start connecting to====> %s",  connector_->serverAddress().toIpPort().c_str());
+    LOGD("<====start connecting to====> %s",  connector_->serverAddress().toIpPort().c_str());
     connect_ = true;
     connector_->start();
 }
@@ -165,7 +163,7 @@ void TcpClient::newConnection(int sockfd)
     }
 
     conn->connectEstablished();
-    LOGD("finish connecting to====> %s, address=>%p", connector_->serverAddress().toIpPort().c_str(), this);
+    LOGD(" <====success connecting to====> %s, address=>%p", connector_->serverAddress().toIpPort().c_str(), this);
 
 }
 
