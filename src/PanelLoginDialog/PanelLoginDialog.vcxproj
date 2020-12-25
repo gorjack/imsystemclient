@@ -19,6 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -133,7 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CLoginDialog.ui" />
-    <QtUic Include="CRegistDialog.ui" />
+    <QtUic Include="CRegistDialog.ui">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </QtUic>
     <QtUic Include="loginnetsetwindow.ui" />
     <QtUic Include="loginwindow.ui" />
     <QtUic Include="WindowRotation.ui" />

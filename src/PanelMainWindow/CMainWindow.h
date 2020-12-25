@@ -17,6 +17,7 @@ class PANELMAINWINDOW_EXPORT CMainWindow : public QMainWindow
 public:
     CMainWindow(QWidget *parent = Q_NULLPTR);
     void createUi();
+
 protected Q_SLOTS:
     void slotEmitAddFirend();
     void slotRefreshFriendList();
@@ -24,6 +25,15 @@ protected Q_SLOTS:
 
 protected:
     void resizeEvent(QResizeEvent *e);
+    void onOperateFriends(const std::string& req);            //处理好友请求(加 删 请求添加等)
+
+
+Q_SIGNALS:
+    void sigOnAddFirendCB(const std::string&);
+
+protected Q_SLOTS:
+    void slotOnAddFirendCB(const std::string&);
+
 private:
     Ui::MainWindow ui;
 

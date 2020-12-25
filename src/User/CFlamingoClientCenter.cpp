@@ -259,6 +259,7 @@ void CFlamingoClientCenter::onHandleLogin(const std::string &data)
         break;
     case protocol::LOGIN_SUCCESS:
     {
+        CConfig::instance()->setNickName(m_pLoginRespPtr->m_szNickName);
         net::CUserBasicInfoRequestPtr pData(new net::CUserBasicInfoRequest);
         request_async(pData, std::bind(&CFlamingoClientCenter::onHandleUserInfo, this, std::placeholders::_1));
         QString s = QString::fromLocal8Bit("获取联系人列表");

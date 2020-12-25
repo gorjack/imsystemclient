@@ -12,10 +12,10 @@ CQueryForAddDialog::CQueryForAddDialog(QWidget *parent)
     ui.setupUi(this);
     connect(ui.m_pAddFirendBtn, SIGNAL(clicked()), this, SLOT(slotFindFriend()));
     connect(this, SIGNAL(sigOnFindFirendCallBack()), this, SLOT(slotOnFindFirendCallBack()));
-    connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
+   // connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
     m_pConfirmAddFriendDG = new CConfirmAddFriendDG(this);
     CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
-    CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+   // CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 }
 
 
@@ -69,6 +69,7 @@ void CQueryForAddDialog::slotOnFindFirendCallBack()
 
 void CQueryForAddDialog::slotOnAddFirendCB()
 {
+#if 0
     net::COperateFriendResultPtr pAddFriendInfo = boost::make_shared<net::COperateFriendResult>();
     pAddFriendInfo->decodePackage(m_strBuffer);
 
@@ -112,6 +113,7 @@ void CQueryForAddDialog::slotOnAddFirendCB()
 
         //m_FMGClient.GetFriendList();
     }
+#endif
 }
 
 void CQueryForAddDialog::onHandleFindFirend(const std::string& strMsg)

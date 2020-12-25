@@ -13,6 +13,10 @@
 #include <Env/CConfig.h>
 #include <Env/directory.h>
 
+#if _MSC_VER >= 1600
+#pragma execution_character_set("utf-8")
+#endif
+
 net::EventLoop *g_pEventLoop = NULL;
 std::condition_variable g_cvForLoop;
 std::mutex              g_mtForLoop;

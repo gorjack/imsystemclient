@@ -96,16 +96,31 @@ bool CConfig::save()
     QString strConfigPath = QF::getUserRootDir() + QDir::separator() + g_cAddrName;
     std::string content;
 
-    content = R"({ \n \t"m_services": [ )";
+    content = R"({"m_services": [ )";
+    ostringstream str;
+
     for (const auto& iter : m_servers)
     {
-        ostringstream str;
-        str << "\n\t\t{ \n \t\t\t \"m_type\" " << ":" << to_string(iter.first)
-            << ",\n\t\t\t" << "m_addr" << ":" << utils::qsToS(iter.second) << ",\n\t\t },";
-        content += str.str();
+
+        if (iter.first == CHAT_SERVER)
+        {
+            str << R"({"m_name": "chatserver", "m_addr": ")" << iter.second.toStdString() << R"(", "m_type": 0 }, )";
+        }
+        else if (iter.first == FILE_SERVER)
+        {
+            str << R"({"m_name": "fileserver", "m_addr": ")" << iter.second.toStdString() << R"(", "m_type": 1 }, )";
+        }
+        else if (iter.first == IMAGE_SERVER)
+        {
+            str << R"({"m_name": "imageserver", "m_addr": ")" << iter.second.toStdString() << R"(", "m_type": 2 } )";
+        }
+
     }
 
-    if (!utils::FileHelper::open(utils::qsToS(strConfigPath), content))
+    str << R"(] })";
+    content += str.str();
+
+    if (!utils::FileHelper::write(utils::qsToS(strConfigPath), content))
     {
         LOG_INFO("save file %s is error", utils::qsToS(strConfigPath));
         return false;

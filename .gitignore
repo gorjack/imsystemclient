@@ -36,3 +36,7 @@
 _builder/Win32.Debug/*
 _runtime/Win32.Debug
 /_runtime/userdata/logs
+_runtime/userdata/users
+/libs
+/src/Env/x64/Debug
+/x64/Debug

@@ -129,7 +129,9 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_CBuddyListWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CConfirmAddFriendDG.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_CConfirmAddFriendDG.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_CMainWindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -154,6 +156,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\libs\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Env\Env.vcxproj">
+      <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
     </ProjectReference>
     <ProjectReference Include="..\PanelBaseWidget\PanelBaseWidget.vcxproj">
       <Project>{87bc245f-7a53-4663-b509-a433d1dcb633}</Project>

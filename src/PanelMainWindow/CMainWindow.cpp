@@ -7,6 +7,8 @@
 #include <QtWidgets/QPushButton>
 #include <QtGui/QtEvents>
 #include <PanelBaseWidget/CPushButton.h>
+#include <Env/CConfig.h>
+#include <CConfirmAddFriendDG.h>
 
 //#ifdef WIN32  
 //#pragma execution_character_set("utf-8")  
@@ -26,11 +28,14 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     ui.setupUi(this);
     createUi();
     resize(430, 835);
+    CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, this, std::placeholders::_1));
+
+
     ui.statusbar->addPermanentWidget(ui.m_pAddFriend);
     connect(ui.m_pAddFriend, SIGNAL(clicked()), this, SLOT(slotEmitAddFirend()));
     connect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(slotRefreshFriendList()));
+    connect(this, SIGNAL(sigOnAddFirendCB(const std::string&)), this, SLOT(slotOnAddFirendCB(const std::string&)));
 
-    m_pAddFriendDialog = new CQueryForAddDialog(this);
 
     slotRefreshFriendList();
 }
@@ -58,9 +63,8 @@ void CMainWindow::createUi()
     m_pSeekWidget = new QLineEdit(this);
     m_pSeekWidget->setStyleSheet("background-color: rgba(255, 255, 255, 30%); border-width:0;border-style:outset");
     {
-        m_pHeadPhotoBtn->setText("123333");
-        m_pUserInfoName->setText("jeckma");
-        m_pUserInfoSign->setText("alibaba");
+        m_pUserInfoName->setText(QString::fromStdString(CConfig::instance()->nickName()));
+        m_pUserInfoSign->setText("风雨同舟");
     }
 
     m_pMessageListBtn = new QF::CPushButton(ID_MESSAGE_LIST_BTN, this);
@@ -77,7 +81,12 @@ void CMainWindow::createUi()
 
 void CMainWindow::slotEmitAddFirend()
 {
+    if (NULL == m_pAddFriendDialog)
+    {
+        m_pAddFriendDialog = new CQueryForAddDialog(this);
+    }
     m_pAddFriendDialog->exec();
+
 }
 
 void CMainWindow::slotRefreshFriendList()
@@ -110,4 +119,63 @@ void CMainWindow::resizeEvent(QResizeEvent *e)
 
     m_pBuddyListWidget->setGeometry(0, 175, sz.width(), sz.height() - ui.statusbar->height() - 175);
 
+}
+
+void CMainWindow::onOperateFriends(const std::string& req)
+{
+    emit sigOnAddFirendCB(req);
+}
+
+void CMainWindow::slotOnAddFirendCB(const std::string& param)
+{
+    net::COperateFriendResultPtr pAddFriendInfo = boost::make_shared<net::COperateFriendResult>();
+    pAddFriendInfo->decodePackage(param);
+
+    //别人加自己
+    if (pAddFriendInfo->m_uCmd == protocol::Apply)
+    {
+        std::wstring titleL = L"加好友请求";
+        QString title = QString::fromStdWString(titleL);
+
+        QString msg = QString(" %1 请求加您为好友,  是否同意").arg(pAddFriendInfo->m_szAccountName);
+
+        CConfirmAddFriendDG *pDialog = new CConfirmAddFriendDG(this);
+        pDialog->setWindowTitle(title);
+        pDialog->setInfoMsg(msg);
+        int nRet = pDialog->exec();
+        {
+            net::COperateFriendRequestPtr pData = boost::make_shared<net::COperateFriendRequest>();
+            pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
+            pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
+
+            CFlamingoClientCenter::instance()->request_async(pData, std::bind(&CMainWindow::onOperateFriends, this, std::placeholders::_1));
+            pDialog->deleteLater();
+        }
+    }
+    else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
+    {
+        std::wstring titleL = L"拒绝好友请求";
+        QString title = QString::fromStdWString(titleL);
+
+        QString msg = QString(" %1 拒绝了加好友请求").arg(pAddFriendInfo->m_szAccountName);
+        CConfirmAddFriendDG *pDialog = new CConfirmAddFriendDG(this);
+        pDialog->setWindowTitle(title);
+        pDialog->setInfoMsg(msg);
+        pDialog->exec();
+        pDialog->deleteLater();
+    }
+    else if (pAddFriendInfo->m_uCmd == protocol::Agree)
+    {
+        std::wstring titleL = L"成功加好友";
+        QString title = QString::fromStdWString(titleL);
+
+        QString msg = QString(" 您和 %1 已经是好友啦，开始聊天吧").arg(pAddFriendInfo->m_szAccountName);
+        CConfirmAddFriendDG *pDialog = new CConfirmAddFriendDG(this);
+        pDialog->setWindowTitle(title);
+        pDialog->setInfoMsg(msg);
+        pDialog->exec();
+        pDialog->deleteLater();
+
+        CUserManager::instance()->queryFirendList();
+    }
 }
