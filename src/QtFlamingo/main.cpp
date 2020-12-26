@@ -57,11 +57,13 @@ BOOL InitSocket()
 
 Q_DECLARE_METATYPE(net::CBuddyMessagePtr);
 Q_DECLARE_METATYPE(UserLoginStatus);
+Q_DECLARE_METATYPE(std::string);
 
 int main(int argc, char *argv[])
 {
     qRegisterMetaType<net::CBuddyMessagePtr>();
     qRegisterMetaType<UserLoginStatus>();
+    qRegisterMetaType<std::string>();
 
 
     LOGI("%sstart client%s", "==========", "==========");

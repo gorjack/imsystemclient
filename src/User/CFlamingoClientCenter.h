@@ -85,6 +85,7 @@ private:
     RequestCallBack                           _requestfunc;       //这个基本上用不到了
 
     std::map<int, RequestCallBack>            m_mapId2CB;
+    std::map<int, string>                     m_mapCacheNotify;   //缓存通知的回调 防止界面没刷新数据就回来了
     static int32_t                            m_seq;
 
     std::list<string>                         m_strSendFiles;

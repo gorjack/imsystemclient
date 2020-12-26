@@ -28,8 +28,6 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     ui.setupUi(this);
     createUi();
     resize(430, 835);
-    CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, this, std::placeholders::_1));
-
 
     ui.statusbar->addPermanentWidget(ui.m_pAddFriend);
     connect(ui.m_pAddFriend, SIGNAL(clicked()), this, SLOT(slotEmitAddFirend()));

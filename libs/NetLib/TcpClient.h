@@ -34,6 +34,8 @@ namespace net
         void enableRetry() { retry_ = true; }
 
         void setAddress(const string& ip, uint16_t& port);
+        const std::string getAddress();
+        
         const std::string& name() const
         {
             return name_;

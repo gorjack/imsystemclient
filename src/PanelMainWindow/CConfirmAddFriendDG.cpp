@@ -58,13 +58,13 @@ void CConfirmAddFriendDG::createUi()
 
         m_pAgreeBtn = new QPushButton;
         m_pAgreeBtn->setFixedSize(70, 25);
-        m_pAgreeBtn->setText("同意");
+        m_pAgreeBtn->setText(QString::fromLocal8Bit("同意"));
         pHLayout->addStretch(1);
         pHLayout->addWidget(m_pAgreeBtn);
 
         m_pRejectBtn = new QPushButton;
         m_pRejectBtn->setFixedSize(70, 25);
-        m_pRejectBtn->setText("拒绝");
+        m_pRejectBtn->setText(QString::fromLocal8Bit("拒绝"));
         pHLayout->addStretch(1);
         pHLayout->addWidget(m_pRejectBtn);
         pVLayout->addLayout(pHLayout);

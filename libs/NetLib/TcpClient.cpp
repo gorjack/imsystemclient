@@ -43,6 +43,11 @@ namespace net
         connector_->setAddress(ip, port);
     }
 
+    const std::string TcpClient::getAddress()
+    {
+        return connector_->serverAddress().toIpPort();
+    }
+
     void TcpClient::setErrorMegCallBack(const ErrorMessageCallBack&cb)
     {
         m_errorCallbackCB = cb;

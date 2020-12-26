@@ -86,18 +86,6 @@ void CFlamingoClientCenter::resetClient()
 
 void CFlamingoClientCenter::resetAddress()
 {
-    net::TcpClient *pclient = m_pClients[CHAT_SERVER];
-    if (NULL != pclient)
-    {
-        if (NULL != pclient->connection() && pclient->connection()->connected())
-        {
-            pclient->connection()->forceClose();
-        }
-    }
-    else
-        LOGI("reset address chatserver is NULL");
-
-
     std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
     std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
     for (; iter != servers.end(); ++iter)
@@ -105,15 +93,23 @@ void CFlamingoClientCenter::resetAddress()
         std::string ip;
         unsigned short port;
         utils::getIpPort(iter->second.toStdString(), ip, port);
+        SERVERTYPE typeS = iter->first;
 
         auto iterT = m_pClients.find(iter->first);
         if (iterT != m_pClients.end())
         {
+            net::TcpClient *pclient = iterT->second;
+            if (NULL != pclient->connection() && pclient->connection()->connected()
+                && (iter->second.toStdString() != pclient->getAddress()))
+            {
+                pclient->connection()->forceClose();
+            }
+
             iterT->second->setAddress(ip, port);
         }
     }
 
-    connect_async(CHAT_SERVER);
+    //connect_async(CHAT_SERVER);  这里感觉不用连吧
     m_bLoginEnable = false;
 }
 
@@ -175,7 +171,7 @@ bool CFlamingoClientCenter::request_async(const net::IDataPtr& req, RequestCallB
     net::TcpConnectionPtr pConn = m_pClients[req->m_nType]->connection();
     if (NULL != pConn)
     {
-        LOGI(pConn->key().c_str());
+        //LOGI(pConn->key().c_str());
         pConn->send(reqData);
         return true;
     }
@@ -203,6 +199,12 @@ void CFlamingoClientCenter::onRequest(const std::string &resp)
 
 void CFlamingoClientCenter::registCallBack(int id, RequestCallBack cb)
 {
+    auto iter = m_mapCacheNotify.find(id);
+    if (iter != m_mapCacheNotify.end())
+    {
+        cb(iter->second);
+        m_mapCacheNotify.erase(iter);
+    }
     m_mapId2CB[id] = cb;
 }
 
@@ -301,6 +303,7 @@ bool CFlamingoClientCenter::dispatchHandle(const net::TcpConnectionPtr& conn, co
         return false;
     }
 
+    LOGI("recv data from server cmd = %d, data : %s", cmd, data.c_str());
     switch (cmd)
     {
         case msg_type_login:
@@ -322,14 +325,16 @@ bool CFlamingoClientCenter::dispatchHandle(const net::TcpConnectionPtr& conn, co
         //    }
         //}
         //    //onRequest(data);
-        //    break;
-
-         //   break;
         default:
         {
             if (m_mapId2CB[cmd] != NULL)
             {
                 (m_mapId2CB[cmd])(data);
+            }
+            else
+            {
+                m_mapCacheNotify[cmd] = data;
+                LOGI("cmd = %d not to handle", cmd);
             }
         }
     }
