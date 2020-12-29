@@ -7,8 +7,7 @@
 #include <QPainter>
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
+
 
 CChatMainWindowDialog::CChatMainWindowDialog(QWidget *parent /*= nullptr*/)
     : QDialog(parent)
@@ -20,7 +19,7 @@ CChatMainWindowDialog::CChatMainWindowDialog(QWidget *parent /*= nullptr*/)
     //setWindowFlags(windowFlags);
 
     createUi();
-    resize(1265, 725);
+    resize(1097, 725);
     connect(m_pUserDataList, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotShowCurrentWindow(QListWidgetItem*)));
 }
 
@@ -113,43 +112,8 @@ void CChatMainWindowDialog::createUi()
     m_pSplit->setWidgets(m_pUserDataList, m_pStackWidget, true, 210);
     m_pSplit->setFirstMinLength(210);
 
-    m_pRightWidget = new CShowRightWidget(this);
-
     pLayout->addWidget(m_pSplit);
-    pLayout->addWidget(m_pRightWidget);
+
 
     setLayout(pLayout);
 }
-
-CShowRightWidget::CShowRightWidget(QWidget*parent /*= NULL*/)
-    :QWidget(parent)
-{
-    createUi();
-    setMaximumWidth(280);
-}
-
-void CShowRightWidget::resizeEvent(QResizeEvent *event)
-{
-    QWidget::resizeEvent(event);
-}
-
-void CShowRightWidget::createUi()
-{
-    QVBoxLayout *pLayout = new QVBoxLayout(this);
-    pLayout->setContentsMargins(0, 2, 0, 0);
-    pLayout->setSpacing(0);
-
-    m_pTitleWidget = new QLabel(this);
-    m_pTitleWidget->setText("消息记录");
-    m_pTitleWidget->setStyleSheet("border:1px solid green;");
-    m_pTitleWidget->setFixedSize(100, 30);
-
-    m_pContent = new QListView(this);
-   // m_pContent->setStyleSheet("background-color: rgba(255, 255, 255, 30%);");
-
-    pLayout->addWidget(m_pTitleWidget);
-    pLayout->addWidget(m_pContent);
-
-    setLayout(pLayout);
-}
-

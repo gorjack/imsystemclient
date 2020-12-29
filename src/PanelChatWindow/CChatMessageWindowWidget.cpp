@@ -1,4 +1,4 @@
-
+ï»¿
 #include "CChatMessageWindowWidget.h"
 #include <QDateTime>
 #include <QDebug>
@@ -7,9 +7,14 @@
 #include "CSendMsgTextEdit.h"
 #include <User/CFlamingoClientCenter.h>
 #include <ProtocolData/rpc_Enum.h>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QLabel>
+
+
 
 CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
     QWidget(parent)
+    , m_pParent(parent)
 {
     //resize(600, 800);
     createUi();
@@ -21,23 +26,31 @@ CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
 
 void CChatMessageWindowWidget::createUi()
 {
-    QVBoxLayout *pLayout = new QVBoxLayout(this);
-    pLayout->setContentsMargins(0, 0, 0, 0);
-    pLayout->setSpacing(0);
+    QHBoxLayout *pHMainLayout = new QHBoxLayout(this);
+    pHMainLayout->setMargin(0);
+    pHMainLayout->setSpacing(0);
+    {
+        m_pShowMsgListWidget = new QListWidget(this);
+        m_pSendTextEdit = new CSendMsgTextEdit(this);
+        connect(m_pSendTextEdit, SIGNAL(sigSendFile(const FileTransferStatus&, const QString&)),
+            this, SLOT(slotHandleSendFile(const FileTransferStatus&, const QString&)));
+        connect(m_pSendTextEdit, SIGNAL(sigShowRightWidget()),
+            this, SLOT(slotShowRightWidget()));
 
-    m_pShowMsgListWidget = new QListWidget(this);
-    //m_pShowMsgListWidget->setStyleSheet("background-color: rgba(255, 255, 255, 40%); border-left-width:0;border-style:outset");
-   // m_pShowMsgListWidget->setStyleSheet("background-color: transparent; border-left-width:0;border-style:outset");
+        m_pSlit = new XP::CSplitContainer(Qt::Vertical, 1, this);
+        m_pSlit->setWidgets(m_pShowMsgListWidget, m_pSendTextEdit, true, 480);
+        m_pSlit->setFirstMinLength(150);
 
-    m_pSendTextEdit = new CSendMsgTextEdit(this);
+        pHMainLayout->addWidget(m_pSlit);
+    }
+    {
+        m_pRightWidget = new CRightMssageInfoWidget(this);
+        m_pRightWidget->setVisible(false);
+        pHMainLayout->addWidget(m_pRightWidget);
+    }
 
-    m_pSlit = new XP::CSplitContainer(Qt::Vertical, 1, this);
-    m_pSlit->setWidgets(m_pShowMsgListWidget, m_pSendTextEdit, true, 480);
-    m_pSlit->setFirstMinLength(150);
 
-    pLayout->addWidget(m_pSlit, 1);
-
-    setLayout(pLayout);
+    setLayout(pHMainLayout);
 
 }
 
@@ -61,7 +74,7 @@ void CChatMessageWindowWidget::dealMessageTime(QString curMsgTime)
         int lastTime = messageW->time().toInt();
         int curTime = curMsgTime.toInt();
         qDebug() << "curTime lastTime:" << curTime - lastTime;
-        isShowTime = ((curTime - lastTime) > 60); // Á½¸öÏûÏ¢Ïà²îÒ»·ÖÖÓ
+        isShowTime = ((curTime - lastTime) > 60); // ä¸¤ä¸ªæ¶ˆæ¯ç›¸å·®ä¸€åˆ†é’Ÿ
     }
     else {
         isShowTime = true;
@@ -88,11 +101,11 @@ void CChatMessageWindowWidget::handleChatMsg(const std::string& strMsg)
 
 void CChatMessageWindowWidget::slotSendMsg(QString msg)
 {
-    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //Ê±¼ä´Á
-    bool isSending = true; // ·¢ËÍÖÐ
+    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //æ—¶é—´æˆ³
+    bool isSending = true; // å‘é€ä¸­
     m_pSendTextEdit->setText("");
 
-    //ÕâÀïunique_ptr ÓÐÃ»ÓÐÎÊÌâ
+    //è¿™é‡Œunique_ptr æœ‰æ²¡æœ‰é—®é¢˜
     net::CBuddyMessagePtr pData = boost::make_shared<net::CBuddyMessage>();
     pData->m_msgMesText = msg.toStdString();
     pData->m_nTargetId = m_nTargetId;
@@ -110,8 +123,8 @@ void CChatMessageWindowWidget::slotSendMsg(QString msg)
 
 void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pData)
 {
-    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //Ê±¼ä´Á
-    bool isSending = true; // ·¢ËÍÖÐ
+    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //æ—¶é—´æˆ³
+    bool isSending = true; // å‘é€ä¸­
     m_pSendTextEdit->setText("");
 
     dealMessageTime(time);
@@ -121,4 +134,125 @@ void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pD
     dealMessage(messageW, item, QString::fromStdString(pData->m_msgMesText), time, CShowMsgListItemWidget::User_She);
 
     m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
+}
+
+
+void CChatMessageWindowWidget::slotHandleSendFile(const FileTransferStatus& status, const QString& msg)
+{
+
+}
+
+void CChatMessageWindowWidget::slotShowRightWidget()
+{
+    if (!m_pRightWidget->isVisible())
+    {
+        m_pParent->resize(m_pParent->width() + m_pRightWidget->width(), m_pParent->height());
+        m_pRightWidget->setVisible(true);
+        m_pRightWidget->setMsgHistory(true);
+    }
+    else
+    {
+        m_pParent->resize(m_pParent->width() - m_pRightWidget->width(), m_pParent->height());
+        m_pRightWidget->setVisible(false);
+    }
+}
+
+void CChatMessageWindowWidget::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+    //m_pRightWidget->setGeometry(this->width(), 0, m_pRightWidget->width(), this->height());
+}
+
+CRightMssageInfoWidget::CRightMssageInfoWidget(QWidget*parent /*= NULL*/)
+    :QWidget(parent)
+{
+    createUi();
+    setFixedWidth(280);
+}
+
+void CRightMssageInfoWidget::setMsgHistory(bool b)
+{
+    m_bShowMsgHistorhy = b;
+}
+
+void CRightMssageInfoWidget::addTransferFileItem(const FileTransferProgress& progress)
+{
+    CTransferFileItemWidget *pItemWidget = new CTransferFileItemWidget(this);
+    //pItemWidget->updataData(FileTransferProgress{ "file.txt", "400k", 50 , "ä¼ è¾“ä¸­" });
+    pItemWidget->updataData(progress);
+
+    QListWidgetItem *pListItem = new QListWidgetItem(m_pContent);
+    m_pContent->setItemWidget(pListItem, pItemWidget);
+}
+
+void CRightMssageInfoWidget::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+}
+
+void CRightMssageInfoWidget::createUi()
+{
+    QVBoxLayout *pLayout = new QVBoxLayout(this);
+    pLayout->setContentsMargins(0, 2, 0, 0);
+    pLayout->setSpacing(0);
+
+    m_pTitleWidget = new QLabel(this);
+    m_pTitleWidget->setText("æ¶ˆæ¯è®°å½•");
+    m_pTitleWidget->setStyleSheet("border:1px solid green;");
+    m_pTitleWidget->setFixedSize(100, 30);
+
+    m_pContent = new QListWidget(this);
+
+    pLayout->addWidget(m_pTitleWidget);
+    pLayout->addWidget(m_pContent);
+
+    setLayout(pLayout);
+}
+
+CTransferFileItemWidget::CTransferFileItemWidget(QWidget *parent)
+    :QWidget(parent)
+{
+    createUi();
+}
+
+void CTransferFileItemWidget::updataData(const FileTransferProgress& progress)
+{
+    m_pFileInfo->setText(QString("%1 (%2)").arg(progress.m_strFileName).arg(progress.m_nFileSize));
+    m_pFileProgress->setValue(progress.m_nPercent);
+    m_pFileMsgInfo->setText(progress.m_strFileState);
+}
+
+void CTransferFileItemWidget::createUi()
+{
+    QVBoxLayout   *pVLayout = new QVBoxLayout(this);
+    pVLayout->setMargin(0);
+    pVLayout->setSpacing(0);
+    {
+        QHBoxLayout  *pHLayout = new QHBoxLayout;
+        pHLayout->setMargin(0);
+        pHLayout->setSpacing(0);
+        m_pFileTypeImage = new QLabel;
+        m_pFileTypeImage->setText("file type");
+        m_pFileTypeImage->setFixedSize(70, 70);
+        pHLayout->addWidget(m_pFileTypeImage, 1);
+
+        {
+            QVBoxLayout *pVLayoutSub = new QVBoxLayout;
+            pVLayoutSub->setMargin(0);
+            pVLayoutSub->setSpacing(5);
+
+            m_pFileInfo = new QLabel;
+            m_pFileProgress = new QProgressBar;
+            m_pFileProgress->setRange(0, 100);
+            m_pFileMsgInfo = new QLabel;
+
+            pVLayoutSub->addWidget(m_pFileInfo);
+            pVLayoutSub->addWidget(m_pFileProgress);
+            pVLayoutSub->addWidget(m_pFileMsgInfo);
+            pHLayout->addLayout(pVLayoutSub);
+        }
+
+        pVLayout->addLayout(pHLayout);
+        setLayout(pVLayout);
+    }
 }

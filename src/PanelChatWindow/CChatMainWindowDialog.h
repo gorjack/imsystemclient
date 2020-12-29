@@ -16,20 +16,6 @@ namespace XP
     class CSplitContainer;
 }
 
-class CShowRightWidget : public QWidget
-{
-public:
-    CShowRightWidget(QWidget*parent = NULL);
-
-protected:
-    void resizeEvent(QResizeEvent *event);
-    void createUi();
-
-    QLabel           *m_pTitleWidget = NULL;
-    QListView        *m_pContent = NULL;
-};
-
-
 class PANELCHATWINDOW_EXPORT CChatMainWindowDialog : public QDialog
 {
     Q_OBJECT
@@ -48,11 +34,11 @@ private:
 
     void createUi();
     QListWidget                             *m_pUserDataList = NULL;
+    QMap<QListWidgetItem*, CChatMessageWindowWidget*>     m_mapIndex2BuddyWindow;
+
     QStackedWidget                          *m_pStackWidget = NULL;
     XP::CSplitContainer                     *m_pSplit = NULL;
-    QMap<QListWidgetItem*, CChatMessageWindowWidget*>     m_mapIndex2BuddyWindow;
     QSet<int>                                m_setId;      //用于判断是否重复点了item
-    CShowRightWidget                        *m_pRightWidget = NULL;
 };
 
 #endif 

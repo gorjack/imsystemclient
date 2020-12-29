@@ -1,4 +1,5 @@
-#pragma once
+ï»¿#pragma once
+#include <QString>
 
 enum UserLoginStatus
 {
@@ -8,14 +9,30 @@ enum UserLoginStatus
     STATUS_LOGIN_FINISHED,
     STATUS_ERROR,
     STATUS_GET_USER_LIST,  
-    //³Ã×ÅÐ´°ÉÏÂÃæÊÇÎÄ¼þ×´Ì¬
-    FILE_STATUS_CONNECTING,
+};
+
+enum FileTransferStatus
+{
+    FILE_STATUS_CONNECTING = 6,
     FILE_STATUS_CONNECTED,
     FILE_STATUS_ERROR,
+    FILE_STATUS_TRANSFERING,
     FILE_STATUS_SUCCESS,
-    //³Ã×ÅÐ´°ÉÏÂÃæÊÇÍ¼Æ¬×´Ì¬
-    IMAGE_STATUS_CONNECTING,
+};
+
+enum ImageTransferStatus
+{
+    IMAGE_STATUS_CONNECTING = 10,
     IMAGE_STATUS_CONNECTED,
     IMAGE_STATUS_ERROR,
+};
 
+struct FileTransferProgress
+{
+    QString         m_strFileName;
+    QString         m_nFileSize;
+    int             m_nPercent;
+    QString         m_strFileState;
+
+    //          è¿™é‡ŒåŠ ä¸€ä¸ªæ–‡ä»¶ç±»åž‹ç”¨å›¾ç‰‡å±•ç¤º
 };

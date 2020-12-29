@@ -39,8 +39,6 @@ void CSendMsgTextEdit::slotSendMessage()
 
 void CSendMsgTextEdit::slotOnHandleSendFile()
 {
-    //CFlamingoClientCenter::instance()->connect_async(FILE_SERVER);
-
     using namespace protocol;
     QString fileName = QFileDialog::getOpenFileName(this, "file", ".", "files (*.*)");
     if (fileName.isEmpty())
@@ -48,25 +46,14 @@ void CSendMsgTextEdit::slotOnHandleSendFile()
         return;
     }
 
-    upLoadFile(fileName);
+    CFlamingoClientCenter::instance()->sendFileToServer(fileName, std::bind(&CSendMsgTextEdit::onHandleSendFile, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void CSendMsgTextEdit::onHandleErrorStatus(int status, QString msg)
 {
-    switch (status)
+    if (!msg.isEmpty())
     {
-    case FILE_STATUS_CONNECTING:
-        break;
-    case FILE_STATUS_CONNECTED:
-        break;
-    case FILE_STATUS_ERROR:
         QMessageBox::information(this, "info", msg);
-        break;
-    case FILE_STATUS_SUCCESS:
-        QMessageBox::information(this, "info", "上传文件成功");
-        break;
-    default:
-        break;
     }
 }
 
@@ -89,13 +76,9 @@ void CSendMsgTextEdit::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 }
 
-void CSendMsgTextEdit::upLoadFile(const QString& fileName)
+void CSendMsgTextEdit::onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo)
 {
-    const QString error = CFlamingoClientCenter::instance()->sendFileToServer(fileName);
-    if (!error.isEmpty())
-    {
-        QMessageBox::information(this, "info", error);
-    }
+    emit sigSendFile(status, msgInfo);
 }
 
 void CSendMsgTextEdit::createUi()
@@ -130,6 +113,7 @@ void CSendMsgTextEdit::createUi()
     QToolButton* pMessagesBtn = new QToolButton(this);
     pMessagesBtn->setIcon(QIcon(QString("%1/messages_toolbtn.png").arg(QF::getCurrentResourceDir())));
     pMessagesBtn->setFixedSize(30, 30);
+    connect(pMessagesBtn, SIGNAL(clicked()), this, SIGNAL(sigShowRightWidget()));
     m_pShowTool2Btns->addWidget(pMessagesBtn);
 
     m_pShowToolBtns->addWidget(pFaceBtn);

@@ -27,9 +27,7 @@ IMPL_SINGLETON_CLASS(CFlamingoClientCenter);
 
 int32_t CFlamingoClientCenter::m_seq = 0;
 CFlamingoClientCenter::CFlamingoClientCenter()
-    :m_readMaxFileSize(5*1024)
 {
-    int p = m_seq;
 }
 
 CFlamingoClientCenter::~CFlamingoClientCenter()
@@ -442,64 +440,24 @@ void CFlamingoClientCenter::onPackageDecode(const net::TcpConnectionPtr& conn, n
     }// end while-loop
 }
 
-const QString CFlamingoClientCenter::sendFileToServer(const QString& strFileName)
+void CFlamingoClientCenter::sendFileToServer(const QString& strFileName, SendFileCallBack cb)
 {
+    m_strFileName = strFileName;
+    m_sendFileCB = cb;
+
     if (NULL != m_pClients[FILE_SERVER] && !m_pClients[FILE_SERVER]->isConnected())
     {
         m_pClients[FILE_SERVER]->connect();
-        //在连接的地方发送
+        cb(FILE_STATUS_CONNECTED, "");
+    }
+    else {
+        //gaojie: 这里我打算处理暂停继续发文件逻辑， 也就是断点续传。
     }
 
-    using namespace protocol;
-    using namespace utils;
-    //文件md5值
-    int64_t nFileSize;
-    char szMd5[64] = { 0 };
-    //const wchar_t* pszFileName = strFileName.toStdWString().c_str();   //直接这么写就不行 得像下面那样拆开才可以
-    std::wstring ss = strFileName.toStdWString();
-    const wchar_t* ssw = ss.c_str();
-    long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
-    if (nRetCode == utils::GET_FILE_MD5_FAILED)
-    {
-        return QString("Failed to upload file:%1 as unable to get file md5.").arg(strFileName);
-    }
-    else if (nRetCode == GET_FILE_MD5_USERCANCEL)
-    {
-        return QString("User cancel to upload file:%s.").arg(strFileName);
-    }
-    if (nFileSize == 0)
-    {
-        return QString("Failed to upload file:%s as file size is 0.").arg(strFileName);
-    }
-
-
-    //nFileSize 就是全部尺寸 这里可以判断一下 nFileSize跟m_nTotolFileSize 谁大谁小
-    string content;
-    m_nTotolFileSize = utils::FileHelper::getFileSize(utils::qsToS(strFileName));
-    unsigned eachSize = m_nTotolFileSize > m_readMaxFileSize ? m_readMaxFileSize : m_nTotolFileSize;
-    if (!utils::FileHelper::open(utils::qsToS(strFileName), content, 0, eachSize))
-    {
-        return QString("读取文件 %s 失败").arg(strFileName);
-        //emit sigLogindStatus(FILE_STATUS_ERROR, "读取文件失败");
-    }
-
-    net::CUpLoadFileRequestPtr pData(new net::CUpLoadFileRequest);
-    pData->m_offsetX = 0;
-    pData->m_nFileSize = m_nTotolFileSize;
-    pData->m_strContent = content;
-    pData->m_strMd5.append(szMd5, 32);
-
-    m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(strFileName), eachSize);
-
-    LOG_INFO("will send to server filesize=%d, filemd5=%s", nFileSize, szMd5);
-    request_async(pData);
-
-    return QString("");
 }
 
 void CFlamingoClientCenter::onErrorCB(const std::string &msg)
 {
-    //connect 错误时的回调
     emit sigLogindStatus(STATUS_ERROR, utils::sToQs(msg));
 }
 
@@ -508,12 +466,58 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
     if (pData->connected())
     {
         //链接失败报告给用户 目前只有链接成功会回来，失败的处理都写在日志里了。
-        stringstream ss;
-        ss << pData->key();
+        stringstream sstr;
+        sstr << pData->key();
 
         net::TcpConnection* pc = pData.get();
-        ss << "connecter addr: " << to_string(reinterpret_cast<int>(pc));
-        LOGI(ss.str().c_str());
+        sstr << "connecter addr: " << to_string(reinterpret_cast<int>(pc));
+        LOGI(sstr.str().c_str());
+
+        using namespace protocol;
+        using namespace utils;
+        //文件md5值
+        int64_t nFileSize;
+        char szMd5[64] = { 0 };
+        //const wchar_t* pszFileName = strFileName.toStdWString().c_str();   //直接这么写就不行 得像下面那样拆开才可以
+        std::wstring ss = m_strFileName.toStdWString();
+        const wchar_t* ssw = ss.c_str();
+        long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
+        if (nRetCode == utils::GET_FILE_MD5_FAILED)
+        {
+            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%1 as unable to get file md5.").arg(m_strFileName));
+        }
+        else if (nRetCode == GET_FILE_MD5_USERCANCEL)
+        {
+            //gaojie: 用户取消传输该走怎样的逻辑
+        }
+        if (nFileSize == 0)
+        {
+            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%s as file size is 0.").arg(m_strFileName));
+        }
+
+
+        //nFileSize 就是全部尺寸 这里可以判断一下 nFileSize跟m_nTotolFileSize 谁大谁小
+        //m_nTotolFileSize = utils::FileHelper::getFileSize(utils::qsToS(strFileName));
+
+        string content;
+        unsigned eachSize = nFileSize > m_sendMaxFileSize ? m_sendMaxFileSize : nFileSize;
+        if (!utils::FileHelper::open(utils::qsToS(m_strFileName), content, 0, eachSize))
+        {
+            m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(m_strFileName));;
+        }
+
+        net::CUpLoadFileRequestPtr pData(new net::CUpLoadFileRequest);
+        pData->m_offsetX = 0;
+        pData->m_nFileSize = nFileSize;
+        pData->m_strContent = content;
+        pData->m_strMd5.append(szMd5, 32);
+
+        m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(m_strFileName), eachSize);
+
+        LOG_INFO("will send to server filesize=%d, filemd5=%s", nFileSize, szMd5);
+        request_async(pData);
+
+        return;
     }
 }
 
@@ -530,7 +534,6 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
         }
 
         //取包头信息
-        //msg header;
         memcpy(&header, pBuffer->peek(), sizeof(header));
         {
             //收到的数据不够一个完整的包
@@ -553,7 +556,8 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
 
             if (res.errorCode == protocol::file_msg_error_complete)
             {
-                emit sigFileStatus(FILE_STATUS_SUCCESS, "");
+                //emit sigFileStatus(FILE_STATUS_SUCCESS, "");
+                m_sendFileCB(FILE_STATUS_TRANSFERING, "100");
             }
             else
             {
@@ -562,11 +566,15 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
                 int nReadSize = iter->second.second;
                 int totalSize = res.fileSize;
 
+                QString psersentStr = QString::number((long)((__int64)nReadSize * 100 / totalSize));
+                m_sendFileCB(FILE_STATUS_TRANSFERING, psersentStr);
+
                 string content;
-                unsigned nSize = (totalSize - nReadSize) > m_readMaxFileSize ? m_readMaxFileSize : (totalSize - nReadSize);
+                unsigned nSize = (totalSize - nReadSize) > m_sendMaxFileSize ? m_sendMaxFileSize : (totalSize - nReadSize);
                 if (!utils::FileHelper::open(res.fileName, content, nReadSize, nSize))
                 {
-                    emit sigFileStatus(FILE_STATUS_ERROR, "读取文件失败");
+                    m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(m_strFileName));;
+                    //emit sigFileStatus(FILE_STATUS_ERROR, "读取文件失败");
                 }
 
                 net::CUpLoadFileRequestPtr pData(new net::CUpLoadFileRequest);
@@ -576,7 +584,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
                 pData->m_strMd5.append(res.fileMd5, 32);
 
                 auto &valueData = m_mapKey2FileName[std::string(res.fileMd5)];
-                valueData.second = nReadSize + nSize;
+                valueData.second += nSize;
 
                 request_async(pData);
             }

@@ -57,12 +57,16 @@ BOOL InitSocket()
 
 Q_DECLARE_METATYPE(net::CBuddyMessagePtr);
 Q_DECLARE_METATYPE(UserLoginStatus);
+Q_DECLARE_METATYPE(FileTransferStatus);
+Q_DECLARE_METATYPE(ImageTransferStatus);
 Q_DECLARE_METATYPE(std::string);
 
 int main(int argc, char *argv[])
 {
     qRegisterMetaType<net::CBuddyMessagePtr>();
     qRegisterMetaType<UserLoginStatus>();
+    qRegisterMetaType<FileTransferStatus>();
+    qRegisterMetaType<ImageTransferStatus>();
     qRegisterMetaType<std::string>();
 
 

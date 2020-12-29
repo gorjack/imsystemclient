@@ -20,6 +20,7 @@ namespace net
 }
 
 typedef std::function<void(const std::string&)>    RequestCallBack;
+typedef std::function<void(const FileTransferStatus& status, const QString& msgInfo)>    SendFileCallBack;
 
 class USER_EXPORT CFlamingoClientCenter : public QObject, public utils::CSingletonT<CFlamingoClientCenter>
 {
@@ -37,7 +38,7 @@ public:
     void connect_async(int nType);
     void regist_async(const net::CRegisterRequest &req);
 
-    const QString sendFileToServer(const QString& strFileName);
+    void sendFileToServer(const QString& strFileName, SendFileCallBack cb);
 
     bool request_async(const net::IDataPtr& req, RequestCallBack _func = RequestCallBack());
     void registCallBack(int id, RequestCallBack cb);
@@ -66,7 +67,6 @@ private:
     void onConnectFile(const net::TcpConnectionPtr& pData);
     void onPackageDecodeFile(const net::TcpConnectionPtr&, net::Buffer*, Timestamp);
     bool processFileDatas(const char* inbuf, size_t buflength, net::FileSendResult& errorCode);
-
     void onErrorCBFile(const std::string &msg);
 
 
@@ -90,10 +90,12 @@ private:
 
     std::list<string>                         m_strSendFiles;
    // unsigned                                  m_offReadFile = 0;
-    const unsigned                            m_readMaxFileSize;
-    unsigned                                  m_nTotolFileSize = -1;
+    const unsigned                            m_sendMaxFileSize = 5 * 1024;
 
     string                                    m_loginParam;
     bool                                      m_bLoginEnable = true;
+
+    SendFileCallBack                          m_sendFileCB;
+    QString                                   m_strFileName;
 };
 #endif

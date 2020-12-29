@@ -17,6 +17,8 @@ public:
     void setText(const QString& msg);
 Q_SIGNALS:
     void sigSendMsg(QString);
+    void sigShowRightWidget();
+    void sigSendFile(const FileTransferStatus&, const QString&);
 
 protected Q_SLOTS:
     void slotSendMessage();
@@ -26,7 +28,8 @@ protected Q_SLOTS:
 protected:
     void resizeEvent(QResizeEvent *event);
     void paintEvent(QPaintEvent *event);
-    void upLoadFile(const QString& fileName);
+
+    void onHandleSendFile(const FileTransferStatus& status,  const QString& msgInfo);
 
 private:
     void createUi();
