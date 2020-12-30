@@ -39,6 +39,7 @@ public:
     void regist_async(const net::CRegisterRequest &req);
 
     void sendFileToServer(const QString& strFileName, SendFileCallBack cb);
+    void disconnectToFileServer();
 
     bool request_async(const net::IDataPtr& req, RequestCallBack _func = RequestCallBack());
     void registCallBack(int id, RequestCallBack cb);

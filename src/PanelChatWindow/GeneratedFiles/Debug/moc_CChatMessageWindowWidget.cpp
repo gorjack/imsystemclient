@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CChatMessageWindowWidget_t {
-    QByteArrayData data[12];
-    char stringdata0[170];
+    QByteArrayData data[13];
+    char stringdata0[186];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,21 +33,22 @@ QT_MOC_LITERAL(0, 0, 24), // "CChatMessageWindowWidget"
 QT_MOC_LITERAL(1, 25, 16), // "sigHandleChatMsg"
 QT_MOC_LITERAL(2, 42, 0), // ""
 QT_MOC_LITERAL(3, 43, 21), // "net::CBuddyMessagePtr"
-QT_MOC_LITERAL(4, 65, 11), // "slotSendMsg"
-QT_MOC_LITERAL(5, 77, 17), // "slotHandleChatMsg"
-QT_MOC_LITERAL(6, 95, 5), // "pData"
-QT_MOC_LITERAL(7, 101, 18), // "slotHandleSendFile"
-QT_MOC_LITERAL(8, 120, 18), // "FileTransferStatus"
-QT_MOC_LITERAL(9, 139, 6), // "status"
-QT_MOC_LITERAL(10, 146, 3), // "msg"
-QT_MOC_LITERAL(11, 150, 19) // "slotShowRightWidget"
+QT_MOC_LITERAL(4, 65, 11), // "sigSendFile"
+QT_MOC_LITERAL(5, 77, 18), // "FileTransferStatus"
+QT_MOC_LITERAL(6, 96, 6), // "status"
+QT_MOC_LITERAL(7, 103, 7), // "msgInfo"
+QT_MOC_LITERAL(8, 111, 11), // "slotSendMsg"
+QT_MOC_LITERAL(9, 123, 17), // "slotHandleChatMsg"
+QT_MOC_LITERAL(10, 141, 5), // "pData"
+QT_MOC_LITERAL(11, 147, 18), // "slotHandleSendFile"
+QT_MOC_LITERAL(12, 166, 19) // "slotShowRightWidget"
 
     },
     "CChatMessageWindowWidget\0sigHandleChatMsg\0"
-    "\0net::CBuddyMessagePtr\0slotSendMsg\0"
-    "slotHandleChatMsg\0pData\0slotHandleSendFile\0"
-    "FileTransferStatus\0status\0msg\0"
-    "slotShowRightWidget"
+    "\0net::CBuddyMessagePtr\0sigSendFile\0"
+    "FileTransferStatus\0status\0msgInfo\0"
+    "slotSendMsg\0slotHandleChatMsg\0pData\0"
+    "slotHandleSendFile\0slotShowRightWidget"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,29 +58,33 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   39,    2, 0x06 /* Public */,
+       1,    1,   49,    2, 0x06 /* Public */,
+       4,    2,   52,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    1,   42,    2, 0x09 /* Protected */,
-       5,    1,   45,    2, 0x09 /* Protected */,
-       7,    2,   48,    2, 0x09 /* Protected */,
-      11,    0,   53,    2, 0x09 /* Protected */,
+       8,    1,   57,    2, 0x09 /* Protected */,
+       9,    1,   60,    2, 0x09 /* Protected */,
+      11,    1,   63,    2, 0x09 /* Protected */,
+      11,    2,   66,    2, 0x09 /* Protected */,
+      12,    0,   71,    2, 0x09 /* Protected */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
+    QMetaType::Void, 0x80000000 | 5, QMetaType::QString,    6,    7,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, 0x80000000 | 3,    6,
-    QMetaType::Void, 0x80000000 | 8, QMetaType::QString,    9,   10,
+    QMetaType::Void, 0x80000000 | 3,   10,
+    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, 0x80000000 | 5, QMetaType::QString,    6,    7,
     QMetaType::Void,
 
        0        // eod
@@ -93,10 +98,12 @@ void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sigHandleChatMsg((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
-        case 1: _t->slotSendMsg((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 2: _t->slotHandleChatMsg((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
-        case 3: _t->slotHandleSendFile((*reinterpret_cast< const FileTransferStatus(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
-        case 4: _t->slotShowRightWidget(); break;
+        case 1: _t->sigSendFile((*reinterpret_cast< const FileTransferStatus(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 2: _t->slotSendMsg((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->slotHandleChatMsg((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
+        case 4: _t->slotHandleSendFile((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->slotHandleSendFile((*reinterpret_cast< const FileTransferStatus(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 6: _t->slotShowRightWidget(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -106,6 +113,13 @@ void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call
             typedef void (CChatMessageWindowWidget::*_t)(const net::CBuddyMessagePtr & );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CChatMessageWindowWidget::sigHandleChatMsg)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            typedef void (CChatMessageWindowWidget::*_t)(const FileTransferStatus & , const QString & );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CChatMessageWindowWidget::sigSendFile)) {
+                *result = 1;
                 return;
             }
         }
@@ -137,13 +151,13 @@ int CChatMessageWindowWidget::qt_metacall(QMetaObject::Call _c, int _id, void **
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
@@ -153,5 +167,12 @@ void CChatMessageWindowWidget::sigHandleChatMsg(const net::CBuddyMessagePtr & _t
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void CChatMessageWindowWidget::sigSendFile(const FileTransferStatus & _t1, const QString & _t2)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -18,18 +18,16 @@ public:
 Q_SIGNALS:
     void sigSendMsg(QString);
     void sigShowRightWidget();
-    void sigSendFile(const FileTransferStatus&, const QString&);
+    void sigSendFile(const QString&);
 
 protected Q_SLOTS:
     void slotSendMessage();
     void slotOnHandleSendFile();
-    void onHandleErrorStatus(int, QString);
 
 protected:
     void resizeEvent(QResizeEvent *event);
     void paintEvent(QPaintEvent *event);
 
-    void onHandleSendFile(const FileTransferStatus& status,  const QString& msgInfo);
 
 private:
     void createUi();

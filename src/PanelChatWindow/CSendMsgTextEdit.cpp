@@ -6,11 +6,9 @@
 #include <Env/directory.h>
 #include <QPainter>
 #include <QtWidgets/QFileDialog>
-#include <ProtocolData/rpc_proEnum.h>
 #include <winlog/IULog.h>
 #include <utils/commonFunc.h>
 #include <Env/CConfig.h>
-#include <User/CFlamingoClientCenter.h>
 #include <QtWidgets/QMessageBox>
 
 CSendMsgTextEdit::CSendMsgTextEdit(QWidget *parent /*= nullptr*/)
@@ -18,13 +16,8 @@ CSendMsgTextEdit::CSendMsgTextEdit(QWidget *parent /*= nullptr*/)
 {
     createUi();
     setStyleSheet(":/QQChatMessage/Resources/sendedit.css");
-    //setStyleSheet("background-color: rgb(255, 255, 255)");
-    //setStyleSheet("background-color: rgba(255, 255, 255, 30%); border-top-width:1px;border-top-color:rgb(128,128,128);border-style:outset");
-    //setStyleSheet("border-top-width:1px;border-top-color:rgb(128,128,128);border-style:outset");
 
     connect(m_pSendMsgBtn, SIGNAL(clicked()), this, SLOT(slotSendMessage()));
-    connect(CFlamingoClientCenter::instance(), SIGNAL(sigFileStatus(int, QString)),
-        this, SLOT(onHandleErrorStatus(int, QString)));
 }
 
 void CSendMsgTextEdit::setText(const QString& msg)
@@ -39,22 +32,12 @@ void CSendMsgTextEdit::slotSendMessage()
 
 void CSendMsgTextEdit::slotOnHandleSendFile()
 {
-    using namespace protocol;
     QString fileName = QFileDialog::getOpenFileName(this, "file", ".", "files (*.*)");
     if (fileName.isEmpty())
     {
         return;
     }
-
-    CFlamingoClientCenter::instance()->sendFileToServer(fileName, std::bind(&CSendMsgTextEdit::onHandleSendFile, this, std::placeholders::_1, std::placeholders::_2));
-}
-
-void CSendMsgTextEdit::onHandleErrorStatus(int status, QString msg)
-{
-    if (!msg.isEmpty())
-    {
-        QMessageBox::information(this, "info", msg);
-    }
+    emit sigSendFile(fileName);
 }
 
 void CSendMsgTextEdit::resizeEvent(QResizeEvent *event)
@@ -76,18 +59,10 @@ void CSendMsgTextEdit::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 }
 
-void CSendMsgTextEdit::onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo)
-{
-    emit sigSendFile(status, msgInfo);
-}
-
 void CSendMsgTextEdit::createUi()
 {
     m_pMainMsgEdit = new QTextEdit(this);
     m_pMainMsgEdit->setFrameShape(QFrame::NoFrame);
-    //QTextCursor tmpCursor = m_pMainMsgEdit->textCursor();
-    //tmpCursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 4);
-    //m_pMainMsgEdit->setTextCursor(tmpCursor);
 
     m_pSendMsgBtn = new QPushButton(this);
     m_pSendMsgBtn->setFixedSize(85, 35);

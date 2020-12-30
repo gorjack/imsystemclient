@@ -25,6 +25,7 @@ public:
     CTransferFileItemWidget(QWidget *parent);
 
     void updataData(const FileTransferProgress& progress);
+    void updatePercent(const QString& percent);
 protected:
     void createUi();
     QLabel               *m_pFileTypeImage;
@@ -39,14 +40,18 @@ public:
     CRightMssageInfoWidget(QWidget*parent = NULL);
 
     void setMsgHistory(bool b);
-    void addTransferFileItem(const FileTransferProgress& progress);
+    void updateTransferFileItem(const FileTransferProgress& progress);
+    void updatePercent(const QString& percent, const QString& fileName);
 protected:
     void resizeEvent(QResizeEvent *event);
     void createUi();
 
-    QLabel           *m_pTitleWidget = NULL;
-    QListWidget      *m_pContent = NULL;
-    bool              m_bShowMsgHistorhy;
+    using map_type = QMap<QString, CTransferFileItemWidget *>;
+
+    QLabel         *m_pTitleWidget = NULL;
+    QListWidget    *m_pContent = NULL;
+    map_type        m_mapTransforFileItem;
+    bool            m_bShowMsgHistorhy;
 };
 
 class CChatMessageWindowWidget : public QWidget
@@ -60,15 +65,20 @@ public:
     void setTargetId(const int& nId) { m_nTargetId = nId; }
 Q_SIGNALS:
     void sigHandleChatMsg(const net::CBuddyMessagePtr&);
-
+    void sigSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
 protected  Q_SLOTS:
     void slotSendMsg(QString);
     void slotHandleChatMsg(const net::CBuddyMessagePtr& pData);
-    void slotHandleSendFile(const FileTransferStatus& status, const QString& msg);
+    void slotHandleSendFile(const QString&);
+    void slotHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
+    
     void slotShowRightWidget();
 
 protected:
     void resizeEvent(QResizeEvent *event);
+    void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo£¬ const QString& fileName);
+    void onHandleErrorStatus(int, QString);
+
 private:
     void createUi();
     void dealMessage(CShowMsgListItemWidget *messageW, QListWidgetItem *item, QString text, QString time, CShowMsgListItemWidget::User_Type type);
