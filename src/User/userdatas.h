@@ -30,7 +30,8 @@ enum ImageTransferStatus
 struct FileTransferProgress
 {
     QString         m_strFileName;
-    QString         m_nFileSize;
+    QString         m_strPullFileName;
+    QString         m_strFileSize;
     int             m_nPercent;
     QString         m_strFileState;
 

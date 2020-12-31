@@ -448,7 +448,7 @@ void CFlamingoClientCenter::sendFileToServer(const QString& strFileName, SendFil
     if (NULL != m_pClients[FILE_SERVER] && !m_pClients[FILE_SERVER]->isConnected())
     {
         m_pClients[FILE_SERVER]->connect();
-        cb(FILE_STATUS_CONNECTED, "");
+        cb(FILE_STATUS_CONNECTED, "", m_strFileName);
     }
     else {
         //gaojie: 这里我打算处理暂停继续发文件逻辑， 也就是断点续传。
@@ -492,7 +492,7 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
         long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
         if (nRetCode == utils::GET_FILE_MD5_FAILED)
         {
-            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%1 as unable to get file md5.").arg(m_strFileName));
+            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%1 as unable to get file md5.").arg(m_strFileName), m_strFileName);
         }
         else if (nRetCode == GET_FILE_MD5_USERCANCEL)
         {
@@ -500,18 +500,14 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
         }
         if (nFileSize == 0)
         {
-            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%s as file size is 0.").arg(m_strFileName));
+            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%s as file size is 0.").arg(m_strFileName), m_strFileName);
         }
-
-
-        //nFileSize 就是全部尺寸 这里可以判断一下 nFileSize跟m_nTotolFileSize 谁大谁小
-        //m_nTotolFileSize = utils::FileHelper::getFileSize(utils::qsToS(strFileName));
 
         string content;
         unsigned eachSize = nFileSize > m_sendMaxFileSize ? m_sendMaxFileSize : nFileSize;
         if (!utils::FileHelper::open(utils::qsToS(m_strFileName), content, 0, eachSize))
         {
-            m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(m_strFileName));;
+            m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(m_strFileName), m_strFileName);
         }
 
         net::CUpLoadFileRequestPtr pData(new net::CUpLoadFileRequest);
@@ -523,6 +519,7 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
         m_mapKey2FileName[std::string(szMd5)] = std::make_pair(qsToS(m_strFileName), eachSize);
 
         LOG_INFO("will send to server filesize=%d, filemd5=%s", nFileSize, szMd5);
+
         request_async(pData);
 
         return;
@@ -565,23 +562,30 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
             if (res.errorCode == protocol::file_msg_error_complete)
             {
                 //emit sigFileStatus(FILE_STATUS_SUCCESS, "");
-                m_sendFileCB(FILE_STATUS_TRANSFERING, "100");
+                m_sendFileCB(FILE_STATUS_TRANSFERING, "100", m_strFileName);
             }
             else
             {
                 auto iter = m_mapKey2FileName.find(res.fileMd5);
+                if (iter == m_mapKey2FileName.end())
+                {
+                    //error bug why server no md5
+                    return;
+                }
                 std::string strFileName = iter->second.first;
                 int nReadSize = iter->second.second;
                 int totalSize = res.fileSize;
 
-                QString psersentStr = QString::number((long)((__int64)nReadSize * 100 / totalSize));
-                m_sendFileCB(FILE_STATUS_TRANSFERING, psersentStr);
+                QString percentStr = QString::number((long)((__int64)nReadSize * 100 / totalSize));
+
+                QString centontStr = QString::number(nReadSize / 1024) + QString("k");
+                m_sendFileCB(FILE_STATUS_TRANSFERING, centontStr, QString::fromStdString(strFileName));
 
                 string content;
                 unsigned nSize = (totalSize - nReadSize) > m_sendMaxFileSize ? m_sendMaxFileSize : (totalSize - nReadSize);
-                if (!utils::FileHelper::open(res.fileName, content, nReadSize, nSize))
+                if (!utils::FileHelper::open(strFileName, content, nReadSize, nSize))
                 {
-                    m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(m_strFileName));;
+                    m_sendFileCB(FILE_STATUS_ERROR, QString("read file %s error").arg(QString::fromStdString(strFileName)), QString::fromStdString(strFileName));
                     //emit sigFileStatus(FILE_STATUS_ERROR, "读取文件失败");
                 }
 

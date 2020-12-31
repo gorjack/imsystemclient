@@ -637,7 +637,7 @@ namespace net
         file_msg headerx = { outbuf.length() };
         outbuf.insert(0, (const char*)& headerx, sizeof(headerx));
 
-        LOG_INFO("Request to upload file, type=%d, filemd5=%s", protocol::msg_type_upload_req, m_strMd5);
+        LOG_INFO("Request to upload file, type=%d, filemd5=%s, size=%d", protocol::msg_type_upload_req, m_strMd5, headerx.packagesize);
     }
 
 }

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 //https://www.yuque.com/lengyuezuixue/togedc/dxfpgb#95m7vh
 #include <QtWidgets/QWidget>
@@ -76,7 +76,7 @@ protected  Q_SLOTS:
 
 protected:
     void resizeEvent(QResizeEvent *event);
-    void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo£¬ const QString& fileName);
+    void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
     void onHandleErrorStatus(int, QString);
 
 private:
