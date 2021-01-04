@@ -25,7 +25,7 @@ public:
     CTransferFileItemWidget(QWidget *parent);
 
     void updataData(const FileTransferProgress& progress);
-    void updatePercent(const QString& percent);
+    void updatePercent(const QString& percent, const int& per);
 protected:
     void createUi();
     QLabel               *m_pFileTypeImage;
@@ -41,7 +41,7 @@ public:
 
     void setMsgHistory(bool b);
     void updateTransferFileItem(const FileTransferProgress& progress);
-    void updatePercent(const QString& percent, const QString& fileName);
+    void updatePercent(const QString& percent, const QString& fileName, const int& per);
 protected:
     void resizeEvent(QResizeEvent *event);
     void createUi();
@@ -65,19 +65,19 @@ public:
     void setTargetId(const int& nId) { m_nTargetId = nId; }
 Q_SIGNALS:
     void sigHandleChatMsg(const net::CBuddyMessagePtr&);
-    void sigSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
+    void sigSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int&);
 protected  Q_SLOTS:
     void slotSendMsg(QString);
     void slotHandleChatMsg(const net::CBuddyMessagePtr& pData);
     void slotHandleSendFile(const QString&);
-    void slotHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
+    void slotHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int&);
     void slotHandleErrorStatus(int, QString);
 
     void slotShowRightWidget();
 
 protected:
     void resizeEvent(QResizeEvent *event);
-    void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
+    void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int& persent);
 
 private:
     void createUi();

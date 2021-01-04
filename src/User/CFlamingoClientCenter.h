@@ -20,7 +20,7 @@ namespace net
 }
 
 typedef std::function<void(const std::string&)>    RequestCallBack;
-typedef std::function<void(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName)>    SendFileCallBack;
+typedef std::function<void(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int& person)>    SendFileCallBack;
 
 class USER_EXPORT CFlamingoClientCenter : public QObject, public utils::CSingletonT<CFlamingoClientCenter>
 {
