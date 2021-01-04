@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CChatMessageWindowWidget_t {
-    QByteArrayData data[14];
-    char stringdata0[195];
+    QByteArrayData data[15];
+    char stringdata0[217];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,14 +42,16 @@ QT_MOC_LITERAL(9, 120, 11), // "slotSendMsg"
 QT_MOC_LITERAL(10, 132, 17), // "slotHandleChatMsg"
 QT_MOC_LITERAL(11, 150, 5), // "pData"
 QT_MOC_LITERAL(12, 156, 18), // "slotHandleSendFile"
-QT_MOC_LITERAL(13, 175, 19) // "slotShowRightWidget"
+QT_MOC_LITERAL(13, 175, 21), // "slotHandleErrorStatus"
+QT_MOC_LITERAL(14, 197, 19) // "slotShowRightWidget"
 
     },
     "CChatMessageWindowWidget\0sigHandleChatMsg\0"
     "\0net::CBuddyMessagePtr\0sigSendFile\0"
     "FileTransferStatus\0status\0msgInfo\0"
     "fileName\0slotSendMsg\0slotHandleChatMsg\0"
-    "pData\0slotHandleSendFile\0slotShowRightWidget"
+    "pData\0slotHandleSendFile\0slotHandleErrorStatus\0"
+    "slotShowRightWidget"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +61,7 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,15 +69,16 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x06 /* Public */,
-       4,    3,   52,    2, 0x06 /* Public */,
+       1,    1,   54,    2, 0x06 /* Public */,
+       4,    3,   57,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   59,    2, 0x09 /* Protected */,
-      10,    1,   62,    2, 0x09 /* Protected */,
-      12,    1,   65,    2, 0x09 /* Protected */,
-      12,    3,   68,    2, 0x09 /* Protected */,
-      13,    0,   75,    2, 0x09 /* Protected */,
+       9,    1,   64,    2, 0x09 /* Protected */,
+      10,    1,   67,    2, 0x09 /* Protected */,
+      12,    1,   70,    2, 0x09 /* Protected */,
+      12,    3,   73,    2, 0x09 /* Protected */,
+      13,    2,   80,    2, 0x09 /* Protected */,
+      14,    0,   85,    2, 0x09 /* Protected */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -86,6 +89,7 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
     QMetaType::Void, 0x80000000 | 3,   11,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, 0x80000000 | 5, QMetaType::QString, QMetaType::QString,    6,    7,    8,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
     QMetaType::Void,
 
        0        // eod
@@ -104,7 +108,8 @@ void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call
         case 3: _t->slotHandleChatMsg((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
         case 4: _t->slotHandleSendFile((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 5: _t->slotHandleSendFile((*reinterpret_cast< const FileTransferStatus(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3]))); break;
-        case 6: _t->slotShowRightWidget(); break;
+        case 6: _t->slotHandleErrorStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 7: _t->slotShowRightWidget(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -152,13 +157,13 @@ int CChatMessageWindowWidget::qt_metacall(QMetaObject::Call _c, int _id, void **
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

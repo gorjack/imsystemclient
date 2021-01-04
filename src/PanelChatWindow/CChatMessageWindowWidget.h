@@ -71,13 +71,13 @@ protected  Q_SLOTS:
     void slotHandleChatMsg(const net::CBuddyMessagePtr& pData);
     void slotHandleSendFile(const QString&);
     void slotHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
-    
+    void slotHandleErrorStatus(int, QString);
+
     void slotShowRightWidget();
 
 protected:
     void resizeEvent(QResizeEvent *event);
     void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName);
-    void onHandleErrorStatus(int, QString);
 
 private:
     void createUi();

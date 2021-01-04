@@ -24,7 +24,7 @@ CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
     connect(this, SIGNAL(sigHandleChatMsg(const net::CBuddyMessagePtr&)), this, SLOT(slotHandleChatMsg(const net::CBuddyMessagePtr&)));
 
     connect(CFlamingoClientCenter::instance(), SIGNAL(sigFileStatus(int, QString)),
-        this, SLOT(onHandleErrorStatus(int, QString)));
+        this, SLOT(slotHandleErrorStatus(int, QString)));
 
     connect(this, SIGNAL(sigSendFile(const FileTransferStatus&, const QString&, const QString&)),
         this, SLOT(slotHandleSendFile(const FileTransferStatus&, const QString&, const QString&)));
@@ -216,7 +216,7 @@ void CChatMessageWindowWidget::onHandleSendFile(const FileTransferStatus& status
     emit sigSendFile(status, msgInfo, fileName);
 }
 
-void CChatMessageWindowWidget::onHandleErrorStatus(int, QString msg)
+void CChatMessageWindowWidget::slotHandleErrorStatus(int, QString msg)
 {
     if (!msg.isEmpty())
     {
