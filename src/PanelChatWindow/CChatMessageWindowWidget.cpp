@@ -317,7 +317,7 @@ void CTransferFileItemWidget::updatePercent(const QString& percent)
     }
     else
     {
-        m_pFileMsgInfo->setText("传输中完成");
+        m_pFileMsgInfo->setText("传输已完成");
     }
 }
 

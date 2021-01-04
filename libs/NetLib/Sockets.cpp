@@ -14,6 +14,7 @@ using namespace net;
 
 Socket::~Socket()
 {
+    LOGI("socket id = [%d], has been closed!", sockfd_);
     sockets::close(sockfd_);
 }
 
@@ -76,6 +77,7 @@ int Socket::accept(InetAddress* peeraddr)
 
 void Socket::shutdownWrite()
 {
+    LOGI("socket id = [%d], has been shutdown!", sockfd_);
     sockets::shutdownWrite(sockfd_);
 }
 

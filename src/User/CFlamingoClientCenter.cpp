@@ -569,7 +569,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
                 auto iter = m_mapKey2FileName.find(res.fileMd5);
                 if (iter == m_mapKey2FileName.end())
                 {
-                    //error bug why server no md5
+                    m_sendFileCB(FILE_STATUS_ERROR, "", QString("read file md5 error"));
                     return;
                 }
                 std::string strFileName = iter->second.first;
@@ -593,7 +593,7 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
                 pData->m_offsetX = nReadSize;
                 pData->m_nFileSize = res.fileSize;
                 pData->m_strContent = content;
-                pData->m_strMd5.append(res.fileMd5, 32);
+                pData->m_strMd5 = res.fileMd5;
 
                 auto &valueData = m_mapKey2FileName[std::string(res.fileMd5)];
                 valueData.second += nSize;
@@ -611,6 +611,7 @@ bool CFlamingoClientCenter::processFileDatas(const char* inbuf, size_t buflength
 
 void CFlamingoClientCenter::onErrorCBFile(const std::string &msg)
 {
+    //这里处理的是网络错误消息 
     emit sigFileStatus(FILE_STATUS_ERROR, utils::sToQs(msg));
 }
 
