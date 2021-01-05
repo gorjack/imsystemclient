@@ -164,6 +164,7 @@ void CChatMessageWindowWidget::slotHandleSendFile(const FileTransferStatus& stat
         m_pRightWidget->updatePercent(msg, fileName, persont);
         if (msg == "100")
         {
+            m_pRightWidget->setVisible(false);
             CFlamingoClientCenter::instance()->disconnectToFileServer();
         }
     }
