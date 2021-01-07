@@ -2,11 +2,13 @@
 #define CSHOWMSGLISTITEMWIDGET_H
 
 #include <QtWidgets/QWidget>
+#include <User/userdatas.h>
 
 class QPaintEvent;
 class QPainter;
 class QLabel;
 class QMovie;
+class QPushButton;
 
 class CShowMsgListItemWidget : public QWidget
 {
@@ -57,6 +59,44 @@ private:
     QLabel* m_loading = Q_NULLPTR;
     QMovie* m_loadingMovie = Q_NULLPTR;
     bool m_isSending = false;
+};
+
+struct FileDataItem
+{
+    QString strfileType;
+    QString strFileName;
+    QString strFileSize;
+    QString strFileInfo;
+    QString m_time;
+};
+
+class CShowTransferFileItemWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit CShowTransferFileItemWidget(ChatFileDirection type, QWidget *parent = nullptr);
+
+    void setDataItem(const FileDataItem& data);
+    inline QString time() { return m_time; }
+protected:
+    void createUi(ChatFileDirection type);
+
+private:
+    QPushButton            *m_pOpenBtn = NULL;
+    QPushButton            *m_pOpenDirBtn = NULL;
+    QPushButton            *m_pRepeatDownBtn = NULL;
+    QPushButton            *m_pTransmitBtn = NULL;
+    QPushButton            *m_pOtherBtn = NULL;
+    QPushButton            *m_pHeaderImgBtn = NULL;
+
+    QPushButton            *m_pFileTypeStateImg = NULL;
+
+    QLabel                 *m_pFileTypeImg = NULL;
+    QLabel                 *m_pFileName = NULL;
+    QLabel                 *m_pFileSize = NULL;
+    QLabel                 *m_pFileInfo = NULL;
+
+    QString m_time;
 };
 
 #endif 

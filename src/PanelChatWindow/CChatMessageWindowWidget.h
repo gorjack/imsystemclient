@@ -82,6 +82,7 @@ protected:
 private:
     void createUi();
     void dealMessage(CShowMsgListItemWidget *messageW, QListWidgetItem *item, QString text, QString time, CShowMsgListItemWidget::User_Type type);
+    void dealFileMsg(CShowTransferFileItemWidget *messageW, QListWidgetItem *item);
     void dealMessageTime(QString curMsgTime);
 
     void handleChatMsg(const std::string& str);

@@ -1,6 +1,11 @@
 ﻿#pragma once
 #include <QString>
 
+enum ChatFileDirection {
+    RIGHT_FILE_DIRECTION,    
+    LEFT_FILE_DIRECTION,  
+};
+
 enum UserLoginStatus
 {
     STATUS_LOGINING,

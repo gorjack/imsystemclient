@@ -30,6 +30,12 @@ CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
         this, SLOT(slotHandleSendFile(const FileTransferStatus&, const QString&, const QString&, const int&)));
 
     CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_chat, std::bind(&CChatMessageWindowWidget::handleChatMsg, this, std::placeholders::_1));
+
+    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //时间戳
+    CShowTransferFileItemWidget* messageW = new CShowTransferFileItemWidget(RIGHT_FILE_DIRECTION, m_pShowMsgListWidget->parentWidget());
+    messageW->setDataItem(FileDataItem{ "2", "z.txt", "(3k)", "暂存7天",time });
+    QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
+    dealFileMsg(messageW, item);
 }
 
 void CChatMessageWindowWidget::createUi()
@@ -39,6 +45,7 @@ void CChatMessageWindowWidget::createUi()
     pHMainLayout->setSpacing(0);
     {
         m_pShowMsgListWidget = new QListWidget(this);
+        m_pShowMsgListWidget->setEnabled(false);
         m_pSendTextEdit = new CSendMsgTextEdit(this);
 
 
@@ -75,16 +82,34 @@ void CChatMessageWindowWidget::dealMessage(CShowMsgListItemWidget *messageW, QLi
     m_pShowMsgListWidget->setItemWidget(item, messageW);
 }
 
+void CChatMessageWindowWidget::dealFileMsg(CShowTransferFileItemWidget *messageW, QListWidgetItem *item)
+{
+    item->setSizeHint(messageW->size());
+    m_pShowMsgListWidget->setItemWidget(item, messageW);
+}
+
 void CChatMessageWindowWidget::dealMessageTime(QString curMsgTime)
 {
     bool isShowTime = false;
     if (m_pShowMsgListWidget->count() > 0) {
         QListWidgetItem* lastItem = m_pShowMsgListWidget->item(m_pShowMsgListWidget->count() - 1);
-        CShowMsgListItemWidget* messageW = (CShowMsgListItemWidget*)m_pShowMsgListWidget->itemWidget(lastItem);
-        int lastTime = messageW->time().toInt();
-        int curTime = curMsgTime.toInt();
-        qDebug() << "curTime lastTime:" << curTime - lastTime;
-        isShowTime = ((curTime - lastTime) > 60); // 两个消息相差一分钟
+        CShowMsgListItemWidget* messageW = dynamic_cast<CShowMsgListItemWidget*>(m_pShowMsgListWidget->itemWidget(lastItem));
+        if (NULL != messageW)
+        {
+            int lastTime = messageW->time().toInt();
+            int curTime = curMsgTime.toInt();
+            isShowTime = ((curTime - lastTime) > 60); // 两个消息相差一分钟
+        }
+        else
+        {
+            CShowTransferFileItemWidget* messageW = dynamic_cast<CShowTransferFileItemWidget*>(m_pShowMsgListWidget->itemWidget(lastItem));
+            if (NULL != messageW)
+            {
+                int lastTime = messageW->time().toInt();
+                int curTime = curMsgTime.toInt();
+                isShowTime = ((curTime - lastTime) > 60); // 两个消息相差一分钟
+            }
+        }
     }
     else {
         isShowTime = true;
@@ -112,7 +137,6 @@ void CChatMessageWindowWidget::handleChatMsg(const std::string& strMsg)
 void CChatMessageWindowWidget::slotSendMsg(QString msg)
 {
     QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //时间戳
-    bool isSending = true; // 发送中
     m_pSendTextEdit->setText("");
 
     //这里unique_ptr 有没有问题

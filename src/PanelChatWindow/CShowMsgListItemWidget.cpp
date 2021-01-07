@@ -1,4 +1,4 @@
-#include "CShowMsgListItemWidget.h"
+ï»¿#include "CShowMsgListItemWidget.h"
 #include <QFontMetrics>
 #include <QPaintEvent>
 #include <QDateTime>
@@ -7,6 +7,9 @@
 #include <QtWidgets/QLabel>
 #include <QDebug>
 #include <Env/directory.h>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
 
 CShowMsgListItemWidget::CShowMsgListItemWidget(QWidget *parent) : QWidget(parent)
 {
@@ -15,8 +18,8 @@ CShowMsgListItemWidget::CShowMsgListItemWidget(QWidget *parent) : QWidget(parent
     te_font.setPointSize(12);
     //    te_font.setWordSpacing(0);
     //    te_font.setLetterSpacing(QFont::PercentageSpacing,0);
-    //    te_font.setLetterSpacing(QFont::PercentageSpacing, 100);          //300%,100ÎªÄ¬ÈÏ  //ÉèÖÃ×Ö¼ä¾à%
-    //    te_font.setLetterSpacing(QFont::AbsoluteSpacing, 0);             //ÉèÖÃ×Ö¼ä¾àÎª3ÏñËØ //ÉèÖÃ×Ö¼ä¾àÏñËØÖµ
+    //    te_font.setLetterSpacing(QFont::PercentageSpacing, 100);          //300%,100ä¸ºé»˜è®¤  //è®¾ç½®å­—é—´è·%
+    //    te_font.setLetterSpacing(QFont::AbsoluteSpacing, 0);             //è®¾ç½®å­—é—´è·ä¸º3åƒç´  //è®¾ç½®å­—é—´è·åƒç´ å€¼
     this->setFont(te_font);
     m_leftPixmap = QPixmap(":/QQChatMessage/Resources/left.png");
     m_rightPixmap = QPixmap(":/QQChatMessage/Resources/right.png");
@@ -76,7 +79,7 @@ QSize CShowMsgListItemWidget::fontRect(QString str)
     m_iconLeftRect = QRect(iconSpaceW, iconTMPH, iconWH, iconWH);
     m_iconRightRect = QRect(this->width() - iconSpaceW - iconWH, iconTMPH, iconWH, iconWH);
 
-    QSize size = getRealString(m_msg); // Õû¸öµÄsize
+    QSize size = getRealString(m_msg); // æ•´ä¸ªçš„size
 
     qDebug() << "fontRect Size:" << size;
     int hei = size.height() < minHei ? minHei : size.height();
@@ -151,24 +154,24 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
 
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);//Ïû¾â³Ý
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);//æ¶ˆé”¯é½¿
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(Qt::gray));
 
-    if (m_userType == User_Type::User_She) { // ÓÃ»§
-        //Í·Ïñ
+    if (m_userType == User_Type::User_She) { // ç”¨æˆ·
+        //å¤´åƒ
         painter.drawPixmap(m_iconLeftRect, m_leftPixmap);
 
-        //¿ò¼Ó±ß
+        //æ¡†åŠ è¾¹
         QColor col_KuangB(234, 234, 234);
         painter.setBrush(QBrush(col_KuangB));
         painter.drawRoundedRect(m_kuangLeftRect.x() - 1, m_kuangLeftRect.y() - 1, m_kuangLeftRect.width() + 2, m_kuangLeftRect.height() + 2, 4, 4);
-        //¿ò
+        //æ¡†
         QColor col_Kuang(255, 255, 255);
         painter.setBrush(QBrush(col_Kuang));
         painter.drawRoundedRect(m_kuangLeftRect, 4, 4);
 
-        //Èý½Ç
+        //ä¸‰è§’
         QPointF points[3] = {
             QPointF(m_sanjiaoLeftRect.x(), 30),
             QPointF(m_sanjiaoLeftRect.x() + m_sanjiaoLeftRect.width(), 25),
@@ -179,14 +182,14 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
         painter.setPen(pen);
         painter.drawPolygon(points, 3);
 
-        //Èý½Ç¼Ó±ß
+        //ä¸‰è§’åŠ è¾¹
         QPen penSanJiaoBian;
         penSanJiaoBian.setColor(col_KuangB);
         painter.setPen(penSanJiaoBian);
         painter.drawLine(QPointF(m_sanjiaoLeftRect.x() - 1, 30), QPointF(m_sanjiaoLeftRect.x() + m_sanjiaoLeftRect.width(), 24));
         painter.drawLine(QPointF(m_sanjiaoLeftRect.x() - 1, 30), QPointF(m_sanjiaoLeftRect.x() + m_sanjiaoLeftRect.width(), 36));
 
-        //ÄÚÈÝ
+        //å†…å®¹
         QPen penText;
         penText.setColor(QColor(51, 51, 51));
         painter.setPen(penText);
@@ -195,17 +198,17 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
         painter.setFont(this->font());
         painter.drawText(m_textLeftRect, m_msg, option);
     }
-    else if (m_userType == User_Type::User_Me) { // ×Ô¼º
-   //Í·Ïñ
+    else if (m_userType == User_Type::User_Me) { // è‡ªå·±
+   //å¤´åƒ
 //        painter.drawRoundedRect(m_iconRightRect,m_iconRightRect.width(),m_iconRightRect.height());
         painter.drawPixmap(m_iconRightRect, m_rightPixmap);
 
-        //¿ò
+        //æ¡†
         QColor col_Kuang(75, 164, 242);
         painter.setBrush(QBrush(col_Kuang));
         painter.drawRoundedRect(m_kuangRightRect, 4, 4);
 
-        //Èý½Ç
+        //ä¸‰è§’
         QPointF points[3] = {
             QPointF(m_sanjiaoRightRect.x() + m_sanjiaoRightRect.width(), 30),
             QPointF(m_sanjiaoRightRect.x(), 25),
@@ -216,7 +219,7 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
         painter.setPen(pen);
         painter.drawPolygon(points, 3);
 
-        //ÄÚÈÝ
+        //å†…å®¹
         QPen penText;
         penText.setColor(Qt::white);
         painter.setPen(penText);
@@ -225,7 +228,7 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
         painter.setFont(this->font());
         painter.drawText(m_textRightRect, m_msg, option);
     }
-    else if (m_userType == User_Type::User_Time) { // Ê±¼ä
+    else if (m_userType == User_Type::User_Time) { // æ—¶é—´
         QPen penText;
         penText.setColor(QColor(153, 153, 153));
         painter.setPen(penText);
@@ -238,4 +241,114 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
         painter.drawText(this->rect(), m_curTime, option);
     }
 #endif
+}
+
+CShowTransferFileItemWidget::CShowTransferFileItemWidget(ChatFileDirection type, QWidget *parent /*= nullptr*/)
+    :QWidget(parent)
+{
+    createUi(type);
+}
+
+void CShowTransferFileItemWidget::setDataItem(const FileDataItem& data)
+{
+    m_pFileTypeImg->setText(data.strfileType);
+    m_pFileName->setText(data.strFileName);
+    m_pFileSize->setText(data.strFileSize);
+    m_pFileInfo->setText(data.strFileInfo);
+    m_time = data.m_time;
+}
+
+void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
+{
+    //setFixedHeight(100);
+    setFixedSize(300, 100);
+    QHBoxLayout *pHMainLayout = new QHBoxLayout(this);
+    pHMainLayout->setContentsMargins(15, 6, 60, 0);
+    pHMainLayout->setSpacing(5);
+    {
+        QVBoxLayout  *pVBoxLayout = new QVBoxLayout(this);
+        pVBoxLayout->setMargin(0);
+        pVBoxLayout->setSpacing(0);
+        {
+            QHBoxLayout *pHBoxLayout = new QHBoxLayout(this);
+            pHBoxLayout->setContentsMargins(15, 10, 10, 15);
+            pHBoxLayout->setSpacing(0);
+            {
+                m_pFileTypeImg = new QLabel(this);
+                m_pFileTypeImg->setFixedSize(33, 42);
+                m_pFileTypeStateImg = new QPushButton(this);
+                m_pFileTypeStateImg->setFixedSize(20, 20);
+
+                pHBoxLayout->addWidget(m_pFileTypeImg);
+                {
+                    QVBoxLayout *pV = new QVBoxLayout;
+                    pV->setContentsMargins(10, 0, 0, 0);
+                    pV->setSpacing(5);
+                    QHBoxLayout *pH = new QHBoxLayout;
+                    pH->setMargin(0);
+                    pH->setSpacing(5);
+                    m_pFileName = new QLabel;
+                    m_pFileSize = new QLabel;
+                    pH->addWidget(m_pFileName);
+                    pH->addWidget(m_pFileSize);
+                    pH->addStretch(1);
+                    pV->addLayout(pH);
+
+                    m_pFileInfo = new QLabel;
+                    pV->addWidget(m_pFileInfo);
+                    pHBoxLayout->addLayout(pV);
+                }
+            }
+            pVBoxLayout->addLayout(pHBoxLayout);
+        }
+
+        {
+            QHBoxLayout *pHBoxLayout = new QHBoxLayout(this);
+            pHBoxLayout->setContentsMargins(0, 10, 10, 15);
+            pHBoxLayout->setSpacing(5);
+
+            m_pOpenBtn = new QPushButton;
+            m_pOpenBtn->setText("æ‰“å¼€");
+            m_pOpenBtn->setFixedSize(35, 20);
+            m_pOpenDirBtn = new QPushButton;
+            m_pOpenDirBtn->setText("æ‰“å¼€æ–‡ä»¶å¤¹");
+            m_pOpenBtn->setFixedSize(65, 20);
+            m_pRepeatDownBtn = new QPushButton;
+            m_pRepeatDownBtn->setText("é‡æ–°ä¸‹è½½");
+            m_pOpenBtn->setFixedSize(50, 20);
+            m_pTransmitBtn = new QPushButton;
+            m_pTransmitBtn->setText("è½¬å‘");
+            m_pTransmitBtn->setFixedSize(35, 20);
+            m_pOtherBtn = new QPushButton;
+            m_pOpenBtn->setFixedSize(20, 20);
+
+
+            pHBoxLayout->addStretch(1);
+            pHBoxLayout->addWidget(m_pOpenBtn);
+            pHBoxLayout->addWidget(m_pOpenDirBtn);
+            pHBoxLayout->addWidget(m_pRepeatDownBtn);
+            pHBoxLayout->addWidget(m_pTransmitBtn);
+            pHBoxLayout->addWidget(m_pOtherBtn);
+
+            pVBoxLayout->addLayout(pHBoxLayout);
+        }
+
+        m_pHeaderImgBtn = new QPushButton;
+        m_pHeaderImgBtn->setFixedSize(35, 35);
+
+        if (type == RIGHT_FILE_DIRECTION)
+        {
+            pHMainLayout->addStretch(1);
+            pHMainLayout->addLayout(pVBoxLayout);
+            pHMainLayout->addWidget(m_pHeaderImgBtn, 0, Qt::AlignTop);
+        }
+        else
+        {
+            pHMainLayout->addWidget(m_pHeaderImgBtn, 0, Qt::AlignTop);
+            pHMainLayout->addLayout(pVBoxLayout);
+            pHMainLayout->addStretch(1);
+        }
+    }
+
+    setLayout(pHMainLayout);
 }
