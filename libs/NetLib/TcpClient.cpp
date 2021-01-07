@@ -137,6 +137,25 @@ void TcpClient::disconnect()
     }
 }
 
+void TcpClient::disconnectFull()
+{
+    connect_ = false;
+
+    {
+        std::unique_lock<std::mutex> lock(mutex_);
+        if (connection_)
+        {
+            connection_->forceClose();
+        }
+
+        if (connector_)
+        {
+            //这里有个问题 要是之前的connect close出问题了， connector不知道连接状态是啥， 这里是异步的。 但只有这么做下一次connect的时候才不会卡住
+            connector_->disconnectState();
+        }
+    }
+}
+
 void TcpClient::stop()
 {
     connect_ = false;

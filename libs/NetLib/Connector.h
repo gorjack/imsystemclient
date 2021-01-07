@@ -34,6 +34,7 @@ namespace net
         const InetAddress& serverAddress() const { return serverAddr_; }
         void setAddress(const string& ip, uint16_t& port);
 
+        void disconnectState() { state_ = kDisconnected; }
 	private:
 		enum States { kDisconnected, kConnecting, kConnected };
 		static const int kMaxRetryDelayMs = 30*1000;

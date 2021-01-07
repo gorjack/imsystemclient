@@ -458,9 +458,9 @@ void CFlamingoClientCenter::sendFileToServer(const QString& strFileName, SendFil
 
 void CFlamingoClientCenter::disconnectToFileServer()
 {
-    if (NULL != m_pClients[FILE_SERVER] && !m_pClients[FILE_SERVER]->isConnected())
+    if (NULL != m_pClients[FILE_SERVER] && m_pClients[FILE_SERVER]->isConnected())
     {
-        m_pClients[FILE_SERVER]->disconnect();
+        m_pClients[FILE_SERVER]->disconnectFull();
     }
 }
 

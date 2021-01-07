@@ -68,14 +68,13 @@ void Connector::stopInLoop()
     {
         setState(kDisconnected);
         int sockfd = removeAndResetChannel();
-        retry(sockfd);
+        retry(sockfd);   
     }
 }
 
 void Connector::connect()
 {
     int sockfd = sockets::createNonblockingOrDie();
-    LOGI("connect sockfd is %d ", sockfd);
     int ret = sockets::connect(sockfd, serverAddr_.getSockAddrInet());
 #ifdef WIN32
     int savedErrno = ::WSAGetLastError();

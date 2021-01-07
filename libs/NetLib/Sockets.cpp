@@ -14,7 +14,6 @@ using namespace net;
 
 Socket::~Socket()
 {
-    LOGI("socket id = [%d], has been closed!", sockfd_);
     sockets::close(sockfd_);
 }
 
@@ -77,7 +76,6 @@ int Socket::accept(InetAddress* peeraddr)
 
 void Socket::shutdownWrite()
 {
-    LOGI("socket id = [%d], has been shutdown!", sockfd_);
     sockets::shutdownWrite(sockfd_);
 }
 
@@ -330,6 +328,7 @@ int32_t sockets::write(SOCKET sockfd, const void* buf, int32_t count)
 
 void sockets::close(SOCKET sockfd)
 {
+    LOGI("socket id = [%d], has been closed!", sockfd);
 #ifdef WIN32   
     if (::closesocket(sockfd) < 0)
 #else
@@ -342,6 +341,7 @@ void sockets::close(SOCKET sockfd)
 
 void sockets::shutdownWrite(SOCKET sockfd)
 {
+    LOGI("socket id = [%d], has been shutdown!", sockfd);
 #ifdef WIN32
     if (::shutdown(sockfd, SD_SEND) < 0)
 #else

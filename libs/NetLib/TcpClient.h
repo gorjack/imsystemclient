@@ -21,6 +21,7 @@ namespace net
         bool isConnected();
         void connect();
         void disconnect();
+        void disconnectFull();      //完全断开连接 包括connector 和 connection
         void stop();
 
         TcpConnectionPtr connection() const
