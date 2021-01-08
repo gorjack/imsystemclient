@@ -70,16 +70,16 @@ struct FileDataItem
     QString m_time;
 };
 
-class CShowTransferFileItemWidget : public QWidget
+class CShowSingleFileItemWidget : public QWidget
 {
-    Q_OBJECT
 public:
-    explicit CShowTransferFileItemWidget(ChatFileDirection type, QWidget *parent = nullptr);
+    explicit CShowSingleFileItemWidget(ChatFileDirection type, QWidget *parent = nullptr);
 
     void setDataItem(const FileDataItem& data);
     inline QString time() { return m_time; }
 protected:
     void createUi(ChatFileDirection type);
+    void paintEvent(QPaintEvent *event);
 
 private:
     QPushButton            *m_pOpenBtn = NULL;
@@ -96,7 +96,22 @@ private:
     QLabel                 *m_pFileSize = NULL;
     QLabel                 *m_pFileInfo = NULL;
 
-    QString m_time;
+    QString                 m_time;
+};
+
+class CShowTransferFileItemWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit CShowTransferFileItemWidget(ChatFileDirection type, QWidget *parent = nullptr);
+
+    void setDataItem(const FileDataItem& data) { m_pItemWidget->setDataItem(data); }
+    inline QString time() { return m_pItemWidget->time(); }
+protected:
+    void createUi(ChatFileDirection type);
+
+private:
+    CShowSingleFileItemWidget  *m_pItemWidget = NULL;
 };
 
 #endif 

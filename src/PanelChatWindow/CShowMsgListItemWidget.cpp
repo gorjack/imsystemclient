@@ -249,7 +249,32 @@ CShowTransferFileItemWidget::CShowTransferFileItemWidget(ChatFileDirection type,
     createUi(type);
 }
 
-void CShowTransferFileItemWidget::setDataItem(const FileDataItem& data)
+void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
+{
+    setFixedHeight(100);
+    QHBoxLayout *pMainLayout = new QHBoxLayout(this);
+    pMainLayout->setMargin(0);
+    pMainLayout->setSpacing(0);
+
+    m_pItemWidget = new CShowSingleFileItemWidget(type, this);
+
+    if (type == RIGHT_FILE_DIRECTION)
+    {
+        pMainLayout->addStretch(1);
+    }
+    pMainLayout->addWidget(m_pItemWidget);
+
+
+    setLayout(pMainLayout);
+}
+
+CShowSingleFileItemWidget::CShowSingleFileItemWidget(ChatFileDirection type, QWidget *parent /*= nullptr*/)
+    :QWidget(parent)
+{
+    createUi(type);
+}
+
+void CShowSingleFileItemWidget::setDataItem(const FileDataItem& data)
 {
     m_pFileTypeImg->setText(data.strfileType);
     m_pFileName->setText(data.strFileName);
@@ -258,12 +283,11 @@ void CShowTransferFileItemWidget::setDataItem(const FileDataItem& data)
     m_time = data.m_time;
 }
 
-void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
+void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
 {
-    //setFixedHeight(100);
-    setFixedSize(300, 100);
+    setFixedSize(430, 100);
     QHBoxLayout *pHMainLayout = new QHBoxLayout(this);
-    pHMainLayout->setContentsMargins(15, 6, 60, 0);
+    pHMainLayout->setContentsMargins(15, 0, 60, 0);
     pHMainLayout->setSpacing(5);
     {
         QVBoxLayout  *pVBoxLayout = new QVBoxLayout(this);
@@ -271,7 +295,8 @@ void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
         pVBoxLayout->setSpacing(0);
         {
             QHBoxLayout *pHBoxLayout = new QHBoxLayout(this);
-            pHBoxLayout->setContentsMargins(15, 10, 10, 15);
+            pHBoxLayout->setMargin(0);
+            //pHBoxLayout->setContentsMargins(15, 10, 10, 15);
             pHBoxLayout->setSpacing(0);
             {
                 m_pFileTypeImg = new QLabel(this);
@@ -281,10 +306,11 @@ void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
 
                 pHBoxLayout->addWidget(m_pFileTypeImg);
                 {
-                    QVBoxLayout *pV = new QVBoxLayout;
-                    pV->setContentsMargins(10, 0, 0, 0);
+                    QVBoxLayout *pV = new QVBoxLayout(this);
+                    pV->setMargin(0);
+                    //pV->setContentsMargins(10, 0, 0, 0);
                     pV->setSpacing(5);
-                    QHBoxLayout *pH = new QHBoxLayout;
+                    QHBoxLayout *pH = new QHBoxLayout(this);
                     pH->setMargin(0);
                     pH->setSpacing(5);
                     m_pFileName = new QLabel;
@@ -304,26 +330,28 @@ void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
 
         {
             QHBoxLayout *pHBoxLayout = new QHBoxLayout(this);
-            pHBoxLayout->setContentsMargins(0, 10, 10, 15);
+            pHBoxLayout->setMargin(0);
             pHBoxLayout->setSpacing(5);
 
-            m_pOpenBtn = new QPushButton;
+            QFontMetrics fontM(font());
+
+            int nAdjust = 5;
+            m_pOpenBtn = new QPushButton(this);
             m_pOpenBtn->setText("打开");
-            m_pOpenBtn->setFixedSize(35, 20);
-            m_pOpenDirBtn = new QPushButton;
+            m_pOpenBtn->setFixedWidth(fontM.width(QString("打开")) + nAdjust);
+            m_pOpenDirBtn = new QPushButton(this);
             m_pOpenDirBtn->setText("打开文件夹");
-            m_pOpenBtn->setFixedSize(65, 20);
-            m_pRepeatDownBtn = new QPushButton;
+            m_pOpenDirBtn->setFixedWidth(fontM.width(QString("打开文件夹")) + nAdjust);
+            m_pRepeatDownBtn = new QPushButton(this);
             m_pRepeatDownBtn->setText("重新下载");
-            m_pOpenBtn->setFixedSize(50, 20);
-            m_pTransmitBtn = new QPushButton;
+            m_pRepeatDownBtn->setFixedWidth(fontM.width(QString("重新下载")) + nAdjust);
+            m_pTransmitBtn = new QPushButton(this);
             m_pTransmitBtn->setText("转发");
-            m_pTransmitBtn->setFixedSize(35, 20);
-            m_pOtherBtn = new QPushButton;
-            m_pOpenBtn->setFixedSize(20, 20);
+            m_pTransmitBtn->setFixedWidth(fontM.width(QString("转发")) + nAdjust);
+            m_pOtherBtn = new QPushButton(this);
+            m_pOtherBtn->setFixedSize(m_pTransmitBtn->width(), m_pTransmitBtn->height());
 
 
-            pHBoxLayout->addStretch(1);
             pHBoxLayout->addWidget(m_pOpenBtn);
             pHBoxLayout->addWidget(m_pOpenDirBtn);
             pHBoxLayout->addWidget(m_pRepeatDownBtn);
@@ -338,7 +366,6 @@ void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
 
         if (type == RIGHT_FILE_DIRECTION)
         {
-            pHMainLayout->addStretch(1);
             pHMainLayout->addLayout(pVBoxLayout);
             pHMainLayout->addWidget(m_pHeaderImgBtn, 0, Qt::AlignTop);
         }
@@ -346,9 +373,18 @@ void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
         {
             pHMainLayout->addWidget(m_pHeaderImgBtn, 0, Qt::AlignTop);
             pHMainLayout->addLayout(pVBoxLayout);
-            pHMainLayout->addStretch(1);
         }
     }
 
     setLayout(pHMainLayout);
+}
+
+void CShowSingleFileItemWidget::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    QRect rect(0, 0, width() - 110, height() - 2);     //减是对齐头像
+
+    painter.setBrush(QBrush(QColor(176, 255, 255)));
+    painter.drawRect(rect);
+    QWidget::paintEvent(event);
 }

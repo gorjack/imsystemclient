@@ -45,7 +45,6 @@ void CChatMessageWindowWidget::createUi()
     pHMainLayout->setSpacing(0);
     {
         m_pShowMsgListWidget = new QListWidget(this);
-        m_pShowMsgListWidget->setEnabled(false);
         m_pSendTextEdit = new CSendMsgTextEdit(this);
 
 
