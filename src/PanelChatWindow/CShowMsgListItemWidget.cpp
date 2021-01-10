@@ -243,6 +243,52 @@ void CShowMsgListItemWidget::paintEvent(QPaintEvent *event)
 #endif
 }
 
+void CShowMsgListItemWidget::resizeEvent(QResizeEvent *event)
+{
+    //这里为啥进不去
+    QWidget::resizeEvent(event);
+    if (m_msg.isEmpty())
+    {
+        return;
+    }
+    int minHei = 30;
+    int iconWH = 40;
+    int iconSpaceW = 20;
+    int iconRectW = 5;
+    int iconTMPH = 10;
+    int sanJiaoW = 6;
+    int kuangTMP = 20;
+    int textSpaceRect = 12;
+
+    m_kuangWidth = this->width() - kuangTMP - 2 * (iconWH + iconSpaceW + iconRectW);
+    m_textWidth = m_kuangWidth - 2 * textSpaceRect;
+    m_spaceWid = this->width() - m_textWidth;
+    m_iconLeftRect = QRect(iconSpaceW, iconTMPH, iconWH, iconWH);
+    m_iconRightRect = QRect(this->width() - iconSpaceW - iconWH, iconTMPH, iconWH, iconWH);
+
+    QSize size = getRealString(m_msg); // 整个的size
+
+    qDebug() << "fontRect Size:" << size;
+    int hei = size.height() < minHei ? minHei : size.height();
+
+    m_sanjiaoLeftRect = QRect(iconWH + iconSpaceW + iconRectW, m_lineHeight / 2, sanJiaoW, hei - m_lineHeight);
+    m_sanjiaoRightRect = QRect(this->width() - iconRectW - iconWH - iconSpaceW - sanJiaoW, m_lineHeight / 2, sanJiaoW, hei - m_lineHeight);
+
+    if (size.width() < (m_textWidth + m_spaceWid)) {
+        m_kuangLeftRect.setRect(m_sanjiaoLeftRect.x() + m_sanjiaoLeftRect.width(), m_lineHeight / 4 * 3, size.width() - m_spaceWid + 2 * textSpaceRect, hei - m_lineHeight);
+        m_kuangRightRect.setRect(this->width() - size.width() + m_spaceWid - 2 * textSpaceRect - iconWH - iconSpaceW - iconRectW - sanJiaoW,
+            m_lineHeight / 4 * 3, size.width() - m_spaceWid + 2 * textSpaceRect, hei - m_lineHeight);
+    }
+    else {
+        m_kuangLeftRect.setRect(m_sanjiaoLeftRect.x() + m_sanjiaoLeftRect.width(), m_lineHeight / 4 * 3, m_kuangWidth, hei - m_lineHeight);
+        m_kuangRightRect.setRect(iconWH + kuangTMP + iconSpaceW + iconRectW - sanJiaoW, m_lineHeight / 4 * 3, m_kuangWidth, hei - m_lineHeight);
+    }
+    m_textLeftRect.setRect(m_kuangLeftRect.x() + textSpaceRect, m_kuangLeftRect.y() + iconTMPH,
+        m_kuangLeftRect.width() - 2 * textSpaceRect, m_kuangLeftRect.height() - 2 * iconTMPH);
+    m_textRightRect.setRect(m_kuangRightRect.x() + textSpaceRect, m_kuangRightRect.y() + iconTMPH,
+        m_kuangRightRect.width() - 2 * textSpaceRect, m_kuangRightRect.height() - 2 * iconTMPH);
+}
+
 CShowTransferFileItemWidget::CShowTransferFileItemWidget(ChatFileDirection type, QWidget *parent /*= nullptr*/)
     :QWidget(parent)
 {
@@ -251,7 +297,7 @@ CShowTransferFileItemWidget::CShowTransferFileItemWidget(ChatFileDirection type,
 
 void CShowTransferFileItemWidget::createUi(ChatFileDirection type)
 {
-    setFixedHeight(100);
+    setFixedHeight(130);
     QHBoxLayout *pMainLayout = new QHBoxLayout(this);
     pMainLayout->setMargin(0);
     pMainLayout->setSpacing(0);
@@ -272,11 +318,14 @@ CShowSingleFileItemWidget::CShowSingleFileItemWidget(ChatFileDirection type, QWi
     :QWidget(parent)
 {
     createUi(type);
+     //这里的子控件样式为啥不行
+    //this->loadStyleSheet(QString(":/QQChatMessage/Resources/chat.css"));
+    //setStyleSheet(QString("QPushButton#m_pOpenBtn{color:rgb(38 , 133 , 227);background-color:transparent;}"));
 }
 
 void CShowSingleFileItemWidget::setDataItem(const FileDataItem& data)
 {
-    m_pFileTypeImg->setText(data.strfileType);
+   // m_pFileTypeImg->setText(data.strfileType);
     m_pFileName->setText(data.strFileName);
     m_pFileSize->setText(data.strFileSize);
     m_pFileInfo->setText(data.strFileInfo);
@@ -285,9 +334,9 @@ void CShowSingleFileItemWidget::setDataItem(const FileDataItem& data)
 
 void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
 {
-    setFixedSize(430, 100);
+    setFixedSize(430, 130);
     QHBoxLayout *pHMainLayout = new QHBoxLayout(this);
-    pHMainLayout->setContentsMargins(15, 0, 60, 0);
+    pHMainLayout->setContentsMargins(15, 15, 60, 15);
     pHMainLayout->setSpacing(5);
     {
         QVBoxLayout  *pVBoxLayout = new QVBoxLayout(this);
@@ -296,19 +345,21 @@ void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
         {
             QHBoxLayout *pHBoxLayout = new QHBoxLayout(this);
             pHBoxLayout->setMargin(0);
-            //pHBoxLayout->setContentsMargins(15, 10, 10, 15);
             pHBoxLayout->setSpacing(0);
             {
                 m_pFileTypeImg = new QLabel(this);
-                m_pFileTypeImg->setFixedSize(33, 42);
+                m_pFileTypeImg->setFixedSize(40, 40);
+                m_pFileTypeImg->setPixmap(QPixmap(":/QQChatMessage/Resources/filetype/default.png"));
+
                 m_pFileTypeStateImg = new QPushButton(this);
-                m_pFileTypeStateImg->setFixedSize(20, 20);
+                m_pFileTypeStateImg->setFixedSize(15, 15);
+                m_pFileTypeStateImg->setIcon(QIcon(":/QQChatMessage/Resources/send_success.png"));
+                m_pFileTypeStateImg->move(45, 60);
 
                 pHBoxLayout->addWidget(m_pFileTypeImg);
                 {
                     QVBoxLayout *pV = new QVBoxLayout(this);
                     pV->setMargin(0);
-                    //pV->setContentsMargins(10, 0, 0, 0);
                     pV->setSpacing(5);
                     QHBoxLayout *pH = new QHBoxLayout(this);
                     pH->setMargin(0);
@@ -322,6 +373,7 @@ void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
 
                     m_pFileInfo = new QLabel;
                     pV->addWidget(m_pFileInfo);
+                    pHBoxLayout->addSpacing(10);
                     pHBoxLayout->addLayout(pV);
                 }
             }
@@ -349,7 +401,7 @@ void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
             m_pTransmitBtn->setText("转发");
             m_pTransmitBtn->setFixedWidth(fontM.width(QString("转发")) + nAdjust);
             m_pOtherBtn = new QPushButton(this);
-            m_pOtherBtn->setFixedSize(m_pTransmitBtn->width(), m_pTransmitBtn->height());
+            m_pOtherBtn->setFixedSize(22, m_pTransmitBtn->height());
 
 
             pHBoxLayout->addWidget(m_pOpenBtn);
@@ -362,7 +414,7 @@ void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
         }
 
         m_pHeaderImgBtn = new QPushButton;
-        m_pHeaderImgBtn->setFixedSize(35, 35);
+        m_pHeaderImgBtn->setFixedSize(40, 40);
 
         if (type == RIGHT_FILE_DIRECTION)
         {
@@ -381,10 +433,23 @@ void CShowSingleFileItemWidget::createUi(ChatFileDirection type)
 
 void CShowSingleFileItemWidget::paintEvent(QPaintEvent *event)
 {
+    QWidget::paintEvent(event);
+
     QPainter painter(this);
-    QRect rect(0, 0, width() - 110, height() - 2);     //减是对齐头像
+    QRect rect(0, 15, width() - 116, height() - 17);     //减是对齐头像
 
     painter.setBrush(QBrush(QColor(176, 255, 255)));
     painter.drawRect(rect);
-    QWidget::paintEvent(event);
+}
+
+void CShowSingleFileItemWidget::loadStyleSheet(const QString &sheetName)
+{
+    QFile file(sheetName);
+    file.open(QFile::ReadOnly);
+    if (file.isOpen())
+    {
+        QString styleSheet = this->styleSheet();
+        styleSheet += QLatin1String(file.readAll());
+        this->setStyleSheet(styleSheet);
+    }
 }

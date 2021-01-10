@@ -73,12 +73,15 @@ void CChatMessageWindowWidget::createUi()
 
 void CChatMessageWindowWidget::dealMessage(CShowMsgListItemWidget *messageW, QListWidgetItem *item, QString text, QString time, CShowMsgListItemWidget::User_Type type)
 {
-    messageW->setFixedWidth(this->width() - 40);
+
+
+    messageW->setFixedWidth(m_pShowMsgListWidget->width() - 40);
 
     QSize size = messageW->fontRect(text);
     item->setSizeHint(size);
     messageW->setText(text, time, size, type);
     m_pShowMsgListWidget->setItemWidget(item, messageW);
+
 }
 
 void CChatMessageWindowWidget::dealFileMsg(CShowTransferFileItemWidget *messageW, QListWidgetItem *item)
@@ -146,12 +149,12 @@ void CChatMessageWindowWidget::slotSendMsg(QString msg)
     if (isSend)
     {
         dealMessageTime(time);
-        CShowMsgListItemWidget* messageW = new CShowMsgListItemWidget(m_pShowMsgListWidget->parentWidget());
+        CShowMsgListItemWidget* messageW = new CShowMsgListItemWidget(m_pShowMsgListWidget);
         QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
         dealMessage(messageW, item, msg, time, CShowMsgListItemWidget::User_Me);
     }
 
-    m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
+    //m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
 }
 
 void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pData)
@@ -166,7 +169,7 @@ void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pD
     QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
     dealMessage(messageW, item, QString::fromStdString(pData->m_msgMesText), time, CShowMsgListItemWidget::User_She);
 
-    m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
+    //m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
 }
 
 

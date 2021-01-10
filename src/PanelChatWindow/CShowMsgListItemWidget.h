@@ -33,6 +33,7 @@ public:
     inline User_Type userType() { return m_userType; }
 protected:
     void paintEvent(QPaintEvent *event);
+    void resizeEvent(QResizeEvent *event);
 private:
     QString m_msg;
     QString m_time;
@@ -80,6 +81,7 @@ public:
 protected:
     void createUi(ChatFileDirection type);
     void paintEvent(QPaintEvent *event);
+    void loadStyleSheet(const QString &sheetName);
 
 private:
     QPushButton            *m_pOpenBtn = NULL;

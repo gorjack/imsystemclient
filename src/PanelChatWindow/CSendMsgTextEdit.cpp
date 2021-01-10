@@ -15,7 +15,6 @@ CSendMsgTextEdit::CSendMsgTextEdit(QWidget *parent /*= nullptr*/)
     :QWidget(parent)
 {
     createUi();
-    setStyleSheet(":/QQChatMessage/Resources/sendedit.css");
 
     connect(m_pSendMsgBtn, SIGNAL(clicked()), this, SLOT(slotSendMessage()));
 }
