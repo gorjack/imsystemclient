@@ -561,8 +561,11 @@ void CFlamingoClientCenter::onPackageDecodeFile(const net::TcpConnectionPtr& con
 
             if (res.errorCode == protocol::file_msg_error_complete)
             {
+                int totalSize = res.fileSize;
+                QString centontStr = QString::number(totalSize / 1024) + QString("k");
+
                 //emit sigFileStatus(FILE_STATUS_SUCCESS, "");
-                m_sendFileCB(FILE_STATUS_TRANSFERING, "100", m_strFileName, 100);
+                m_sendFileCB(FILE_STATUS_TRANSFERING, centontStr, m_strFileName, 100);
             }
             else
             {

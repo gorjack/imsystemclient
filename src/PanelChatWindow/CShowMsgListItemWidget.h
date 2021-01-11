@@ -64,6 +64,12 @@ private:
 
 struct FileDataItem
 {
+    FileDataItem(const QString& strT, const QString& strN, const QString& strS, const QString& strI, const QString& strTi)
+        : strfileType(strT)
+        , strFileName(strN)
+        , strFileSize(strS)
+        , strFileInfo(strI)
+        , m_time(strTi) {}
     QString strfileType;
     QString strFileName;
     QString strFileSize;

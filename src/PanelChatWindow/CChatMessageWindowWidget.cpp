@@ -30,12 +30,6 @@ CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
         this, SLOT(slotHandleSendFile(const FileTransferStatus&, const QString&, const QString&, const int&)));
 
     CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_chat, std::bind(&CChatMessageWindowWidget::handleChatMsg, this, std::placeholders::_1));
-
-    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //时间戳
-    CShowTransferFileItemWidget* messageW = new CShowTransferFileItemWidget(RIGHT_FILE_DIRECTION, m_pShowMsgListWidget->parentWidget());
-    messageW->setDataItem(FileDataItem{ "2", "z.txt", "(3k)", "暂存7天",time });
-    QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
-    dealFileMsg(messageW, item);
 }
 
 void CChatMessageWindowWidget::createUi()
@@ -173,7 +167,7 @@ void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pD
 }
 
 
-void CChatMessageWindowWidget::slotHandleSendFile(const FileTransferStatus& status, const QString& msg, const QString& fileName, const int& persont)
+void CChatMessageWindowWidget::slotHandleSendFile(const FileTransferStatus& status, const QString& persontStr, const QString& fileName, const int& persontInt)
 {
     if (status == FILE_STATUS_CONNECTED)
     {
@@ -187,16 +181,23 @@ void CChatMessageWindowWidget::slotHandleSendFile(const FileTransferStatus& stat
     }
     else if(status == FILE_STATUS_TRANSFERING)
     {
-        m_pRightWidget->updatePercent(msg, fileName, persont);
-        if (msg == "100")
+        m_pRightWidget->updatePercent(persontStr, fileName, persontInt);
+        if (persontInt == 100)
         {
-            m_pRightWidget->setVisible(false);
+            QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //时间戳
+            FileDataItem data("2", fileName, persontStr, "文件发送成功暂存7天", time);
+            sendFileFinishHandle(data, RIGHT_FILE_DIRECTION);
+            m_pRightWidget->removeItem(fileName);
+            if (m_pRightWidget->fileWidgetCount() == 0)
+            {
+                m_pRightWidget->setVisible(false);
+            }
             CFlamingoClientCenter::instance()->disconnectToFileServer();
         }
     }
     else if (status == FILE_STATUS_ERROR)
     {
-        QMessageBox::information(this, "error", msg);
+        QMessageBox::information(this, "error", persontStr);
         CFlamingoClientCenter::instance()->disconnectToFileServer();
     }
 }
@@ -243,6 +244,14 @@ void CChatMessageWindowWidget::onHandleSendFile(const FileTransferStatus& status
     emit sigSendFile(status, msgInfo, fileName, persent);
 }
 
+void CChatMessageWindowWidget::sendFileFinishHandle(const FileDataItem& data, const ChatFileDirection& type)
+{
+    CShowTransferFileItemWidget* messageW = new CShowTransferFileItemWidget(type, m_pShowMsgListWidget->parentWidget());
+    messageW->setDataItem(data);
+    QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
+    dealFileMsg(messageW, item);
+}
+
 void CChatMessageWindowWidget::slotHandleErrorStatus(int, QString msg)
 {
     if (!msg.isEmpty())
@@ -276,16 +285,17 @@ void CRightMssageInfoWidget::updateTransferFileItem(const FileTransferProgress& 
     auto iter = m_mapTransforFileItem.find(progress.m_strPullFileName);
     if (iter != m_mapTransforFileItem.end())
     {
-        iter.value()->updataData(progress);
+        iter.value().second->updataData(progress);
     }
     else
     {
         CTransferFileItemWidget *pItemWidget = new CTransferFileItemWidget(this);
         pItemWidget->updataData(progress);
-        m_mapTransforFileItem[progress.m_strPullFileName] = pItemWidget;
-
         QListWidgetItem *pListItem = new QListWidgetItem(m_pContent);
         m_pContent->setItemWidget(pListItem, pItemWidget);
+
+        m_mapTransforFileItem[progress.m_strPullFileName] = qMakePair(pListItem, pItemWidget);
+
     }
 }
 
@@ -294,8 +304,23 @@ void CRightMssageInfoWidget::updatePercent(const QString& percent, const QString
     auto iter = m_mapTransforFileItem.find(fileName);
     if (iter != m_mapTransforFileItem.end())
     {
-        iter.value()->updatePercent(percent, per);
+        iter.value().second->updatePercent(percent, per);
     }
+}
+
+void CRightMssageInfoWidget::removeItem(const QString& key)
+{
+    auto iter = m_mapTransforFileItem.find(key);
+    if (iter != m_mapTransforFileItem.end())
+    {
+        int nRow = m_pContent->row(iter.value().first);
+        m_pContent->takeItem(nRow);
+    }
+}
+
+int CRightMssageInfoWidget::fileWidgetCount()
+{
+    return m_pContent->count();
 }
 
 void CRightMssageInfoWidget::resizeEvent(QResizeEvent *event)
@@ -338,7 +363,7 @@ void CTransferFileItemWidget::updataData(const FileTransferProgress& progress)
 void CTransferFileItemWidget::updatePercent(const QString& percent, const int& per)
 {
     m_pFileProgress->setValue(per);
-    if (percent != "100")
+    if (per != 100)
     {
         m_pFileMsgInfo->setText(QString("传输中...%1").arg(percent));
     }

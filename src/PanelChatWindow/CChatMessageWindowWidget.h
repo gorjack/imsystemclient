@@ -42,11 +42,13 @@ public:
     void setMsgHistory(bool b);
     void updateTransferFileItem(const FileTransferProgress& progress);
     void updatePercent(const QString& percent, const QString& fileName, const int& per);
+    void removeItem(const QString& key);
+    int fileWidgetCount();
 protected:
     void resizeEvent(QResizeEvent *event);
     void createUi();
 
-    using map_type = QMap<QString, CTransferFileItemWidget *>;
+    using map_type = QMap<QString, QPair<QListWidgetItem *, CTransferFileItemWidget *>>;
 
     QLabel         *m_pTitleWidget = NULL;
     QListWidget    *m_pContent = NULL;
@@ -78,6 +80,7 @@ protected  Q_SLOTS:
 protected:
     void resizeEvent(QResizeEvent *event);
     void onHandleSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int& persent);
+    void sendFileFinishHandle(const FileDataItem& data, const ChatFileDirection& type);
 
 private:
     void createUi();
