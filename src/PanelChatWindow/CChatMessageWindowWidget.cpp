@@ -67,11 +67,17 @@ void CChatMessageWindowWidget::createUi()
 
 void CChatMessageWindowWidget::dealMessage(CShowMsgListItemWidget *messageW, QListWidgetItem *item, QString text, QString time, CShowMsgListItemWidget::User_Type type)
 {
-
-
-    messageW->setFixedWidth(m_pShowMsgListWidget->width() - 40);
+    if (m_pShowMsgListWidget->width() < 800)
+    {
+        messageW->setFixedWidth(800);
+    }
+    else
+    {
+        messageW->setFixedWidth(m_pShowMsgListWidget->width() - 40);
+    }
 
     QSize size = messageW->fontRect(text);
+
     item->setSizeHint(size);
     messageW->setText(text, time, size, type);
     m_pShowMsgListWidget->setItemWidget(item, messageW);
