@@ -12,6 +12,8 @@
 #include <User/userdatas.h>
 #include <Env/CConfig.h>
 #include <Env/directory.h>
+#include <UiResources/CUiResource.h>
+
 
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
@@ -54,6 +56,11 @@ BOOL InitSocket()
     return TRUE;
 }
 
+void initResources()
+{
+    QString qsThemeDir = QF::getCurrentResourceDir() + QDir::separator() + "status" + QDir::separator();
+    XP::CUiResource::instance()->parseImage(qsThemeDir);
+}
 
 Q_DECLARE_METATYPE(net::CBuddyMessagePtr);
 Q_DECLARE_METATYPE(UserLoginStatus);
@@ -107,6 +114,7 @@ int main(int argc, char *argv[])
 
 
     CFlamingoClientCenter::instance()->init(g_pEventLoop);
+    initResources();
 
     RotateWidget *pLoginD = new RotateWidget(NULL);
     pLoginD->show();

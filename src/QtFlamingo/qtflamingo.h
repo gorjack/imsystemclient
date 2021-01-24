@@ -61,6 +61,10 @@
 #  define DLL_EXPORT_ENV __declspec(dllimport)
 # endif
 
-#else
-# define PANELLOGINDIALOG_EXPORT
+# if defined(UIRESOURCE_LIB)
+#  define DLL_EXPORT_UIRESOURCE __declspec(dllexport)
+# else
+#  define DLL_EXPORT_UIRESOURCE __declspec(dllimport)
+# endif
+
 #endif

@@ -3,10 +3,12 @@
 #include <QString>
 #include <QTextCodec>
 
+
 namespace utils
 {
     UTILS_EXPORT std::wstring qToStdWString(const QString& str);
     UTILS_EXPORT QString stdWToQString(const std::wstring &str);
+    UTILS_EXPORT int getWavFileTimeSpan(QString qsWavFilePath);
 
     inline std::string qsToS(const QString& qs)
     {
@@ -15,6 +17,31 @@ namespace utils
 #else
         return qs.toLocal8Bit().constData();
 #endif
+    }
+
+    template <typename T>
+    inline void safeDeletePtr(T *&p)
+    {
+        if (NULL != p)
+        {
+            delete p;
+            p = NULL;
+        }
+    }
+
+    template <typename TContainer>
+    inline void safeClearContainer(TContainer *pContainer)
+    {
+        typedef typename TContainer::iterator TContainerItr;
+        if (NULL != pContainer)
+        {
+            for (TContainerItr it = pContainer->begin();
+                it != pContainer->end(); it++)
+            {
+                delete (*it);
+            }
+            pContainer->clear();
+        }
     }
 
     inline QString sToQs(const std::string& s)

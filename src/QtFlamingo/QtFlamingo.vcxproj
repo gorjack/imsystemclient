@@ -57,13 +57,13 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;$(QT5DIR)\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QT5DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -71,7 +71,7 @@
     </Link>
     <QtMoc>
       <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;%(PreprocessorDefinitions)</Define>
-      <IncludePath>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;%(AdditionalIncludeDirectories)</IncludePath>
+      <IncludePath>$(BOOST_ROOT158);$(solutionDir);.;$(QT5DIR)\include\QtWidgets;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(solutionDir)libs;$(solutionDir)libs\NetLib;$(solutionDir)src;$(QT5DIR)\include\QtGui;%(AdditionalIncludeDirectories)</IncludePath>
     </QtMoc>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -113,6 +113,9 @@
     </ProjectReference>
     <ProjectReference Include="..\PanelLoginDialog\PanelLoginDialog.vcxproj">
       <Project>{49a75d0d-29d2-49b2-8957-a979c10eef0a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UiResources\UiResources.vcxproj">
+      <Project>{8e46d8e3-c6c0-48d7-ab6e-ab5c7b5d6cb6}</Project>
     </ProjectReference>
     <ProjectReference Include="..\User\User.vcxproj">
       <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>

@@ -2,6 +2,9 @@
 #include <QPropertyAnimation>
 #include "loginwindow.h"
 #include "loginnetsetwindow.h"
+#include <UiResources/CUiResource.h>
+#include <QtWidgets/QSystemTrayIcon>
+#include <Env/directory.h>
 
 RotateWidget::RotateWidget(QWidget *parent)
 	: QStackedWidget(parent)
@@ -12,6 +15,14 @@ RotateWidget::RotateWidget(QWidget *parent)
 	this->setAttribute(Qt::WA_TranslucentBackground);
 	// 给窗口设置rotateValue属性;
 	this->setProperty("rotateValue", 0);
+
+
+    this->setWindowIcon(QIcon(*TT_PIXMAP("offline")));
+
+    QSystemTrayIcon *pTrayIcon = new QSystemTrayIcon(this);
+    pTrayIcon->setIcon(QIcon(*TT_PIXMAP("offline")));
+    pTrayIcon->show();
+
 	initRotateWindow();
 }
 
