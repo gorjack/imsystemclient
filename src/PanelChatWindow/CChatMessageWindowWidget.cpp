@@ -29,7 +29,7 @@ CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
     connect(this, SIGNAL(sigSendFile(const FileTransferStatus&, const QString&, const QString&, const int&)),
         this, SLOT(slotHandleSendFile(const FileTransferStatus&, const QString&, const QString&, const int&)));
 
-    CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_chat, std::bind(&CChatMessageWindowWidget::handleChatMsg, this, std::placeholders::_1));
+    //CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_chat, std::bind(&CChatMessageWindowWidget::handleChatMsg, this, std::placeholders::_1));
 }
 
 void CChatMessageWindowWidget::createUi()

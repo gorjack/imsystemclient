@@ -360,9 +360,10 @@ void LoginWindow::onLoginsStatus(UserLoginStatus status, QString msg)
         }
 
         m_pMainWindow->show();
+        CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, m_pMainWindow, std::placeholders::_1));
+
         emit closeWindow();
 
-        CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, m_pMainWindow, std::placeholders::_1));
         break;
     }
     case STATUS_ERROR:

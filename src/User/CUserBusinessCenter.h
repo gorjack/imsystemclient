@@ -53,6 +53,8 @@ namespace PC
         UINT		m_uMsgID;			//会话消息ID，初始值为0，只存在于内存中不存档
     };
 
+    typedef std::shared_ptr<CBuddyInfo>     CBuddyInfoPtr;
+
     class USER_EXPORT CBuddyTeamInfo		// 好友分组信息
     {
     public:

@@ -28,7 +28,13 @@ RotateWidget::RotateWidget(QWidget *parent)
 
 RotateWidget::~RotateWidget()
 {
+    int p = 0;
+}
 
+void RotateWidget::releaseObj()
+{
+    close();
+    delete this;
 }
 
 void RotateWidget::initRotateWindow()
@@ -36,12 +42,12 @@ void RotateWidget::initRotateWindow()
 	m_loginWindow = new LoginWindow(this);
 
 	connect(m_loginWindow, SIGNAL(rotateWindow()), this, SLOT(onRotateWindow()));
-	connect(m_loginWindow, SIGNAL(closeWindow()), this, SLOT(close()));
+	connect(m_loginWindow, SIGNAL(closeWindow()), this, SLOT(releaseObj()));
 	connect(m_loginWindow, SIGNAL(hideWindow()), this, SLOT(onHideWindow()));
 
 	m_loginNetSetWindow = new LoginNetSetWindow(this);
 	connect(m_loginNetSetWindow, SIGNAL(rotateWindow()), this, SLOT(onRotateWindow()));
-	connect(m_loginNetSetWindow, SIGNAL(closeWindow()), this, SLOT(close()));
+	connect(m_loginNetSetWindow, SIGNAL(closeWindow()), this, SLOT(releaseObj()));
 	connect(m_loginNetSetWindow, SIGNAL(hideWindow()), this, SLOT(onHideWindow()));
 
 	this->addWidget(m_loginWindow);

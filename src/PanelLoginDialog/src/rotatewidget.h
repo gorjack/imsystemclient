@@ -13,6 +13,7 @@ public:
 	RotateWidget(QWidget *parent = NULL);
 	~RotateWidget();
 
+
 private:
 	// 初始化旋转的窗口;
 	void initRotateWindow();
@@ -26,6 +27,7 @@ private slots:
 	void onRotateFinished();
 	// 最小化窗口;
 	void onHideWindow();
+    void releaseObj();
 
 private:
 	// 当前窗口是否正在旋转;

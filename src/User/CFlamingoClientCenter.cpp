@@ -313,16 +313,10 @@ bool CFlamingoClientCenter::dispatchHandle(const net::TcpConnectionPtr& conn, co
         case msg_type_getofriendlist:
             onHandleUserInfo(data);
             break;
-        //case msg_type_finduser:
-        //case msg_type_getofriendlist:
-        //case msg_type_operatefriend:                        //加好友申请或删除好友或加群或退群
-        //{
-        //    if (m_mapId2CB[cmd] != NULL)
-        //    {
-        //        (m_mapId2CB[cmd])(data);
-        //    }
-        //}
-        //    //onRequest(data);
+        case msg_type_chat:
+            emit sigChatMessageComming(data);
+            break;
+
         default:
         {
             if (m_mapId2CB[cmd] != NULL)

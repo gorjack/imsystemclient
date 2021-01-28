@@ -1,6 +1,7 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
 #include "./GeneratedFiles/ui_MainWindow.h"
+#include <QtWidgets/QSystemTrayIcon>
 
 
 class CQueryForAddDialog;
@@ -23,6 +24,7 @@ protected Q_SLOTS:
     void slotEmitAddFirend();
     void slotRefreshFriendList();
     void slotDoRefreshFriendList();
+    void slotHandleCacheChatMsg(const std::string&);
 
 protected:
     void resizeEvent(QResizeEvent *e);
@@ -33,21 +35,24 @@ Q_SIGNALS:
 
 protected Q_SLOTS:
     void slotOnAddFirendCB(const std::string&);
+    void slotIconActivated(QSystemTrayIcon::ActivationReason reason);
 
 private:
     Ui::MainWindow ui;
 
     QLabel                       *m_pTopDisPlayWidget;
-    QF::CPushButton                  *m_pHeadPhotoBtn;
+    QF::CPushButton              *m_pHeadPhotoBtn;
     QLabel                       *m_pUserInfoName;
     QLabel                       *m_pUserInfoSign;
     QLineEdit                    *m_pSeekWidget;
 
 
-    QF::CPushButton                  *m_pMessageListBtn;
-    QF::CPushButton                  *m_pContackPersionBtn;
-    QF::CPushButton                  *m_pGroupsBtn;
+    QF::CPushButton               *m_pMessageListBtn;
+    QF::CPushButton               *m_pContackPersionBtn;
+    QF::CPushButton               *m_pGroupsBtn;
 
-    CQueryForAddDialog           *m_pAddFriendDialog = NULL;
-    CBuddyListWidget             *m_pBuddyListWidget = NULL;
+    CQueryForAddDialog            *m_pAddFriendDialog = NULL;
+    CBuddyListWidget              *m_pBuddyListWidget = NULL;
+    QSystemTrayIcon               *m_pSystemIcon = NULL;
+    std::list<std::string>         m_strCacheMsg;
 };

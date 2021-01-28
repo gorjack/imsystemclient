@@ -9,6 +9,7 @@
 #include <PanelBaseWidget/CPushButton.h>
 #include <Env/CConfig.h>
 #include <CConfirmAddFriendDG.h>
+#include <UiResources/CUiResource.h>
 
 //#ifdef WIN32  
 //#pragma execution_character_set("utf-8")  
@@ -27,13 +28,21 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
 {
     ui.setupUi(this);
     createUi();
+    this->setWindowIcon(QIcon(*TT_PIXMAP("imonline")));
+
+    m_pSystemIcon = new QSystemTrayIcon(this);
+    m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("imonline")));
+    m_pSystemIcon->show();
+    connect(m_pSystemIcon, &QSystemTrayIcon::activated, this, &CMainWindow::slotIconActivated);
+    connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const std::string&)), 
+        this, SLOT(slotHandleCacheChatMsg(const std::string&)));
+
     resize(430, 835);
 
     ui.statusbar->addPermanentWidget(ui.m_pAddFriend);
     connect(ui.m_pAddFriend, SIGNAL(clicked()), this, SLOT(slotEmitAddFirend()));
     connect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(slotRefreshFriendList()));
     connect(this, SIGNAL(sigOnAddFirendCB(const std::string&)), this, SLOT(slotOnAddFirendCB(const std::string&)));
-
 
     slotRefreshFriendList();
 }
@@ -99,6 +108,43 @@ void CMainWindow::slotRefreshFriendList()
 void CMainWindow::slotDoRefreshFriendList()
 {
     CUserManager::instance()->queryFirendList();
+}
+
+void CMainWindow::slotHandleCacheChatMsg(const string& data)
+{
+    m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
+    m_strCacheMsg.push_back(data);
+
+    {
+        net::CBuddyMessagePtr pData = boost::make_shared<net::CBuddyMessage>();
+        pData->decodePackage(data);
+
+        CBuddyInfo* pUser = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
+        if (NULL == pUser)
+        {
+            //
+        }
+
+        {
+            if (NULL == m_pChatWindow)
+            {
+                m_pChatWindow = new CChatMainWindowDialog(this);
+            }
+
+            {
+                UC::CUserDataInfo user;
+                user.m_strName = pUser->m_strNickName;
+                user.m_strSign = pUser->m_strSign;
+                user.m_nTargetId = pUser->m_uUserID;
+
+                {
+                    m_pChatWindow->addBuddyChatWindow(user);
+                }
+
+                m_pChatWindow->show();
+            }
+        }
+    }
 }
 
 void CMainWindow::resizeEvent(QResizeEvent *e)
@@ -175,5 +221,25 @@ void CMainWindow::slotOnAddFirendCB(const std::string& param)
         pDialog->deleteLater();
 
         CUserManager::instance()->queryFirendList();
+    }
+}
+
+void CMainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
+{
+    switch (reason)
+    {
+    case QSystemTrayIcon::Context:
+    {
+        //close app 鼠标右键
+        break;
+    }
+    case QSystemTrayIcon::Trigger:
+    {
+        //鼠标左键
+
+        break;
+    }
+    default:
+        break;
     }
 }

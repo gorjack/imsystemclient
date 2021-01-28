@@ -90,11 +90,21 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
 
             pBuddyInfo->m_nTeamIndex = 0;
             pTeamInfo->m_arrBuddyInfo.push_back(pBuddyInfo);
+            m_mapAllUsers[pBuddyInfo->m_uUserID] = pBuddyInfo;
         }
     }
 
     emit sigFinishGetFriendListReq();
 #endif
+}
+
+CBuddyInfo* CUserManager::getBuddyInfoById(int nId)
+{
+    if (m_mapAllUsers.find(nId) != m_mapAllUsers.end())
+    {
+        return m_mapAllUsers[nId];
+    }
+    return NULL;
 }
 
 void CUserManager::ClearUserInfo()

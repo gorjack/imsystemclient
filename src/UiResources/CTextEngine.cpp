@@ -1,8 +1,6 @@
 ﻿/**
  *  文字渲染引擎
  *
- *  @author zhangyi
- *  @since  2013-07-11
  */
 
 #include <UiResources/CTextEngine.h>
