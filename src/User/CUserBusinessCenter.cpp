@@ -1,4 +1,4 @@
-#include "CUserBusinessCenter.h"
+Ôªø#include "CUserBusinessCenter.h"
 #include <ProtocolData/rpc_proEnum.h>
 
 #define TRUE true
@@ -21,20 +21,20 @@ namespace PC
     void CBuddyInfo::Reset()
     {
         m_uUserID = 0;
-        m_strAccount = (L"");
+        m_strAccount = ("");
         m_nTeamIndex = 0;
-        m_strNickName = (L"");
-        m_strMarkName = (L"");
+        m_strNickName = ("");
+        m_strMarkName = ("");
         m_nFace = 0;
-        m_strCustomFace = (L"");
+        m_strCustomFace = ("");
         m_nStatus = STATUS_OFFLINE;
         m_nClientType = CLIENT_TYPE_UNKNOWN;
-        m_strSign = (L"");
+        m_strSign = ("");
         m_nGender = 1;
         m_nBirthday = 0;
-        m_strMobile = (L"");
-        m_strEmail = (L"");
-        m_strAddress = (L"");
+        m_strMobile = ("");
+        m_strEmail = ("");
+        m_strAddress = ("");
         m_uMsgID = 0;
         m_bUseCustomFace = FALSE;
         m_bCustomFaceAvailable = FALSE;
@@ -46,15 +46,15 @@ namespace PC
     {
         m_uUserID = 0;
         m_nTeamIndex = 0;
-        m_strNickName = (L"ÀÔŒÚø’");
-        m_strMarkName = (L"");
+        m_strNickName = ("Â≠ôÊÇüÁ©∫");
+        m_strMarkName = ("");
         m_nFace = 0;
         m_nStatus = STATUS_OFFLINE;
-        m_strSign = (L"π€∫ı∆‰…œ,µ√∫ı∆‰÷–,π€∫ı∆‰÷–,µ√∫ı∆‰œ¬°£");
+        m_strSign = ("ËßÇ‰πéÂÖ∂‰∏ä,Âæó‰πéÂÖ∂‰∏≠,ËßÇ‰πéÂÖ∂‰∏≠,Âæó‰πéÂÖ∂‰∏ã„ÄÇ");
         m_nBirthday = 0;
-        m_strMobile = (L"");
-        m_strEmail = (L"balloonwj@UTalk.com");
-        m_strAddress = (L"…œ∫£ –„…––«¯∂´¥®¬∑555∫≈");
+        m_strMobile = ("");
+        m_strEmail = ("balloonwj@UTalk.com");
+        m_strAddress = ("‰∏äÊµ∑Â∏ÇÈóµË°åÂå∫‰∏úÂ∑ùË∑Ø555Âè∑");
         m_uMsgID = 0;
         m_bUseCustomFace = FALSE;
         m_bCustomFaceAvailable = FALSE;
@@ -93,7 +93,7 @@ namespace PC
     {
         m_nIndex = 0;
         m_nSort = 0;
-        m_strName = (L"");
+        m_strName = ("");
 
         m_arrBuddyInfo.clear();
     }

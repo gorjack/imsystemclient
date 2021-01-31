@@ -38,15 +38,15 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
 
     using namespace PC;
     CBuddyInfo* pBuddyInfo = NULL;
-    wchar_t szAccountName[32] = { 0 };
-    wchar_t szNickName[32] = { 0 };
-    wchar_t szMarkName[32] = { 0 };
-    wchar_t szSignature[256] = { 0 };
-    wchar_t szPhoneNumber[32] = { 0 };
-    wchar_t szMail[32] = { 0 };
-    wchar_t szAddress[64] = { 0 };
+    char szAccountName[32] = { 0 };
+    char szNickName[32] = { 0 };
+    char szMarkName[32] = { 0 };
+    char szSignature[256] = { 0 };
+    char szPhoneNumber[32] = { 0 };
+    char szMail[32] = { 0 };
+    char szAddress[64] = { 0 };
 
-    wchar_t szGroupAccount[32];
+    char szGroupAccount[32];
 
     CBuddyTeamInfo* pTeamInfo = NULL;
     //CGroupInfo* pGroupInfo = NULL;
@@ -56,18 +56,18 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
         pTeamInfo = new CBuddyTeamInfo();
         pTeamInfo->m_nIndex = nTeamIndex;
         ++nTeamIndex;
-        pTeamInfo->m_strName = EncodeUtil::Utf8ToUnicode(iter.first);
+//        pTeamInfo->m_strName = EncodeUtil::Utf8ToUnicode(iter.first);
         m_BuddyList.m_arrBuddyTeamInfo.push_back(pTeamInfo);
 
         for (auto& iter2 : iter.second)
         {
-            EncodeUtil::Utf8ToUnicode(iter2->szAccountName, szAccountName, sizeof(szAccountName)/sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szNickName, szNickName, sizeof(szNickName) / sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szMarkName, szMarkName, sizeof(szNickName) / sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szSignature, szSignature, sizeof(szSignature) / sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szPhoneNumber, szPhoneNumber, sizeof(szPhoneNumber) / sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szMail, szMail, sizeof(szMail) / sizeof(wchar_t));
-            EncodeUtil::Utf8ToUnicode(iter2->szAddress, szAddress, sizeof(szAddress) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szAccountName, szAccountName, sizeof(szAccountName)/sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szNickName, szNickName, sizeof(szNickName) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szMarkName, szMarkName, sizeof(szNickName) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szSignature, szSignature, sizeof(szSignature) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szPhoneNumber, szPhoneNumber, sizeof(szPhoneNumber) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szMail, szMail, sizeof(szMail) / sizeof(wchar_t));
+            //EncodeUtil::Utf8ToUnicode(iter2->szAddress, szAddress, sizeof(szAddress) / sizeof(wchar_t));
 
             pBuddyInfo = new CBuddyInfo();
             pBuddyInfo->m_uUserID = iter2->uAccountID;
