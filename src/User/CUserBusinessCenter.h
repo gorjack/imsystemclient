@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#if defined(UNICODE) || defined(_UNICODE)
+#if /*defined(UNICODE) || defined(_UNICODE)*/false
 typedef std::wstring tstring;
 #else
 typedef std::string tstring;

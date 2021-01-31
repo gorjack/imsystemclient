@@ -67,6 +67,7 @@ Q_DECLARE_METATYPE(UserLoginStatus);
 Q_DECLARE_METATYPE(FileTransferStatus);
 Q_DECLARE_METATYPE(ImageTransferStatus);
 Q_DECLARE_METATYPE(std::string);
+Q_DECLARE_METATYPE(const CBuddyMessagePtr&);
 
 int main(int argc, char *argv[])
 {
@@ -75,6 +76,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<FileTransferStatus>();
     qRegisterMetaType<ImageTransferStatus>();
     qRegisterMetaType<std::string>();
+    qRegisterMetaType<const CBuddyMessagePtr&>();
 
 
     LOGI("%sstart client%s", "==========", "==========");

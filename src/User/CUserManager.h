@@ -17,7 +17,7 @@ public:
     const PC::CBuddyList& getFirendList();
     void queryFirendList();
     void onGetFirendListCallBack(const std::string & data);
-    CBuddyInfo* getBuddyInfoById(int nId);
+    PC::CBuddyInfo* getBuddyInfoById(int nId);
 Q_SIGNALS:
     void sigFinishGetFriendListReq();
 
@@ -26,6 +26,6 @@ private:
 
     PC::CBuddyInfo		               m_UserInfo;
     PC::CBuddyList		               m_BuddyList;
-    std::map<int, CBuddyInfo*>         m_mapAllUsers;
+    std::map<int, PC::CBuddyInfo*>         m_mapAllUsers;
 };
 #endif

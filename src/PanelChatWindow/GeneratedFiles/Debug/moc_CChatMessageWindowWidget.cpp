@@ -73,12 +73,12 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
        4,    4,   57,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   66,    2, 0x09 /* Protected */,
-      10,    1,   69,    2, 0x09 /* Protected */,
-      12,    1,   72,    2, 0x09 /* Protected */,
-      12,    4,   75,    2, 0x09 /* Protected */,
-      13,    2,   84,    2, 0x09 /* Protected */,
-      14,    0,   89,    2, 0x09 /* Protected */,
+       9,    1,   66,    2, 0x0a /* Public */,
+      10,    1,   69,    2, 0x0a /* Public */,
+      12,    1,   72,    2, 0x0a /* Public */,
+      12,    4,   75,    2, 0x0a /* Public */,
+      13,    2,   84,    2, 0x0a /* Public */,
+      14,    0,   89,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,

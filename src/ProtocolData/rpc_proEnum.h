@@ -77,6 +77,22 @@ namespace protocol {
         Delete
     };
 
+    enum CONTENT_TYPE
+    {
+        CONTENT_TYPE_UNKNOWN,			    // 未知消息类型
+        CONTENT_TYPE_TEXT,				    // 文本类型（包括图文混排类型）
+        CONTENT_TYPE_IMAGE_CONFIRM,			// 图片上传成功后的确认消息类型  pc专用 （pc在上传图片成功后 补发的消息 用于去下载  pc和app端都要处理）
+        CONTENT_TYPE_FILE,				    // 收到好友发送过来的文件
+        CONTENT_TYPE_SHAKE_WINDOW,			// 窗口抖动  pc专用
+        CONTENT_TYPE_MOBILE_IMAGE,			// app端发出的图片  （app端发送的图片信息，已经上传好才会发送的这一条  pc接到这个类型可以直接显示）
+
+        CONTENT_TYPE_FONT_INFO,				//pc专用，移动端忽略
+        CONTENT_TYPE_FACE,					//pc专用，移动端忽略
+        CONTENT_TYPE_CHAT_IMAGE,			//pc专用，移动端忽略
+
+        CONTENT_TYPE_REMOTE_DESKTOP         //远程桌面
+    };
+
     //文件下载返回结果码
     enum FILE_DOWNLOAD_RETCODE
     {

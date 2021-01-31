@@ -10,6 +10,7 @@
 #include <Env/CConfig.h>
 #include <CConfirmAddFriendDG.h>
 #include <UiResources/CUiResource.h>
+#include <PanelChatWindow/UserDataInfo.h>
 
 //#ifdef WIN32  
 //#pragma execution_character_set("utf-8")  
@@ -34,8 +35,8 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("imonline")));
     m_pSystemIcon->show();
     connect(m_pSystemIcon, &QSystemTrayIcon::activated, this, &CMainWindow::slotIconActivated);
-    connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const std::string&)), 
-        this, SLOT(slotHandleCacheChatMsg(const std::string&)));
+    connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const CBuddyMessagePtr&)),
+        this, SLOT(slotHandleCacheChatMsg(const CBuddyMessagePtr&)));
 
     resize(430, 835);
 
@@ -110,41 +111,26 @@ void CMainWindow::slotDoRefreshFriendList()
     CUserManager::instance()->queryFirendList();
 }
 
-void CMainWindow::slotHandleCacheChatMsg(const string& data)
+void CMainWindow::slotHandleCacheChatMsg(const CBuddyMessagePtr& pData)
 {
-    m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
-    m_strCacheMsg.push_back(data);
+    //m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
+    //{
+    //    PC::CBuddyInfo* pUser = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
+    //    if (NULL == pUser)
+    //    {
+    //        if (NULL == m_pChatWindow)
+    //        {
+    //            m_pChatWindow = new CChatMainWindowDialog(this);
+    //        }
 
-    {
-        net::CBuddyMessagePtr pData = boost::make_shared<net::CBuddyMessage>();
-        pData->decodePackage(data);
+    //        UC::CUserDataInfo user;
+    //        user.m_strName = pUser->m_strNickName;
+    //        user.m_strSign = pUser->m_strSign;
+    //        user.m_nTargetId = pUser->m_uUserID;
 
-        CBuddyInfo* pUser = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
-        if (NULL == pUser)
-        {
-            //
-        }
-
-        {
-            if (NULL == m_pChatWindow)
-            {
-                m_pChatWindow = new CChatMainWindowDialog(this);
-            }
-
-            {
-                UC::CUserDataInfo user;
-                user.m_strName = pUser->m_strNickName;
-                user.m_strSign = pUser->m_strSign;
-                user.m_nTargetId = pUser->m_uUserID;
-
-                {
-                    m_pChatWindow->addBuddyChatWindow(user);
-                }
-
-                m_pChatWindow->show();
-            }
-        }
-    }
+    //        m_pChatWindow->addBuddyChatWindow(user);
+    //    }
+    //}
 }
 
 void CMainWindow::resizeEvent(QResizeEvent *e)

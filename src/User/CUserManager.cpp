@@ -98,7 +98,7 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
 #endif
 }
 
-CBuddyInfo* CUserManager::getBuddyInfoById(int nId)
+PC::CBuddyInfo* CUserManager::getBuddyInfoById(int nId)
 {
     if (m_mapAllUsers.find(nId) != m_mapAllUsers.end())
     {

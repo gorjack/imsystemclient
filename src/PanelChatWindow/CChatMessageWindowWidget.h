@@ -68,7 +68,7 @@ public:
 Q_SIGNALS:
     void sigHandleChatMsg(const net::CBuddyMessagePtr&);
     void sigSendFile(const FileTransferStatus& status, const QString& msgInfo, const QString& fileName, const int&);
-protected  Q_SLOTS:
+public  Q_SLOTS:
     void slotSendMsg(QString);
     void slotHandleChatMsg(const net::CBuddyMessagePtr& pData);
     void slotHandleSendFile(const QString&);

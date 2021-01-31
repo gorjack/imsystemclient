@@ -7,8 +7,9 @@
 #include <QPainter>
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QPushButton>
+#include <utils/CSingletonT.hpp>
 
-
+IMPL_SINGLETON_CLASS(CChatMainWindowDialog);
 CChatMainWindowDialog::CChatMainWindowDialog(QWidget *parent /*= nullptr*/)
     : QDialog(parent)
 {
@@ -31,7 +32,7 @@ void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
     }
     CChatMessageWindowWidget* pBuddy = new CChatMessageWindowWidget(this);
     pBuddy->setTargetId(user.m_nTargetId);
-    int nIndex = m_pStackWidget->addWidget(pBuddy);
+    m_pStackWidget->addWidget(pBuddy);
 
     CUserDataWidgetItem* pUser = new CUserDataWidgetItem(this);
     connect(pUser, SIGNAL(sigClose()), this, SLOT(slotClose()));
@@ -41,10 +42,22 @@ void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
     QListWidgetItem *pItem = new QListWidgetItem(m_pUserDataList);
     pItem->setSizeHint(QSize(m_pUserDataList->width() - 20, 60));
     m_pUserDataList->setItemWidget(pItem, pUser);
+    m_pUserDataList->setCurrentRow(m_pUserDataList->count() - 1);
 
     m_mapIndex2BuddyWindow.insert(pItem, pBuddy);
+    m_mapId2BuddyWindow[user.m_nTargetId] = pBuddy;
     m_setId.insert(user.m_nTargetId);
-    m_pUserDataList->setCurrentRow(m_pUserDataList->count() - 1);
+}
+
+void CChatMainWindowDialog::handleAllTypeMessage(const net::CBuddyMessagePtr& pData)
+{
+    using namespace net;
+    QMap<int, CChatMessageWindowWidget *>::iterator iter = m_mapId2BuddyWindow.find(pData->m_nSendId);
+    if (iter != m_mapId2BuddyWindow.end())
+    {
+        CChatMessageWindowWidget *pWidget = iter.value();
+        pWidget->sigHandleChatMsg(pData);
+    }
 }
 
 void CChatMainWindowDialog::slotClose()

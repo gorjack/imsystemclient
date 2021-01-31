@@ -1,4 +1,4 @@
-#include "rpc_structs.h"
+ï»¿#include "rpc_structs.h"
 #include <protocolstream.h>
 #include <Msg.h>
 #include <utils/ZlibUtil.h>
@@ -247,6 +247,8 @@ namespace net
             strcpy_s(m_szAccountName, ARRAYSIZE(m_szAccountName), JsonRoot["userinfo"][(UINT)0]["username"].asCString());
             strcpy_s(m_szNickName, ARRAYSIZE(m_szNickName), JsonRoot["userinfo"][(UINT)0]["nickname"].asCString());
         }
+
+        return true;
     }
 
     IData::IData()
@@ -268,7 +270,7 @@ namespace net
             return;
         }
 
-        //²åÈë°üÍ·
+        //æ’å…¥åŒ…å¤´
         int32_t length = (int32_t)strBuffer.length();
         protocol::msg header;
         header.compressflag = 1;
@@ -350,7 +352,7 @@ namespace net
         int userid = JsonRoot["userid"].asInt();
         int type = JsonRoot["type"].asInt();
         std::string username = JsonRoot["username"].asString();
-        //ÊÕµ½¼ÓºÃÓÑÇëÇó
+        //æ”¶åˆ°åŠ å¥½å‹è¯·æ±‚
         if (type == 2)
         {
             m_uCmd = Apply;
@@ -359,7 +361,7 @@ namespace net
 
             return true;
         }
-        //ÊÕµ½¼ÓºÃÓÑ½á¹û
+        //æ”¶åˆ°åŠ å¥½å‹ç»“æžœ
         else if (type == 3)
         {
             if (!JsonRoot["accept"].isInt())
@@ -372,7 +374,7 @@ namespace net
             strcpy_s(m_szAccountName, ARRAYSIZE(m_szAccountName), username.c_str());
             return true;
         }
-        //É¾³ýºÃÓÑ»òÕßÍËÈº
+        //åˆ é™¤å¥½å‹æˆ–è€…é€€ç¾¤
         else if (type == 5)
         {
             m_uCmd = Delete;
@@ -419,35 +421,35 @@ namespace net
                 pUserBasicInfo->uAccountID = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["userid"].asUInt();
 
 #ifdef _DEBUG
-                //ÎªÁËµ÷ÊÔ·½±ã¼ÓÉÏuserid
+                //ä¸ºäº†è°ƒè¯•æ–¹ä¾¿åŠ ä¸Šuserid
                 sprintf_s(pUserBasicInfo->szAccountName, 32, "%s - %d", JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["username"].asString().c_str(), pUserBasicInfo->uAccountID);
 #else
                 sprintf_s(pUserBasicInfo->szAccountName, 32, "%s", JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["username"].asString().c_str(), pUserBasicInfo->uAccountID);
 #endif
-                //ÕË»§Ãû
+                //è´¦æˆ·å
                 //strcpy_s(pUserBasicInfo->szAccountName, ARRAYSIZE(pUserBasicInfo->szAccountName), pUserInfo[i].user);
-                //êÇ³Æ
+                //æ˜µç§°
                 strcpy_s(pUserBasicInfo->szNickName, ARRAYSIZE(pUserBasicInfo->szNickName), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["nickname"].asString().c_str());
-                //±¸×¢Ãû
+                //å¤‡æ³¨å
                 strcpy_s(pUserBasicInfo->szMarkName, ARRAYSIZE(pUserBasicInfo->szMarkName), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["markname"].asString().c_str());
-                //Ç©Ãû
+                //ç­¾å
                 strcpy_s(pUserBasicInfo->szSignature, ARRAYSIZE(pUserBasicInfo->szSignature), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["signature"].asString().c_str());
-                //µØÖ·
+                //åœ°å€
                 strcpy_s(pUserBasicInfo->szAddress, ARRAYSIZE(pUserBasicInfo->szAddress), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["address"].asString().c_str());
-                //×Ô¶¨ÒåÍ·Ïñ
+                //è‡ªå®šä¹‰å¤´åƒ
                 strcpy_s(pUserBasicInfo->customFace, ARRAYSIZE(pUserBasicInfo->customFace), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["customface"].asString().c_str());
-                //µç»°
+                //ç”µè¯
                 strcpy_s(pUserBasicInfo->szPhoneNumber, ARRAYSIZE(pUserBasicInfo->szPhoneNumber), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["phonenumber"].asString().c_str());
-                //ÓÊÏä
+                //é‚®ç®±
                 strcpy_s(pUserBasicInfo->szMail, ARRAYSIZE(pUserBasicInfo->szMail), JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["mail"].asString().c_str());
 
                 pUserBasicInfo->nStatus = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["status"].asInt();
                 pUserBasicInfo->clientType = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["clienttype"].asInt();
-                //Í·ÏñID
+                //å¤´åƒID
                 pUserBasicInfo->uFaceID = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["facetype"].asInt();
-                //ÐÔ±ð
+                //æ€§åˆ«
                 pUserBasicInfo->nGender = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["gender"].asInt();
-                //ÉúÈÕ
+                //ç”Ÿæ—¥
                 pUserBasicInfo->nBirthday = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["birthday"].asInt();
 
                 friendList.push_back(pUserBasicInfo);
@@ -497,6 +499,8 @@ namespace net
     {
         net::BinaryStreamReader readStream(strMsg.c_str(), strMsg.length());
         int32_t senderId;
+        std::string strValue;
+
         //int seq;
         if (!readStream.ReadInt32(senderId))
         {
@@ -530,13 +534,56 @@ namespace net
         if (JsonRoot["msgType"].isNull() || !JsonRoot["msgType"].isInt())
             return false;
 
-        int nType = JsonRoot["msgType"].asInt();
+        m_nMsgType = (CONTENT_TYPE)JsonRoot["msgType"].asInt();
 
         if (JsonRoot["time"].isNull())
             return false;
 
 
         m_nTime = JsonRoot["time"].asUInt();
+
+        CContentPtr pContent;
+        pContent.reset(new CContent);
+
+        if (!JsonRoot["font"][(UINT)0].isNull())
+        {
+            strValue = JsonRoot["font"][(UINT)0].asString();
+            pContent->m_FontInfo.m_strName = strValue;
+        }
+        else
+            pContent->m_FontInfo.m_strName = ("å¾®è½¯é›…é»‘");
+
+        //å­—ä½“å¤§å°
+        if (!JsonRoot["font"][(UINT)1].isNull())
+            pContent->m_FontInfo.m_nSize = JsonRoot["font"][(UINT)1].asUInt();
+        else
+            pContent->m_FontInfo.m_nSize = 12;
+
+        //å­—ä½“é¢œè‰²
+        if (!JsonRoot["font"][(UINT)2].isNull())
+            pContent->m_FontInfo.m_clrText = /*JsonValue["font"][(UINT)2].asUInt()*/"123";
+        else
+            pContent->m_FontInfo.m_clrText = "8889";
+
+        //æ˜¯å¦ç²—ä½“
+        if (!JsonRoot["font"][(UINT)3].isNull())
+            pContent->m_FontInfo.m_bBold = JsonRoot["font"][(UINT)3].asInt() != 0 ? true : false;
+        else
+            pContent->m_FontInfo.m_bBold = false;
+
+        //æ˜¯å¦æ–œä½“
+        if (!JsonRoot["font"][(UINT)4].isNull())
+            pContent->m_FontInfo.m_bItalic = JsonRoot["font"][(UINT)4].asInt() != 0 ? true : false;
+        else
+            pContent->m_FontInfo.m_bItalic = false;
+
+        //æ˜¯å¦ä¸‹åˆ’çº¿
+        if (!JsonRoot["font"][(UINT)5].isNull())
+            pContent->m_FontInfo.m_bUnderLine = JsonRoot["font"][(UINT)5].asInt() != 0 ? true : false;
+        else
+            pContent->m_FontInfo.m_bUnderLine = false;
+
+        m_arrContent.push_back(pContent);
 
         std::string strNodeValue;
         int nCount = (int)JsonRoot["content"].size();
@@ -549,7 +596,69 @@ namespace net
             {
                 m_msgMesText = JsonRoot["content"][i]["msgText"].asString();
             }
+
+            if (!JsonRoot["content"][i]["msgText"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_TEXT;
+                strNodeValue = JsonRoot["content"][i]["msgText"].asString();
+                pContent->m_strText = strNodeValue;
+                m_arrContent.push_back(pContent);
+            }
+            else if (!JsonRoot["content"][i]["faceID"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_FACE;
+                pContent->m_nFaceId = JsonRoot["content"][i]["faceID"].asInt();
+                m_arrContent.push_back(pContent);
+            }
+            else if (!JsonRoot["content"][i]["shake"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_SHAKE_WINDOW;
+                pContent->m_nShakeTimes = JsonRoot["content"][i]["shake"].asInt();
+                m_arrContent.push_back(pContent);
+            }
+            else if (!JsonRoot["content"][i]["pic"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_CHAT_IMAGE;
+                strNodeValue = JsonRoot["content"][i]["pic"][(UINT)0].asString();;
+                pContent->m_CFaceInfo.m_strFileName = strNodeValue;
+
+                strNodeValue = JsonRoot["content"][i]["pic"][(UINT)1].asString();;
+                if (!strNodeValue.empty())
+                {
+                    pContent->m_CFaceInfo.m_strFilePath = strNodeValue;
+                }
+
+                pContent->m_CFaceInfo.m_dwFileSize = JsonRoot["content"][i]["pic"][(UINT)2].asUInt();
+                m_arrContent.push_back(pContent);
+            }
+            else if (!JsonRoot["content"][i]["file"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_FILE;
+                strNodeValue = JsonRoot["content"][i]["file"][(UINT)0].asString();;
+                pContent->m_CFaceInfo.m_strFileName = strNodeValue;
+
+                strNodeValue = JsonRoot["content"][i]["file"][(UINT)1].asString();;
+
+                pContent->m_CFaceInfo.m_strFilePath = strNodeValue;
+
+                pContent->m_CFaceInfo.m_dwFileSize = JsonRoot["content"][i]["file"][2].asUInt();
+
+                pContent->m_CFaceInfo.m_bOnline = JsonRoot["content"][i]["file"][3].asUInt();
+                m_arrContent.push_back(pContent);
+            }
+            else if (!JsonRoot["content"][i]["remotedesktop"].isNull())
+            {
+                pContent.reset(new CContent());
+                pContent->m_nType = CONTENT_TYPE_REMOTE_DESKTOP;
+                m_arrContent.push_back(pContent);
+            }
         }
+        return true;
     }
 
     void CUpdateTeamInfoRequest::encodePackage(std::string& str, int32_t nSeq) const

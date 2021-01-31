@@ -16,7 +16,7 @@
 #include <ProtocolData/rpc_Enum.h>
 #include <utils/File2.h>
 #include <EventLoop.h>
-
+#include <memory>
 
 #if 1
 //包最大字节数限制为10M
@@ -314,9 +314,14 @@ bool CFlamingoClientCenter::dispatchHandle(const net::TcpConnectionPtr& conn, co
             onHandleUserInfo(data);
             break;
         case msg_type_chat:
-            emit sigChatMessageComming(data);
+        {
+            net::CBuddyMessagePtr pData( new net::CBuddyMessage);
+            if (pData->decodePackage(data))
+            {
+                emit sigChatMessageComming(pData);
+            }
             break;
-
+        }
         default:
         {
             if (m_mapId2CB[cmd] != NULL)

@@ -2,6 +2,8 @@
 #include <QtWidgets/QMainWindow>
 #include "./GeneratedFiles/ui_MainWindow.h"
 #include <QtWidgets/QSystemTrayIcon>
+#include <ProtocolData/rpc_structs.h>
+using namespace net;
 
 
 class CQueryForAddDialog;
@@ -24,7 +26,7 @@ protected Q_SLOTS:
     void slotEmitAddFirend();
     void slotRefreshFriendList();
     void slotDoRefreshFriendList();
-    void slotHandleCacheChatMsg(const std::string&);
+    void slotHandleCacheChatMsg(const CBuddyMessagePtr&);
 
 protected:
     void resizeEvent(QResizeEvent *e);

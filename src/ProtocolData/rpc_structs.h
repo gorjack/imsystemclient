@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include "rpc_Enum.h"
 #include "rpc_proEnum.h"
@@ -7,6 +7,10 @@
 #include <set>
 #include <map>
 #include <list>
+#include <vector>
+#include <memory>
+
+using namespace std;
 
 namespace net
 {
@@ -49,7 +53,7 @@ namespace net
     public:
         char		m_szAccountName[64];
         char		m_szPassword[64];
-        int 		m_nLoginType;            //µÇÂ¼ÀàĞÍ£º0±íÊ¾Ê¹ÓÃÊÖ»úºÅµÇÈë£¬1±íÊ¾Ê¹ÓÃÕËºÅµÇÈë
+        int 		m_nLoginType;            //ç™»å½•ç±»å‹ï¼š0è¡¨ç¤ºä½¿ç”¨æ‰‹æœºå·ç™»å…¥ï¼Œ1è¡¨ç¤ºä½¿ç”¨è´¦å·ç™»å…¥
         int      	m_nStatus;	
     };
 
@@ -95,7 +99,7 @@ namespace net
         virtual void encodePackage(std::string& str, int32_t nSeq) const {};
         virtual bool decodePackage(const std::string& data) { return true; };
 
-        SendServeType m_nType = CHAT_SERVER;        //´ËÊı¾İÒª×ßµÄ·şÎñÀàĞÍÄ¬ÈÏÎ´CHAT_SERVER.
+        SendServeType m_nType = CHAT_SERVER;        //æ­¤æ•°æ®è¦èµ°çš„æœåŠ¡ç±»å‹é»˜è®¤æœªCHAT_SERVER.
     };
 
     typedef boost::shared_ptr<IData> IDataPtr;
@@ -109,7 +113,7 @@ namespace net
         virtual void encodePackage(std::string& str, int32_t nSeq) const override;
     public:
         char m_szAccountName[64];
-        long m_nType;				//²éÕÒÀàĞÍ
+        long m_nType;				//æŸ¥æ‰¾ç±»å‹
     };
 
     typedef boost::shared_ptr<CFindFriendRequest> CFindFriendRequestPtr;
@@ -171,8 +175,8 @@ namespace net
         char  szSignature[256];
         char  szAddress[51225];
         unsigned int  uFaceID;
-        int   nStatus;              //ÔÚÏß×´Ì¬
-        int   clientType;           //¿Í»§¶ËÀàĞÍ
+        int   nStatus;              //åœ¨çº¿çŠ¶æ€
+        int   clientType;           //å®¢æˆ·ç«¯ç±»å‹
         char  customFace[64];
         int   nGender;
         int   nBirthday;
@@ -203,61 +207,61 @@ namespace net
         bool decodePackage(const std::string& data) override;
     public:
         using UserBasicInfoPtr = boost::shared_ptr<UserBasicInfo>;
-       // keyÊÇ·Ö×éµÄÃû×Ö£¬valueÊÇ¸Ã×éºÃÓÑµÄ¼¯ºÏ
+       // keyæ˜¯åˆ†ç»„çš„åå­—ï¼Œvalueæ˜¯è¯¥ç»„å¥½å‹çš„é›†åˆ
         std::map<std::string, std::list<UserBasicInfoPtr>> m_mapUserBasicInfo;
     };
     typedef boost::shared_ptr<CUserBasicInfoResult> CUserBasicInfoResultPtr;
 
-    class CFontInfo				// ×ÖÌåĞÅÏ¢
+    class CFontInfo				// å­—ä½“ä¿¡æ¯
     {
     public:
-        CFontInfo(void) : m_nSize(9), m_clrText(RGB(0, 0, 0)), m_strName(_T("Î¢ÈíÑÅºÚ")),
-            m_bBold(FALSE), m_bItalic(FALSE), m_bUnderLine(FALSE) {}
+        CFontInfo(void) : m_nSize(9), m_clrText(""), m_strName(("å¾®è½¯é›…é»‘")),
+            m_bBold(false), m_bItalic(false), m_bUnderLine(false) {}
         ~CFontInfo(void) {}
 
     public:
-        int m_nSize;			// ×ÖÌå´óĞ¡
-        std::string m_clrText;		// ×ÖÌåÑÕÉ«
-        tstring m_strName;		// ×ÖÌåÃû³Æ
-        bool m_bBold;			// ÊÇ·ñ¼Ó´Ö
-        bool m_bItalic;			// ÊÇ·ñÇãĞ±
-        bool m_bUnderLine;		// ÊÇ·ñ´øÏÂ»®Ïß
+        int m_nSize;			// å­—ä½“å¤§å°
+        std::string m_clrText;		// å­—ä½“é¢œè‰²
+        std::string m_strName;		// å­—ä½“åç§°
+        bool m_bBold;			// æ˜¯å¦åŠ ç²—
+        bool m_bItalic;			// æ˜¯å¦å€¾æ–œ
+        bool m_bUnderLine;		// æ˜¯å¦å¸¦ä¸‹åˆ’çº¿
     };
 
-    class CCustomFaceInfo		// ×Ô¶¨Òå±íÇéĞÅÏ¢
+    class CCustomFaceInfo		// è‡ªå®šä¹‰è¡¨æƒ…ä¿¡æ¯
     {
     public:
-        CCustomFaceInfo(void) : m_nFileId(0), m_dwFileSize(0), m_bOnline(TRUE) {}
+        CCustomFaceInfo(void) : m_nFileId(0), m_dwFileSize(0), m_bOnline(true) {}
         ~CCustomFaceInfo(void) {}
 
     public:
-        tstring m_strName;			// ½ÓÊÕ×Ô¶¨Òå±íÇéÊ¹ÓÃ²ÎÊı(TODO: Õâ¸ö×Ö¶ÎÏÈ±£Áô£¬²»ÒªÓÃ£¬Áô×÷ÒÔºóÀ©Õ¹)
+        std::string    m_strName;			// æ¥æ”¶è‡ªå®šä¹‰è¡¨æƒ…ä½¿ç”¨å‚æ•°(TODO: è¿™ä¸ªå­—æ®µå…ˆä¿ç•™ï¼Œä¸è¦ç”¨ï¼Œç•™ä½œä»¥åæ‰©å±•)
         unsigned int   m_nFileId;
-        tstring m_strKey;
-        tstring m_strServer;
+        std::string    m_strKey;
+        std::string    m_strServer;
 
-        unsigned long  m_dwFileSize;		// ·¢ËÍ×Ô¶¨Òå±íÇéÊ¹ÓÃ²ÎÊı
-        tstring m_strFileName;
-        tstring m_strFilePath;
-        bool	m_bOnline;			//µ±ÊÇÎÄ¼şÀàĞÍÊ±£¬¸Ã×Ö¶Î´ú±íÎÄ¼şÊÇÀëÏßÎÄ¼ş»¹ÊÇÔÚÏßÎÄ¼ş
+        unsigned long  m_dwFileSize;		// å‘é€è‡ªå®šä¹‰è¡¨æƒ…ä½¿ç”¨å‚æ•°
+        std::string    m_strFileName;
+        std::string    m_strFilePath;
+        bool	       m_bOnline;			//å½“æ˜¯æ–‡ä»¶ç±»å‹æ—¶ï¼Œè¯¥å­—æ®µä»£è¡¨æ–‡ä»¶æ˜¯ç¦»çº¿æ–‡ä»¶è¿˜æ˜¯åœ¨çº¿æ–‡ä»¶
     };
 
-    class CContent				// ÏûÏ¢ÄÚÈİ
+    class CContent				// æ¶ˆæ¯å†…å®¹
     {
     public:
         CContent(void) : m_nType(CONTENT_TYPE_UNKNOWN), m_nFaceId(0), m_nShakeTimes(0) {}
         ~CContent(void) {}
 
     public:
-        CONTENT_TYPE	m_nType;			// ÄÚÈİÀàĞÍ
-        CFontInfo		m_FontInfo;			// ×ÖÌåĞÅÏ¢
-        tstring			m_strText;			// ÎÄ±¾ĞÅÏ¢
-        int				m_nFaceId;			// ÏµÍ³±íÇéId
-        int				m_nShakeTimes;		// ´°¿Ú¶¶¶¯´ÎÊı
-        CCustomFaceInfo m_CFaceInfo;		// ×Ô¶¨Òå±íÇéĞÅÏ¢£¨µ±·¢ËÍµÄÊÇm_nType£¬m_CFaceInfoÊÇÎÄ¼şµÄÓĞ¹ØĞÅÏ¢£©
+        CONTENT_TYPE	    m_nType;			// å†…å®¹ç±»å‹
+        CFontInfo		    m_FontInfo;			// å­—ä½“ä¿¡æ¯
+        std::string			m_strText;			// æ–‡æœ¬ä¿¡æ¯
+        int				    m_nFaceId;			// ç³»ç»Ÿè¡¨æƒ…Id
+        int				    m_nShakeTimes;		// çª—å£æŠ–åŠ¨æ¬¡æ•°
+        CCustomFaceInfo     m_CFaceInfo;		// è‡ªå®šä¹‰è¡¨æƒ…ä¿¡æ¯ï¼ˆå½“å‘é€çš„æ˜¯m_nTypeï¼Œm_CFaceInfoæ˜¯æ–‡ä»¶çš„æœ‰å…³ä¿¡æ¯ï¼‰
     };
 
-    
+    typedef std::shared_ptr<CContent> CContentPtr;
     class PROTOCOLDATA_EXPORT CBuddyMessage : public IData
     {
     public:
@@ -267,12 +271,12 @@ namespace net
         virtual void encodePackage(std::string& str, int32_t nSeq) const override;
         bool decodePackage(const std::string& data) override;
 
-        CONTENT_TYPE			        m_nMsgType;
-        std::vector<std::shared_ptr<CContent>>   m_arrContent;
+        CONTENT_TYPE			                      m_nMsgType;
+        std::vector<CContentPtr>                      m_arrContent;
 
         std::string         m_msgMesText;
         unsigned int        m_nTargetId;
-        unsigned int        m_nSendId;          //·¢ËÍµÄÊ±ºò²»ÓÃÌî ·şÎñÆ÷ÄÜ×Ô¼ºÈ¡µ½
+        unsigned int        m_nSendId;          //å‘é€çš„æ—¶å€™ä¸ç”¨å¡« æœåŠ¡å™¨èƒ½è‡ªå·±å–åˆ°
         unsigned __int64    m_nTime;
     };
     typedef boost::shared_ptr<CBuddyMessage> CBuddyMessagePtr;
@@ -285,7 +289,7 @@ namespace net
 
         virtual void encodePackage(std::string& str, int32_t nSeq) const override;
 
-        int          m_opType;          //²Ù×÷ÀàĞÍ
+        int          m_opType;          //æ“ä½œç±»å‹
         std::wstring m_strNewTeamName;
         std::wstring m_strOldTeamName;
     };

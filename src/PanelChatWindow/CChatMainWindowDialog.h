@@ -4,6 +4,8 @@
 #include <QtWidgets/QDialog>
 #include "CChatMessageWindowWidget.h"
 #include "UserDataInfo.h"
+#include <ProtocolData/rpc_structs.h>
+#include <utils/CSingletonT.h>
 
 class QListWidget;
 class QStackedWidget;
@@ -16,7 +18,7 @@ namespace XP
     class CSplitContainer;
 }
 
-class PANELCHATWINDOW_EXPORT CChatMainWindowDialog : public QDialog
+class PANELCHATWINDOW_EXPORT CChatMainWindowDialog : public QDialog, public utils::CSingletonT<CChatMainWindowDialog>
 {
     Q_OBJECT
 public:
@@ -24,9 +26,10 @@ public:
 
     void addBuddyChatWindow(const UC::CUserDataInfo& user);
 
-protected Q_SLOTS:
+public Q_SLOTS:
     void slotClose();
     void slotShowCurrentWindow(QListWidgetItem* nIndex);
+    void handleAllTypeMessage(const net::CBuddyMessagePtr& pData);
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -35,6 +38,7 @@ private:
     void createUi();
     QListWidget                             *m_pUserDataList = NULL;
     QMap<QListWidgetItem*, CChatMessageWindowWidget*>     m_mapIndex2BuddyWindow;
+    QMap<int, CChatMessageWindowWidget*>                  m_mapId2BuddyWindow;
 
     QStackedWidget                          *m_pStackWidget = NULL;
     XP::CSplitContainer                     *m_pSplit = NULL;

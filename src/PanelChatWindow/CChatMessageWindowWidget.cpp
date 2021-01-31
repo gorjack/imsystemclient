@@ -12,7 +12,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QDir>
 #include <utils/FileHelper.h>
-
+#include <utils/commonFunc.h>
 
 CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
     QWidget(parent)
@@ -159,17 +159,35 @@ void CChatMessageWindowWidget::slotSendMsg(QString msg)
 
 void CChatMessageWindowWidget::slotHandleChatMsg(const net::CBuddyMessagePtr& pData)
 {
-    QString time = QString::number(QDateTime::currentDateTime().toTime_t()); //时间戳
-    bool isSending = true; // 发送中
-    m_pSendTextEdit->setText("");
-
+    using namespace protocol;
+    QString time = QString::number(QDateTime::fromTime_t(pData->m_nTime).toTime_t());
     dealMessageTime(time);
 
-    CShowMsgListItemWidget* messageW = new CShowMsgListItemWidget(m_pShowMsgListWidget->parentWidget());
-    QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
-    dealMessage(messageW, item, QString::fromStdString(pData->m_msgMesText), time, CShowMsgListItemWidget::User_She);
+    for (const auto &item : pData->m_arrContent)
+    {
+        net::CContentPtr pContentData = item;
+        switch (pContentData->m_nType)
+        {
+        case  CONTENT_TYPE_TEXT:
+        {
+            CShowMsgListItemWidget* messageW = new CShowMsgListItemWidget(m_pShowMsgListWidget->parentWidget());
+            QListWidgetItem* item = new QListWidgetItem(m_pShowMsgListWidget);
+            dealMessage(messageW, item, QString::fromStdString(pContentData->m_strText), time, CShowMsgListItemWidget::User_She);
+        }
+            break;
+        case CONTENT_TYPE_FILE:
+        {
+            QString centontStr = QString::number(pContentData->m_CFaceInfo.m_dwFileSize / 1024) + QString("k");
+            FileDataItem data("2", utils::sToQs(pContentData->m_CFaceInfo.m_strFilePath), centontStr, "文件发送成功暂存7天", time);
+            sendFileFinishHandle(data, LEFT_FILE_DIRECTION);
+        }
+            break;
+        default:
+            break;
+        }
+    }
 
-    //m_pShowMsgListWidget->setCurrentRow(m_pShowMsgListWidget->count() - 1);
+
 }
 
 

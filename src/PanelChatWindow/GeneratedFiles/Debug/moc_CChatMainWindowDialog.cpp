@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CChatMainWindowDialog_t {
-    QByteArrayData data[6];
-    char stringdata0[79];
+    QByteArrayData data[9];
+    char stringdata0[128];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,12 +34,16 @@ QT_MOC_LITERAL(1, 22, 9), // "slotClose"
 QT_MOC_LITERAL(2, 32, 0), // ""
 QT_MOC_LITERAL(3, 33, 21), // "slotShowCurrentWindow"
 QT_MOC_LITERAL(4, 55, 16), // "QListWidgetItem*"
-QT_MOC_LITERAL(5, 72, 6) // "nIndex"
+QT_MOC_LITERAL(5, 72, 6), // "nIndex"
+QT_MOC_LITERAL(6, 79, 20), // "handleAllTypeMessage"
+QT_MOC_LITERAL(7, 100, 21), // "net::CBuddyMessagePtr"
+QT_MOC_LITERAL(8, 122, 5) // "pData"
 
     },
     "CChatMainWindowDialog\0slotClose\0\0"
     "slotShowCurrentWindow\0QListWidgetItem*\0"
-    "nIndex"
+    "nIndex\0handleAllTypeMessage\0"
+    "net::CBuddyMessagePtr\0pData"
 };
 #undef QT_MOC_LITERAL
 
@@ -49,7 +53,7 @@ static const uint qt_meta_data_CChatMainWindowDialog[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -57,12 +61,14 @@ static const uint qt_meta_data_CChatMainWindowDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x09 /* Protected */,
-       3,    1,   25,    2, 0x09 /* Protected */,
+       1,    0,   29,    2, 0x0a /* Public */,
+       3,    1,   30,    2, 0x0a /* Public */,
+       6,    1,   33,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void, 0x80000000 | 7,    8,
 
        0        // eod
 };
@@ -76,6 +82,7 @@ void CChatMainWindowDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         switch (_id) {
         case 0: _t->slotClose(); break;
         case 1: _t->slotShowCurrentWindow((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 2: _t->handleAllTypeMessage((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -97,6 +104,8 @@ void *CChatMainWindowDialog::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_CChatMainWindowDialog.stringdata0))
         return static_cast<void*>(const_cast< CChatMainWindowDialog*>(this));
+    if (!strcmp(_clname, "utils::CSingletonT<CChatMainWindowDialog>"))
+        return static_cast< utils::CSingletonT<CChatMainWindowDialog>*>(const_cast< CChatMainWindowDialog*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
@@ -106,13 +115,13 @@ int CChatMainWindowDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
