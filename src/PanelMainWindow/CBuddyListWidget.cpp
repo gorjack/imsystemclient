@@ -72,7 +72,7 @@ void CBuddyListWidget::updateUi(const PC::CBuddyList& pData)
     clearUi();
     for (const auto & iter : pData.m_arrBuddyTeamInfo)
     {
-        QListWidgetItem *newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), utils::stdWToQString(iter->m_strName));    //创建一个Item  
+        QListWidgetItem *newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), QString::fromStdString(iter->m_strName));    //创建一个Item  
         newItem->setSizeHint(QSize(this->width(), 25));  
         this->addItem(newItem);         
         m_groupMap.insert(newItem, newItem);
@@ -82,8 +82,8 @@ void CBuddyListWidget::updateUi(const PC::CBuddyList& pData)
         {
             CBuddyItem *buddy = new CBuddyItem(this);   
             buddy->m_pHeadPath = ":/BuddyList/Resources/c";                          
-            buddy->m_pName->setText(utils::stdWToQString(subIter->m_strNickName));                   
-            buddy->m_pSign->setText(utils::stdWToQString(subIter->m_strSign));
+            buddy->m_pName->setText(QString::fromStdString(subIter->m_strNickName));                   
+            buddy->m_pSign->setText(QString::fromStdString(subIter->m_strSign));
             buddy->m_nId = subIter->m_uUserID;
 
             QList<QListWidgetItem*> tem = m_groupMap.keys(m_pCurrentItem);  

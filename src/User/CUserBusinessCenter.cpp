@@ -1,4 +1,4 @@
-ï»¿#include "CUserBusinessCenter.h"
+#include "CUserBusinessCenter.h"
 #include <ProtocolData/rpc_proEnum.h>
 
 #define TRUE true
@@ -46,15 +46,15 @@ namespace PC
     {
         m_uUserID = 0;
         m_nTeamIndex = 0;
-        m_strNickName = ("å­™æ‚Ÿç©º");
+        m_strNickName = ("ËïÎò¿Õ");
         m_strMarkName = ("");
         m_nFace = 0;
         m_nStatus = STATUS_OFFLINE;
-        m_strSign = ("è§‚ä¹å…¶ä¸Š,å¾—ä¹å…¶ä¸­,è§‚ä¹å…¶ä¸­,å¾—ä¹å…¶ä¸‹ã€‚");
+        m_strSign = ("¹ÛºõÆäÉÏ,µÃºõÆäÖĞ,¹ÛºõÆäÖĞ,µÃºõÆäÏÂ¡£");
         m_nBirthday = 0;
         m_strMobile = ("");
         m_strEmail = ("balloonwj@UTalk.com");
-        m_strAddress = ("ä¸Šæµ·å¸‚é—µè¡ŒåŒºä¸œå·è·¯555å·");
+        m_strAddress = ("ÉÏº£ÊĞãÉĞĞÇø¶«´¨Â·555ºÅ");
         m_uMsgID = 0;
         m_bUseCustomFace = FALSE;
         m_bCustomFaceAvailable = FALSE;
