@@ -76,7 +76,7 @@ void CBuddyListWidget::updateUi(const PC::CBuddyList& pData)
         newItem->setSizeHint(QSize(this->width(), 25));  
         this->addItem(newItem);         
         m_groupMap.insert(newItem, newItem);
-        m_isHideMap.insert(newItem, true);  
+        m_isHideMap.insert(newItem, false);  
         m_pCurrentItem = newItem;     
         for (const auto& subIter : iter->m_arrBuddyInfo)
         {

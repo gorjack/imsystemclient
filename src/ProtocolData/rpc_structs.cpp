@@ -7,6 +7,8 @@
 #include <boost/format.hpp>
 #include <utils/EncodeUtil.h>
 #include <winlog/IULog.h>
+#include <utils/strings.h>
+#include <sstream>
 
 namespace net
 {
@@ -480,8 +482,49 @@ namespace net
         std::string strChatContent = R"({"msgText":")";
         strChatContent += m_msgMesText;
         strChatContent += R"("})";
+        std::string strFont;
+
         
+        for (int i = 0; i < (int)m_arrContent.size(); i++)
+        {
+            CContentPtr lpContent = m_arrContent[i];
+            if (lpContent == NULL)
+                continue;
+
+            if (lpContent->m_nType == CONTENT_TYPE_TEXT)							
+            {
+                strChatContent += "{\"msgText\":\"";
+                strChatContent += lpContent->m_strText;
+                strChatContent += ("\"},");
+            }
+            else if (lpContent->m_nType == CONTENT_TYPE_FONT_INFO)			
+            {
+                stringstream ss;
+                ss << "\"font\":[\"";
+                ss << lpContent->m_FontInfo.m_strName << "\",";
+                ss << lpContent->m_FontInfo.m_nSize;
+                ss << "\"," << lpContent->m_FontInfo.m_clrText << "\",";
+                ss << lpContent->m_FontInfo.m_bBold << ",";
+                ss << lpContent->m_FontInfo.m_bItalic << ",";
+                ss << lpContent->m_FontInfo.m_bUnderLine << "],\"";
+                strFont = ss.str();
+            }
+            else if (lpContent->m_nType == CONTENT_TYPE_FILE)			
+            {
+                stringstream ss;
+                ss << "\"file\":[\"";
+                ss << lpContent->m_CFaceInfo.m_strFileName << "\",";
+                ss << "\"" << lpContent->m_CFaceInfo.m_strFilePath << "\",";
+                ss << lpContent->m_CFaceInfo.m_dwFileSize << "\",";
+                ss << lpContent->m_CFaceInfo.m_bOnline << ",";
+
+                strChatContent += ss.str();
+            }
+        }
+
         std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,") % time(NULL));
+        strContent += strFont;
+
         strContent += R"("content":[)";
         strContent += strChatContent;
         strContent += R"(]})";
@@ -659,6 +702,119 @@ namespace net
             }
         }
         return true;
+    }
+
+    bool CBuddyMessage::parse(const std::string& data)
+    {
+        std::string strText;
+        for (int i = 0; i < data.size(); ++i)
+        {
+            if (data.at(i) == '/')
+            {
+                if (data.at(i + 1) == 'o')
+                {
+                    int nTemp = i + 1;
+                    if (handleFontInfo(nTemp, data))
+                    {
+                        i = nTemp;
+                        continue;
+                    }
+                }
+                else if (data.at(i + 1) == 'i')
+                {
+                    int nTemp = i + 1;
+                    if (handleFileInfo(nTemp, data))
+                    {
+                        i = nTemp;
+                        continue;
+                    }
+                }
+            }
+
+            strText += (data.at(i));
+        }
+
+        if (!strText.empty())
+        {
+            CContentPtr lpContent(new CContent);
+            lpContent->m_nType = CONTENT_TYPE_TEXT;
+            lpContent->m_strText = strText;
+            m_arrContent.push_back(lpContent);
+        }
+
+        return true;
+    }
+
+
+    bool CBuddyMessage::handleFontInfo(int& p, const std::string& strText)
+    {
+        int nStart = strText.find("[\"");
+        int nEnd = strText.find("\"]");
+        p = nEnd;
+        if (nStart != string::npos && nEnd != string::npos)
+        {
+            string strTemp = strText.substr(nStart + 1, nEnd - nStart);
+
+            string fontName;
+            int    fontSize;
+            string fontColor;
+            bool   bBold = false;
+            bool   bItalic = false;
+            bool   bUnderLine = false;
+            int n = utils::string_matches("%s,%d,%s,%d,%d,%d", fontName, &fontSize, &fontColor, &bBold, &bItalic, &bUnderLine);
+            if (n != 6)
+            {
+                return false;
+            }
+
+            CContentPtr lpContent(new CContent);
+            lpContent->m_nType = CONTENT_TYPE_FONT_INFO;
+            lpContent->m_FontInfo.m_nSize = fontSize;
+            lpContent->m_FontInfo.m_clrText = fontColor;
+            lpContent->m_FontInfo.m_strName = fontName;
+            lpContent->m_FontInfo.m_bBold = bBold;
+            lpContent->m_FontInfo.m_bItalic = bItalic;
+            lpContent->m_FontInfo.m_bUnderLine = bUnderLine;
+            m_arrContent.push_back(lpContent);
+            return true;
+        }
+
+        return false;
+    }
+
+    bool CBuddyMessage::handleFileInfo(int& p, const std::string& strText)
+    {
+        int nStart = strText.find("[\"");
+        int nEnd = strText.find("\"]");
+        p = nEnd;
+        if (nStart != string::npos && nEnd != string::npos)
+        {
+            string strTemp = strText.substr(nStart + 1, nEnd - nStart);
+
+
+            string strFileName;
+            string strFilePath;
+            unsigned long nFileSize;
+            bool bOnline = true;
+
+            int n = utils::string_matches("%s,%s,%ul,%d", strFileName, strFilePath, &nFileSize, &bOnline);
+            if (n != 4)
+            {
+                return false;
+            }
+
+            CContentPtr lpContent(new CContent);
+            lpContent->m_nType = CONTENT_TYPE_FILE;
+            lpContent->m_CFaceInfo.m_strFilePath = strFilePath;
+            lpContent->m_CFaceInfo.m_strName = strFileName;
+            lpContent->m_CFaceInfo.m_strFileName = strFileName;
+            lpContent->m_CFaceInfo.m_dwFileSize = nFileSize;
+            lpContent->m_CFaceInfo.m_bOnline = bOnline;
+            m_arrContent.push_back(lpContent);
+            return true;
+        }
+
+        return false;
     }
 
     void CUpdateTeamInfoRequest::encodePackage(std::string& str, int32_t nSeq) const

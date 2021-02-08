@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <stdarg.h>
 using namespace std;
 
 namespace utils
@@ -19,4 +20,7 @@ namespace utils
 
     UTILS_EXPORT void string_replace(std::string &strBig, const std::string &strsrc, const std::string &strdst);
     UTILS_EXPORT void string_replace(std::string &strBig, char c, const::std::string & strdst);
+
+    //从arg中格式化得到变量
+    UTILS_EXPORT int string_matches(const char* format, ...);
 }

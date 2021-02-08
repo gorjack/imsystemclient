@@ -77,4 +77,14 @@ namespace utils
         strBig = ss.str();
     }
 
+    UTILS_EXPORT int string_matches(const char* format, ...)
+    {
+        va_list args;
+        va_start(args, format);
+        int nT = vscanf(format, args);
+        va_end(args);
+
+        return nT;
+    }
+
 }

@@ -270,6 +270,10 @@ namespace net
 
         virtual void encodePackage(std::string& str, int32_t nSeq) const override;
         bool decodePackage(const std::string& data) override;
+        bool parse(const std::string& data);
+        bool handleFontInfo(int& p, const std::string& strText);
+        bool handleFileInfo(int& p, const std::string& strText);
+
 
         CONTENT_TYPE			                      m_nMsgType;
         std::vector<CContentPtr>                      m_arrContent;

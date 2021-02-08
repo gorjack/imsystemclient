@@ -49,14 +49,13 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
     char szGroupAccount[32];
 
     CBuddyTeamInfo* pTeamInfo = NULL;
-    //CGroupInfo* pGroupInfo = NULL;
     int nTeamIndex = 0;
     for (const auto& iter : pResult->m_mapUserBasicInfo)
     {
         pTeamInfo = new CBuddyTeamInfo();
         pTeamInfo->m_nIndex = nTeamIndex;
         ++nTeamIndex;
-//        pTeamInfo->m_strName = EncodeUtil::Utf8ToUnicode(iter.first);
+        pTeamInfo->m_strName = iter.first;              //·Ö×éÃû³Æ
         m_BuddyList.m_arrBuddyTeamInfo.push_back(pTeamInfo);
 
         for (auto& iter2 : iter.second)
@@ -71,14 +70,14 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
 
             pBuddyInfo = new CBuddyInfo();
             pBuddyInfo->m_uUserID = iter2->uAccountID;
-            pBuddyInfo->m_strAccount = szAccountName;
-            pBuddyInfo->m_strNickName = szNickName;
-            pBuddyInfo->m_strMarkName = szMarkName;
-            pBuddyInfo->m_strSign = szSignature;
-            pBuddyInfo->m_strMobile = szPhoneNumber;
+            pBuddyInfo->m_strAccount.append(iter2->szAccountName);
+            pBuddyInfo->m_strNickName.append(iter2->szNickName);
+            pBuddyInfo->m_strMarkName.append(iter2->szMarkName);
+            pBuddyInfo->m_strSign.append(iter2->szSignature);
+            pBuddyInfo->m_strMobile.append(iter2->szPhoneNumber); 
 
-            pBuddyInfo->m_strEmail = szMail;
-            pBuddyInfo->m_strAddress = szAddress;
+            pBuddyInfo->m_strEmail.append(iter2->szMail);
+            pBuddyInfo->m_strAddress.append(iter2->szAddress);
             pBuddyInfo->m_nStatus = iter2->nStatus;
             pBuddyInfo->m_nClientType = iter2->clientType;
             pBuddyInfo->m_nFace = iter2->uFaceID;
