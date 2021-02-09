@@ -7,6 +7,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <utils/commonFunc.h>
 
 CRegistDialog::CRegistDialog(QWidget *parent)
     : QDialog(parent)
@@ -81,7 +82,10 @@ void CRegistDialog::slotRegistReq()
         return;
     }
 
-    net::CRegisterRequest req(pAccountId.toLatin1(), pNickName.toLatin1(), passWd.toLatin1());
+    net::CRegisterRequest req;
+    req.m_szAccountName = utils::qsToS(pAccountId);
+    req.m_szNickName = utils::qsToS(pNickName);
+    req.m_szPassword = utils::qsToS(passWd);
     CFlamingoClientCenter::instance()->regist_async(req);
 }
 

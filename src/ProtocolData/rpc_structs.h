@@ -18,16 +18,15 @@ namespace net
     class PROTOCOLDATA_EXPORT CRegisterRequest
     {
     public:
-        CRegisterRequest(const char* strAcc, const char* nickName, const char* passWd);
+        CRegisterRequest();
         ~CRegisterRequest();
 
         void encodePackage(std::string& str) const;
         
     public:
-        char m_szAccountName[64];
-        char m_szNickName[64];
-        char m_szPassword[64];
-
+        std::string m_szAccountName;
+        std::string m_szNickName;
+        std::string m_szPassword;
     };
 
     class PROTOCOLDATA_EXPORT CRegisterResult
@@ -70,7 +69,8 @@ namespace net
         long m_LoginResultCode;
         UINT m_uAccountID;
         char m_szAccountName[32];
-        char m_szNickName[32];
+        std::string m_szNickName;
+        //char m_szNickName[32];
         char m_szSignature[256];
         long m_nFace;
         char m_szCustomFace[64];
@@ -170,6 +170,7 @@ namespace net
     {
         unsigned int  uAccountID;
         char  szAccountName[32];
+        //std::string szNickName;
         char  szNickName[64];
         char  szMarkName[64];
         char  szSignature[256];

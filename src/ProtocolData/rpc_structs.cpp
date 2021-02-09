@@ -9,14 +9,13 @@
 #include <winlog/IULog.h>
 #include <utils/strings.h>
 #include <sstream>
+#include <sstream>
 
 namespace net
 {
-    CRegisterRequest::CRegisterRequest(const char* strAcc, const char* nickName, const char* passWd)
+    CRegisterRequest::CRegisterRequest()
     {
-        memcpy(m_szAccountName, strAcc, strlen(strAcc) + 1);
-        memcpy(m_szNickName, nickName, strlen(nickName) + 1);
-        memcpy(m_szPassword, passWd, strlen(passWd) + 1);
+
     }
 
     CRegisterRequest::~CRegisterRequest()
@@ -26,19 +25,29 @@ namespace net
 
     void CRegisterRequest::encodePackage(std::string& str) const
     {
-        char szRegisterInfo[256] = { 0 };
-        sprintf_s(szRegisterInfo,
-            256,
-            "{\"username\": \"%s\", \"nickname\": \"%s\", \"password\": \"%s\"}",
-            m_szAccountName,
-            m_szNickName,
-            m_szPassword);
+        //char szRegisterInfo[256] = { 0 };
+        //sprintf_s(szRegisterInfo,
+        //    256,
+        //    "{\"username\": \"%s\", \"nickname\": \"%s\", \"password\": \"%s\"}",
+        //    m_szAccountName,
+        //    m_szNickName,
+        //    m_szPassword);
+
+        std::stringstream ss;
+        ss << "{\"username\": \"";
+        ss << m_szAccountName;
+        ss << "\", \"nickname\": \"";
+        ss << m_szNickName;
+        ss << "\", \"password\": \"";
+        ss << m_szPassword;
+        ss << "\"}";
+
 
         std::string outbuf;
         net::BinaryStreamWriter writeStream(&outbuf);
         writeStream.WriteInt32(protocol::msg_type_register);
         writeStream.WriteInt32(0);
-        std::string data = szRegisterInfo;
+        std::string data = ss.str();
         writeStream.WriteString(data);
         writeStream.Flush();
 
@@ -163,7 +172,10 @@ namespace net
                         m_LoginResultCode = LOGIN_SUCCESS;
                         m_uAccountID = JsonRoot["userid"].asInt();
                         strcpy_s(m_szAccountName, ARRAYSIZE(m_szAccountName), JsonRoot["username"].asCString());
-                        strcpy_s(m_szNickName, ARRAYSIZE(m_szNickName), JsonRoot["nickname"].asCString());
+
+                        const char* str = JsonRoot["nickname"].asCString();
+                        m_szNickName = str;
+                        //strcpy_s(m_szNickName, ARRAYSIZE(m_szNickName), JsonRoot["nickname"].asCString());
                         m_nStatus = JsonRoot["status"].asInt();
                         m_nFace = JsonRoot["facetype"].asInt();
                         m_nGender = JsonRoot["gender"].asInt();
