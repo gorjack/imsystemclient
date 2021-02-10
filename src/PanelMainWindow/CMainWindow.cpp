@@ -35,8 +35,11 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("imonline")));
     m_pSystemIcon->show();
     connect(m_pSystemIcon, &QSystemTrayIcon::activated, this, &CMainWindow::slotIconActivated);
-    connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const CBuddyMessagePtr&)),
+    bool s = connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const net::CBuddyMessagePtr&)),
         this, SLOT(slotHandleCacheChatMsg(const CBuddyMessagePtr&)));
+
+    bool sr = connect(this, SIGNAL(sigTestMsg(const net::CBuddyMessagePtr&)),
+        this, SLOT(slotTestMsg(const net::CBuddyMessagePtr&)));
 
     resize(430, 835);
 
@@ -113,7 +116,7 @@ void CMainWindow::slotDoRefreshFriendList()
 
 void CMainWindow::slotHandleCacheChatMsg(const CBuddyMessagePtr& pData)
 {
-    //m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
+    m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
     //{
     //    PC::CBuddyInfo* pUser = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
     //    if (NULL == pUser)
@@ -228,4 +231,9 @@ void CMainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
     default:
         break;
     }
+}
+
+void CMainWindow::slotTestMsg(const net::CBuddyMessagePtr&)
+{
+
 }

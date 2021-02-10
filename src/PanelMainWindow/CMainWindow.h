@@ -22,11 +22,13 @@ public:
     void createUi();
     void onOperateFriends(const std::string& req);            //处理好友请求(加 删 请求添加等)
 
+Q_SIGNALS:
+    void sigTestMsg(const net::CBuddyMessagePtr&);
 protected Q_SLOTS:
     void slotEmitAddFirend();
     void slotRefreshFriendList();
     void slotDoRefreshFriendList();
-    void slotHandleCacheChatMsg(const CBuddyMessagePtr&);
+    void slotHandleCacheChatMsg(const net::CBuddyMessagePtr&);
 
 protected:
     void resizeEvent(QResizeEvent *e);
@@ -38,6 +40,7 @@ Q_SIGNALS:
 protected Q_SLOTS:
     void slotOnAddFirendCB(const std::string&);
     void slotIconActivated(QSystemTrayIcon::ActivationReason reason);
+    void slotTestMsg(const net::CBuddyMessagePtr&);
 
 private:
     Ui::MainWindow ui;

@@ -76,7 +76,6 @@ int main(int argc, char *argv[])
     qRegisterMetaType<FileTransferStatus>();
     qRegisterMetaType<ImageTransferStatus>();
     qRegisterMetaType<std::string>();
-    qRegisterMetaType<const net::CBuddyMessagePtr&>();
 
 
     LOGI("%sstart client%s", "==========", "==========");

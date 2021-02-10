@@ -143,7 +143,7 @@ void CChatMessageWindowWidget::slotSendMsg(QString msg)
 
     //这里unique_ptr 有没有问题
     net::CBuddyMessagePtr pData = boost::make_shared<net::CBuddyMessage>();
-    pData->m_msgMesText = msg.toStdString();
+    pData->parse(msg.toStdString());
     pData->m_nTargetId = m_nTargetId;
     bool isSend = CFlamingoClientCenter::instance()->request_async(pData);
     if (isSend)

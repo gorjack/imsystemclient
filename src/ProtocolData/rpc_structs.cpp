@@ -491,9 +491,9 @@ namespace net
         writeStream.WriteInt32(protocol::msg_type_chat);
         writeStream.WriteInt32(nSeq);
 
-        std::string strChatContent = R"({"msgText":")";
-        strChatContent += m_msgMesText;
-        strChatContent += R"("})";
+        std::string strChatContent/* = R"({"msgText":")"*/;
+        //strChatContent += m_msgMesText;
+        //strChatContent += R"("})";
         std::string strFont;
 
         
@@ -532,6 +532,12 @@ namespace net
 
                 strChatContent += ss.str();
             }
+        }
+
+        int n = strChatContent.find_last_of(',');
+        if (n != std::string::npos)
+        {
+            strChatContent.erase(n, 1);
         }
 
         std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,") % time(NULL));
@@ -647,10 +653,10 @@ namespace net
             if (JsonRoot["content"][i].isNull())
                 continue;
 
-            if (!JsonRoot["content"][i]["msgText"].isNull())
-            {
-                m_msgMesText = JsonRoot["content"][i]["msgText"].asString();
-            }
+            //if (!JsonRoot["content"][i]["msgText"].isNull())
+            //{
+            //    m_msgMesText = JsonRoot["content"][i]["msgText"].asString();
+            //} 是否删除
 
             if (!JsonRoot["content"][i]["msgText"].isNull())
             {
