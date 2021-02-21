@@ -274,14 +274,14 @@ namespace net
         bool parse(const std::string& data);
         bool handleFontInfo(int& p, const std::string& strText);
         bool handleFileInfo(int& p, const std::string& strText);
-
+        int  msgCount() { return m_arrContent.size(); };
 
         CONTENT_TYPE			                      m_nMsgType;
         std::vector<CContentPtr>                      m_arrContent;
 
         std::string         m_msgMesText;
-        unsigned int        m_nTargetId;
-        unsigned int        m_nSendId;          //发送的时候不用填 服务器能自己取到
+        unsigned int        m_nTargetId;       
+        unsigned int        m_nSendId;          
         unsigned __int64    m_nTime;
     };
     typedef boost::shared_ptr<CBuddyMessage> CBuddyMessagePtr;

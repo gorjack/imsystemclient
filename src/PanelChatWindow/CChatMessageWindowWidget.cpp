@@ -13,6 +13,7 @@
 #include <QDir>
 #include <utils/FileHelper.h>
 #include <utils/commonFunc.h>
+#include <User/CUserManager.h>
 
 CChatMessageWindowWidget::CChatMessageWindowWidget(QWidget *parent) :
     QWidget(parent)
@@ -145,6 +146,7 @@ void CChatMessageWindowWidget::slotSendMsg(QString msg)
     net::CBuddyMessagePtr pData = boost::make_shared<net::CBuddyMessage>();
     pData->parse(msg.toStdString());
     pData->m_nTargetId = m_nTargetId;
+    pData->m_nSendId = CUserManager::instance()->getUserId();
     bool isSend = CFlamingoClientCenter::instance()->request_async(pData);
     if (isSend)
     {

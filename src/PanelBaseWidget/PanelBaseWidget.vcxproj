@@ -250,6 +250,10 @@
     <ClCompile Include="CAutoKeyboardWidget.cpp" />
     <ClCompile Include="CLineEdit.cpp" />
     <ClCompile Include="CPushButton.cpp" />
+    <ClCompile Include="QCustomFloatWidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QCustomFloatWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

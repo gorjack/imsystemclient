@@ -13,7 +13,7 @@
 #include <Env/CConfig.h>
 #include <Env/directory.h>
 #include <UiResources/CUiResource.h>
-
+#include <PanelChatWindow/UserDataInfo.h>
 
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
@@ -67,6 +67,7 @@ Q_DECLARE_METATYPE(UserLoginStatus);
 Q_DECLARE_METATYPE(FileTransferStatus);
 Q_DECLARE_METATYPE(ImageTransferStatus);
 Q_DECLARE_METATYPE(std::string);
+Q_DECLARE_METATYPE(UC::CUserDataInfoPtr);
 //Q_DECLARE_METATYPE(const net::CBuddyMessagePtr&);
 
 int main(int argc, char *argv[])
@@ -76,6 +77,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<FileTransferStatus>();
     qRegisterMetaType<ImageTransferStatus>();
     qRegisterMetaType<std::string>();
+    qRegisterMetaType<UC::CUserDataInfoPtr>();
 
 
     LOGI("%sstart client%s", "==========", "==========");

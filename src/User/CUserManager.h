@@ -18,13 +18,16 @@ public:
     void queryFirendList();
     void onGetFirendListCallBack(const std::string & data);
     PC::CBuddyInfo* getBuddyInfoById(int nId);
+    void setUserId(unsigned int id);
+    unsigned int getUserId();
 Q_SIGNALS:
     void sigFinishGetFriendListReq();
 
 private:
     void ClearUserInfo();
 
-    PC::CBuddyInfo		               m_UserInfo;
+    unsigned int                       m_nId;
+    //PC::CBuddyInfo		               m_UserInfo;
     PC::CBuddyList		               m_BuddyList;
     std::map<int, PC::CBuddyInfo*>         m_mapAllUsers;
 };

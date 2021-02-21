@@ -48,7 +48,8 @@ Q_SIGNALS:
     void sigLogindStatus(UserLoginStatus, QString);
     void sigFileStatus(int, QString);
     void sigStatus(int, QString);
-    void sigChatMessageComming(const net::CBuddyMessagePtr&);
+  //  void sigChatMessageComming(const net::CBuddyMessagePtr&);
+    void sigChatMessageComming(net::CBuddyMessagePtr);
 
 private:
     CFlamingoClientCenter(const CFlamingoClientCenter&) = delete;

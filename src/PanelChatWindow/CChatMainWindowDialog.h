@@ -24,7 +24,7 @@ class PANELCHATWINDOW_EXPORT CChatMainWindowDialog : public QDialog, public util
 public:
     explicit CChatMainWindowDialog(QWidget *parent = nullptr);
 
-    void addBuddyChatWindow(const UC::CUserDataInfo& user);
+    void addBuddyChatWindow(const UC::CUserDataInfoPtr& user);
 
 public Q_SLOTS:
     void slotClose();

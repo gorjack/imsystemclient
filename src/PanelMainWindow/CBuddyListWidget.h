@@ -2,6 +2,7 @@
 #include <QtWidgets/QListWidget>
 #include <User/CUserBusinessCenter.h>
 #include <QtWidgets/QLineEdit>
+#include <PanelChatWindow/UserDataInfo.h>
 
 class CChatMainWindowDialog;
 class CBuddyListWidget : public QListWidget 
@@ -14,6 +15,10 @@ public:
     void initMenu(); 
 
     void updateUi(const PC::CBuddyList& pData);
+
+Q_SIGNALS:
+    void sigAddChatUser(const UC::CUserDataInfoPtr&);
+
 public slots:
     void slotAddGroup();  
     void slotDelGroup();  
@@ -32,7 +37,7 @@ private:
     QMap<QListWidgetItem*, bool>                     m_isHideMap;
     QLineEdit                                       *m_pGroupNameEdit = NULL;
     QListWidgetItem                                 *m_pCurrentItem = NULL;
-    CChatMainWindowDialog                           *m_pChatWindow = NULL;
+   // CChatMainWindowDialog                           *m_pChatWindow = NULL;
     QMenu                                           *m_pBlankMenu = NULL;
     QMenu                                           *m_pGroupMenu = NULL;
     QMenu                                           *m_pPersonMenu;

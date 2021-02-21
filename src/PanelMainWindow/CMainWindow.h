@@ -1,14 +1,18 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
-#include "./GeneratedFiles/ui_MainWindow.h"
 #include <QtWidgets/QSystemTrayIcon>
+#include "./GeneratedFiles/ui_MainWindow.h"
 #include <ProtocolData/rpc_structs.h>
+#include <PanelChatWindow/UserDataInfo.h>
+
 using namespace net;
 
 
 class CQueryForAddDialog;
 class CBuddyListWidget;
 class QLabel;
+class QCustomFloatWidget;
+class CChatMainWindowDialog;
 namespace QF
 {
     class CPushButton;
@@ -22,17 +26,16 @@ public:
     void createUi();
     void onOperateFriends(const std::string& req);            //处理好友请求(加 删 请求添加等)
 
-Q_SIGNALS:
-    void sigTestMsg(const net::CBuddyMessagePtr&);
+
 protected Q_SLOTS:
     void slotEmitAddFirend();
     void slotRefreshFriendList();
     void slotDoRefreshFriendList();
-    void slotHandleCacheChatMsg(const net::CBuddyMessagePtr&);
+    void slotHandleCacheChatMsg(net::CBuddyMessagePtr);
 
 protected:
     void resizeEvent(QResizeEvent *e);
-
+    bool eventFilter(QObject *obj, QEvent *event);
 
 Q_SIGNALS:
     void sigOnAddFirendCB(const std::string&);
@@ -40,7 +43,7 @@ Q_SIGNALS:
 protected Q_SLOTS:
     void slotOnAddFirendCB(const std::string&);
     void slotIconActivated(QSystemTrayIcon::ActivationReason reason);
-    void slotTestMsg(const net::CBuddyMessagePtr&);
+    void slotAddChatUser(const UC::CUserDataInfoPtr&);
 
 private:
     Ui::MainWindow ui;
@@ -59,5 +62,10 @@ private:
     CQueryForAddDialog            *m_pAddFriendDialog = NULL;
     CBuddyListWidget              *m_pBuddyListWidget = NULL;
     QSystemTrayIcon               *m_pSystemIcon = NULL;
+    QCustomFloatWidget            *m_pFloatMsgWidget = NULL;
+    QString                        m_strCurrentSystemIcon = NULL;
     std::list<std::string>         m_strCacheMsg;
+
+    CChatMainWindowDialog          *m_pChatWindow = NULL;
+    net::CBuddyMessagePtr           m_pUserMessageData;
 };

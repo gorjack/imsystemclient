@@ -24,19 +24,19 @@ CChatMainWindowDialog::CChatMainWindowDialog(QWidget *parent /*= nullptr*/)
     connect(m_pUserDataList, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotShowCurrentWindow(QListWidgetItem*)));
 }
 
-void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
+void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfoPtr& user)
 {
-    if (m_setId.contains(user.m_nTargetId))
+    if (m_setId.contains(user->m_nTargetId))
     {
         return;
     }
     CChatMessageWindowWidget* pBuddy = new CChatMessageWindowWidget(this);
-    pBuddy->setTargetId(user.m_nTargetId);
+    pBuddy->setTargetId(user->m_nTargetId);
     m_pStackWidget->addWidget(pBuddy);
 
     CUserDataWidgetItem* pUser = new CUserDataWidgetItem(this);
     connect(pUser, SIGNAL(sigClose()), this, SLOT(slotClose()));
-    pUser->setMessageText(QString::fromStdString(user.m_strName));
+    pUser->setMessageText(QString::fromStdString(user->m_strName));
     pUser->setHeadIcon(":/QQChatMessage/Resources/right.png");
 
     QListWidgetItem *pItem = new QListWidgetItem(m_pUserDataList);
@@ -44,9 +44,13 @@ void CChatMainWindowDialog::addBuddyChatWindow(const UC::CUserDataInfo& user)
     m_pUserDataList->setItemWidget(pItem, pUser);
     m_pUserDataList->setCurrentRow(m_pUserDataList->count() - 1);
 
+    if (user->m_pMessageData != NULL)
+    {
+        pBuddy->slotHandleChatMsg(user->m_pMessageData);
+    }
     m_mapIndex2BuddyWindow.insert(pItem, pBuddy);
-    m_mapId2BuddyWindow[user.m_nTargetId] = pBuddy;
-    m_setId.insert(user.m_nTargetId);
+    m_mapId2BuddyWindow[user->m_nTargetId] = pBuddy;
+    m_setId.insert(user->m_nTargetId);
 }
 
 void CChatMainWindowDialog::handleAllTypeMessage(const net::CBuddyMessagePtr& pData)

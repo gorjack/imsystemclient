@@ -24,6 +24,9 @@
     <ClCompile Include="CAutoKeyboardWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QCustomFloatWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CLineEdit.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="CPushButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QCustomFloatWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

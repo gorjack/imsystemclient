@@ -217,23 +217,27 @@ void CBuddyListWidget::slotRefreshBuddyList()
 
 void CBuddyListWidget::slotShowTalkWindow(QListWidgetItem* item)
 {
-    if (NULL == m_pChatWindow)
-    {
-        m_pChatWindow = new CChatMainWindowDialog(this);
-    }
+    //if (NULL == m_pChatWindow)
+    //{
+    //    m_pChatWindow = new CChatMainWindowDialog(this);
+    //}
 
     CBuddyItem *buddy = dynamic_cast<CBuddyItem *>(itemWidget(item));
     if (NULL != buddy)
     {
-        UC::CUserDataInfo user;
-        user.m_strName = buddy->m_pName->text().toStdString();
-        user.m_strSign = buddy->m_pSign->text().toStdString();
-        user.m_nTargetId = buddy->m_nId;
-        if (NULL != buddy)
-        {
-            m_pChatWindow->addBuddyChatWindow(user);
-        }
+        UC::CUserDataInfoPtr user(new UC::CUserDataInfo);
+        user->m_strName = buddy->m_pName->text().toStdString();
+        user->m_strSign = buddy->m_pSign->text().toStdString();
+        user->m_nTargetId = buddy->m_nId;
 
-        m_pChatWindow->show();
+        emit sigAddChatUser(user);
+        //if (NULL != buddy)
+        //{
+        //    m_pChatWindow->addBuddyChatWindow(user);
+        //}
+
+        //m_pChatWindow->show();
     }
+
+
 }

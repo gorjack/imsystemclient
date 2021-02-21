@@ -83,7 +83,7 @@ void CFlamingoClientCenter::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 0: _t->sigLogindStatus((*reinterpret_cast< UserLoginStatus(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 1: _t->sigFileStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 2: _t->sigStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 3: _t->sigChatMessageComming((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
+        case 3: _t->sigChatMessageComming((*reinterpret_cast< net::CBuddyMessagePtr(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -111,7 +111,7 @@ void CFlamingoClientCenter::qt_static_metacall(QObject *_o, QMetaObject::Call _c
             }
         }
         {
-            typedef void (CFlamingoClientCenter::*_t)(const net::CBuddyMessagePtr & );
+            typedef void (CFlamingoClientCenter::*_t)(net::CBuddyMessagePtr );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CFlamingoClientCenter::sigChatMessageComming)) {
                 *result = 3;
                 return;
@@ -180,7 +180,7 @@ void CFlamingoClientCenter::sigStatus(int _t1, QString _t2)
 }
 
 // SIGNAL 3
-void CFlamingoClientCenter::sigChatMessageComming(const net::CBuddyMessagePtr & _t1)
+void CFlamingoClientCenter::sigChatMessageComming(net::CBuddyMessagePtr _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);

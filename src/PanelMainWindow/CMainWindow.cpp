@@ -11,6 +11,8 @@
 #include <CConfirmAddFriendDG.h>
 #include <UiResources/CUiResource.h>
 #include <PanelChatWindow/UserDataInfo.h>
+#include <PanelBaseWidget/QCustomFloatWidget.h>
+#include <PanelChatWindow/CChatMainWindowDialog.h>
 
 //#ifdef WIN32  
 //#pragma execution_character_set("utf-8")  
@@ -31,15 +33,14 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     createUi();
     this->setWindowIcon(QIcon(*TT_PIXMAP("imonline")));
 
-    m_pSystemIcon = new QSystemTrayIcon(this);
+    m_pSystemIcon = new QSystemTrayIcon(parent);
     m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("imonline")));
+    m_strCurrentSystemIcon = "imonline";
+    m_pSystemIcon->installEventFilter(this);
     m_pSystemIcon->show();
     connect(m_pSystemIcon, &QSystemTrayIcon::activated, this, &CMainWindow::slotIconActivated);
-    bool s = connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(const net::CBuddyMessagePtr&)),
-        this, SLOT(slotHandleCacheChatMsg(const CBuddyMessagePtr&)));
-
-    bool sr = connect(this, SIGNAL(sigTestMsg(const net::CBuddyMessagePtr&)),
-        this, SLOT(slotTestMsg(const net::CBuddyMessagePtr&)));
+    connect(CFlamingoClientCenter::instance(), SIGNAL(sigChatMessageComming(net::CBuddyMessagePtr)),
+        this, SLOT(slotHandleCacheChatMsg(net::CBuddyMessagePtr)));
 
     resize(430, 835);
 
@@ -48,6 +49,14 @@ CMainWindow::CMainWindow(QWidget *parent /*= Q_NULLPTR*/)
     connect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(slotRefreshFriendList()));
     connect(this, SIGNAL(sigOnAddFirendCB(const std::string&)), this, SLOT(slotOnAddFirendCB(const std::string&)));
 
+    m_pFloatMsgWidget = new QCustomFloatWidget(NULL);
+    m_pFloatMsgWidget->hide();
+
+    connect(m_pFloatMsgWidget, SIGNAL(sigAddChatUser(const UC::CUserDataInfoPtr&)), 
+        this, SLOT(slotAddChatUser(const UC::CUserDataInfoPtr&)));
+
+    m_pChatWindow = new CChatMainWindowDialog(this);
+    m_pChatWindow->hide();
     slotRefreshFriendList();
 }
 
@@ -68,6 +77,7 @@ void CMainWindow::createUi()
     m_pHeadPhotoBtn->setFixedSize(70, 70);
     m_pHeadPhotoBtn->setImageKey("head1.png");
     m_pHeadPhotoBtn->setMask(QRegion(0, 0, 70, 70, QRegion::Ellipse));
+    m_pHeadPhotoBtn->installEventFilter(this);
 
     m_pUserInfoName = new QLabel(this);
     m_pUserInfoSign = new QLabel(this);
@@ -88,6 +98,8 @@ void CMainWindow::createUi()
     m_pGroupsBtn->setText("群组");
 
     m_pBuddyListWidget = new CBuddyListWidget(this);
+    connect(m_pBuddyListWidget, SIGNAL(sigAddChatUser(const UC::CUserDataInfoPtr&)),
+        this, SLOT(slotAddChatUser(const UC::CUserDataInfoPtr&)));
 }
 
 void CMainWindow::slotEmitAddFirend()
@@ -114,26 +126,37 @@ void CMainWindow::slotDoRefreshFriendList()
     CUserManager::instance()->queryFirendList();
 }
 
-void CMainWindow::slotHandleCacheChatMsg(const CBuddyMessagePtr& pData)
+
+void CMainWindow::slotHandleCacheChatMsg(net::CBuddyMessagePtr pData)
 {
     m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("msg_16")));
-    //{
-    //    PC::CBuddyInfo* pUser = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
-    //    if (NULL == pUser)
-    //    {
-    //        if (NULL == m_pChatWindow)
-    //        {
-    //            m_pChatWindow = new CChatMainWindowDialog(this);
-    //        }
+    m_strCurrentSystemIcon = "msg_16";
+    m_pUserMessageData = pData;
 
-    //        UC::CUserDataInfo user;
-    //        user.m_strName = pUser->m_strNickName;
-    //        user.m_strSign = pUser->m_strSign;
-    //        user.m_nTargetId = pUser->m_uUserID;
+    UC::CUserDataInfoPtr user(new UC::CUserDataInfo);
 
-    //        m_pChatWindow->addBuddyChatWindow(user);
-    //    }
-    //}
+    PC::CBuddyInfo* pInfo = CUserManager::instance()->getBuddyInfoById(pData->m_nSendId);
+    if (NULL != pInfo)
+    {
+        user->m_strName = pInfo->m_strNickName;
+        user->m_strSign = pInfo->m_strMarkName;
+    }
+
+    user->m_nTargetId = pData->m_nSendId;
+    user->m_pMessageData = pData;
+    m_pFloatMsgWidget->addData(user);
+
+
+    //int nx = m_pSystemIcon->geometry().x();
+    //int ny = m_pSystemIcon->geometry().y() - m_pFloatMsgWidget->height() - 40;
+
+    //m_pFloatMsgWidget->move(nx, ny);
+    {
+        int nx = m_pSystemIcon->geometry().x();
+        int ny = m_pSystemIcon->geometry().y() - m_pFloatMsgWidget->height();
+
+        m_pFloatMsgWidget->setGeometry(nx, ny, m_pFloatMsgWidget->width(), m_pFloatMsgWidget->height());
+    }
 }
 
 void CMainWindow::resizeEvent(QResizeEvent *e)
@@ -151,6 +174,24 @@ void CMainWindow::resizeEvent(QResizeEvent *e)
     m_pGroupsBtn->setGeometry(m_pContackPersionBtn->x() + m_pContackPersionBtn->width(), 135, sz.width() - m_pMessageListBtn->width()*2, 40);
 
     m_pBuddyListWidget->setGeometry(0, 175, sz.width(), sz.height() - ui.statusbar->height() - 175);
+
+}
+
+bool CMainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    QSystemTrayIcon* pTemp = qobject_cast<QSystemTrayIcon*>(obj);
+    if (pTemp == m_pSystemIcon)
+    {
+        if (event->type() == QEvent::MouseMove) {
+
+            return true;
+        }
+        else {
+            // standard event processing
+            return QObject::eventFilter(obj, event);
+        }
+    }
+    return QObject::eventFilter(obj, event);
 
 }
 
@@ -225,6 +266,14 @@ void CMainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
     case QSystemTrayIcon::Trigger:
     {
         //鼠标左键
+        if (m_strCurrentSystemIcon == "msg_16")
+        {
+            m_pSystemIcon->setIcon(QIcon(*TT_PIXMAP("imonline")));
+            m_strCurrentSystemIcon = "imonline";
+
+            m_pFloatMsgWidget->raise();
+            m_pFloatMsgWidget->show();
+        }
 
         break;
     }
@@ -233,7 +282,12 @@ void CMainWindow::slotIconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void CMainWindow::slotTestMsg(const net::CBuddyMessagePtr&)
+void CMainWindow::slotAddChatUser(const UC::CUserDataInfoPtr& user)
 {
+    m_pChatWindow->addBuddyChatWindow(user);
 
+    if (!m_pChatWindow->isVisible())
+    {
+        m_pChatWindow->show();
+    }
 }

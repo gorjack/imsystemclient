@@ -106,6 +106,16 @@ PC::CBuddyInfo* CUserManager::getBuddyInfoById(int nId)
     return NULL;
 }
 
+void CUserManager::setUserId(unsigned int id)
+{
+    m_nId = id;
+}
+
+unsigned int CUserManager::getUserId()
+{
+    return m_nId;
+}
+
 void CUserManager::ClearUserInfo()
 {
     long nMemberCount = 0;

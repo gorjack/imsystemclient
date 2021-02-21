@@ -540,7 +540,9 @@ namespace net
             strChatContent.erase(n, 1);
         }
 
-        std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,") % time(NULL));
+        std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,") % time(NULL) % m_nSendId % m_nTargetId);
+       // std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid:\"%d,") % time(NULL) % m_nSendId % m_nTargetId);
+
         strContent += strFont;
 
         strContent += R"("content":[)";
@@ -574,8 +576,8 @@ namespace net
             return false;
         }
 
-        m_nTargetId = targetid;
-        m_nSendId = senderId;
+        //m_nTargetId = targetid;
+        //m_nSendId = senderId;
 
         const char* lpData = strMsg.data();
         unsigned dwSize = strMsg.length();
@@ -594,8 +596,19 @@ namespace net
 
         if (JsonRoot["msgType"].isNull() || !JsonRoot["msgType"].isInt())
             return false;
+        if (!JsonRoot["targetid"].isNull())
+        {
+            if (!JsonRoot["targetid"].isInt())
+            {
+                return false;
+            }
+        }
+        if (JsonRoot["sendid"].isNull() || !JsonRoot["sendid"].isInt())
+            return false;
 
         m_nMsgType = (CONTENT_TYPE)JsonRoot["msgType"].asInt();
+        m_nTargetId = JsonRoot["targetid"].asInt();
+        m_nSendId = JsonRoot["sendid"].asInt();
 
         if (JsonRoot["time"].isNull())
             return false;

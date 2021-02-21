@@ -248,6 +248,7 @@ void CFlamingoClientCenter::onHandleLogin(const std::string &data)
     m_pLoginRespPtr = (new net::CLoginResult());
     m_pLoginRespPtr->decodePackage(data);
 
+    CUserManager::instance()->setUserId(m_pLoginRespPtr->m_uAccountID);
     long nLoginResultCode = m_pLoginRespPtr->m_LoginResultCode;
     switch (nLoginResultCode)
     {
