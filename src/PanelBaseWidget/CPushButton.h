@@ -9,8 +9,9 @@
 #include <QtWidgets/QPushButton>
 #include <QPixmap>
 #include <QMap>
+#include <UiEvent/CEventDeliverer.h>
 
-namespace QF
+namespace PC
 {
     enum ButtonStatus
     {
@@ -19,26 +20,7 @@ namespace QF
         TPS_DOWN,
     };
 
-    enum EventId
-    {
-        EVENT_PUSHBUTTON_CLICK,
-    };
-
-    class PANELBASEWIDGET_EXPORT EventDeliver
-    {
-    public:
-        EventDeliver(EventDeliver* parent);
-
-    protected:
-        void deliverEvent(int nEventId, int nSendId);
-        virtual bool handleEvent(int nEventId, int nSendId);
-
-        EventDeliver *m_pParent = NULL;
-    };
-
-    PANELBASEWIDGET_EXPORT EventDeliver *castEventDeliverer(QWidget *pWidget);
-
-    class PANELBASEWIDGET_EXPORT CPushButton : public QPushButton, public EventDeliver
+    class PANELBASEWIDGET_EXPORT CPushButton : public QPushButton, public CEventDeliverer
     {
         Q_OBJECT
     public:
@@ -60,15 +42,13 @@ namespace QF
         void mousePressEvent(QMouseEvent *e);
         void paintEvent(QPaintEvent *e);
 
+        void enterEvent(QEvent *e);
+        void leaveEvent(QEvent *e);
+        void mouseReleaseEvent(QMouseEvent *e);
+
         int          m_nId;
         QString      m_strImage;
         QPixmap      m_pixmap;
-
-        //---
-        void enterEvent(QEvent *e);
-        void leaveEvent(QEvent *e);
-        //void mousePressEvent(QMouseEvent *e);
-        void mouseReleaseEvent(QMouseEvent *e);
 
         ButtonStatus                m_eTatus = TPS_NORMAL;
         QMap<int, QPixmap>          m_str2Image;

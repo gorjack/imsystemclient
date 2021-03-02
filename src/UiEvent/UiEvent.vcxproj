@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{87BC245F-7A53-4663-B509-A433D1DCB633}</ProjectGuid>
+    <ProjectGuid>{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -84,7 +84,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;PANELBASEWIDGET_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;UIUIEVENT_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(solutionDir);$(solutionDir)Qtflamingo;.\GeneratedFiles;.;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QT5DIR)\include\QtCore;$(QT5DIR)\include\QtGui;$(QT5DIR)\include\QtANGLE;$(SolutionDir)src;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)src\QtFlamingo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -102,7 +102,7 @@
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;PANELBASEWIDGET_LIB;_WINDLL;_UNICODE</Define>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;UIUIEVENT_LIB;%(PreprocessorDefinitions)</Define>
       <IncludePath>$(BOOST_ROOT158)\.;$(solutionDir)\.;$(solutionDir)Qtflamingo;.\GeneratedFiles;.;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QT5DIR)\include\QtCore;$(QT5DIR)\include\QtGui;$(QT5DIR)\include\QtANGLE;$(SolutionDir)src;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)src\QtFlamingo</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -140,7 +140,7 @@
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;PANELBASEWIDGET_LIB;_WINDLL;_UNICODE</Define>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;PANELBASEWIDGET_LIB;%(PreprocessorDefinitions)</Define>
       <IncludePath>$(BOOST_ROOT158)\.;$(solutionDir)\.;$(solutionDir)Qtflamingo;.\GeneratedFiles;.;$(QT5DIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QT5DIR)\include\QtCore;$(QT5DIR)\include\QtGui;$(QT5DIR)\include\QtANGLE;$(SolutionDir)src;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)src\QtFlamingo</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -174,7 +174,7 @@
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;PANELMAINWINDOW_LIB;_WINDLL</Define>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;PANELMAINWINDOW_LIB;%(PreprocessorDefinitions)</Define>
       <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QT5DIR)\include\QtCore;$(QT5DIR)\include\QtGui;$(QT5DIR)\include\QtANGLE</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -206,7 +206,7 @@
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;PANELMAINWINDOW_LIB;_WINDLL</Define>
+      <Define>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;PANELMAINWINDOW_LIB;%(PreprocessorDefinitions)</Define>
       <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QT5DIR)\include\QtCore;$(QT5DIR)\include\QtGui;$(QT5DIR)\include\QtANGLE</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -221,58 +221,12 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\utils\utils.vcxproj">
-      <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Env\Env.vcxproj">
-      <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\PanelChatWindow\PanelChatWindow.vcxproj">
-      <Project>{890d9586-2816-44cb-8e0f-cfd6a8de335e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\User\User.vcxproj">
-      <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>
-    </ProjectReference>
+    <ClInclude Include="CEventDeliverer.h" />
+    <ClInclude Include="CEventWidgetT.h" />
+    <ClInclude Include="eventDef.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="CLineEdit.h" />
-    <QtMoc Include="CAutoKeyboardLineEdit.h" />
-    <QtMoc Include="CAutoKeyboardOperator.h" />
-    <QtMoc Include="CAutoKeyboardWidget.h" />
-    <QtMoc Include="CPushButton.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="basetable\CBaseTableHeader.cpp">
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">input</DynamicSource>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">input</DynamicSource>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\%(Filename).moc</OutputFile>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
-    </ClCompile>
-    <ClCompile Include="basetable\CBaseTableHeaderCell.cpp" />
-    <ClCompile Include="basetable\IBaseTable.cpp" />
-    <ClCompile Include="basetable\IBaseTablePanel.cpp" />
-    <ClCompile Include="CAutoKeyboardLineEdit.cpp" />
-    <ClCompile Include="CAutoKeyboardOperator.cpp" />
-    <ClCompile Include="CAutoKeyboardWidget.cpp" />
-    <ClCompile Include="CLineEdit.cpp" />
-    <ClCompile Include="CPushButton.cpp" />
-    <ClCompile Include="QCustomFloatWidget.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="QCustomFloatWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="basetable\CBaseTableHeaderCell.h" />
-    <ClInclude Include="basetable\IBaseTablePanel.h" />
-    <QtMoc Include="basetable\CBaseTableHeader.h" />
-    <ClInclude Include="basetable\IBaseTable.h" />
+    <ClCompile Include="CEventDeliverer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

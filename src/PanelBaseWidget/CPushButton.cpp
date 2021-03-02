@@ -5,39 +5,14 @@
 #include <Env/directory.h>
 #include <QPainter>
 #include <string>
+#include <UiEvent/eventDef.h>
 
-namespace QF
+
+namespace PC
 {
-    EventDeliver::EventDeliver(EventDeliver* parent)
-        : m_pParent(parent)
-    {
-
-    }
-
-    void EventDeliver::deliverEvent(int nEventId, int nSendId)
-    {
-        if (NULL != m_pParent)
-        {
-            if (!m_pParent->handleEvent(nEventId, nSendId))
-            {
-                m_pParent->deliverEvent(nEventId, nSendId);
-            }
-        }
-    }
-
-    bool EventDeliver::handleEvent(int nEventId, int nSendId)
-    {
-        return false;
-    }
-
-    EventDeliver * castEventDeliverer(QWidget *pWidget)
-    {
-        return dynamic_cast<EventDeliver *>(pWidget);
-    }
-
     CPushButton::CPushButton(int nId, QWidget* parent, QString strImage)
         : QPushButton(parent)
-        , EventDeliver(castEventDeliverer(parent))
+        , CEventDeliverer(castEventDeliverer(parent))
         , m_nId(nId)
         , m_strImage(strImage)
     {
@@ -45,7 +20,7 @@ namespace QF
 
     CPushButton::CPushButton(QWidget* parent /*= NULL*/)
         : QPushButton(parent)
-        , EventDeliver(castEventDeliverer(parent))
+        , CEventDeliverer(castEventDeliverer(parent))
     {
         connect(this, SIGNAL(clicked(bool)), SLOT(slotClicked(bool)));
     }
@@ -101,6 +76,7 @@ namespace QF
     void CPushButton::slotClicked(bool)
     {
         emit sigClicked(m_strMessage);
+        deliverEvent(EVT_PUSH_BUTTON_CLICKED, m_nId, m_eTatus, text(), this);
     }
 
     void CPushButton::paintEvent(QPaintEvent *ev)
@@ -145,7 +121,7 @@ namespace QF
             m_eTatus = TPS_DOWN;
         }
         QPushButton::mousePressEvent(e);
-        deliverEvent(EVENT_PUSHBUTTON_CLICK, m_nId);
+        deliverEvent(EVT_PUSH_BUTTON_MOUSEDOWN, m_nId);
     }
 
     void CPushButton::mouseReleaseEvent(QMouseEvent *e)

@@ -67,4 +67,10 @@
 #  define DLL_EXPORT_UIRESOURCE __declspec(dllimport)
 # endif
 
+# if defined(UIUIEVENT_LIB)
+#  define DLL_EXPORT_UIEVENT __declspec(dllexport)
+# else
+#  define DLL_EXPORT_UIEVENT __declspec(dllimport)
+# endif
+
 #endif

@@ -7,6 +7,12 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{3f5db6a7-a044-4872-ba48-92c7a648f475}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\basetable">
+      <UniqueIdentifier>{46139fdb-c4dd-47bc-9d7e-6c2415318a59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\basetable">
+      <UniqueIdentifier>{76629ffa-91de-4ae9-8fcb-87a419f41b4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPushButton.cpp">
@@ -26,6 +32,18 @@
     </ClCompile>
     <ClCompile Include="QCustomFloatWidget.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="basetable\IBaseTable.cpp">
+      <Filter>Source Files\basetable</Filter>
+    </ClCompile>
+    <ClCompile Include="basetable\CBaseTableHeader.cpp">
+      <Filter>Source Files\basetable</Filter>
+    </ClCompile>
+    <ClCompile Include="basetable\IBaseTablePanel.cpp">
+      <Filter>Source Files\basetable</Filter>
+    </ClCompile>
+    <ClCompile Include="basetable\CBaseTableHeaderCell.cpp">
+      <Filter>Source Files\basetable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,5 +65,19 @@
     <QtMoc Include="QCustomFloatWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="basetable\CBaseTableHeader.h">
+      <Filter>Header Files\basetable</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="basetable\IBaseTable.h">
+      <Filter>Header Files\basetable</Filter>
+    </ClInclude>
+    <ClInclude Include="basetable\IBaseTablePanel.h">
+      <Filter>Header Files\basetable</Filter>
+    </ClInclude>
+    <ClInclude Include="basetable\CBaseTableHeaderCell.h">
+      <Filter>Header Files\basetable</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

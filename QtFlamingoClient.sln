@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Env", "src\Env\Env.vcxproj"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiResources", "src\UiResources\UiResources.vcxproj", "{8E46D8E3-C6C0-48D7-AB6E-AB5C7B5D6CB6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiEvent", "src\UiEvent\UiEvent.vcxproj", "{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -149,6 +151,14 @@ Global
 		{8E46D8E3-C6C0-48D7-AB6E-AB5C7B5D6CB6}.Release|x64.Build.0 = Release|x64
 		{8E46D8E3-C6C0-48D7-AB6E-AB5C7B5D6CB6}.Release|x86.ActiveCfg = Release|Win32
 		{8E46D8E3-C6C0-48D7-AB6E-AB5C7B5D6CB6}.Release|x86.Build.0 = Release|Win32
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Debug|x64.ActiveCfg = Debug|x64
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Debug|x64.Build.0 = Debug|x64
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Debug|x86.ActiveCfg = Debug|Win32
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Debug|x86.Build.0 = Debug|Win32
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x64.ActiveCfg = Release|x64
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x64.Build.0 = Release|x64
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x86.ActiveCfg = Release|Win32
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,6 +176,7 @@ Global
 		{09413718-1AF7-49AC-A4FB-C188CB464959} = {86067C62-106A-4758-BA23-5D9D8765D955}
 		{87BC245F-7A53-4663-B509-A433D1DCB633} = {09413718-1AF7-49AC-A4FB-C188CB464959}
 		{8E46D8E3-C6C0-48D7-AB6E-AB5C7B5D6CB6} = {09413718-1AF7-49AC-A4FB-C188CB464959}
+		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE} = {09413718-1AF7-49AC-A4FB-C188CB464959}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBDD9380-14C8-48F2-B29F-0C006003A6CF}
