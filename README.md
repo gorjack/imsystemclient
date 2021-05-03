@@ -20,4 +20,10 @@
 - 托盘功能
 
 ## 效果展示
-![![![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124551_3d985855_7500763.png "t66.png")](https://images.gitee.com/uploads/images/2021/0503/124529_548e0b37_7500763.png "config.png")](https://images.gitee.com/uploads/images/2021/0503/124514_6b6c9df2_7500763.png "login.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124636_01387aca_7500763.png "login.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124652_322d14df_7500763.png "config.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124705_1d762572_7500763.png "34.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124716_a706f2f8_7500763.png "35.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124731_b0e4c26e_7500763.png "t66.png")
+
+如图所示还有好多bug，慢慢改吧。
