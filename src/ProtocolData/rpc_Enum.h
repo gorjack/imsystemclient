@@ -1,7 +1,3 @@
-/**
- * 聊天协议类型定义,Msg.h
- * zhangyl 2017.03.02
- **/
 #pragma once
 
 #include <stdint.h>
