@@ -18,3 +18,6 @@
 - 主界面功能模块
 - 添加好友 删除好友等
 - 托盘功能
+
+## 效果展示
+![![![输入图片说明](https://images.gitee.com/uploads/images/2021/0503/124551_3d985855_7500763.png "t66.png")](https://images.gitee.com/uploads/images/2021/0503/124529_548e0b37_7500763.png "config.png")](https://images.gitee.com/uploads/images/2021/0503/124514_6b6c9df2_7500763.png "login.png")
