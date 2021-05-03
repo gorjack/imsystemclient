@@ -6,18 +6,18 @@ import traceback
 import os
 import shutil
 import time
-import win32api
+#import win32api
 
 # 自定义库
-sys.path.append('../../../_xtPlatform/script/python/')
-sys.path.append('../../../libs/_xtPlatform/runtime/script/python/')
+#sys.path.append('../../../_xtPlatform/script/python/')
+#sys.path.append('../../../libs/_xtPlatform/runtime/script/python/')
 import BuildModule
 import Solution
 import Timer
 
 import xtCommon
 import Config
-import Packer
+import PackerPBConfigTools
 import Mail
 import Util
 import PackLog
@@ -122,11 +122,11 @@ def mainProc(config_file_name, lock_file_name):
         print '***********************开始打包***************************'
         print '*********************************************************'
         try:
-            win32api.SetConsoleTitle(conf.product_name_cn + ' ' + ' 正在生成……')
+            #win32api.SetConsoleTitle(conf.product_name_cn + ' ' + ' 正在生成……')
 
             # 调用NSIS生成安装包
             print '生成安装文件'
-            packer = Packer.Packer(conf)
+            packer = PackerPBConfigTools.Packer(conf)
             packer.packInstaller()
             
 

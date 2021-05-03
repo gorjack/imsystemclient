@@ -18,44 +18,45 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_CMainWindow_t {
+struct qt_meta_stringdata_PC__CMainWindow_t {
     QByteArrayData data[15];
-    char stringdata0[265];
+    char stringdata0[269];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_CMainWindow_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_PC__CMainWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_CMainWindow_t qt_meta_stringdata_CMainWindow = {
+static const qt_meta_stringdata_PC__CMainWindow_t qt_meta_stringdata_PC__CMainWindow = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "CMainWindow"
-QT_MOC_LITERAL(1, 12, 16), // "sigOnAddFirendCB"
-QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 11), // "std::string"
-QT_MOC_LITERAL(4, 42, 17), // "slotEmitAddFirend"
-QT_MOC_LITERAL(5, 60, 21), // "slotRefreshFriendList"
-QT_MOC_LITERAL(6, 82, 23), // "slotDoRefreshFriendList"
-QT_MOC_LITERAL(7, 106, 22), // "slotHandleCacheChatMsg"
-QT_MOC_LITERAL(8, 129, 21), // "net::CBuddyMessagePtr"
-QT_MOC_LITERAL(9, 151, 17), // "slotOnAddFirendCB"
-QT_MOC_LITERAL(10, 169, 17), // "slotIconActivated"
-QT_MOC_LITERAL(11, 187, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(12, 221, 6), // "reason"
-QT_MOC_LITERAL(13, 228, 15), // "slotAddChatUser"
-QT_MOC_LITERAL(14, 244, 20) // "UC::CUserDataInfoPtr"
+QT_MOC_LITERAL(0, 0, 15), // "PC::CMainWindow"
+QT_MOC_LITERAL(1, 16, 16), // "sigOnAddFirendCB"
+QT_MOC_LITERAL(2, 33, 0), // ""
+QT_MOC_LITERAL(3, 34, 11), // "std::string"
+QT_MOC_LITERAL(4, 46, 17), // "slotEmitAddFirend"
+QT_MOC_LITERAL(5, 64, 21), // "slotRefreshFriendList"
+QT_MOC_LITERAL(6, 86, 23), // "slotDoRefreshFriendList"
+QT_MOC_LITERAL(7, 110, 22), // "slotHandleCacheChatMsg"
+QT_MOC_LITERAL(8, 133, 21), // "net::CBuddyMessagePtr"
+QT_MOC_LITERAL(9, 155, 17), // "slotOnAddFirendCB"
+QT_MOC_LITERAL(10, 173, 17), // "slotIconActivated"
+QT_MOC_LITERAL(11, 191, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(12, 225, 6), // "reason"
+QT_MOC_LITERAL(13, 232, 15), // "slotAddChatUser"
+QT_MOC_LITERAL(14, 248, 20) // "UC::CUserDataInfoPtr"
 
     },
-    "CMainWindow\0sigOnAddFirendCB\0\0std::string\0"
-    "slotEmitAddFirend\0slotRefreshFriendList\0"
-    "slotDoRefreshFriendList\0slotHandleCacheChatMsg\0"
-    "net::CBuddyMessagePtr\0slotOnAddFirendCB\0"
-    "slotIconActivated\0QSystemTrayIcon::ActivationReason\0"
+    "PC::CMainWindow\0sigOnAddFirendCB\0\0"
+    "std::string\0slotEmitAddFirend\0"
+    "slotRefreshFriendList\0slotDoRefreshFriendList\0"
+    "slotHandleCacheChatMsg\0net::CBuddyMessagePtr\0"
+    "slotOnAddFirendCB\0slotIconActivated\0"
+    "QSystemTrayIcon::ActivationReason\0"
     "reason\0slotAddChatUser\0UC::CUserDataInfoPtr"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_CMainWindow[] = {
+static const uint qt_meta_data_PC__CMainWindow[] = {
 
  // content:
        7,       // revision
@@ -95,7 +96,7 @@ static const uint qt_meta_data_CMainWindow[] = {
        0        // eod
 };
 
-void CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PC::CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
@@ -125,26 +126,26 @@ void CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     }
 }
 
-const QMetaObject CMainWindow::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_CMainWindow.data,
-      qt_meta_data_CMainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject PC::CMainWindow::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_PC__CMainWindow.data,
+      qt_meta_data_PC__CMainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *CMainWindow::metaObject() const
+const QMetaObject *PC::CMainWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *CMainWindow::qt_metacast(const char *_clname)
+void *PC::CMainWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_CMainWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_PC__CMainWindow.stringdata0))
         return static_cast<void*>(const_cast< CMainWindow*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int CMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PC::CMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -162,7 +163,7 @@ int CMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CMainWindow::sigOnAddFirendCB(const std::string & _t1)
+void PC::CMainWindow::sigOnAddFirendCB(const std::string & _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

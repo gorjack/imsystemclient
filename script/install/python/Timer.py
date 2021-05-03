@@ -3,7 +3,7 @@
 import time
 import threading
 import traceback
-import win32api
+#import win32api
 
 class Timer(threading.Thread):
     
@@ -25,7 +25,7 @@ class Timer(threading.Thread):
                 self.secs = (int)(elapsed_time % 60)
                 if self.__bSetTitle:
                     new_title = self.__name + '£º(ÒÑºÄÊ±£º' + str(self.mins) + '·Ö' + str(self.secs) + 'Ãë)'
-                    win32api.SetConsoleTitle(new_title)
+                    #win32api.SetConsoleTitle(new_title)
                 time.sleep(self.__interval)
         except:
             traceback.print_exc()

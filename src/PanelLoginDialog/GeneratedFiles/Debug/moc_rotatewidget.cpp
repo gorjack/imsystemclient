@@ -18,31 +18,31 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_RotateWidget_t {
+struct qt_meta_stringdata_PC__RotateWidget_t {
     QByteArrayData data[6];
-    char stringdata0[70];
+    char stringdata0[74];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_RotateWidget_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_PC__RotateWidget_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_RotateWidget_t qt_meta_stringdata_RotateWidget = {
+static const qt_meta_stringdata_PC__RotateWidget_t qt_meta_stringdata_PC__RotateWidget = {
     {
-QT_MOC_LITERAL(0, 0, 12), // "RotateWidget"
-QT_MOC_LITERAL(1, 13, 14), // "onRotateWindow"
-QT_MOC_LITERAL(2, 28, 0), // ""
-QT_MOC_LITERAL(3, 29, 16), // "onRotateFinished"
-QT_MOC_LITERAL(4, 46, 12), // "onHideWindow"
-QT_MOC_LITERAL(5, 59, 10) // "releaseObj"
+QT_MOC_LITERAL(0, 0, 16), // "PC::RotateWidget"
+QT_MOC_LITERAL(1, 17, 14), // "onRotateWindow"
+QT_MOC_LITERAL(2, 32, 0), // ""
+QT_MOC_LITERAL(3, 33, 16), // "onRotateFinished"
+QT_MOC_LITERAL(4, 50, 12), // "onHideWindow"
+QT_MOC_LITERAL(5, 63, 10) // "releaseObj"
 
     },
-    "RotateWidget\0onRotateWindow\0\0"
+    "PC::RotateWidget\0onRotateWindow\0\0"
     "onRotateFinished\0onHideWindow\0releaseObj"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_RotateWidget[] = {
+static const uint qt_meta_data_PC__RotateWidget[] = {
 
  // content:
        7,       // revision
@@ -70,7 +70,7 @@ static const uint qt_meta_data_RotateWidget[] = {
        0        // eod
 };
 
-void RotateWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PC::RotateWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
@@ -87,26 +87,26 @@ void RotateWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     Q_UNUSED(_a);
 }
 
-const QMetaObject RotateWidget::staticMetaObject = {
-    { &QStackedWidget::staticMetaObject, qt_meta_stringdata_RotateWidget.data,
-      qt_meta_data_RotateWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject PC::RotateWidget::staticMetaObject = {
+    { &QStackedWidget::staticMetaObject, qt_meta_stringdata_PC__RotateWidget.data,
+      qt_meta_data_PC__RotateWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *RotateWidget::metaObject() const
+const QMetaObject *PC::RotateWidget::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *RotateWidget::qt_metacast(const char *_clname)
+void *PC::RotateWidget::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_RotateWidget.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_PC__RotateWidget.stringdata0))
         return static_cast<void*>(const_cast< RotateWidget*>(this));
     return QStackedWidget::qt_metacast(_clname);
 }
 
-int RotateWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PC::RotateWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QStackedWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

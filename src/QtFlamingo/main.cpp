@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
     CFlamingoClientCenter::instance()->init(g_pEventLoop);
     initResources();
 
-    RotateWidget *pLoginD = new RotateWidget(NULL);
+    PC::RotateWidget *pLoginD = new PC::RotateWidget(NULL);
     pLoginD->show();
 
     int nRet = a.exec();

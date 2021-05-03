@@ -18,41 +18,41 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_LoginWindow_t {
+struct qt_meta_stringdata_PC__LoginWindow_t {
     QByteArrayData data[21];
-    char stringdata0[236];
+    char stringdata0[240];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_LoginWindow_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_PC__LoginWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_LoginWindow_t qt_meta_stringdata_LoginWindow = {
+static const qt_meta_stringdata_PC__LoginWindow_t qt_meta_stringdata_PC__LoginWindow = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "LoginWindow"
-QT_MOC_LITERAL(1, 12, 12), // "rotateWindow"
-QT_MOC_LITERAL(2, 25, 0), // ""
-QT_MOC_LITERAL(3, 26, 11), // "closeWindow"
-QT_MOC_LITERAL(4, 38, 10), // "hideWindow"
-QT_MOC_LITERAL(5, 49, 19), // "onLoginStateClicked"
-QT_MOC_LITERAL(6, 69, 13), // "onMenuClicked"
-QT_MOC_LITERAL(7, 83, 8), // "QAction*"
-QT_MOC_LITERAL(8, 92, 6), // "action"
-QT_MOC_LITERAL(9, 99, 17), // "onShowAccountInfo"
-QT_MOC_LITERAL(10, 117, 5), // "index"
-QT_MOC_LITERAL(11, 123, 11), // "accountName"
-QT_MOC_LITERAL(12, 135, 12), // "onNetWorkSet"
-QT_MOC_LITERAL(13, 148, 15), // "onRemoveAccount"
-QT_MOC_LITERAL(14, 164, 14), // "onLoginsStatus"
-QT_MOC_LITERAL(15, 179, 15), // "UserLoginStatus"
-QT_MOC_LITERAL(16, 195, 6), // "status"
-QT_MOC_LITERAL(17, 202, 3), // "msg"
-QT_MOC_LITERAL(18, 206, 7), // "onLogin"
-QT_MOC_LITERAL(19, 214, 8), // "onRegist"
-QT_MOC_LITERAL(20, 223, 12) // "slot_timeout"
+QT_MOC_LITERAL(0, 0, 15), // "PC::LoginWindow"
+QT_MOC_LITERAL(1, 16, 12), // "rotateWindow"
+QT_MOC_LITERAL(2, 29, 0), // ""
+QT_MOC_LITERAL(3, 30, 11), // "closeWindow"
+QT_MOC_LITERAL(4, 42, 10), // "hideWindow"
+QT_MOC_LITERAL(5, 53, 19), // "onLoginStateClicked"
+QT_MOC_LITERAL(6, 73, 13), // "onMenuClicked"
+QT_MOC_LITERAL(7, 87, 8), // "QAction*"
+QT_MOC_LITERAL(8, 96, 6), // "action"
+QT_MOC_LITERAL(9, 103, 17), // "onShowAccountInfo"
+QT_MOC_LITERAL(10, 121, 5), // "index"
+QT_MOC_LITERAL(11, 127, 11), // "accountName"
+QT_MOC_LITERAL(12, 139, 12), // "onNetWorkSet"
+QT_MOC_LITERAL(13, 152, 15), // "onRemoveAccount"
+QT_MOC_LITERAL(14, 168, 14), // "onLoginsStatus"
+QT_MOC_LITERAL(15, 183, 15), // "UserLoginStatus"
+QT_MOC_LITERAL(16, 199, 6), // "status"
+QT_MOC_LITERAL(17, 206, 3), // "msg"
+QT_MOC_LITERAL(18, 210, 7), // "onLogin"
+QT_MOC_LITERAL(19, 218, 8), // "onRegist"
+QT_MOC_LITERAL(20, 227, 12) // "slot_timeout"
 
     },
-    "LoginWindow\0rotateWindow\0\0closeWindow\0"
+    "PC::LoginWindow\0rotateWindow\0\0closeWindow\0"
     "hideWindow\0onLoginStateClicked\0"
     "onMenuClicked\0QAction*\0action\0"
     "onShowAccountInfo\0index\0accountName\0"
@@ -62,7 +62,7 @@ QT_MOC_LITERAL(20, 223, 12) // "slot_timeout"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_LoginWindow[] = {
+static const uint qt_meta_data_PC__LoginWindow[] = {
 
  // content:
        7,       // revision
@@ -110,7 +110,7 @@ static const uint qt_meta_data_LoginWindow[] = {
        0        // eod
 };
 
-void LoginWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PC::LoginWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
@@ -158,26 +158,26 @@ void LoginWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     }
 }
 
-const QMetaObject LoginWindow::staticMetaObject = {
-    { &BaseWindow::staticMetaObject, qt_meta_stringdata_LoginWindow.data,
-      qt_meta_data_LoginWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject PC::LoginWindow::staticMetaObject = {
+    { &BaseWindow::staticMetaObject, qt_meta_stringdata_PC__LoginWindow.data,
+      qt_meta_data_PC__LoginWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *LoginWindow::metaObject() const
+const QMetaObject *PC::LoginWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *LoginWindow::qt_metacast(const char *_clname)
+void *PC::LoginWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_LoginWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_PC__LoginWindow.stringdata0))
         return static_cast<void*>(const_cast< LoginWindow*>(this));
     return BaseWindow::qt_metacast(_clname);
 }
 
-int LoginWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PC::LoginWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = BaseWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -195,19 +195,19 @@ int LoginWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void LoginWindow::rotateWindow()
+void PC::LoginWindow::rotateWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 
 // SIGNAL 1
-void LoginWindow::closeWindow()
+void PC::LoginWindow::closeWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
 }
 
 // SIGNAL 2
-void LoginWindow::hideWindow()
+void PC::LoginWindow::hideWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
 }

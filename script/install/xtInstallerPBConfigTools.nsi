@@ -228,18 +228,30 @@ Section "MainSection" SEC01
 
     SetOutPath "$INSTDIR\${BIN_DIR_APP}"
     SetOverwrite on
-    File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\PBConfigTools.exe"
-    File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\libeay32.dll"
-	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\libmySQL.dll"
-	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\libprotobufd.dll"
-	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\log4cxx.dll"
+    File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\QtFlamingo.exe"
+    File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Env.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\jsoncpp.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\NetLib.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\PanelBaseWidget.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\PanelChatWindow.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\PanelLoginDialog.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\PanelMainWindow.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\ProtocolData.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\UiResources.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\User.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\utils.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\winlog.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\zlib.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\UiEvent.dll"
+	;运行库
 	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Cored.dll"
 	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Guid.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Multimediad.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5MultimediaQuick_pd.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5MultimediaWidgetsd.dll"
+	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Networkd.dll"
 	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Widgetsd.dll"
 	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\Qt5Xmld.dll"
-	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\utils.dll"
-	File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\vcruntime140.dll"
-	
 	
     ;platforms
     SetOutPath "$INSTDIR\${BIN_DIR_APP}\platforms"
@@ -248,10 +260,20 @@ Section "MainSection" SEC01
     File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\platforms\qoffscreend.dll"
     File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\platforms\qwindowsd.dll"
 	
+    ;platforms
+    SetOutPath "$INSTDIR\resource"
+    SetOverwrite on
+    File "..\..\_runtime\resource\*.*"
+	
+    ;imageformats
+    SetOutPath "$INSTDIR\${BIN_DIR_APP}\imageformats"
+    SetOverwrite on
+    File "..\..\_runtime\${PLATFORM_NAME}.${CONFIGURATION_NAME}\imageformats\qgifd.dll"
+	
 	;configs
     SetOutPath "$INSTDIR\config"
     SetOverwrite on
-    File "..\..\_runtime\config\platforms.cfg"
+    File "..\..\_runtime\config\addressconf.json"
 
 	
     ;设置权限

@@ -1,11 +1,4 @@
-﻿/**
- *  定义父子控件之间简单的消息传递机制
- *
- *  @author zhangyi
- *  @since  2012-03-19
- */
-
-#ifndef XP_UIBASE_UIEVENT_CEVENTDELIVERER_H
+﻿#ifndef XP_UIBASE_UIEVENT_CEVENTDELIVERER_H
 #define XP_UIBASE_UIEVENT_CEVENTDELIVERER_H
 #include <QString>
 #include <QtWidgets/QtWidgets>

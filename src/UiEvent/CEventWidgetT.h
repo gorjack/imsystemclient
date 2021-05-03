@@ -1,11 +1,4 @@
-﻿/**
- *  event widget模板
- *
- *  @author zhangyi
- *  @since  2012-06-14
- */
-
-#ifndef XP_UIBASE_UIEVENT_CEVENTWIDGETT_H
+﻿#ifndef XP_UIBASE_UIEVENT_CEVENTWIDGETT_H
 #define XP_UIBASE_UIEVENT_CEVENTWIDGETT_H
 
 #include <UiBase/UiEvent/CEventDeliverer.h>

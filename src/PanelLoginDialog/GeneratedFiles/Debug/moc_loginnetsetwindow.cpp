@@ -18,36 +18,36 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_LoginNetSetWindow_t {
+struct qt_meta_stringdata_PC__LoginNetSetWindow_t {
     QByteArrayData data[9];
-    char stringdata0[134];
+    char stringdata0[138];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_LoginNetSetWindow_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_PC__LoginNetSetWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_LoginNetSetWindow_t qt_meta_stringdata_LoginNetSetWindow = {
+static const qt_meta_stringdata_PC__LoginNetSetWindow_t qt_meta_stringdata_PC__LoginNetSetWindow = {
     {
-QT_MOC_LITERAL(0, 0, 17), // "LoginNetSetWindow"
-QT_MOC_LITERAL(1, 18, 12), // "rotateWindow"
-QT_MOC_LITERAL(2, 31, 0), // ""
-QT_MOC_LITERAL(3, 32, 11), // "closeWindow"
-QT_MOC_LITERAL(4, 44, 10), // "hideWindow"
-QT_MOC_LITERAL(5, 55, 8), // "slotOnOk"
-QT_MOC_LITERAL(6, 64, 22), // "on_chatTestBtn_clicked"
-QT_MOC_LITERAL(7, 87, 23), // "on_imageTestBtn_clicked"
-QT_MOC_LITERAL(8, 111, 22) // "on_fileTestBtn_clicked"
+QT_MOC_LITERAL(0, 0, 21), // "PC::LoginNetSetWindow"
+QT_MOC_LITERAL(1, 22, 12), // "rotateWindow"
+QT_MOC_LITERAL(2, 35, 0), // ""
+QT_MOC_LITERAL(3, 36, 11), // "closeWindow"
+QT_MOC_LITERAL(4, 48, 10), // "hideWindow"
+QT_MOC_LITERAL(5, 59, 8), // "slotOnOk"
+QT_MOC_LITERAL(6, 68, 22), // "on_chatTestBtn_clicked"
+QT_MOC_LITERAL(7, 91, 23), // "on_imageTestBtn_clicked"
+QT_MOC_LITERAL(8, 115, 22) // "on_fileTestBtn_clicked"
 
     },
-    "LoginNetSetWindow\0rotateWindow\0\0"
+    "PC::LoginNetSetWindow\0rotateWindow\0\0"
     "closeWindow\0hideWindow\0slotOnOk\0"
     "on_chatTestBtn_clicked\0on_imageTestBtn_clicked\0"
     "on_fileTestBtn_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_LoginNetSetWindow[] = {
+static const uint qt_meta_data_PC__LoginNetSetWindow[] = {
 
  // content:
        7,       // revision
@@ -85,7 +85,7 @@ static const uint qt_meta_data_LoginNetSetWindow[] = {
        0        // eod
 };
 
-void LoginNetSetWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PC::LoginNetSetWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
@@ -129,26 +129,26 @@ void LoginNetSetWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     Q_UNUSED(_a);
 }
 
-const QMetaObject LoginNetSetWindow::staticMetaObject = {
-    { &BaseWindow::staticMetaObject, qt_meta_stringdata_LoginNetSetWindow.data,
-      qt_meta_data_LoginNetSetWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject PC::LoginNetSetWindow::staticMetaObject = {
+    { &BaseWindow::staticMetaObject, qt_meta_stringdata_PC__LoginNetSetWindow.data,
+      qt_meta_data_PC__LoginNetSetWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *LoginNetSetWindow::metaObject() const
+const QMetaObject *PC::LoginNetSetWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *LoginNetSetWindow::qt_metacast(const char *_clname)
+void *PC::LoginNetSetWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_LoginNetSetWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_PC__LoginNetSetWindow.stringdata0))
         return static_cast<void*>(const_cast< LoginNetSetWindow*>(this));
     return BaseWindow::qt_metacast(_clname);
 }
 
-int LoginNetSetWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PC::LoginNetSetWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = BaseWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -166,19 +166,19 @@ int LoginNetSetWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void LoginNetSetWindow::rotateWindow()
+void PC::LoginNetSetWindow::rotateWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 
 // SIGNAL 1
-void LoginNetSetWindow::closeWindow()
+void PC::LoginNetSetWindow::closeWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
 }
 
 // SIGNAL 2
-void LoginNetSetWindow::hideWindow()
+void PC::LoginNetSetWindow::hideWindow()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
 }

@@ -26,66 +26,69 @@ typedef enum
 }LoginState;
 
 class CRegistDialog;
-class CMainWindow;
-class LoginWindow : public BaseWindow
+
+namespace PC
 {
-	Q_OBJECT
+    class CMainWindow;
+    class LoginWindow : public BaseWindow
+    {
+        Q_OBJECT
 
-public:
-	LoginWindow(QWidget *parent = 0);
-	~LoginWindow();
+    public:
+        LoginWindow(QWidget *parent = 0);
+        ~LoginWindow();
 
-signals:
-	void rotateWindow();
-	void closeWindow();
-	void hideWindow();
+    signals:
+        void rotateWindow();
+        void closeWindow();
+        void hideWindow();
 
-private:
-	void initMyTitle();
-	void initWindow();
-	void initAccountList();
-    QString userFile(QString qsUserName) const;
+    private:
+        void initMyTitle();
+        void initWindow();
+        void initAccountList();
+        QString userFile(QString qsUserName) const;
 
-    void loadUsers();
-    void loadUser(QString qsUserName);
-    void saveUser(const QString& strUser);
+        void loadUsers();
+        void loadUser(QString qsUserName);
+        void saveUser(const QString& strUser);
 
-	void mousePressEvent(QMouseEvent *event);
-	void mouseMoveEvent(QMouseEvent *event);
-	void mouseReleaseEvent(QMouseEvent *event);
-	void closeEvent(QCloseEvent *event);
-	
+        void mousePressEvent(QMouseEvent *event);
+        void mouseMoveEvent(QMouseEvent *event);
+        void mouseReleaseEvent(QMouseEvent *event);
+        void closeEvent(QCloseEvent *event);
 
-private slots:
-	void onLoginStateClicked();
-	void onMenuClicked(QAction * action);
-	void onShowAccountInfo(int index, QString accountName);
-	void onNetWorkSet();
-	void onRemoveAccount(int index);
 
-    void onLoginsStatus(UserLoginStatus status, QString msg);
-    void onLogin();
-    void onRegist();
-    void slot_timeout();
-private:
-	Ui::LoginWindow           *ui;
-	QPushButton               *m_keyboardButton = NULL;
-	QMenu                     *m_loginStateMemu = NULL;
-	QListWidget               *m_Accountlist;
+    private slots:
+        void onLoginStateClicked();
+        void onMenuClicked(QAction * action);
+        void onShowAccountInfo(int index, QString accountName);
+        void onNetWorkSet();
+        void onRemoveAccount(int index);
 
-	// ·­×ª;
-	QGraphicsScene             m_scene;
-    QGraphicsView              m_view;
-	QGraphicsWidget           *m_graphicsWidget = NULL;
+        void onLoginsStatus(UserLoginStatus status, QString msg);
+        void onLogin();
+        void onRegist();
+        void slot_timeout();
+    private:
+        Ui::LoginWindow           *ui;
+        QPushButton               *m_keyboardButton = NULL;
+        QMenu                     *m_loginStateMemu = NULL;
+        QListWidget               *m_Accountlist;
 
-	bool                       m_isPressed;
-	QPoint                     m_startMovePos;
+        // ·­×ª;
+        QGraphicsScene             m_scene;
+        QGraphicsView              m_view;
+        QGraphicsWidget           *m_graphicsWidget = NULL;
 
-    CRegistDialog             *m_pRegistDialog = NULL;
-    CMainWindow               *m_pMainWindow = NULL;
-    QTimer                    *m_timer = NULL;
-    LoginState                 m_loginState;
-    int                        m_remainSecond = 3;
-};
+        bool                       m_isPressed;
+        QPoint                     m_startMovePos;
 
+        CRegistDialog             *m_pRegistDialog = NULL;
+        CMainWindow               *m_pMainWindow = NULL;
+        QTimer                    *m_timer = NULL;
+        LoginState                 m_loginState;
+        int                        m_remainSecond = 3;
+    };
+}
 #endif // LoginWindow_H

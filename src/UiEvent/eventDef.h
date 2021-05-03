@@ -1,11 +1,4 @@
-﻿/**
- *  定义消息
- *
- *  @author zhangyi
- *  @since  2011-03-19
- */
-
-#ifndef XP_UIBASE_UIEVENT_EVENTDEF_H
+﻿#ifndef XP_UIBASE_UIEVENT_EVENTDEF_H
 #define XP_UIBASE_UIEVENT_EVENTDEF_H
 
 namespace PC

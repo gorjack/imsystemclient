@@ -48,21 +48,11 @@ class Config:
 
         conf_id = self.conf_parser.get('Version', 'id')
         conf_name = self.conf_parser.get('Version', 'name')
-        db_conf = DBConfig()
-        db_conf.db_host = self.conf_parser.get('MySQL', 'host')
-        db_conf.db_port = int(self.conf_parser.get('MySQL', 'port'))
-        db_conf.db_user = self.conf_parser.get('MySQL', 'user')
-        db_conf.db_pass = self.conf_parser.get('MySQL', 'pass')
-        db_conf.db_name = self.conf_parser.get('MySQL', 'db')
-        self.rc_conf = RCVersioner.RCVersionConf()
-        success, self.rc_conf.ver_major, self.rc_conf.ver_minor, self.rc_conf.ver_revision, self.rc_conf.ver_build = self.getVersion(conf_id, conf_name, db_conf)
-        if not success :
-            raise Exception('无法读取版本信息。')
-            return
 
-       # self.rc_conf.exe_name = self.conf_parser.get('Product', 'xt_exe_name')
-        self.rc_conf.product_name_cn = self.product_name_cn
-        self.version = '%d.%d.%d.%04d' % (self.rc_conf.ver_major, self.rc_conf.ver_minor, self.rc_conf.ver_revision, self.rc_conf.ver_build)
+        #self.rc_conf.exe_name = self.conf_parser.get('Product', 'xt_exe_name')
+        #self.rc_conf.product_name_cn = self.product_name_cn
+        #self.version = '%d.%d.%d.%04d' % (self.rc_conf.ver_major, self.rc_conf.ver_minor, self.rc_conf.ver_revision, self.rc_conf.ver_build)
+        self.version = "0.0.0.0"
         print '当前版本号：' + self.version
         self.out_tag = self.conf_parser.get('Product', 'output_file_tag')
         self.output_dir = self.conf_parser.get('Path', 'output_dir')
