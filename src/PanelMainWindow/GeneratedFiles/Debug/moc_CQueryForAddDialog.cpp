@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CQueryForAddDialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../CQueryForAddDialog.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CQueryForAddDialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.6.2. It"
+#error "This file was generated using the moc from 5.15.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CQueryForAddDialog_t {
     QByteArrayData data[7];
     char stringdata0[119];
@@ -47,7 +50,7 @@ QT_MOC_LITERAL(6, 101, 17) // "slotOnAddFirendCB"
 static const uint qt_meta_data_CQueryForAddDialog[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -81,9 +84,8 @@ static const uint qt_meta_data_CQueryForAddDialog[] = {
 void CQueryForAddDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        CQueryForAddDialog *_t = static_cast<CQueryForAddDialog *>(_o);
-        Q_UNUSED(_t)
+        auto *_t = static_cast<CQueryForAddDialog *>(_o);
+        (void)_t;
         switch (_id) {
         case 0: _t->sigOnFindFirendCallBack(); break;
         case 1: _t->sigOnAddFirendCB(); break;
@@ -94,29 +96,32 @@ void CQueryForAddDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (CQueryForAddDialog::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CQueryForAddDialog::sigOnFindFirendCallBack)) {
+            using _t = void (CQueryForAddDialog::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CQueryForAddDialog::sigOnFindFirendCallBack)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (CQueryForAddDialog::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CQueryForAddDialog::sigOnAddFirendCB)) {
+            using _t = void (CQueryForAddDialog::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CQueryForAddDialog::sigOnAddFirendCB)) {
                 *result = 1;
                 return;
             }
         }
     }
-    Q_UNUSED(_a);
+    (void)_a;
 }
 
-const QMetaObject CQueryForAddDialog::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_CQueryForAddDialog.data,
-      qt_meta_data_CQueryForAddDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject CQueryForAddDialog::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_meta_stringdata_CQueryForAddDialog.data,
+    qt_meta_data_CQueryForAddDialog,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *CQueryForAddDialog::metaObject() const
@@ -126,9 +131,9 @@ const QMetaObject *CQueryForAddDialog::metaObject() const
 
 void *CQueryForAddDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CQueryForAddDialog.stringdata0))
-        return static_cast<void*>(const_cast< CQueryForAddDialog*>(this));
+        return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
@@ -152,12 +157,13 @@ int CQueryForAddDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void CQueryForAddDialog::sigOnFindFirendCallBack()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
 void CQueryForAddDialog::sigOnAddFirendCB()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

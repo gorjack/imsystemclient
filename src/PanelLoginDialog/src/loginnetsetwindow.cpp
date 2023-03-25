@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <Env/CConfig.h>
 #include <User/CFlamingoClientCenter.h>
+#include <QPainterPath>
 
 namespace PC
 {

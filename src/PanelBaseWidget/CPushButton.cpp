@@ -49,7 +49,7 @@ namespace PC
 
     void CPushButton::init(const QStringList& strList)
     {
-        std::string& strPath = QF::getRootDir().toStdString();
+        const std::string& strPath = QF::getRootDir().toStdString();
         std::string strFileName;
 
         for (int i = 0; i < strList.size(); ++i)

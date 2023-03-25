@@ -9,7 +9,6 @@
 #include <winlog/IULog.h>
 #include <utils/strings.h>
 #include <sstream>
-#include <sstream>
 
 namespace net
 {

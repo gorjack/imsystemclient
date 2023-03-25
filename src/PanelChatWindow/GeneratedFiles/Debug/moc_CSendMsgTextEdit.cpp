@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CSendMsgTextEdit.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../CSendMsgTextEdit.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CSendMsgTextEdit.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.6.2. It"
+#error "This file was generated using the moc from 5.15.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CSendMsgTextEdit_t {
     QByteArrayData data[7];
     char stringdata0[97];
@@ -47,7 +50,7 @@ QT_MOC_LITERAL(6, 76, 20) // "slotOnHandleSendFile"
 static const uint qt_meta_data_CSendMsgTextEdit[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -81,9 +84,8 @@ static const uint qt_meta_data_CSendMsgTextEdit[] = {
 void CSendMsgTextEdit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        CSendMsgTextEdit *_t = static_cast<CSendMsgTextEdit *>(_o);
-        Q_UNUSED(_t)
+        auto *_t = static_cast<CSendMsgTextEdit *>(_o);
+        (void)_t;
         switch (_id) {
         case 0: _t->sigSendMsg((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->sigShowRightWidget(); break;
@@ -94,24 +96,23 @@ void CSendMsgTextEdit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (CSendMsgTextEdit::*_t)(QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CSendMsgTextEdit::sigSendMsg)) {
+            using _t = void (CSendMsgTextEdit::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CSendMsgTextEdit::sigSendMsg)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (CSendMsgTextEdit::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CSendMsgTextEdit::sigShowRightWidget)) {
+            using _t = void (CSendMsgTextEdit::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CSendMsgTextEdit::sigShowRightWidget)) {
                 *result = 1;
                 return;
             }
         }
         {
-            typedef void (CSendMsgTextEdit::*_t)(const QString & );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CSendMsgTextEdit::sigSendFile)) {
+            using _t = void (CSendMsgTextEdit::*)(const QString & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CSendMsgTextEdit::sigSendFile)) {
                 *result = 2;
                 return;
             }
@@ -119,10 +120,14 @@ void CSendMsgTextEdit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     }
 }
 
-const QMetaObject CSendMsgTextEdit::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_CSendMsgTextEdit.data,
-      qt_meta_data_CSendMsgTextEdit,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject CSendMsgTextEdit::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_CSendMsgTextEdit.data,
+    qt_meta_data_CSendMsgTextEdit,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *CSendMsgTextEdit::metaObject() const
@@ -132,9 +137,9 @@ const QMetaObject *CSendMsgTextEdit::metaObject() const
 
 void *CSendMsgTextEdit::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CSendMsgTextEdit.stringdata0))
-        return static_cast<void*>(const_cast< CSendMsgTextEdit*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -158,20 +163,21 @@ int CSendMsgTextEdit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void CSendMsgTextEdit::sigSendMsg(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void CSendMsgTextEdit::sigShowRightWidget()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
 void CSendMsgTextEdit::sigSendFile(const QString & _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

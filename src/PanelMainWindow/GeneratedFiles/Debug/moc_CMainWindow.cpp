@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CMainWindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../CMainWindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CMainWindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.6.2. It"
+#error "This file was generated using the moc from 5.15.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PC__CMainWindow_t {
     QByteArrayData data[15];
     char stringdata0[269];
@@ -59,7 +62,7 @@ QT_MOC_LITERAL(14, 248, 20) // "UC::CUserDataInfoPtr"
 static const uint qt_meta_data_PC__CMainWindow[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        8,   14, // methods
@@ -99,9 +102,8 @@ static const uint qt_meta_data_PC__CMainWindow[] = {
 void PC::CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        CMainWindow *_t = static_cast<CMainWindow *>(_o);
-        Q_UNUSED(_t)
+        auto *_t = static_cast<CMainWindow *>(_o);
+        (void)_t;
         switch (_id) {
         case 0: _t->sigOnAddFirendCB((*reinterpret_cast< const std::string(*)>(_a[1]))); break;
         case 1: _t->slotEmitAddFirend(); break;
@@ -115,10 +117,9 @@ void PC::CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (CMainWindow::*_t)(const std::string & );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CMainWindow::sigOnAddFirendCB)) {
+            using _t = void (CMainWindow::*)(const std::string & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CMainWindow::sigOnAddFirendCB)) {
                 *result = 0;
                 return;
             }
@@ -126,10 +127,14 @@ void PC::CMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     }
 }
 
-const QMetaObject PC::CMainWindow::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_PC__CMainWindow.data,
-      qt_meta_data_PC__CMainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject PC::CMainWindow::staticMetaObject = { {
+    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    qt_meta_stringdata_PC__CMainWindow.data,
+    qt_meta_data_PC__CMainWindow,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *PC::CMainWindow::metaObject() const
@@ -139,9 +144,9 @@ const QMetaObject *PC::CMainWindow::metaObject() const
 
 void *PC::CMainWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_PC__CMainWindow.stringdata0))
-        return static_cast<void*>(const_cast< CMainWindow*>(this));
+        return static_cast<void*>(this);
     return QMainWindow::qt_metacast(_clname);
 }
 
@@ -165,7 +170,8 @@ int PC::CMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void PC::CMainWindow::sigOnAddFirendCB(const std::string & _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

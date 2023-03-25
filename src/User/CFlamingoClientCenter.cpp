@@ -484,24 +484,24 @@ void CFlamingoClientCenter::onConnectFile(const net::TcpConnectionPtr& pData)
         using namespace protocol;
         using namespace utils;
         //文件md5值
-        int64_t nFileSize;
+        int64_t nFileSize = 0;
         char szMd5[64] = { 0 };
         //const wchar_t* pszFileName = strFileName.toStdWString().c_str();   //直接这么写就不行 得像下面那样拆开才可以
         std::wstring ss = m_strFileName.toStdWString();
         const wchar_t* ssw = ss.c_str();
-        long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
-        if (nRetCode == utils::GET_FILE_MD5_FAILED)
-        {
-            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%1 as unable to get file md5.").arg(m_strFileName), m_strFileName, 0);
-        }
-        else if (nRetCode == GET_FILE_MD5_USERCANCEL)
-        {
-            //gaojie: 用户取消传输该走怎样的逻辑
-        }
-        if (nFileSize == 0)
-        {
-            m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%s as file size is 0.").arg(m_strFileName), m_strFileName, 0);
-        }
+        //long nRetCode = utils::GetFileMd5ValueA(ssw, szMd5, ARRAYSIZE(szMd5), nFileSize);
+        //if (nRetCode == utils::GET_FILE_MD5_FAILED)
+        //{
+        //    m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%1 as unable to get file md5.").arg(m_strFileName), m_strFileName, 0);
+        //}
+        //else if (nRetCode == GET_FILE_MD5_USERCANCEL)
+        //{
+        //    //gaojie: 用户取消传输该走怎样的逻辑
+        //}
+        //if (nFileSize == 0)
+        //{
+        //    m_sendFileCB(FILE_STATUS_ERROR, QString("Failed to upload file:%s as file size is 0.").arg(m_strFileName), m_strFileName, 0);
+        //}
 
         string content;
         unsigned eachSize = nFileSize > m_sendMaxFileSize ? m_sendMaxFileSize : nFileSize;

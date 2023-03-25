@@ -19,7 +19,7 @@ public:
 
     const QString& userName();
     void setUserName(const QString &strName);
-    void setNickName(const string &strName) { m_strNickName = strName; };
+    void setNickName(const string &strName);
     const string& nickName() { return m_strNickName; }
 
     void setPassWd(const QString& strPssWD);

@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QPainterPath>
 
 #define BUTTON_HEIGHT 30		// 按钮高度;
 #define BUTTON_WIDTH 30			// 按钮宽度;

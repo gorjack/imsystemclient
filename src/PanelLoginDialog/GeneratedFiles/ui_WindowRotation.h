@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'WindowRotation.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.2
+** Created by: Qt User Interface Compiler version 5.15.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,10 +10,7 @@
 #define UI_WINDOWROTATION_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,7 +22,7 @@ public:
     void setupUi(QWidget *WindowRotationClass)
     {
         if (WindowRotationClass->objectName().isEmpty())
-            WindowRotationClass->setObjectName(QStringLiteral("WindowRotationClass"));
+            WindowRotationClass->setObjectName(QString::fromUtf8("WindowRotationClass"));
         WindowRotationClass->resize(600, 400);
 
         retranslateUi(WindowRotationClass);
@@ -35,7 +32,7 @@ public:
 
     void retranslateUi(QWidget *WindowRotationClass)
     {
-        WindowRotationClass->setWindowTitle(QApplication::translate("WindowRotationClass", "WindowRotation", 0));
+        WindowRotationClass->setWindowTitle(QCoreApplication::translate("WindowRotationClass", "WindowRotation", nullptr));
     } // retranslateUi
 
 };

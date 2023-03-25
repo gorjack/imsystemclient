@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'loginwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.2
+** Created by: Qt User Interface Compiler version 5.15.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,13 +11,10 @@
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -44,13 +41,13 @@ public:
     void setupUi(QDialog *LoginWindow)
     {
         if (LoginWindow->objectName().isEmpty())
-            LoginWindow->setObjectName(QStringLiteral("LoginWindow"));
+            LoginWindow->setObjectName(QString::fromUtf8("LoginWindow"));
         LoginWindow->resize(430, 330);
         LoginWindow->setMinimumSize(QSize(430, 330));
         LoginWindow->setMaximumSize(QSize(430, 330));
         LoginWindow->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         accountComboBox = new QComboBox(LoginWindow);
-        accountComboBox->setObjectName(QStringLiteral("accountComboBox"));
+        accountComboBox->setObjectName(QString::fromUtf8("accountComboBox"));
         accountComboBox->setGeometry(QRect(130, 190, 190, 30));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -65,7 +62,7 @@ public:
         accountComboBox->setEditable(false);
         accountComboBox->setInsertPolicy(QComboBox::NoInsert);
         passwordEdit = new QLineEdit(LoginWindow);
-        passwordEdit->setObjectName(QStringLiteral("passwordEdit"));
+        passwordEdit->setObjectName(QString::fromUtf8("passwordEdit"));
         passwordEdit->setGeometry(QRect(130, 220, 190, 30));
         sizePolicy.setHeightForWidth(passwordEdit->sizePolicy().hasHeightForWidth());
         passwordEdit->setSizePolicy(sizePolicy);
@@ -74,43 +71,43 @@ public:
         passwordEdit->setContextMenuPolicy(Qt::DefaultContextMenu);
         passwordEdit->setEchoMode(QLineEdit::Password);
         rememberPsd = new QCheckBox(LoginWindow);
-        rememberPsd->setObjectName(QStringLiteral("rememberPsd"));
+        rememberPsd->setObjectName(QString::fromUtf8("rememberPsd"));
         rememberPsd->setGeometry(QRect(130, 258, 81, 16));
         autoLogin = new QCheckBox(LoginWindow);
-        autoLogin->setObjectName(QStringLiteral("autoLogin"));
+        autoLogin->setObjectName(QString::fromUtf8("autoLogin"));
         autoLogin->setGeometry(QRect(256, 258, 91, 16));
         loginButton = new QPushButton(LoginWindow);
-        loginButton->setObjectName(QStringLiteral("loginButton"));
+        loginButton->setObjectName(QString::fromUtf8("loginButton"));
         loginButton->setGeometry(QRect(130, 284, 194, 30));
         loginButton->setMinimumSize(QSize(194, 30));
         loginButton->setMaximumSize(QSize(194, 30));
         loginButton->setFocusPolicy(Qt::NoFocus);
         moreAccountLogin = new QPushButton(LoginWindow);
-        moreAccountLogin->setObjectName(QStringLiteral("moreAccountLogin"));
+        moreAccountLogin->setObjectName(QString::fromUtf8("moreAccountLogin"));
         moreAccountLogin->setGeometry(QRect(14, 300, 23, 19));
         moreAccountLogin->setMinimumSize(QSize(23, 19));
         moreAccountLogin->setMaximumSize(QSize(23, 19));
         loginState = new QPushButton(LoginWindow);
-        loginState->setObjectName(QStringLiteral("loginState"));
+        loginState->setObjectName(QString::fromUtf8("loginState"));
         loginState->setGeometry(QRect(105, 254, 17, 17));
         loginState->setMinimumSize(QSize(17, 17));
         loginState->setMaximumSize(QSize(17, 17));
         loginState->setIconSize(QSize(18, 18));
         pButtonRegistAccount = new QPushButton(LoginWindow);
-        pButtonRegistAccount->setObjectName(QStringLiteral("pButtonRegistAccount"));
+        pButtonRegistAccount->setObjectName(QString::fromUtf8("pButtonRegistAccount"));
         pButtonRegistAccount->setEnabled(true);
         pButtonRegistAccount->setGeometry(QRect(326, 193, 63, 23));
         pButtonRegistAccount->setAutoDefault(true);
         pButtonForgetPassword = new QPushButton(LoginWindow);
-        pButtonForgetPassword->setObjectName(QStringLiteral("pButtonForgetPassword"));
+        pButtonForgetPassword->setObjectName(QString::fromUtf8("pButtonForgetPassword"));
         pButtonForgetPassword->setGeometry(QRect(326, 220, 63, 23));
         userHead = new QLabel(LoginWindow);
-        userHead->setObjectName(QStringLiteral("userHead"));
+        userHead->setObjectName(QString::fromUtf8("userHead"));
         userHead->setGeometry(QRect(40, 190, 80, 80));
         userHead->setMinimumSize(QSize(80, 80));
         userHead->setMaximumSize(QSize(80, 80));
         pButtongFlicker = new QPushButton(LoginWindow);
-        pButtongFlicker->setObjectName(QStringLiteral("pButtongFlicker"));
+        pButtongFlicker->setObjectName(QString::fromUtf8("pButtongFlicker"));
         pButtongFlicker->setGeometry(QRect(395, 300, 22, 22));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
@@ -120,14 +117,14 @@ public:
         pButtongFlicker->setMinimumSize(QSize(22, 22));
         pButtongFlicker->setMaximumSize(QSize(22, 22));
         pButtonArrow = new QPushButton(LoginWindow);
-        pButtonArrow->setObjectName(QStringLiteral("pButtonArrow"));
+        pButtonArrow->setObjectName(QString::fromUtf8("pButtonArrow"));
         pButtonArrow->setGeometry(QRect(340, 0, 30, 30));
         sizePolicy1.setHeightForWidth(pButtonArrow->sizePolicy().hasHeightForWidth());
         pButtonArrow->setSizePolicy(sizePolicy1);
         pButtonArrow->setMinimumSize(QSize(30, 30));
         pButtonArrow->setMaximumSize(QSize(30, 30));
         backLabel = new QLabel(LoginWindow);
-        backLabel->setObjectName(QStringLiteral("backLabel"));
+        backLabel->setObjectName(QString::fromUtf8("backLabel"));
         backLabel->setGeometry(QRect(0, 0, 430, 180));
         userHead->raise();
         loginState->raise();
@@ -150,17 +147,17 @@ public:
 
     void retranslateUi(QDialog *LoginWindow)
     {
-        LoginWindow->setWindowTitle(QApplication::translate("LoginWindow", "Dialog", 0));
-#ifndef QT_NO_ACCESSIBILITY
-        accountComboBox->setAccessibleName(QApplication::translate("LoginWindow", "login_username", 0));
-#endif // QT_NO_ACCESSIBILITY
-        rememberPsd->setText(QApplication::translate("LoginWindow", "\350\256\260\344\275\217\345\257\206\347\240\201", 0));
-        autoLogin->setText(QApplication::translate("LoginWindow", "\350\207\252\345\212\250\347\231\273\345\275\225", 0));
-        loginButton->setText(QApplication::translate("LoginWindow", "\347\231\273  \345\275\225", 0));
+        LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "Dialog", nullptr));
+#if QT_CONFIG(accessibility)
+        accountComboBox->setAccessibleName(QCoreApplication::translate("LoginWindow", "login_username", nullptr));
+#endif // QT_CONFIG(accessibility)
+        rememberPsd->setText(QCoreApplication::translate("LoginWindow", "\350\256\260\344\275\217\345\257\206\347\240\201", nullptr));
+        autoLogin->setText(QCoreApplication::translate("LoginWindow", "\350\207\252\345\212\250\347\231\273\345\275\225", nullptr));
+        loginButton->setText(QCoreApplication::translate("LoginWindow", "\347\231\273  \345\275\225", nullptr));
         moreAccountLogin->setText(QString());
         loginState->setText(QString());
-        pButtonRegistAccount->setText(QApplication::translate("LoginWindow", "\346\263\250\345\206\214\345\270\220\345\217\267", 0));
-        pButtonForgetPassword->setText(QApplication::translate("LoginWindow", "\346\211\276\345\233\236\345\257\206\347\240\201", 0));
+        pButtonRegistAccount->setText(QCoreApplication::translate("LoginWindow", "\346\263\250\345\206\214\345\270\220\345\217\267", nullptr));
+        pButtonForgetPassword->setText(QCoreApplication::translate("LoginWindow", "\346\211\276\345\233\236\345\257\206\347\240\201", nullptr));
         userHead->setText(QString());
         pButtongFlicker->setText(QString());
         pButtonArrow->setText(QString());

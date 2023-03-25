@@ -1,6 +1,7 @@
 #include "CUserDataWidgetItem.h"
 #include <QPainter>
 #include <QResizeEvent>
+#include <QPainterPath>
 
 CUserDataWidgetItem::CUserDataWidgetItem(QWidget *parent /*= nullptr*/)
 {

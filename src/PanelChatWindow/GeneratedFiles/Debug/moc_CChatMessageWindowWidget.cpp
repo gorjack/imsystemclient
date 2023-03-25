@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CChatMessageWindowWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../CChatMessageWindowWidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CChatMessageWindowWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.6.2. It"
+#error "This file was generated using the moc from 5.15.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CChatMessageWindowWidget_t {
     QByteArrayData data[15];
     char stringdata0[217];
@@ -58,7 +61,7 @@ QT_MOC_LITERAL(14, 197, 19) // "slotShowRightWidget"
 static const uint qt_meta_data_CChatMessageWindowWidget[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        8,   14, // methods
@@ -98,9 +101,8 @@ static const uint qt_meta_data_CChatMessageWindowWidget[] = {
 void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        CChatMessageWindowWidget *_t = static_cast<CChatMessageWindowWidget *>(_o);
-        Q_UNUSED(_t)
+        auto *_t = static_cast<CChatMessageWindowWidget *>(_o);
+        (void)_t;
         switch (_id) {
         case 0: _t->sigHandleChatMsg((*reinterpret_cast< const net::CBuddyMessagePtr(*)>(_a[1]))); break;
         case 1: _t->sigSendFile((*reinterpret_cast< const FileTransferStatus(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const int(*)>(_a[4]))); break;
@@ -114,17 +116,16 @@ void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (CChatMessageWindowWidget::*_t)(const net::CBuddyMessagePtr & );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CChatMessageWindowWidget::sigHandleChatMsg)) {
+            using _t = void (CChatMessageWindowWidget::*)(const net::CBuddyMessagePtr & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CChatMessageWindowWidget::sigHandleChatMsg)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (CChatMessageWindowWidget::*_t)(const FileTransferStatus & , const QString & , const QString & , const int & );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&CChatMessageWindowWidget::sigSendFile)) {
+            using _t = void (CChatMessageWindowWidget::*)(const FileTransferStatus & , const QString & , const QString & , const int & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CChatMessageWindowWidget::sigSendFile)) {
                 *result = 1;
                 return;
             }
@@ -132,10 +133,14 @@ void CChatMessageWindowWidget::qt_static_metacall(QObject *_o, QMetaObject::Call
     }
 }
 
-const QMetaObject CChatMessageWindowWidget::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_CChatMessageWindowWidget.data,
-      qt_meta_data_CChatMessageWindowWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject CChatMessageWindowWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_CChatMessageWindowWidget.data,
+    qt_meta_data_CChatMessageWindowWidget,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *CChatMessageWindowWidget::metaObject() const
@@ -145,9 +150,9 @@ const QMetaObject *CChatMessageWindowWidget::metaObject() const
 
 void *CChatMessageWindowWidget::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CChatMessageWindowWidget.stringdata0))
-        return static_cast<void*>(const_cast< CChatMessageWindowWidget*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -171,14 +176,15 @@ int CChatMessageWindowWidget::qt_metacall(QMetaObject::Call _c, int _id, void **
 // SIGNAL 0
 void CChatMessageWindowWidget::sigHandleChatMsg(const net::CBuddyMessagePtr & _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void CChatMessageWindowWidget::sigSendFile(const FileTransferStatus & _t1, const QString & _t2, const QString & _t3, const int & _t4)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

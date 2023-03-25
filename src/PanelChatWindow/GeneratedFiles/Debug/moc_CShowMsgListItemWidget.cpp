@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CShowMsgListItemWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../CShowMsgListItemWidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CShowMsgListItemWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.6.2. It"
+#error "This file was generated using the moc from 5.15.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CShowMsgListItemWidget_t {
     QByteArrayData data[1];
     char stringdata0[23];
@@ -39,7 +42,7 @@ QT_MOC_LITERAL(0, 0, 22) // "CShowMsgListItemWidget"
 static const uint qt_meta_data_CShowMsgListItemWidget[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -54,16 +57,20 @@ static const uint qt_meta_data_CShowMsgListItemWidget[] = {
 
 void CShowMsgListItemWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    (void)_o;
+    (void)_id;
+    (void)_c;
+    (void)_a;
 }
 
-const QMetaObject CShowMsgListItemWidget::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_CShowMsgListItemWidget.data,
-      qt_meta_data_CShowMsgListItemWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject CShowMsgListItemWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_CShowMsgListItemWidget.data,
+    qt_meta_data_CShowMsgListItemWidget,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *CShowMsgListItemWidget::metaObject() const
@@ -73,17 +80,15 @@ const QMetaObject *CShowMsgListItemWidget::metaObject() const
 
 void *CShowMsgListItemWidget::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CShowMsgListItemWidget.stringdata0))
-        return static_cast<void*>(const_cast< CShowMsgListItemWidget*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
 int CShowMsgListItemWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
     return _id;
 }
 struct qt_meta_stringdata_CShowTransferFileItemWidget_t {
@@ -107,7 +112,7 @@ QT_MOC_LITERAL(0, 0, 27) // "CShowTransferFileItemWidget"
 static const uint qt_meta_data_CShowTransferFileItemWidget[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -122,16 +127,20 @@ static const uint qt_meta_data_CShowTransferFileItemWidget[] = {
 
 void CShowTransferFileItemWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    (void)_o;
+    (void)_id;
+    (void)_c;
+    (void)_a;
 }
 
-const QMetaObject CShowTransferFileItemWidget::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_CShowTransferFileItemWidget.data,
-      qt_meta_data_CShowTransferFileItemWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject CShowTransferFileItemWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_CShowTransferFileItemWidget.data,
+    qt_meta_data_CShowTransferFileItemWidget,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *CShowTransferFileItemWidget::metaObject() const
@@ -141,17 +150,16 @@ const QMetaObject *CShowTransferFileItemWidget::metaObject() const
 
 void *CShowTransferFileItemWidget::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CShowTransferFileItemWidget.stringdata0))
-        return static_cast<void*>(const_cast< CShowTransferFileItemWidget*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
 int CShowTransferFileItemWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
     return _id;
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

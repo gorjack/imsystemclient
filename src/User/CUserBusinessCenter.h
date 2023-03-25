@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #if /*defined(UNICODE) || defined(_UNICODE)*/false
 typedef std::wstring tstring;

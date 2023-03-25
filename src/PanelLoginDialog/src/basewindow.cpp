@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QStyleOption>
 #include <QGraphicsDropShadowEffect>
+#include <QPainterPath>
 
 BaseWindow::BaseWindow(QWidget *parent)
 	: QDialog(parent)

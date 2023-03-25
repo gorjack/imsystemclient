@@ -43,6 +43,11 @@ void CConfig::setUserName(const QString &strName)
     }
 }
 
+void CConfig::setNickName(const string& strName)
+{ 
+    m_strNickName = strName; 
+}
+
 void CConfig::setPassWd(const QString& strPssWD)
 {
     m_strPassWd = strPssWD;
