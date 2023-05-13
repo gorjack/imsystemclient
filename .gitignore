@@ -36,8 +36,10 @@
 _builder
 _builder/Win32.Debug/*
 _runtime/Win32.Debug
+_runtime/x64.Debug
 /_runtime/userdata/logs
 _runtime/userdata/users
+ src/PanelChatWindow/GeneratedFiles/qrc_QQChatMessage.cpp
 /libs
 /src/Env/x64/Debug
 /x64/Debug
