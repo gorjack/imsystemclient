@@ -1,6 +1,6 @@
 #include "skinwindow.h"
 #include "UserLogin.h"
-#include "ccmainwindow.h"
+#include "cmainwindow.h"
 
 UserLogin::UserLogin(QWidget *parent)
 	: BasicWindow(parent)
@@ -31,6 +31,6 @@ void UserLogin::initControl()
 void UserLogin::onLoginBtnClicked()
 {
 	close();
-	CCMainWindow* mainwindow = new CCMainWindow;
+	CMainWindow* mainwindow = new CMainWindow;
 	mainwindow->show();
 }

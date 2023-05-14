@@ -1,66 +1,66 @@
-/*×îÐ¡»¯°´Å¥*/
+/*ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Å¥*/
 QPushButton#ButtonMin
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/min.png) 0 81 0 0 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/min.png) 0 81 0 0 ;
 }
 
 QPushButton#ButtonMin:hover
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/min.png) 0 54 0 27 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/min.png) 0 54 0 27 ;
 }
 
 QPushButton#ButtonMin:pressed
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/min.png) 0 27 0 54 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/min.png) 0 27 0 54 ;
 }
 
-/*×î´ó»¯°´Å¥*/
+/*ï¿½ï¿½ó»¯°ï¿½Å¥*/
 QPushButton#ButtonMax
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/max.png) 0 81 0 0 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/max.png) 0 81 0 0 ;
 }
 
 QPushButton#ButtonMax:hover
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/max.png) 0 54 0 27 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/max.png) 0 54 0 27 ;
 }
 
 QPushButton#ButtonMax:pressed
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/max.png) 0 27 0 54 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/max.png) 0 27 0 54 ;
 }
 
-/*»¹Ô­°´Å¥*/
+/*ï¿½ï¿½Ô­ï¿½ï¿½Å¥*/
 QPushButton#ButtonRestore
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/restore.png) 0 81 0 0 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/restore.png) 0 81 0 0 ;
 }
 
 QPushButton#ButtonRestore:hover
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/restore.png) 0 54 0 27 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/restore.png) 0 54 0 27 ;
 }
 
 QPushButton#ButtonRestore:pressed
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/restore.png) 0 27 0 54 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/restore.png) 0 27 0 54 ;
 }
 
-/*¹Ø±Õ°´Å¥*/
+/*ï¿½Ø±Õ°ï¿½Å¥*/
 QPushButton#ButtonClose
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/close.png) 0 81 0 0 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/close.png) 0 81 0 0 ;
     border-top-right-radius:4 ;
 }
 
 QPushButton#ButtonClose:hover
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/close.png) 0 54 0 27 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/close.png) 0 54 0 27 ;
     border-top-right-radius:4 ;
 }
 
 QPushButton#ButtonClose:pressed
 {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/Title/close.png) 0 27 0 54 ;
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/Title/close.png) 0 27 0 54 ;
     border-top-right-radius:4 ;
 }

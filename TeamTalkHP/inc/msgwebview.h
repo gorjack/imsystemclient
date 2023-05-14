@@ -53,6 +53,7 @@ public:
 	void appendMsg(const QString& html);
 	void setShowSkinControl(QWidget* skinWidget);
 	QWidget* getTalkWindowSpliterButton() const;
+	void MsgWebView::runJavaScriptFinished(const QVariant& result);
 
 private slots:
 	void onUpdateDownArrowtimer();

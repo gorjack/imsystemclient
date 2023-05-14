@@ -1,4 +1,4 @@
-#include "ccmainwindow.h"
+#include "cmainwindow.h"
 #include "contactitem.h"
 #include "rootcontatitem.h"
 #include "skinwindow.h"
@@ -31,7 +31,7 @@ public:
 	}
 };
 
-CCMainWindow::CCMainWindow(QWidget *parent)
+CMainWindow::CMainWindow(QWidget *parent)
 	: BasicWindow(parent)
 {
 	ui.setupUi(this);
@@ -53,12 +53,12 @@ CCMainWindow::CCMainWindow(QWidget *parent)
     timer->start();
 }
 
-CCMainWindow::~CCMainWindow()
+CMainWindow::~CMainWindow()
 {
 
 }
 
-void CCMainWindow::initControl()
+void CMainWindow::initControl()
 {
 	ui.treeWidget->setStyle(new CustomProxyStyle);
 
@@ -101,27 +101,27 @@ void CCMainWindow::initControl()
 	SysTray* systray = new SysTray(this);
 }
 
-void CCMainWindow::updateSeachStyle()
+void CMainWindow::updateSeachStyle()
 {
 	ui.searchWidget->setStyleSheet(QString("QWidget#searchWidget {background-color:rgba(%1,%2,%3,50);border-bottom: 1px solid rgba(%1,%2,%3,30);}\
 								QPushButton#searchBtn {border-image:url(:/TeamTalkHP/Resources/MainWindow/search/search_icon.png);}").arg(m_colorBackGround.red()).arg(m_colorBackGround.green()).arg(m_colorBackGround.blue()));
 }
 
-void CCMainWindow::setHeadPixmap(const QString& headPath)
+void CMainWindow::setHeadPixmap(const QString& headPath)
 {
     QPixmap pix1;
     pix1.load(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
     ui.headLabel->setPixmap(getRoundImage(QPixmap(headPath), pix1, ui.headLabel->size()));
 }
 
-void CCMainWindow::setUserName(const QString& username)
+void CMainWindow::setUserName(const QString& username)
 {
 	ui.nameLabel->adjustSize();
 	QString name = ui.nameLabel->fontMetrics().elidedText(username, Qt::ElideRight, ui.nameLabel->width());
 	ui.nameLabel->setText(name);
 }
 
-void CCMainWindow::setStatusMenuIcon(const QString& statusPath)
+void CMainWindow::setStatusMenuIcon(const QString& statusPath)
 {
 	QPixmap statusBtnPixmap(ui.statusBtn->size());
 	statusBtnPixmap.fill(Qt::transparent);
@@ -132,7 +132,7 @@ void CCMainWindow::setStatusMenuIcon(const QString& statusPath)
 	ui.statusBtn->setIconSize(ui.statusBtn->size());
 }
 
-void CCMainWindow::setLevelPixmap(int level)
+void CMainWindow::setLevelPixmap(int level)
 {
 	QPixmap levelPixmap(ui.levelBtn->size());
 	levelPixmap.fill(Qt::transparent);
@@ -148,7 +148,7 @@ void CCMainWindow::setLevelPixmap(int level)
 	ui.levelBtn->setIconSize(ui.levelBtn->size());
 }
 
-QWidget* CCMainWindow::addOtherAppExtension(const QString& apppath, const QString& appName)
+QWidget* CMainWindow::addOtherAppExtension(const QString& apppath, const QString& appName)
 {
 	QPushButton* btn = new QPushButton(this);
 	btn->setFixedSize(20, 20);
@@ -161,11 +161,11 @@ QWidget* CCMainWindow::addOtherAppExtension(const QString& apppath, const QStrin
 	btn->setIconSize(btn->size());
 	btn->setProperty("hasborder", true);
 	btn->setObjectName(appName);
-	connect(btn, &QPushButton::clicked, this, &CCMainWindow::onAppIconCliked);
+	connect(btn, &QPushButton::clicked, this, &CMainWindow::onAppIconCliked);
 	return btn;
 }
 
-void CCMainWindow::onAppIconCliked()
+void CMainWindow::onAppIconCliked()
 {
 	if (sender()->objectName() == "app_skin")
 	{
@@ -178,13 +178,13 @@ void CCMainWindow::onAppIconCliked()
     }
 }
 
-void CCMainWindow::resizeEvent(QResizeEvent *event)
+void CMainWindow::resizeEvent(QResizeEvent *event)
 {
 	setUserName(QString::fromLocal8Bit("雨田哥-工作号"));
     BasicWindow::resizeEvent(event);
 }
 
-bool CCMainWindow::eventFilter(QObject *obj, QEvent *event)
+bool CMainWindow::eventFilter(QObject *obj, QEvent *event)
 {
 	if (ui.searchLineEdit == obj)
 	{
@@ -204,7 +204,7 @@ bool CCMainWindow::eventFilter(QObject *obj, QEvent *event)
     return BasicWindow::eventFilter(obj, event);
 }
 
-void CCMainWindow::mousePressEvent(QMouseEvent *event)
+void CMainWindow::mousePressEvent(QMouseEvent *event)
 {
 	if (qApp->widgetAt(event->pos()) != ui.lineEdit && ui.lineEdit->hasFocus())
 	{
@@ -217,7 +217,7 @@ void CCMainWindow::mousePressEvent(QMouseEvent *event)
     BasicWindow::mousePressEvent(event);
 }
 
-void CCMainWindow::initContactTree()
+void CMainWindow::initContactTree()
 {
 	//展开和收缩时信号，以达到变更我三角图片；
 	connect(ui.treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(onItemClicked(QTreeWidgetItem *, int)));
@@ -245,7 +245,7 @@ void CCMainWindow::initContactTree()
 	}
 }
 
-void CCMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem)
+void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem)
 {
 	QTreeWidgetItem *pChild = new QTreeWidgetItem();
     QPixmap pix1;
@@ -261,7 +261,7 @@ void CCMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem)
 	ui.treeWidget->setItemWidget(pChild, 0, pContactItem);
 }
 
-void CCMainWindow::initStrangerTree()
+void CMainWindow::initStrangerTree()
 {
 	//分组节点
 	QTreeWidgetItem *pRootFriendItem = new QTreeWidgetItem();
@@ -284,7 +284,7 @@ void CCMainWindow::initStrangerTree()
 	}
 }
 
-void CCMainWindow::addStarngerInfo(QTreeWidgetItem* pRootGroupItem)
+void CMainWindow::addStarngerInfo(QTreeWidgetItem* pRootGroupItem)
 {
     QPixmap pix1,pix2;
     pix1.load(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg");
@@ -301,7 +301,7 @@ void CCMainWindow::addStarngerInfo(QTreeWidgetItem* pRootGroupItem)
 	ui.treeWidget->setItemWidget(pChild, 0, pContactItem);
 }
 
-void CCMainWindow::onItemClicked(QTreeWidgetItem * item, int column)
+void CMainWindow::onItemClicked(QTreeWidgetItem * item, int column)
 {
 	bool bIsChild = item->data(0, Qt::UserRole).toBool();
 	if (!bIsChild)
@@ -310,7 +310,7 @@ void CCMainWindow::onItemClicked(QTreeWidgetItem * item, int column)
 	}
 }
 
-void CCMainWindow::onItemDoubleClicked(QTreeWidgetItem * item, int column)
+void CMainWindow::onItemDoubleClicked(QTreeWidgetItem * item, int column)
 {
 	bool bIsChild = item->data(0, Qt::UserRole).toBool();
 	if (bIsChild)
@@ -319,7 +319,7 @@ void CCMainWindow::onItemDoubleClicked(QTreeWidgetItem * item, int column)
 	}
 }
 
-void CCMainWindow::onItemExpanded(QTreeWidgetItem * item)
+void CMainWindow::onItemExpanded(QTreeWidgetItem * item)
 {
 	bool bIsChild = item->data(0, Qt::UserRole).toBool();
 	if (!bIsChild)
@@ -332,7 +332,7 @@ void CCMainWindow::onItemExpanded(QTreeWidgetItem * item)
 	}
 }
 
-void CCMainWindow::onItemCollapsed(QTreeWidgetItem * item)
+void CMainWindow::onItemCollapsed(QTreeWidgetItem * item)
 {
 	bool bIsChild = item->data(0, Qt::UserRole).toBool();
 	if (!bIsChild)

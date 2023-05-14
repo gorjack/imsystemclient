@@ -147,6 +147,14 @@ bool MsgWebView::eventFilter(QObject *watched, QEvent *event)
 	return __super::eventFilter(watched, event);
 }
 
+void MsgWebView::runJavaScriptFinished(const QVariant& result)
+{
+	if (result.type() == QVariant::String) {
+		QString output = result.toString();
+		qDebug() << output;
+	}
+}
+
 void MsgWebView::appendMsg(const QString& html)
 {
 	m_updateDownArrowtimer->start();
@@ -183,7 +191,8 @@ void MsgWebView::appendMsg(const QString& html)
 	}
 	msgObj.insert("MSG", qsMsg);
 	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
-	this->page()->runJavaScript(QString("appendHtml(%1)").arg(Msg));
+	this->page()->runJavaScript(QString("appendHtml(%1)").arg(Msg), 
+		[this](const QVariant& result) { runJavaScriptFinished(result); });
 }
 
 QList<QStringList> MsgWebView::parseHtml(const QString& html)

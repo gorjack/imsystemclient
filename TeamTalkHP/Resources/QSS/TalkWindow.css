@@ -15,23 +15,23 @@ QWidget#frameWidhet{
 }
 
 QPushButton#sysmin {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_min_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_min_normal.png); 
 }
 QPushButton#sysmin:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_min_hover.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_min_hover.png); 
 }
 QPushButton#sysmin:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_min_down.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_min_down.png); 
 }
 
 QPushButton#sysclose {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_close_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_close_normal.png); 
 }
 QPushButton#sysclose:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_close_hover.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_close_hover.png); 
 }
 QPushButton#sysclose:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/sysbtn_close_down.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/sysbtn_close_down.png); 
 }
 
 QLabel#nameLabel {
@@ -45,7 +45,7 @@ QLabel#signLabel {
 }
 
 QLabel#skinLabel {
-    border-image:url(:/CCMainWindow/Resources/MainWindow/skin.png);
+    border-image:url(:/TeamTalkHP/Resources/MainWindow/skin.png);
     border-width: 2px;
     border-bottom-right-radius:4px;
 }
@@ -57,67 +57,67 @@ border-bottom-left-radius:4px;
 }
 
 QPushButton#rightSpliterBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_splitbutton_right_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_splitbutton_right_normal.png); 
    border-width:0px;
 }
 QPushButton#rightSpliterBtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_splitbutton_right_hover.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_splitbutton_right_hover.png); 
    border-width:0px;
 }
 QPushButton#rightSpliterBtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_splitbutton_right_down.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_splitbutton_right_down.png); 
    border-width:0px;
 }
 
 QPushButton#boldBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_bold_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_bold_normal.png); 
    border-width:0px;
 }
 QPushButton#boldBtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_bold_highlight.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_bold_highlight.png); 
    border-width:0px;
 }
 QPushButton#boldBtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_bold_push.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_bold_push.png); 
    border-width:0px;
 }
 
 QPushButton#italBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_italic_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_italic_normal.png); 
    border-width:0px;
 }
 QPushButton#italBtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_italic_highlight.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_italic_highlight.png); 
    border-width:0px;
 }
 QPushButton#italBtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_italic_push.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_italic_push.png); 
    border-width:0px;
 }
 
 QPushButton#underBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_underline_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_underline_normal.png); 
    border-width:0px;
 }
 QPushButton#underBtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_underline_highlight.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_underline_highlight.png); 
    border-width:0px;
 }
 QPushButton#underBtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_underline_push.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_underline_push.png); 
    border-width:0px;
 }
 
 QPushButton#colorBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_color_normal.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_color_normal.png); 
    border-width:0px;
 }
 QPushButton#colorBtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_color_highlight.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_color_highlight.png); 
    border-width:0px;
 }
 QPushButton#colorBtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_sysfont_color_push.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_sysfont_color_push.png); 
    border-width:0px;
 }
 
@@ -160,192 +160,192 @@ QToolButton#sendBtn::menu-button {
 }
 
 QToolButton#sendBtn::menu-arrow {
-    image: url(:/CCMainWindow/Resources/MainWindow/aio_setting_white_normal.png);
+    image: url(:/TeamTalkHP/Resources/MainWindow/aio_setting_white_normal.png);
 }
 
 QPushButton#fontBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_font.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_font.png); 
 }
 QPushButton#fontBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_font_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_font_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#fontBtn:pressed, QPushButton#fontBtn:checked {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_font_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_font_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#faceBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_face.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_face.png); 
 }
 QPushButton#faceBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_face_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_face_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#faceBtn:pressed, QPushButton#faceBtn:checked {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_face_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_face_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#richfacebtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_richface.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_richface.png); 
 }
 QPushButton#richfacebtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_richface_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_richface_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#richfacebtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_richface_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_richface_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#cutBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_cut.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_cut.png); 
 }
 QPushButton#cutBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_cut_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_cut_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#cutBtn:pressed, QPushButton#cutBtn:checked {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_cut_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_cut_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#inputbtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_inputassist.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_inputassist.png); 
 }
 QPushButton#inputbtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_inputassist_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_inputassist_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#inputbtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_inputassist_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_inputassist_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#registerBtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_register.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_register.png); 
 }
 QPushButton#registerBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_register_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_register_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#registerBtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_quickbar_register_hover.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_quickbar_register_hover.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#addtoolbtn {
    background-color:transparent;
-   background-image: url(:/CCMainWindow/Resources/MainWindow/aio_toobar_add.png); 
+   background-image: url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_add.png); 
    background-position:center;
 }
 QPushButton#addtoolbtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_add.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_add.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#addtoolbtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_add.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_add.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#addhumanBtn {
    background-color:transparent;
-   background-image: url(:/CCMainWindow/Resources/MainWindow/aio_toobar_addhuman.png); 
+   background-image: url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_addhuman.png); 
    background-position:center;
 }
 QPushButton#addhumanBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_addhuman.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_addhuman.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#addhumanBtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_addhuman.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_addhuman.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#appBtn {
    background-color:transparent;
-   background-image: url(:/CCMainWindow/Resources/MainWindow/aio_toobar_app.png); 
+   background-image: url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_app.png); 
    background-position:center;
 }
 QPushButton#appBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_app.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_app.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#appBtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_app.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_app.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#videoBtn {
    background-color:transparent;
-   background-image: url(:/CCMainWindow/Resources/MainWindow/aio_toobar_report.png); 
+   background-image: url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_report.png); 
    background-position:center;
 }
 QPushButton#videoBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_report.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_report.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#videoBtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_report.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_report.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
 QPushButton#toolsetBtn {
    background-color:transparent;
-   background-image: url(:/CCMainWindow/Resources/MainWindow/aio_toobar_tool.png); 
+   background-image: url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_tool.png); 
    background-position:center;
 }
 QPushButton#toolsetBtn:hover {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_tool.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_tool.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_hover.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_hover.gft.png);
    border-width:2px;
 }
 QPushButton#toolsetBtn:pressed {
-   background-image:url(:/CCMainWindow/Resources/MainWindow/aio_toobar_tool.png);
+   background-image:url(:/TeamTalkHP/Resources/MainWindow/aio_toobar_tool.png);
    background-position:center;
-   border-image:url(:/CCMainWindow/Resources/MainWindow/2014_btn_down.gft.png);
+   border-image:url(:/TeamTalkHP/Resources/MainWindow/2014_btn_down.gft.png);
    border-width:2px;
 }
 
@@ -386,15 +386,15 @@ QListView::item:hover {
 }
 
 QPushButton#tclosebtn {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/close.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/close.png); 
    border-width:0px;
 }
 QPushButton#tclosebtn:hover {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/close-hover.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/close-hover.png); 
    border-width:0px;
 }
 QPushButton#tclosebtn:pressed {
-   border-image: url(:/CCMainWindow/Resources/MainWindow/close-hover.png); 
+   border-image: url(:/TeamTalkHP/Resources/MainWindow/close-hover.png); 
    border-width:0px;
 }
 
@@ -404,7 +404,7 @@ QLabel#msgLabel{
 }
 
 QMenu#senMenu {
-	border-image:url(:/CCMainWindow/Resources/MainWindow/menu_bkg.gft.png);
+	border-image:url(:/TeamTalkHP/Resources/MainWindow/menu_bkg.gft.png);
 	border-width: 2px;
 }
 
@@ -428,11 +428,11 @@ QMenu#senMenu::icon{
 }
 
 QMenu#senMenu::indicator:exclusive:checked {
-    image:url(:/CCMainWindow/Resources/MainWindow/menu_check.png);
+    image:url(:/TeamTalkHP/Resources/MainWindow/menu_check.png);
 }
 
 QMenu#senMenu::indicator:exclusive:checked:selected {
-    image:url(:/CCMainWindow/Resources/MainWindow/menu_check.png);
+    image:url(:/TeamTalkHP/Resources/MainWindow/menu_check.png);
 }
 
 QMenu#senMenu::separator {
@@ -468,7 +468,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(:/CCMainWindow/Resources/MainWindow/list_down.png);
+    image: url(:/TeamTalkHP/Resources/MainWindow/list_down.png);
 }
 
 

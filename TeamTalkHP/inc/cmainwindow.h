@@ -2,16 +2,16 @@
 #define CCMAINWINDOW_H
 
 #include "BasicWindow.h"
-#include "ui_ccmainwindow.h"
+#include "ui_cmainwindow.h"
 
 class QTreeWidgetItem;
-class CCMainWindow : public BasicWindow
+class CMainWindow : public BasicWindow
 {
 	Q_OBJECT
 
 public:
-    CCMainWindow(QWidget *parent = nullptr);
-	~CCMainWindow();
+    CMainWindow(QWidget *parent = nullptr);
+	~CMainWindow();
 
 public:
 	//…Ë÷√µ»º∂
@@ -47,7 +47,7 @@ private:
 	void mousePressEvent(QMouseEvent *event) override;
 
 private:
-	Ui::CCMainWindowClass ui;
+	Ui::CMainWindowClass ui;
 };
 
 #endif // CCMAINWINDOW_H

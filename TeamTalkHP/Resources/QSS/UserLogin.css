@@ -47,19 +47,19 @@ QCheckBox{
 QCheckBox::indicator:enabled, QCheckBox::indicator:enabled:unchecked{  
     width:15px;
 	height:15px; 
-    border-image: url(:/CCMainWindow/Resources/MainWindow/checkbox_normal.png);
+    border-image: url(:/TeamTalkHP/Resources/MainWindow/checkbox_normal.png);
 }
 
 QCheckBox::indicator:enabled:unchecked:hover {
-    image: url(:/CCMainWindow/Resources/MainWindow/checkbox_hightlight.png);	
+    image: url(:/TeamTalkHP/Resources/MainWindow/checkbox_hightlight.png);	
 }
 
 QCheckBox::indicator:enabled:checked { 
-    border-image: url(:/CCMainWindow/Resources/MainWindow/checkbox_tick_normal.png);
+    border-image: url(:/TeamTalkHP/Resources/MainWindow/checkbox_tick_normal.png);
 }
 
 QCheckBox::indicator:enabled:checked:hover { 
-    border-image: url(:/CCMainWindow/Resources/MainWindow/checkbox_tick_highlight.png);
+    border-image: url(:/TeamTalkHP/Resources/MainWindow/checkbox_tick_highlight.png);
 }
 
 QLineEdit#editUserAccount, QLineEdit#editPassword{

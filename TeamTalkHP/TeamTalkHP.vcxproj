@@ -91,7 +91,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="TeamTalkHP.qrc" />
-    <QtMoc Include="TeamTalkHP.h" />
+    <QtMoc Include="TeamTalkHP.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtMoc>
     <ClCompile Include="src\BasicWindow.cpp" />
     <ClCompile Include="src\capture\capturemodification.cpp" />
     <ClCompile Include="src\capture\screenshot.cpp" />
@@ -119,7 +121,7 @@
     <ClCompile Include="src\capture\workers\imgur\imagelabel.cpp" />
     <ClCompile Include="src\capture\workers\imgur\loadspinner.cpp" />
     <ClCompile Include="src\capture\workers\imgur\notificationwidget.cpp" />
-    <ClCompile Include="src\ccmainwindow.cpp" />
+    <ClCompile Include="src\cmainwindow.cpp" />
     <ClCompile Include="src\commonutils.cpp" />
     <ClCompile Include="src\contactitem.cpp" />
     <ClCompile Include="src\custommenu.cpp" />
@@ -148,7 +150,9 @@
     <ClCompile Include="src\utils\desktopinfo.cpp" />
     <ClCompile Include="src\utils\screengrabber.cpp" />
     <ClCompile Include="src\windowmanager.cpp" />
-    <ClCompile Include="TeamTalkHP.cpp" />
+    <ClCompile Include="TeamTalkHP.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -157,7 +161,7 @@
     <QtMoc Include="inc\BasicWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="inc\ccmainwindow.h" />
+    <QtMoc Include="inc\cmainwindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\commonutils.h" />
@@ -216,8 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ui\amplifierwidget.ui" />
-    <QtUic Include="ui\ccmainwindow.ui" />
-    <QtUic Include="ui\ccmainwindow_1.ui" />
+    <QtUic Include="ui\cmainwindow.ui" />
     <QtUic Include="ui\contactitem.ui" />
     <QtUic Include="ui\emotionwindow.ui" />
     <QtUic Include="ui\qcolorpicker.ui" />

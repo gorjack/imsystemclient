@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CCMainWindowClass</class>
- <widget class="QWidget" name="CCMainWindowClass">
+ <class>CMainWindowClass</class>
+ <widget class="QWidget" name="CMainWindowClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>680</height>
+    <width>438</width>
+    <height>798</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -268,11 +268,11 @@
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">color: rgb(255, 255, 255);
+               <string notr="true">color: rgb(255, 255, 245);
 font: 75 12pt &quot;微软雅黑&quot;;</string>
               </property>
               <property name="text">
-               <string>雨田哥-工作号</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -523,8 +523,8 @@ font: 75 12pt &quot;微软雅黑&quot;;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>278</width>
-           <height>474</height>
+           <width>436</width>
+           <height>592</height>
           </rect>
          </property>
          <property name="sizePolicy">

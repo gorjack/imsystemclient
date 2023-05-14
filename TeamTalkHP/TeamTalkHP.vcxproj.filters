@@ -55,7 +55,7 @@
     <ClCompile Include="src\BasicWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ccmainwindow.cpp">
+    <ClCompile Include="src\cmainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\commonutils.cpp">
@@ -225,7 +225,7 @@
     <QtMoc Include="inc\BasicWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="inc\ccmainwindow.h">
+    <QtMoc Include="inc\cmainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="inc\contactitem.h">
@@ -394,10 +394,7 @@
     <QtUic Include="ui\amplifierwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="ui\ccmainwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="ui\ccmainwindow_1.ui">
+    <QtUic Include="ui\cmainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ui\contactitem.ui">
