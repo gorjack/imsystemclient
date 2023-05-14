@@ -34,6 +34,7 @@
 # vs
 .vs
 _builder
+TeamTalkHP/x64/*
 _builder/Win32.Debug/*
 _runtime/Win32.Debug
 _runtime/x64.Debug

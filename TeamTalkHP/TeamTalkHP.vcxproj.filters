@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="capture">
+      <UniqueIdentifier>{f22e4a71-fb25-49b0-96a6-f7756b0f030b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="capture\tools">
+      <UniqueIdentifier>{5796e94c-0322-4c5a-b98b-243bdc72acfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="capture\widget">
+      <UniqueIdentifier>{9a4a57f3-8834-456e-87cf-395d8314c3bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="capture\workers">
+      <UniqueIdentifier>{d0a2bfb2-0f13-48c5-8cb7-b811b7771f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{7a321e70-c2ac-4169-9862-8d02149dfa46}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="TeamTalkHP.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtMoc Include="TeamTalkHP.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="TeamTalkHP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BasicWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cmainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commonutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contactitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\custommenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\emotionlabelitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\emotiontable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\emotionwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flowlayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\msgscrollarea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\msgwebview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\msgwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\notifymanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qclicklabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qmsgtextedit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qskinlabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rootcontatitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\skinwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\talkwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\talkwindowitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\talkwindowshell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\titlebar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UserLogin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\windowmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\applauncher.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\arrowtool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\blurtool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\capturetool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\circletool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\copytool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\exittool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\markertool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\movetool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\penciltool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\rectangletool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\savetool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\selectiontool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\sizeindicatortool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\toolfactory.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\tools\undotool.cpp">
+      <Filter>capture\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\widget\amplifierwidget.cpp">
+      <Filter>capture\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\widget\buttonhandler.cpp">
+      <Filter>capture\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\widget\capturebutton.cpp">
+      <Filter>capture\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\widget\capturewidget.cpp">
+      <Filter>capture\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\widget\qcolorpicker.cpp">
+      <Filter>capture\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\workers\imgur\imagelabel.cpp">
+      <Filter>capture\workers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\workers\imgur\loadspinner.cpp">
+      <Filter>capture\workers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\workers\imgur\notificationwidget.cpp">
+      <Filter>capture\workers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\capturemodification.cpp">
+      <Filter>capture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\capture\screenshot.cpp">
+      <Filter>capture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\confighandler.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\desktopfileparse.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\desktopinfo.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\screengrabber.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="inc\BasicWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\cmainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\contactitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\custommenu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\emotionlabelitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\emotiontable.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\emotionwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\msgscrollarea.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\msgwebview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\msgwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\notifymanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\qclicklabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\qmsgtextedit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\qskinlabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\rootcontatitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\skinwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\systray.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\talkwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\talkwindowitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\talkwindowshell.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\titlebar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\UserLogin.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\windowmanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\applauncher.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\arrowtool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\blurtool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\capturetool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\circletool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\copytool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\exittool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\markertool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\movetool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\penciltool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\rectangletool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\savetool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\selectiontool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\sizeindicatortool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\toolfactory.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\tools\undotool.h">
+      <Filter>capture\tools</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\widget\amplifierwidget.h">
+      <Filter>capture\widget</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\widget\buttonhandler.h">
+      <Filter>capture\widget</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\widget\capturebutton.h">
+      <Filter>capture\widget</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\widget\capturewidget.h">
+      <Filter>capture\widget</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\widget\qcolorpicker.h">
+      <Filter>capture\widget</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\workers\imgur\imagelabel.h">
+      <Filter>capture\workers</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\workers\imgur\loadspinner.h">
+      <Filter>capture\workers</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\workers\imgur\notificationwidget.h">
+      <Filter>capture\workers</Filter>
+    </QtMoc>
+    <QtMoc Include="src\capture\capturemodification.h">
+      <Filter>capture</Filter>
+    </QtMoc>
+    <QtMoc Include="src\utils\screengrabber.h">
+      <Filter>utils</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\commonutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flowlayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\capture\screenshot.h">
+      <Filter>capture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\confighandler.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\desktopfileparse.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\desktopinfo.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ui\amplifierwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\cmainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\contactitem.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\emotionwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\qcolorpicker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\skinwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\talkwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\talkwindowitem.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\talkwindowshell.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\UserLogin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+</Project>

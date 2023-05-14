@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiResources", "src\UiResour
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UiEvent", "src\UiEvent\UiEvent.vcxproj", "{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TeamTalkHP", "TeamTalkHP\TeamTalkHP.vcxproj", "{F7755372-CBB1-41DC-837E-CD70D9683337}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -159,6 +161,12 @@ Global
 		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x64.Build.0 = Release|x64
 		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x86.ActiveCfg = Release|Win32
 		{F61BBA87-E320-4E81-9D4D-3A3F167D91DE}.Release|x86.Build.0 = Release|Win32
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x64.ActiveCfg = Debug|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x64.Build.0 = Debug|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x86.ActiveCfg = Debug|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Release|x64.ActiveCfg = Release|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Release|x64.Build.0 = Release|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F7755372-CBB1-41DC-837E-CD70D9683337}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.15</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.15</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>D:\QtVersion\qt5_build\include\QtCore;D:\QtVersion\qt5_build\include\QtPositioning;D:\QtVersion\qt5_build\include\QtNetwork;D:\QtVersion\qt5_build\include\QtQmlDebug;D:\QtVersion\qt5_build\include\QtWebChannel;D:\QtVersion\qt5_build\include\QtXml;D:\QtVersion\qt5_build\include\QtANGLE;D:\QtVersion\qt5_build\include\QtGui;D:\QtVersion\qt5_build\include\QtQuick;D:\QtVersion\qtwebengine-everywhere-src-5.15.5\include\QtWebEngineCore;D:\QtVersion\qt5_build\include;D:\QtVersion\qt5_build\include\QtWidgets;D:\QtVersion\qt5_build\include\QtPrintSupport;D:\QtVersion\qt5_build\include\QtWebEngineWidgets;$(SolutionDir)TeamTalkHP;$(SolutionDir)TeamTalkHP\inc;$(SolutionDir)TeamTalkHP\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>D:\QtVersion\qtwebengine-everywhere-src-5.15.5\build\lib;$(QT5DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <QtRcc Include="TeamTalkHP.qrc" />
+    <QtMoc Include="TeamTalkHP.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtMoc>
+    <ClCompile Include="src\BasicWindow.cpp" />
+    <ClCompile Include="src\capture\capturemodification.cpp" />
+    <ClCompile Include="src\capture\screenshot.cpp" />
+    <ClCompile Include="src\capture\tools\applauncher.cpp" />
+    <ClCompile Include="src\capture\tools\arrowtool.cpp" />
+    <ClCompile Include="src\capture\tools\blurtool.cpp" />
+    <ClCompile Include="src\capture\tools\capturetool.cpp" />
+    <ClCompile Include="src\capture\tools\circletool.cpp" />
+    <ClCompile Include="src\capture\tools\copytool.cpp" />
+    <ClCompile Include="src\capture\tools\exittool.cpp" />
+    <ClCompile Include="src\capture\tools\markertool.cpp" />
+    <ClCompile Include="src\capture\tools\movetool.cpp" />
+    <ClCompile Include="src\capture\tools\penciltool.cpp" />
+    <ClCompile Include="src\capture\tools\rectangletool.cpp" />
+    <ClCompile Include="src\capture\tools\savetool.cpp" />
+    <ClCompile Include="src\capture\tools\selectiontool.cpp" />
+    <ClCompile Include="src\capture\tools\sizeindicatortool.cpp" />
+    <ClCompile Include="src\capture\tools\toolfactory.cpp" />
+    <ClCompile Include="src\capture\tools\undotool.cpp" />
+    <ClCompile Include="src\capture\widget\amplifierwidget.cpp" />
+    <ClCompile Include="src\capture\widget\buttonhandler.cpp" />
+    <ClCompile Include="src\capture\widget\capturebutton.cpp" />
+    <ClCompile Include="src\capture\widget\capturewidget.cpp" />
+    <ClCompile Include="src\capture\widget\qcolorpicker.cpp" />
+    <ClCompile Include="src\capture\workers\imgur\imagelabel.cpp" />
+    <ClCompile Include="src\capture\workers\imgur\loadspinner.cpp" />
+    <ClCompile Include="src\capture\workers\imgur\notificationwidget.cpp" />
+    <ClCompile Include="src\cmainwindow.cpp" />
+    <ClCompile Include="src\commonutils.cpp" />
+    <ClCompile Include="src\contactitem.cpp" />
+    <ClCompile Include="src\custommenu.cpp" />
+    <ClCompile Include="src\emotionlabelitem.cpp" />
+    <ClCompile Include="src\emotiontable.cpp" />
+    <ClCompile Include="src\emotionwindow.cpp" />
+    <ClCompile Include="src\flowlayout.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\msgscrollarea.cpp" />
+    <ClCompile Include="src\msgwebview.cpp" />
+    <ClCompile Include="src\msgwidget.cpp" />
+    <ClCompile Include="src\notifymanager.cpp" />
+    <ClCompile Include="src\qclicklabel.cpp" />
+    <ClCompile Include="src\qmsgtextedit.cpp" />
+    <ClCompile Include="src\qskinlabel.cpp" />
+    <ClCompile Include="src\rootcontatitem.cpp" />
+    <ClCompile Include="src\skinwindow.cpp" />
+    <ClCompile Include="src\systray.cpp" />
+    <ClCompile Include="src\talkwindow.cpp" />
+    <ClCompile Include="src\talkwindowitem.cpp" />
+    <ClCompile Include="src\talkwindowshell.cpp" />
+    <ClCompile Include="src\titlebar.cpp" />
+    <ClCompile Include="src\UserLogin.cpp" />
+    <ClCompile Include="src\utils\confighandler.cpp" />
+    <ClCompile Include="src\utils\desktopfileparse.cpp" />
+    <ClCompile Include="src\utils\desktopinfo.cpp" />
+    <ClCompile Include="src\utils\screengrabber.cpp" />
+    <ClCompile Include="src\windowmanager.cpp" />
+    <ClCompile Include="TeamTalkHP.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="inc\BasicWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="inc\cmainwindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\commonutils.h" />
+    <ClInclude Include="inc\flowlayout.h" />
+    <ClInclude Include="src\capture\screenshot.h" />
+    <ClInclude Include="src\utils\confighandler.h" />
+    <ClInclude Include="src\utils\desktopfileparse.h" />
+    <ClInclude Include="src\utils\desktopinfo.h" />
+    <QtMoc Include="src\utils\screengrabber.h" />
+    <QtMoc Include="src\capture\capturemodification.h" />
+    <QtMoc Include="src\capture\workers\imgur\notificationwidget.h" />
+    <QtMoc Include="src\capture\workers\imgur\loadspinner.h" />
+    <QtMoc Include="src\capture\workers\imgur\imagelabel.h" />
+    <QtMoc Include="src\capture\widget\qcolorpicker.h" />
+    <QtMoc Include="src\capture\widget\capturewidget.h" />
+    <QtMoc Include="src\capture\widget\capturebutton.h" />
+    <QtMoc Include="src\capture\widget\buttonhandler.h" />
+    <QtMoc Include="src\capture\widget\amplifierwidget.h" />
+    <QtMoc Include="src\capture\tools\undotool.h" />
+    <QtMoc Include="src\capture\tools\toolfactory.h" />
+    <QtMoc Include="src\capture\tools\sizeindicatortool.h" />
+    <QtMoc Include="src\capture\tools\selectiontool.h" />
+    <QtMoc Include="src\capture\tools\savetool.h" />
+    <QtMoc Include="src\capture\tools\rectangletool.h" />
+    <QtMoc Include="src\capture\tools\penciltool.h" />
+    <QtMoc Include="src\capture\tools\movetool.h" />
+    <QtMoc Include="src\capture\tools\markertool.h" />
+    <QtMoc Include="src\capture\tools\exittool.h" />
+    <QtMoc Include="src\capture\tools\copytool.h" />
+    <QtMoc Include="src\capture\tools\circletool.h" />
+    <QtMoc Include="src\capture\tools\capturetool.h" />
+    <QtMoc Include="src\capture\tools\blurtool.h" />
+    <QtMoc Include="src\capture\tools\arrowtool.h" />
+    <QtMoc Include="src\capture\tools\applauncher.h" />
+    <QtMoc Include="inc\windowmanager.h" />
+    <QtMoc Include="inc\UserLogin.h" />
+    <QtMoc Include="inc\titlebar.h" />
+    <QtMoc Include="inc\talkwindowshell.h" />
+    <QtMoc Include="inc\talkwindowitem.h" />
+    <QtMoc Include="inc\talkwindow.h" />
+    <QtMoc Include="inc\systray.h" />
+    <QtMoc Include="inc\skinwindow.h" />
+    <QtMoc Include="inc\rootcontatitem.h" />
+    <QtMoc Include="inc\qskinlabel.h" />
+    <QtMoc Include="inc\qmsgtextedit.h" />
+    <QtMoc Include="inc\qclicklabel.h" />
+    <QtMoc Include="inc\notifymanager.h" />
+    <QtMoc Include="inc\msgwidget.h" />
+    <QtMoc Include="inc\msgwebview.h" />
+    <QtMoc Include="inc\msgscrollarea.h" />
+    <QtMoc Include="inc\emotionwindow.h" />
+    <QtMoc Include="inc\emotiontable.h" />
+    <QtMoc Include="inc\emotionlabelitem.h" />
+    <QtMoc Include="inc\custommenu.h" />
+    <QtMoc Include="inc\contactitem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ui\amplifierwidget.ui" />
+    <QtUic Include="ui\cmainwindow.ui" />
+    <QtUic Include="ui\contactitem.ui" />
+    <QtUic Include="ui\emotionwindow.ui" />
+    <QtUic Include="ui\qcolorpicker.ui" />
+    <QtUic Include="ui\skinwindow.ui" />
+    <QtUic Include="ui\talkwindow.ui" />
+    <QtUic Include="ui\talkwindowitem.ui" />
+    <QtUic Include="ui\talkwindowshell.ui" />
+    <QtUic Include="ui\UserLogin.ui" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
