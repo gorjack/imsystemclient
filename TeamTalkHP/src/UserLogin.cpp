@@ -11,6 +11,8 @@ UserLogin::UserLogin(QWidget *parent)
 	setTitleBarTitle("", ":/TeamTalkHP/Resources/MainWindow/qqlogoclassic.png");
     loadStyleSheet("UserLogin");
 	initControl();
+
+	CFlamingoClientCenter::instance()->resetClient();
 }
 
 UserLogin::~UserLogin()

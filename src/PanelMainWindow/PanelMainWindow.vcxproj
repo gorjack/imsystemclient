@@ -292,9 +292,6 @@
     <ProjectReference Include="..\PanelChatWindow\PanelChatWindow.vcxproj">
       <Project>{890d9586-2816-44cb-8e0f-cfd6a8de335e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\UiEvent\UiEvent.vcxproj">
       <Project>{f61bba87-e320-4e81-9d4d-3a3f167d91de}</Project>
     </ProjectReference>

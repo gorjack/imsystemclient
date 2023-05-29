@@ -279,9 +279,6 @@
     <ProjectReference Include="..\PanelMainWindow\PanelMainWindow.vcxproj">
       <Project>{b12702ad-abfb-343a-a199-8e24837244a3}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\UiResources\UiResources.vcxproj">
       <Project>{8e46d8e3-c6c0-48d7-ab6e-ab5c7b5d6cb6}</Project>
     </ProjectReference>

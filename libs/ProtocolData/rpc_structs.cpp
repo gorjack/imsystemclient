@@ -4,7 +4,6 @@
 #include <utils/ZlibUtil.h>
 #include <jsoncpp/reader.h>
 #include <IULog.h>
-#include <boost/format.hpp>
 #include <utils/EncodeUtil.h>
 #include <winlog/IULog.h>
 #include <utils/strings.h>
@@ -428,7 +427,7 @@ namespace net
 
             for (UINT j = 0; j < JsonRoot["userinfo"][(UINT)i]["members"].size(); ++j)
             {
-                pUserBasicInfo = boost::make_shared<UserBasicInfo>();
+                pUserBasicInfo = std::make_shared<UserBasicInfo>();
                 //memset(pUserBasicInfo, 0, sizeof(UserBasicInfo));
 
                 pUserBasicInfo->uAccountID = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["userid"].asUInt();
@@ -539,8 +538,11 @@ namespace net
             strChatContent.erase(n, 1);
         }
 
-        std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,") % time(NULL) % m_nSendId % m_nTargetId);
-       // std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid:\"%d,") % time(NULL) % m_nSendId % m_nTargetId);
+        //std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,") % time(NULL) % m_nSendId % m_nTargetId);
+        
+        char strTemp[4096] = { 0 };
+        sprintf_s(strTemp, "{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,", time(NULL), m_nSendId, m_nTargetId);
+        std::string strContent(strTemp);
 
         strContent += strFont;
 

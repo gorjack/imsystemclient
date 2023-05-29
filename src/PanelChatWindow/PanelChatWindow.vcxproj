@@ -252,9 +252,6 @@
     <ProjectReference Include="..\Env\Env.vcxproj">
       <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\User\User.vcxproj">
       <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>
     </ProjectReference>

@@ -2,8 +2,7 @@
 #include <string>
 #include "rpc_Enum.h"
 #include "rpc_proEnum.h"
-#include <boost/shared_ptr.hpp>
-#include <boost/make_shared.hpp>
+#include <memory>
 #include <set>
 #include <map>
 #include <list>
@@ -102,7 +101,7 @@ namespace net
         SendServeType m_nType = CHAT_SERVER;        //此数据要走的服务类型默认未CHAT_SERVER.
     };
 
-    typedef boost::shared_ptr<IData> IDataPtr;
+    typedef std::shared_ptr<IData> IDataPtr;
 
     class PROTOCOLDATA_EXPORT CFindFriendRequest : public IData
     {
@@ -116,7 +115,7 @@ namespace net
         long m_nType;				//查找类型
     };
 
-    typedef boost::shared_ptr<CFindFriendRequest> CFindFriendRequestPtr;
+    typedef std::shared_ptr<CFindFriendRequest> CFindFriendRequestPtr;
 
 
     class PROTOCOLDATA_EXPORT CFindFriendResult : public IData
@@ -132,7 +131,7 @@ namespace net
         char m_szAccountName[64];
         char m_szNickName[64];
     };
-    typedef boost::shared_ptr<CFindFriendResult> CFindFriendResultPtr;
+    typedef std::shared_ptr<CFindFriendResult> CFindFriendResultPtr;
 
     class PROTOCOLDATA_EXPORT COperateFriendRequest : public IData
     {
@@ -146,7 +145,7 @@ namespace net
         unsigned int m_uAccountID;
         unsigned int m_uCmd;
     };
-    typedef boost::shared_ptr<COperateFriendRequest> COperateFriendRequestPtr;
+    typedef std::shared_ptr<COperateFriendRequest> COperateFriendRequestPtr;
 
 
 
@@ -164,7 +163,7 @@ namespace net
         char m_szAccountName[64];
         char m_szNickName[64];
     };
-    typedef boost::shared_ptr<COperateFriendResult> COperateFriendResultPtr;
+    typedef std::shared_ptr<COperateFriendResult> COperateFriendResultPtr;
 
     struct UserBasicInfo
     {
@@ -196,7 +195,7 @@ namespace net
     public:
         std::set<unsigned int> m_setAccountID;
     };
-    typedef boost::shared_ptr<CUserBasicInfoRequest> CUserBasicInfoRequestPtr;
+    typedef std::shared_ptr<CUserBasicInfoRequest> CUserBasicInfoRequestPtr;
 
 
     class PROTOCOLDATA_EXPORT CUserBasicInfoResult : public IData
@@ -207,11 +206,11 @@ namespace net
 
         bool decodePackage(const std::string& data) override;
     public:
-        using UserBasicInfoPtr = boost::shared_ptr<UserBasicInfo>;
+        using UserBasicInfoPtr = std::shared_ptr<UserBasicInfo>;
        // key是分组的名字，value是该组好友的集合
         std::map<std::string, std::list<UserBasicInfoPtr>> m_mapUserBasicInfo;
     };
-    typedef boost::shared_ptr<CUserBasicInfoResult> CUserBasicInfoResultPtr;
+    typedef std::shared_ptr<CUserBasicInfoResult> CUserBasicInfoResultPtr;
 
     class CFontInfo				// 字体信息
     {
@@ -284,7 +283,7 @@ namespace net
         unsigned int        m_nSendId;          
         unsigned __int64    m_nTime;
     };
-    typedef boost::shared_ptr<CBuddyMessage> CBuddyMessagePtr;
+    typedef std::shared_ptr<CBuddyMessage> CBuddyMessagePtr;
 
     class PROTOCOLDATA_EXPORT CUpdateTeamInfoRequest : public IData
     {
@@ -298,7 +297,7 @@ namespace net
         std::wstring m_strNewTeamName;
         std::wstring m_strOldTeamName;
     };
-    typedef boost::shared_ptr<CUpdateTeamInfoRequest> CUpdateTeamInfoRequestPtr;
+    typedef std::shared_ptr<CUpdateTeamInfoRequest> CUpdateTeamInfoRequestPtr;
 
     struct PROTOCOLDATA_EXPORT FileSendResult
     {
@@ -324,5 +323,5 @@ namespace net
         int64_t           m_offsetX;
         int64_t           m_nFileSize;
     };
-    typedef boost::shared_ptr<CUpLoadFileRequest> CUpLoadFileRequestPtr;
+    typedef std::shared_ptr<CUpLoadFileRequest> CUpLoadFileRequestPtr;
 }

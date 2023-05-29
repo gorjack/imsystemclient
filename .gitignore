@@ -41,6 +41,5 @@ _runtime/x64.Debug
 /_runtime/userdata/logs
 _runtime/userdata/users
  src/PanelChatWindow/GeneratedFiles/qrc_QQChatMessage.cpp
-/libs
 /src/Env/x64/Debug
 /x64/Debug
