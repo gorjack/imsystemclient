@@ -56,6 +56,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <IncludePath>D:\QtVersion\qt5_build\include\QtCore;D:\QtVersion\qt5_build\include\QtPositioning;D:\QtVersion\qt5_build\include\QtNetwork;D:\QtVersion\qt5_build\include\QtQmlDebug;D:\QtVersion\qt5_build\include\QtWebChannel;D:\QtVersion\qt5_build\include\QtXml;D:\QtVersion\qt5_build\include\QtANGLE;D:\QtVersion\qt5_build\include\QtGui;D:\QtVersion\qt5_build\include\QtQuick;D:\QtVersion\qtwebengine-everywhere-src-5.15.5\include\QtWebEngineCore;D:\QtVersion\qt5_build\include;D:\QtVersion\qt5_build\include\QtWidgets;D:\QtVersion\qt5_build\include\QtPrintSupport;D:\QtVersion\qt5_build\include\QtWebEngineWidgets;$(SolutionDir)TeamTalkHP;$(SolutionDir)TeamTalkHP\inc;$(SolutionDir)TeamTalkHP\src;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)_runtime\$(Platform).$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_builder\$(Platform).$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -64,6 +66,11 @@
       <AdditionalLibraryDirectories>D:\QtVersion\qtwebengine-everywhere-src-5.15.5\build\lib;$(QT5DIR)\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\workspace\imsystemclient\libs\NetLib;E:\workspace\imsystemclient\libs;E:\workspace\imsystemclient\src\User;E:\workspace\imsystemclient;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -73,7 +80,7 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -229,6 +236,14 @@
     <QtUic Include="ui\talkwindowitem.ui" />
     <QtUic Include="ui\talkwindowshell.ui" />
     <QtUic Include="ui\UserLogin.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libs\NetLib\NetLib.vcxproj">
+      <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\src\User\User.vcxproj">
+      <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

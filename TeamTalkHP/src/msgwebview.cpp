@@ -24,7 +24,7 @@ bool MsgWebPage::acceptNavigationRequest(const QUrl &url, QWebEnginePage::Naviga
 
 MsgHtmlObj::MsgHtmlObj(QObject* parent) : QObject(parent)
 {
-	//qputenv("QTWEBENGINE_REMOTE_DEBUGGING", QString::number(6453).toUtf8());
+	qputenv("QTWEBENGINE_REMOTE_DEBUGGING", QString::number(6453).toUtf8());
 	initHtmlTmpl();
 }
 
@@ -189,9 +189,10 @@ void MsgWebView::appendMsg(const QString& html)
 			qsMsg += msgLst.at(index).at(1);
 		}
 	}
+	msgObj.insert("Head", "Gj");
 	msgObj.insert("MSG", qsMsg);
 	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
-	this->page()->runJavaScript(QString("appendHtml(%1)").arg(Msg), 
+	this->page()->runJavaScript(QString("recvHtml(%1)").arg(Msg), 
 		[this](const QVariant& result) { runJavaScriptFinished(result); });
 }
 

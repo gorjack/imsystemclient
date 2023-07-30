@@ -1,6 +1,7 @@
 #include "skinwindow.h"
 #include "UserLogin.h"
 #include "cmainwindow.h"
+#include "CFlamingoClientCenter.h"
 
 UserLogin::UserLogin(QWidget *parent)
 	: BasicWindow(parent)

@@ -160,6 +160,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QT5DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp"  "-f../../%(Filename).h"  -DLUABIND_DYNAMIC_LINK -DXT_EXPORT_PRODUCTQUERYDIALOG -DQT_NO_QT_INCLUDE_WARN -D_CRT_SECURE_NO_WARNINGS -DWIN32 -D_WIN32_WINNT=0x0601 -DQT_THREAD_SUPPORT -DQT_GUI_LIB -DQT_DLL -D_LIB -DPV_DEPLOY -DUSE_NEW_BSON -D_WINDLL -D_UNICODE -DUNICODE "-I$(BOOST_ROOT158)\."  "-I$(QT5DIR)\include" "-I$(QT5DIR)\include\QT" "-I$(QT5DIR)\include\QTCore" "-I$(QT5DIR)\include\QTGui" "-I$(QT5DIR)\include\QTXml"  "-I.\GeneratedFiles\$(Configuration)\." </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QT5DIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT5DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp"  "-f../../%(Filename).h"  -DLUABIND_DYNAMIC_LINK -DXT_EXPORT_PRODUCTQUERYDIALOG -DQT_NO_QT_INCLUDE_WARN -D_CRT_SECURE_NO_WARNINGS -DWIN32 -D_WIN32_WINNT=0x0601 -DQT_THREAD_SUPPORT -DQT_GUI_LIB -DQT_DLL -D_LIB -DPV_DEPLOY -DUSE_NEW_BSON -D_WINDLL -D_UNICODE -DUNICODE "-I$(BOOST_ROOT158)\."  "-I$(QT5DIR)\include" "-I$(QT5DIR)\include\QT" "-I$(QT5DIR)\include\QTCore" "-I$(QT5DIR)\include\QTGui" "-I$(QT5DIR)\include\QTXml"  "-I.\GeneratedFiles\$(Configuration)\." </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QT5DIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="userdatas.h" />
     <CustomBuild Include="CUserBusinessCenter.h">
@@ -180,6 +183,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QT5DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp"  "-f../../%(Filename).h"  -DLUABIND_DYNAMIC_LINK -DXT_EXPORT_PRODUCTQUERYDIALOG -DQT_NO_QT_INCLUDE_WARN -D_CRT_SECURE_NO_WARNINGS -DWIN32 -D_WIN32_WINNT=0x0601 -DQT_THREAD_SUPPORT -DQT_GUI_LIB -DQT_DLL -D_LIB -DPV_DEPLOY -DUSE_NEW_BSON -D_WINDLL -D_UNICODE -DUNICODE "-I$(BOOST_ROOT158)\."  "-I$(QT5DIR)\include" "-I$(QT5DIR)\include\QT" "-I$(QT5DIR)\include\QTCore" "-I$(QT5DIR)\include\QTGui" "-I$(QT5DIR)\include\QTXml"  "-I.\GeneratedFiles\$(Configuration)\." </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QT5DIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT5DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp"  "-f../../%(Filename).h"  -DLUABIND_DYNAMIC_LINK -DXT_EXPORT_PRODUCTQUERYDIALOG -DQT_NO_QT_INCLUDE_WARN -D_CRT_SECURE_NO_WARNINGS -DWIN32 -D_WIN32_WINNT=0x0601 -DQT_THREAD_SUPPORT -DQT_GUI_LIB -DQT_DLL -D_LIB -DPV_DEPLOY -DUSE_NEW_BSON -D_WINDLL -D_UNICODE -DUNICODE "-I$(BOOST_ROOT158)\."  "-I$(QT5DIR)\include" "-I$(QT5DIR)\include\QT" "-I$(QT5DIR)\include\QTCore" "-I$(QT5DIR)\include\QTGui" "-I$(QT5DIR)\include\QTXml"  "-I.\GeneratedFiles\$(Configuration)\." </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(Configuration)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QT5DIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +199,9 @@
     <ProjectReference Include="..\..\libs\NetLib\NetLib.vcxproj">
       <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\libs\ProtocolData\ProtocolData.vcxproj">
+      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\libs\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
     </ProjectReference>
@@ -201,9 +210,6 @@
     </ProjectReference>
     <ProjectReference Include="..\Env\Env.vcxproj">
       <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
