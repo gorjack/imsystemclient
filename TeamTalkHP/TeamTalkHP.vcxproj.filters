@@ -49,9 +49,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\BasicWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -220,6 +217,9 @@
     <ClCompile Include="src\utils\screengrabber.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="src\CRegistDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="inc\BasicWindow.h">
@@ -369,6 +369,9 @@
     <QtMoc Include="src\utils\screengrabber.h">
       <Filter>utils</Filter>
     </QtMoc>
+    <QtMoc Include="src\CRegistDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\commonutils.h">
@@ -419,6 +422,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ui\UserLogin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\CRegistDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -1,1 +1,1 @@
-{ "m_services":[{ "m_name":"chatserver", "m_addr":"127.0.0.1:20000", "m_type": 0}, { "m_name":"fileserver", "m_addr":"127.0.0.1:20001","m_type": 1 }, { "m_name":"imageserver", "m_addr":"127.0.0.1:20002","m_type": 2 } ] }
+{ "m_services":[{ "m_name":"chatserver", "m_addr":"39.107.245.134:20000", "m_type": 0} ] }

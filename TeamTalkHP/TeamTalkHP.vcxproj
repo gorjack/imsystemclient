@@ -131,6 +131,7 @@
     <ClCompile Include="src\cmainwindow.cpp" />
     <ClCompile Include="src\commonutils.cpp" />
     <ClCompile Include="src\contactitem.cpp" />
+    <ClCompile Include="src\CRegistDialog.cpp" />
     <ClCompile Include="src\custommenu.cpp" />
     <ClCompile Include="src\emotionlabelitem.cpp" />
     <ClCompile Include="src\emotiontable.cpp" />
@@ -160,9 +161,6 @@
     <ClCompile Include="TeamTalkHP.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="inc\BasicWindow.h" />
@@ -174,6 +172,7 @@
     <ClInclude Include="inc\commonutils.h" />
     <ClInclude Include="inc\flowlayout.h" />
     <ClInclude Include="src\capture\screenshot.h" />
+    <QtMoc Include="src\CRegistDialog.h" />
     <ClInclude Include="src\utils\confighandler.h" />
     <ClInclude Include="src\utils\desktopfileparse.h" />
     <ClInclude Include="src\utils\desktopinfo.h" />
@@ -229,6 +228,7 @@
     <QtUic Include="ui\amplifierwidget.ui" />
     <QtUic Include="ui\cmainwindow.ui" />
     <QtUic Include="ui\contactitem.ui" />
+    <QtUic Include="ui\CRegistDialog.ui" />
     <QtUic Include="ui\emotionwindow.ui" />
     <QtUic Include="ui\qcolorpicker.ui" />
     <QtUic Include="ui\skinwindow.ui" />
@@ -240,6 +240,15 @@
   <ItemGroup>
     <ProjectReference Include="..\libs\NetLib\NetLib.vcxproj">
       <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\ProtocolData\ProtocolData.vcxproj">
+      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\UserClientCenter\UserClientCenter.vcxproj">
+      <Project>{516b9d6f-da55-427e-9df6-891d54126901}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\utils\utils.vcxproj">
+      <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
     </ProjectReference>
     <ProjectReference Include="..\src\User\User.vcxproj">
       <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>

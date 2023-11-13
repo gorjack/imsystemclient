@@ -22,9 +22,6 @@
     <ClCompile Include="CUserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Env\Env.vcxproj">
-      <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\NetLib\NetLib.vcxproj">
       <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
     </ProjectReference>
@@ -33,9 +30,6 @@
     </ProjectReference>
     <ProjectReference Include="..\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\winlog\winlog.vcxproj">
-      <Project>{16bdaac6-3385-4f93-b3b5-cb09c7a2573b}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">

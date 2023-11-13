@@ -153,9 +153,6 @@
     <ProjectReference Include="..\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\winlog\winlog.vcxproj">
-      <Project>{16bdaac6-3385-4f93-b3b5-cb09c7a2573b}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceptor.h" />

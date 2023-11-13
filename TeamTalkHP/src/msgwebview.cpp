@@ -189,7 +189,7 @@ void MsgWebView::appendMsg(const QString& html)
 			qsMsg += msgLst.at(index).at(1);
 		}
 	}
-	msgObj.insert("Head", "Gj");
+	//msgObj.insert("Head", "Gj");
 	msgObj.insert("MSG", qsMsg);
 	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
 	this->page()->runJavaScript(QString("recvHtml(%1)").arg(Msg), 

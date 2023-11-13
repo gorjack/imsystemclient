@@ -122,6 +122,9 @@ int main(int argc, char *argv[])
     PC::RotateWidget *pLoginD = new PC::RotateWidget(NULL);
     pLoginD->show();
 
+	UserLogin* w = new UserLogin;
+	w->show();
+
     int nRet = a.exec();
     UnInitSocket();
     g_pEventLoop->quit();

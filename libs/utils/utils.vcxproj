@@ -148,20 +148,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\jsoncpp\jsoncpp.vcxproj">
+      <Project>{35489414-1f7c-45b6-9300-433d691bd950}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\zlib\zlib.vcxproj">
       <Project>{a340469e-3eb5-440a-8f74-d5857a990b22}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsyncLog.h" />
     <ClInclude Include="CBuffer.h" />
+    <ClInclude Include="CConfig.h" />
     <ClInclude Include="commonFunc.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="CSingletonT.h" />
     <ClInclude Include="CSingletonT.hpp" />
     <ClInclude Include="DaemonRun.h" />
+    <ClInclude Include="directory.h" />
     <ClInclude Include="EncodeUtil.h" />
     <ClInclude Include="File2.h" />
     <ClInclude Include="FileHelper.h" />
+    <ClInclude Include="IULog.h" />
     <ClInclude Include="MD5.h" />
     <ClInclude Include="MD5Sum.h" />
     <ClInclude Include="MiniBuffer.h" />
@@ -174,12 +181,16 @@
     <ClInclude Include="ZlibUtil.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AsyncLog.cpp" />
     <ClCompile Include="CBuffer.cpp" />
+    <ClCompile Include="CConfig.cpp" />
     <ClCompile Include="commonFunc.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="DaemonRun.cpp" />
+    <ClCompile Include="directory.cpp" />
     <ClCompile Include="EncodeUtil.cpp" />
     <ClCompile Include="File2.cpp" />
+    <ClCompile Include="IULog.cpp" />
     <ClCompile Include="MD5.cpp" />
     <ClCompile Include="MD5Sum.cpp" />
     <ClCompile Include="MiniBuffer.cpp" />

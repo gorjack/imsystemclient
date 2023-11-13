@@ -1,5 +1,5 @@
 ﻿#include "CUserClientCenter.h"
-#include <Env/CConfig.h>
+#include <utils/CConfig.h>
 #include <TcpClient.h>
 #include <Callbacks.h>
 #include <Msg.h>
@@ -353,6 +353,10 @@ void CUserClientCenter::onConnect(const net::TcpConnectionPtr& pData)
         {
             emit sigLogindStatus(STATUS_CONNECTED, "");
         }
+    }
+    else
+    {
+        emit sigLogindStatus(STATUS_CONNECTED_ERROR, "CONNECT ERROR!");
     }
 }
 

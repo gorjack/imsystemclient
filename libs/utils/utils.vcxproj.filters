@@ -72,6 +72,18 @@
     <ClInclude Include="Path.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="directory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncLog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IULog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="commonFunc.cpp">
@@ -117,6 +129,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CConfig.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="directory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncLog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IULog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

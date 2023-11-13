@@ -1,8 +1,8 @@
 #pragma once
 
 #include "BasicWindow.h"
-
 #include "ui_UserLogin.h"
+#include "UserClientCenter/userdatas.h"
 
 class UserLogin : public BasicWindow
 {
@@ -14,6 +14,9 @@ public:
 
 private slots:
 	void onLoginBtnClicked();
+	void onRegistBtnClicked();
+	void onRegistStatus(int status, QString msg);
+	void onLogindStatus(UserLoginStatus, QString);
 
 private:
 	void initControl();

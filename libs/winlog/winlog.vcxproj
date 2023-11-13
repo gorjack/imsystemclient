@@ -145,11 +145,6 @@
     <ClCompile Include="AsyncLog.cpp" />
     <ClCompile Include="IULog.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\utils\utils.vcxproj">
-      <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

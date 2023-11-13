@@ -194,12 +194,6 @@
     <ProjectReference Include="..\..\libs\NetLib\NetLib.vcxproj">
       <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\libs\winlog\winlog.vcxproj">
-      <Project>{16bdaac6-3385-4f93-b3b5-cb09c7a2573b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Env\Env.vcxproj">
-      <Project>{ed10aef2-6a40-4708-94da-f230b4329adc}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\PanelLoginDialog\PanelLoginDialog.vcxproj">
       <Project>{49a75d0d-29d2-49b2-8957-a979c10eef0a}</Project>
     </ProjectReference>
