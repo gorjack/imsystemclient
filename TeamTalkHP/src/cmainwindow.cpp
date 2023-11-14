@@ -31,8 +31,9 @@ public:
 	}
 };
 
-CMainWindow::CMainWindow(QWidget *parent)
+CMainWindow::CMainWindow(QString userName, QWidget *parent)
 	: BasicWindow(parent)
+	, m_strUserName(userName)
 {
 	ui.setupUi(this);
 	setWindowFlags(windowFlags() | Qt::Tool);
@@ -63,7 +64,7 @@ void CMainWindow::initControl()
 	ui.treeWidget->setStyle(new CustomProxyStyle);
 
 	setLevelPixmap(0);
-    setUserName(QString::fromLocal8Bit("雨田哥-工作号"));
+	setUserName(m_strUserName);
 	setHeadPixmap(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg");
 	setStatusMenuIcon(":/TeamTalkHP/Resources/MainWindow/StatusSucceeded.png");
 
@@ -105,6 +106,40 @@ void CMainWindow::updateSeachStyle()
 {
 	ui.searchWidget->setStyleSheet(QString("QWidget#searchWidget {background-color:rgba(%1,%2,%3,50);border-bottom: 1px solid rgba(%1,%2,%3,30);}\
 								QPushButton#searchBtn {border-image:url(:/TeamTalkHP/Resources/MainWindow/search/search_icon.png);}").arg(m_colorBackGround.red()).arg(m_colorBackGround.green()).arg(m_colorBackGround.blue()));
+}
+
+void CMainWindow::updateBuddyList()
+{
+	const PC::CBuddyList& buddyList = CUserManager::instance()->getFirendList();
+	for (const auto& iter : buddyList.m_arrBuddyTeamInfo)
+	{
+		QListWidgetItem* newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), QString::fromStdString(iter->m_strName));    //创建一个Item  
+		newItem->setSizeHint(QSize(this->width(), 25));
+		this->addItem(newItem);
+		m_groupMap.insert(newItem, newItem);
+		m_isHideMap.insert(newItem, false);
+		m_pCurrentItem = newItem;
+		for (const auto& subIter : iter->m_arrBuddyInfo)
+		{
+			CBuddyItem* buddy = new CBuddyItem(this);
+			buddy->m_pHeadPath = ":/BuddyList/Resources/c";
+			buddy->m_pName->setText(QString::fromStdString(subIter->m_strNickName));
+			buddy->m_pSign->setText(QString::fromStdString(subIter->m_strSign));
+			buddy->m_nId = subIter->m_uUserID;
+
+			QList<QListWidgetItem*> tem = m_groupMap.keys(m_pCurrentItem);
+			QListWidgetItem* newItem = new QListWidgetItem(this);
+
+			this->insertItem(row(m_pCurrentItem) + tem.count(), newItem);
+			this->setItemWidget(newItem, buddy);
+
+			m_groupMap.insert(newItem, m_pCurrentItem);
+			if (m_isHideMap.value(m_pCurrentItem))
+				newItem->setHidden(true);
+			else
+				newItem->setHidden(false);
+		}
+	}
 }
 
 void CMainWindow::setHeadPixmap(const QString& headPath)

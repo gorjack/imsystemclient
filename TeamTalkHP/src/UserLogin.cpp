@@ -8,7 +8,10 @@
 #include "utils/Configuration.h"
 #include "utils/commonFunc.h"
 #include "utils/directory.h"
+#include "UserClientCenter/CUserManager.h"
+#include "cmainwindow.h"
 
+static const char* const c_szAccountFile = "user.ini";
 UserLogin::UserLogin(QWidget *parent)
 	: BasicWindow(parent)
 {
@@ -40,6 +43,8 @@ void UserLogin::initControl()
 	connect(ui.registBtn, &QPushButton::clicked, this, &UserLogin::onRegistBtnClicked);
 	connect(CUserClientCenter::instance(), SIGNAL(sigStatus(int, QString)), this, SLOT(onRegistStatus(int, QString)));
 	connect(CUserClientCenter::instance(), SIGNAL(sigLogindStatus(UserLoginStatus, QString)), this, SLOT(onLogindStatus(UserLoginStatus, QString)));
+
+	connect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(onFriendList()));
 }
 
 void UserLogin::onLoginBtnClicked()
@@ -49,10 +54,6 @@ void UserLogin::onLoginBtnClicked()
 
 	net::CLoginRequest req(strAccountId.toLatin1(), strPassWd.toLatin1(), 1, protocol::online_type_pc_online);
 	CUserClientCenter::instance()->login_async(req);
-
-	//close();
-	//CMainWindow* mainwindow = new CMainWindow;
-	//mainwindow->show();
 }
 
 void UserLogin::onRegistBtnClicked()
@@ -100,6 +101,7 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 	{
 		CConfig::instance()->setUserName(ui.editUserAccount->text());
 		{
+			//±£´æÓÃ»§µÇÂ¼ÅäÖÃ
 			QString strFile = PATH::getUserDir(ui.editUserAccount->text()) + QDir::separator() + c_szAccountFile;
 
 			std::string strPath = utils::qsToS(strFile);
@@ -119,12 +121,7 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 			configTool.save();
 		}
 
-		CMainWindow* mainwindow = new CMainWindow;
-		mainwindow->show();
-
-		CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&UserLogin::onOperateFriends, m_pMainWindow, std::placeholders::_1));
-
-		close();
+		CUserManager::instance()->queryFirendList();
 		break;
 	}
 	case STATUS_ERROR:
@@ -153,4 +150,14 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 		break;
 	}
 	}
+}
+
+void UserLogin::onFriendList()
+{
+	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text(), this);
+	pMainwindow->show();
+
+	CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, pMainwindow, std::placeholders::_1));
+
+	close();
 }

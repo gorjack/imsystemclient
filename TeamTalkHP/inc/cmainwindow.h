@@ -10,7 +10,7 @@ class CMainWindow : public BasicWindow
 	Q_OBJECT
 
 public:
-    CMainWindow(QWidget *parent = nullptr);
+    CMainWindow(QString userName, QWidget *parent = nullptr);
 	~CMainWindow();
 
 public:
@@ -41,6 +41,7 @@ private:
 	void addStarngerInfo(QTreeWidgetItem* pRootGroupItem);
 	void updateSeachStyle();
 
+	void updateBuddyList();
 private:
 	void resizeEvent(QResizeEvent *event) override;
 	bool eventFilter(QObject *watched, QEvent *event) override;
@@ -48,6 +49,8 @@ private:
 
 private:
 	Ui::CMainWindowClass ui;
+
+	QString m_strUserName;
 };
 
 #endif // CCMAINWINDOW_H

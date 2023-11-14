@@ -18,6 +18,7 @@ private slots:
 	void onRegistStatus(int status, QString msg);
 	void onLogindStatus(UserLoginStatus, QString);
 
+	void onFriendList();
 private:
 	void initControl();
 
