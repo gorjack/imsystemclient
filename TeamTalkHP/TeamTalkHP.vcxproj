@@ -63,11 +63,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalLibraryDirectories>D:\QtVersion\qtwebengine-everywhere-src-5.15.5\build\lib;$(QT5DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT158)\stage\lib64;D:\QtVersion\qtwebengine-everywhere-src-5.15.5\build\lib;$(QT5DIR)\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\workspace\imsystemclient\libs\NetLib;E:\workspace\imsystemclient\libs;E:\workspace\imsystemclient\src\User;E:\workspace\imsystemclient;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\workspace\imsystemclient\libs\NetLib;E:\workspace\imsystemclient\libs;E:\workspace\imsystemclient\src\User;E:\workspace\imsystemclient;$(BOOST_ROOT158);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
     </ClCompile>

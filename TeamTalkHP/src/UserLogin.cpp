@@ -157,7 +157,5 @@ void UserLogin::onFriendList()
 	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text(), this);
 	pMainwindow->show();
 
-	CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, pMainwindow, std::placeholders::_1));
-
 	close();
 }

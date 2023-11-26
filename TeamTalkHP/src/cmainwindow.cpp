@@ -13,6 +13,10 @@
 #include <QProxyStyle>
 #include <QTimer>
 #include <QUuid>
+#include "UserClientCenter/CUserClientCenter.h"
+#include "UserClientCenter/CUserManager.h"
+#include "UserClientCenter/CUserBusinessCenter.h"
+#include <ProtocolData/rpc_structs.h>
 
 class CustomProxyStyle : public QProxyStyle
 {
@@ -52,6 +56,8 @@ CMainWindow::CMainWindow(QString userName, QWidget *parent)
 		level++;
 	});
     timer->start();
+
+	CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CMainWindow::onOperateFriends, this, std::placeholders::_1));
 }
 
 CMainWindow::~CMainWindow()
@@ -110,36 +116,36 @@ void CMainWindow::updateSeachStyle()
 
 void CMainWindow::updateBuddyList()
 {
-	const PC::CBuddyList& buddyList = CUserManager::instance()->getFirendList();
-	for (const auto& iter : buddyList.m_arrBuddyTeamInfo)
-	{
-		QListWidgetItem* newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), QString::fromStdString(iter->m_strName));    //创建一个Item  
-		newItem->setSizeHint(QSize(this->width(), 25));
-		this->addItem(newItem);
-		m_groupMap.insert(newItem, newItem);
-		m_isHideMap.insert(newItem, false);
-		m_pCurrentItem = newItem;
-		for (const auto& subIter : iter->m_arrBuddyInfo)
-		{
-			CBuddyItem* buddy = new CBuddyItem(this);
-			buddy->m_pHeadPath = ":/BuddyList/Resources/c";
-			buddy->m_pName->setText(QString::fromStdString(subIter->m_strNickName));
-			buddy->m_pSign->setText(QString::fromStdString(subIter->m_strSign));
-			buddy->m_nId = subIter->m_uUserID;
+	//const PC::CBuddyList& buddyList = CUserManager::instance()->getFirendList();
+	//for (const auto& iter : buddyList.m_arrBuddyTeamInfo)
+	//{
+	//	QListWidgetItem* newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), QString::fromStdString(iter->m_strName));    //创建一个Item  
+	//	newItem->setSizeHint(QSize(this->width(), 25));
+	//	this->addItem(newItem);
+	//	m_groupMap.insert(newItem, newItem);
+	//	m_isHideMap.insert(newItem, false);
+	//	m_pCurrentItem = newItem;
+	//	for (const auto& subIter : iter->m_arrBuddyInfo)
+	//	{
+	//		CBuddyItem* buddy = new CBuddyItem(this);
+	//		buddy->m_pHeadPath = ":/BuddyList/Resources/c";
+	//		buddy->m_pName->setText(QString::fromStdString(subIter->m_strNickName));
+	//		buddy->m_pSign->setText(QString::fromStdString(subIter->m_strSign));
+	//		buddy->m_nId = subIter->m_uUserID;
 
-			QList<QListWidgetItem*> tem = m_groupMap.keys(m_pCurrentItem);
-			QListWidgetItem* newItem = new QListWidgetItem(this);
+	//		QList<QListWidgetItem*> tem = m_groupMap.keys(m_pCurrentItem);
+	//		QListWidgetItem* newItem = new QListWidgetItem(this);
 
-			this->insertItem(row(m_pCurrentItem) + tem.count(), newItem);
-			this->setItemWidget(newItem, buddy);
+	//		this->insertItem(row(m_pCurrentItem) + tem.count(), newItem);
+	//		this->setItemWidget(newItem, buddy);
 
-			m_groupMap.insert(newItem, m_pCurrentItem);
-			if (m_isHideMap.value(m_pCurrentItem))
-				newItem->setHidden(true);
-			else
-				newItem->setHidden(false);
-		}
-	}
+	//		m_groupMap.insert(newItem, m_pCurrentItem);
+	//		if (m_isHideMap.value(m_pCurrentItem))
+	//			newItem->setHidden(true);
+	//		else
+	//			newItem->setHidden(false);
+	//	}
+	//}
 }
 
 void CMainWindow::setHeadPixmap(const QString& headPath)
@@ -306,7 +312,7 @@ void CMainWindow::initStrangerTree()
 	RootContatItem *pItemName = new RootContatItem(ui.treeWidget);
 
 	int nMyFriendNum = 8;
-	QString qsGroupName = QString::fromLocal8Bit("陌生人 %1/%2").arg(0).arg(nMyFriendNum);
+	QString qsGroupName = QString::fromLocal8Bit("我的好友 %1/%2").arg(0).arg(nMyFriendNum);
 	pItemName->setText(qsGroupName);
 	//擦入分组节点
 	ui.treeWidget->addTopLevelItem(pRootFriendItem);
@@ -330,8 +336,8 @@ void CMainWindow::addStarngerInfo(QTreeWidgetItem* pRootGroupItem)
 	pChild->setData(0, Qt::UserRole + 1, QString::number((int)pChild));
 	ContactItem* pContactItem = new ContactItem(ui.treeWidget);
     pContactItem->setHeadPixmap(getRoundImage(pix1, pix2, pContactItem->getHeadLabelSize()));
-	pContactItem->setUserName(QString::fromLocal8Bit("雨田哥-工作号-陌生人"));
-	pContactItem->setSignName(QString::fromLocal8Bit("欢迎访问雨田哥工作号-陌生人"));
+	pContactItem->setUserName(QString::fromLocal8Bit("雨田哥-工作号-陌生人2"));
+	pContactItem->setSignName(QString::fromLocal8Bit("欢迎访问雨田哥工作号-陌生人1"));
 	pRootGroupItem->addChild(pChild);
 	ui.treeWidget->setItemWidget(pChild, 0, pContactItem);
 }
@@ -378,4 +384,14 @@ void CMainWindow::onItemCollapsed(QTreeWidgetItem * item)
 			prootItem->setExpanded(false);
 		}
 	}
+}
+
+void CMainWindow::onOperateFriends(const std::string& req)
+{
+	emit sigOnAddFirendCB(req);
+}
+
+void CMainWindow::slotOnAddFirendCB(const std::string& param)
+{
+	return;
 }

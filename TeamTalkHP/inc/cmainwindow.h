@@ -27,12 +27,19 @@ public:
 	//初始化好友列表
 	void initContactTree();
 
+	void onOperateFriends(const std::string& req);
+
+Q_SIGNALS:
+	void sigOnAddFirendCB(const std::string&);
+
 private slots:
 	void onItemExpanded(QTreeWidgetItem * item);
 	void onItemCollapsed(QTreeWidgetItem * item);
 	void onItemClicked(QTreeWidgetItem * item, int column);
 	void onItemDoubleClicked(QTreeWidgetItem *, int);
 	void onAppIconCliked();
+
+	void slotOnAddFirendCB(const std::string&);
 
 private:
 	void initControl();
