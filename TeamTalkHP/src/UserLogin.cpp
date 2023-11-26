@@ -126,9 +126,9 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 	}
 	case STATUS_ERROR:
 	{
-		ui.loginBtn->setText("µÇÂ¼");
+		ui.loginBtn->setText(QString::fromLocal8Bit("µÇÂ¼"));
 		ui.loginBtn->setEnabled(true);
-		QMessageBox::information(this, "ÌáÊ¾", strError );
+		QMessageBox::information(this, QString::fromLocal8Bit("ÌáÊ¾"), strError );
 		break;
 	}
 	case STATUS_CONNECTING:
@@ -139,7 +139,7 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 	}
 	case STATUS_CONNECTED:
 	{
-		ui.loginBtn->setText("µÇÂ¼");
+		ui.loginBtn->setText(QString::fromLocal8Bit("µÇÂ¼"));
 		ui.loginBtn->setEnabled(true);
 		break;
 	}
