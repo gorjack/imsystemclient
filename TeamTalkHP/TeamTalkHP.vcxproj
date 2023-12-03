@@ -128,9 +128,11 @@
     <ClCompile Include="src\capture\workers\imgur\imagelabel.cpp" />
     <ClCompile Include="src\capture\workers\imgur\loadspinner.cpp" />
     <ClCompile Include="src\capture\workers\imgur\notificationwidget.cpp" />
+    <ClCompile Include="src\CConfirmAddFriendDG.cpp" />
     <ClCompile Include="src\cmainwindow.cpp" />
     <ClCompile Include="src\commonutils.cpp" />
     <ClCompile Include="src\contactitem.cpp" />
+    <ClCompile Include="src\CQueryForAddDialog.cpp" />
     <ClCompile Include="src\CRegistDialog.cpp" />
     <ClCompile Include="src\custommenu.cpp" />
     <ClCompile Include="src\emotionlabelitem.cpp" />
@@ -169,7 +171,9 @@
     <QtMoc Include="inc\cmainwindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="inc\CConfirmAddFriendDG.h" />
     <ClInclude Include="inc\commonutils.h" />
+    <QtMoc Include="inc\CQueryForAddDialog.h" />
     <ClInclude Include="inc\flowlayout.h" />
     <ClInclude Include="src\capture\screenshot.h" />
     <QtMoc Include="src\CRegistDialog.h" />
@@ -225,8 +229,12 @@
     <QtMoc Include="inc\contactitem.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="ui\AddFriendDialog.ui" />
     <QtUic Include="ui\amplifierwidget.ui" />
     <QtUic Include="ui\cmainwindow.ui" />
+    <QtUic Include="ui\ConfirmAddFriendDG.ui">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtUic>
     <QtUic Include="ui\contactitem.ui" />
     <QtUic Include="ui\CRegistDialog.ui" />
     <QtUic Include="ui\emotionwindow.ui" />
@@ -249,9 +257,6 @@
     </ProjectReference>
     <ProjectReference Include="..\libs\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\src\User\User.vcxproj">
-      <Project>{de78e4ef-4ae6-4700-bfc3-85856b37469b}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

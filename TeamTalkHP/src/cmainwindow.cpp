@@ -18,6 +18,8 @@
 #include "UserClientCenter/CUserBusinessCenter.h"
 #include <ProtocolData/rpc_structs.h>
 
+#include "CQueryForAddDialog.h"
+
 class CustomProxyStyle : public QProxyStyle
 {
 public:
@@ -105,6 +107,8 @@ void CMainWindow::initControl()
 		updateSeachStyle();
 	});
 
+	connect(this, SIGNAL(sigOnAddFirendCB(const std::string&)), this, SLOT(slotOnAddFirendCB(const std::string&)));
+	connect(ui.addFriendsBtn, SIGNAL(clicked(bool)), this, SLOT(slotOnAddFirendBtnClicked(bool)));
 	SysTray* systray = new SysTray(this);
 }
 
@@ -380,7 +384,7 @@ void CMainWindow::onItemCollapsed(QTreeWidgetItem * item)
 	{
 		RootContatItem *prootItem = dynamic_cast<RootContatItem*>(ui.treeWidget->itemWidget(item, 0));
 		if (prootItem)
-		{
+		{																																																																																						
 			prootItem->setExpanded(false);
 		}
 	}
@@ -394,4 +398,12 @@ void CMainWindow::onOperateFriends(const std::string& req)
 void CMainWindow::slotOnAddFirendCB(const std::string& param)
 {
 	return;
+}
+
+void CMainWindow::slotOnAddFirendBtnClicked(bool)
+{
+	CQueryForAddDialog addDlg;
+
+	addDlg.exec();
+
 }

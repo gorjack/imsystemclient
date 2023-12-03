@@ -1,9 +1,10 @@
 #include "CQueryForAddDialog.h"
 #include "CConfirmAddFriendDG.h"
-#include <User/CFlamingoClientCenter.h>
+#include "UserClientCenter/CUserClientCenter.h"
 #include <ProtocolData/rpc_structs.h>
 #include <ProtocolData/rpc_proEnum.h>
 #include <QtWidgets/QMessageBox>
+#include <boost/make_shared.hpp>
 
 CQueryForAddDialog::CQueryForAddDialog(QWidget *parent)
     : QDialog(parent)
@@ -11,8 +12,10 @@ CQueryForAddDialog::CQueryForAddDialog(QWidget *parent)
     ui.setupUi(this);
     connect(ui.m_pAddFirendBtn, SIGNAL(clicked()), this, SLOT(slotFindFriend()));
     connect(this, SIGNAL(sigOnFindFirendCallBack()), this, SLOT(slotOnFindFirendCallBack()));
+   // connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
     m_pConfirmAddFriendDG = new CConfirmAddFriendDG(this);
-    CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
+    CUserClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
+   // CFlamingoClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 }
 
 
@@ -25,7 +28,7 @@ void CQueryForAddDialog::addFirend(unsigned int uAccountToAdd)
         pData->m_uAccountID = uAccountToAdd;
     }
 
-    bool nRet = CFlamingoClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+    bool nRet = CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 
 }
 
@@ -39,7 +42,7 @@ void CQueryForAddDialog::slotFindFriend()
     strcpy_s(pRequestPtr->m_szAccountName, sizeof(pRequestPtr->m_szAccountName) / sizeof(char), strTemp.data());
     pRequestPtr->m_nType = 1;
 
-    bool nRet = CFlamingoClientCenter::instance()->request_async(pRequestPtr, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
+    bool nRet = CUserClientCenter::instance()->request_async(pRequestPtr, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
     if (!nRet)
     {
         QMessageBox::information(this, "提示", "客户端还没连上服务器");

@@ -24,5 +24,4 @@ private:
 
 private:
 	Ui::UserLogin ui;
-
 };

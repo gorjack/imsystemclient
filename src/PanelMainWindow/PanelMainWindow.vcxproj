@@ -271,8 +271,6 @@
     <QtMoc Include="CMainWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="AddFriendDialog.ui" />
-    <QtUic Include="ConfirmAddFriendDG.ui" />
     <QtUic Include="MainWindow.ui" />
   </ItemGroup>
   <ItemGroup>

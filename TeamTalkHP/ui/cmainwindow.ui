@@ -644,7 +644,7 @@ font: 75 12pt &quot;微软雅黑&quot;;</string>
          <enum>QLayout::SetMaximumSize</enum>
         </property>
         <item>
-         <widget class="QPushButton" name="bottomBtn_1">
+         <widget class="QPushButton" name="addFriendsBtn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>

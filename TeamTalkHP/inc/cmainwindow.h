@@ -40,6 +40,7 @@ private slots:
 	void onAppIconCliked();
 
 	void slotOnAddFirendCB(const std::string&);
+	void slotOnAddFirendBtnClicked(bool);
 
 private:
 	void initControl();

@@ -220,6 +220,12 @@
     <ClCompile Include="src\CRegistDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CQueryForAddDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CConfirmAddFriendDG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="inc\BasicWindow.h">
@@ -372,6 +378,12 @@
     <QtMoc Include="src\CRegistDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="inc\CQueryForAddDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="inc\CConfirmAddFriendDG.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\commonutils.h">
@@ -425,6 +437,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ui\CRegistDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\AddFriendDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ui\ConfirmAddFriendDG.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

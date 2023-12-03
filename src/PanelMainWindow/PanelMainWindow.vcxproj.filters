@@ -61,12 +61,6 @@
     <QtUic Include="MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="AddFriendDialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="ConfirmAddFriendDG.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CMainWindow.h">

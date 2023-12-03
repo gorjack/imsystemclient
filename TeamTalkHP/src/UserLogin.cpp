@@ -154,8 +154,11 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 
 void UserLogin::onFriendList()
 {
-	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text(), this);
-	pMainwindow->show();
-
 	close();
+	disconnect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(onFriendList()));
+
+	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text());
+	
+	pMainwindow->exec();
+	pMainwindow->raise();
 }
