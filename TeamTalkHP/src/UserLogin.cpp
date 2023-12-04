@@ -44,7 +44,7 @@ void UserLogin::initControl()
 	connect(CUserClientCenter::instance(), SIGNAL(sigStatus(int, QString)), this, SLOT(onRegistStatus(int, QString)));
 	connect(CUserClientCenter::instance(), SIGNAL(sigLogindStatus(UserLoginStatus, QString)), this, SLOT(onLogindStatus(UserLoginStatus, QString)));
 
-	connect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(onFriendList()));
+	connect(this, SIGNAL(sigEmitToLogin()), this, SLOT(onFriendList()));
 }
 
 void UserLogin::onLoginBtnClicked()
@@ -121,7 +121,7 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 			configTool.save();
 		}
 
-		CUserManager::instance()->queryFirendList();
+		emit sigEmitToLogin();
 		break;
 	}
 	case STATUS_ERROR:
@@ -155,7 +155,6 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 void UserLogin::onFriendList()
 {
 	close();
-	disconnect(CUserManager::instance(), SIGNAL(sigFinishGetFriendListReq()), this, SLOT(onFriendList()));
 
 	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text());
 	

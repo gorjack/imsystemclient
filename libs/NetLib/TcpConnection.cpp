@@ -132,7 +132,7 @@ void TcpConnection::sendInLoop(const string & message)
 
 void TcpConnection::sendInLoop(const void* data, size_t len)
 {
-    //LOGD("start sendInloop !!");
+    LOGD("start sendInloop !!");
     loop_->assertInLoopThread();
     int32_t nwrote = 0;
     size_t remaining = len;
@@ -148,9 +148,9 @@ void TcpConnection::sendInLoop(const void* data, size_t len)
         int startTime = time(NULL);
         nwrote = sockets::write(channel_->fd(), data, len);
         //TODO: 打印threadid用于调试，后面去掉
-        //std::stringstream ss;
-        //ss << std::this_thread::get_id();
-        //LOGI << "send data in threadID = " << ss;
+  //      std::stringstream ss;
+		//ss << std::this_thread::get_id();
+		//LOGI << "send data in threadID = " << ss;
 
         if (nwrote >= 0)
         {

@@ -12,6 +12,10 @@ public:
 	UserLogin(QWidget *parent = Q_NULLPTR);
 	~UserLogin();
 
+
+Q_SIGNALS:
+	void sigEmitToLogin();
+
 private slots:
 	void onLoginBtnClicked();
 	void onRegistBtnClicked();
