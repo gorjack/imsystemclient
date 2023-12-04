@@ -6,115 +6,115 @@
 #include <QtWidgets/QMessageBox>
 #include <boost/make_shared.hpp>
 
-CQueryForAddDialog::CQueryForAddDialog(QWidget *parent)
-    : QDialog(parent)
+CQueryForAddDialog::CQueryForAddDialog(QWidget* parent)
+	: QDialog(parent)
 {
-    ui.setupUi(this);
-    connect(ui.m_pAddFirendBtn, SIGNAL(clicked()), this, SLOT(slotFindFriend()));
-    connect(this, SIGNAL(sigOnFindFirendCallBack()), this, SLOT(slotOnFindFirendCallBack()));
+	ui.setupUi(this);
+	connect(ui.m_pAddFirendBtn, SIGNAL(clicked()), this, SLOT(slotFindFriend()));
+	connect(this, SIGNAL(sigOnFindFirendCallBack()), this, SLOT(slotOnFindFirendCallBack()));
 
-    connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
-    m_pConfirmAddFriendDG = new CConfirmAddFriendDG(this);
-    CUserClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
-    CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+	connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
+	m_pConfirmAddFriendDG = new CConfirmAddFriendDG(this);
+	CUserClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
+	CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 }
 
 
 void CQueryForAddDialog::addFirend(unsigned int uAccountToAdd)
 {
-    net::COperateFriendRequestPtr pData(new net::COperateFriendRequest());
-    if (NULL != pData)
-    {
-        pData->m_uCmd = protocol::Apply;
-        pData->m_uAccountID = uAccountToAdd;
-    }
+	net::COperateFriendRequestPtr pData(new net::COperateFriendRequest());
+	if (NULL != pData)
+	{
+		pData->m_uCmd = protocol::Apply;
+		pData->m_uAccountID = uAccountToAdd;
+	}
 
-    bool nRet = CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+	bool nRet = CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 
 }
 
 void CQueryForAddDialog::slotFindFriend()
 {
-    net::CFindFriendRequestPtr pRequestPtr = std::make_shared<net::CFindFriendRequest>();
+	net::CFindFriendRequestPtr pRequestPtr = std::make_shared<net::CFindFriendRequest>();
 
 
-    QString strId = ui.m_pIdLineEdit->displayText();
-    std::string strTemp(strId.toLatin1());
-    strcpy_s(pRequestPtr->m_szAccountName, sizeof(pRequestPtr->m_szAccountName) / sizeof(char), strTemp.data());
-    pRequestPtr->m_nType = 1;
+	QString strId = ui.m_pIdLineEdit->displayText();
+	std::string strTemp(strId.toLatin1());
+	strcpy_s(pRequestPtr->m_szAccountName, sizeof(pRequestPtr->m_szAccountName) / sizeof(char), strTemp.data());
+	pRequestPtr->m_nType = 1;
 
-    bool nRet = CUserClientCenter::instance()->request_async(pRequestPtr, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
-    if (!nRet)
-    {
-        QMessageBox::information(this, "æç¤º", "å®¢æˆ·ç«¯è¿˜æ²¡è¿žä¸ŠæœåŠ¡å™¨");
-    }
+	bool nRet = CUserClientCenter::instance()->request_async(pRequestPtr, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
+	if (!nRet)
+	{
+		QMessageBox::information(this, "ÌáÊ¾", "¿Í»§¶Ë»¹Ã»Á¬ÉÏ·þÎñÆ÷");
+	}
 }
 
 void CQueryForAddDialog::slotOnFindFirendCallBack()
 {
-    net::CFindFriendResultPtr pDataPtr = std::make_shared<net::CFindFriendResult>();
-    pDataPtr->decodePackage(m_strBuffer);
+	net::CFindFriendResultPtr pDataPtr = std::make_shared<net::CFindFriendResult>();
+	pDataPtr->decodePackage(m_strBuffer);
 
-    long nResultCode = pDataPtr->m_nResultCode;
+	long nResultCode = pDataPtr->m_nResultCode;
 
-    if (nResultCode == protocol::FIND_FRIEND_NOT_FOUND)
-        QMessageBox::information(this, "æç¤º", "æ‚¨æŸ¥æ‰¾çš„è´¦æˆ·ä¸å­˜åœ¨ï¼");
-    else if (nResultCode == protocol::FIND_FRIEND_FAILED)
-        QMessageBox::information(this, "æç¤º", "ç½‘ç»œæ•…éšœï¼ŒæŸ¥æ‰¾è´¦æˆ·å¤±è´¥ï¼");
-    else if (nResultCode == protocol::FIND_FRIEND_FOUND)
-    {
-        QMessageBox::information(this, "æç¤º", "æ‚¨çš„è¯·æ±‚å·²å‘é€è¯·ç­‰å¾…");
-        addFirend(pDataPtr->m_uAccountID);
-    }
+	if (nResultCode == protocol::FIND_FRIEND_NOT_FOUND)
+		QMessageBox::information(this, "ÌáÊ¾", "Äú²éÕÒµÄÕË»§²»´æÔÚ£¡");
+	else if (nResultCode == protocol::FIND_FRIEND_FAILED)
+		QMessageBox::information(this, "ÌáÊ¾", "ÍøÂç¹ÊÕÏ£¬²éÕÒÕË»§Ê§°Ü£¡");
+	else if (nResultCode == protocol::FIND_FRIEND_FOUND)
+	{
+		QMessageBox::information(this, "ÌáÊ¾", "ÄúµÄÇëÇóÒÑ·¢ËÍÇëµÈ´ý");
+		addFirend(pDataPtr->m_uAccountID);
+	}
 }
 
 void CQueryForAddDialog::slotOnAddFirendCB()
 {
 #if 1
-    net::COperateFriendResultPtr pAddFriendInfo = std::make_shared<net::COperateFriendResult>();
-    pAddFriendInfo->decodePackage(m_strBuffer);
+	net::COperateFriendResultPtr pAddFriendInfo = std::make_shared<net::COperateFriendResult>();
+	pAddFriendInfo->decodePackage(m_strBuffer);
 
-    //åˆ«äººåŠ è‡ªå·±
-    if (pAddFriendInfo->m_uCmd == protocol::Apply)
-    {
-        m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("åŠ å¥½å‹"));
-        //QString msg = QString(" %1 è¯·æ±‚åŠ æ‚¨ä¸ºå¥½å‹,  æ˜¯å¦åŒæ„").arg(pAddFriendInfo->m_szAccountName);
-        //
-        //m_pConfirmAddFriendDG->setInfoMsg(msg);
-        //int nRet = m_pConfirmAddFriendDG->exec();
-        //{
-        //    net::COperateFriendRequestPtr pData = std::make_shared<net::COperateFriendRequest>();
-        //    pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
-        //    pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
+	//±ðÈË¼Ó×Ô¼º
+	if (pAddFriendInfo->m_uCmd == protocol::Apply)
+	{
+		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("¼ÓºÃÓÑ"));
+		QString msg = QString(" %1 ÇëÇó¼ÓÄúÎªºÃÓÑ,  ÊÇ·ñÍ¬Òâ").arg(pAddFriendInfo->m_szAccountName);
+		
+		m_pConfirmAddFriendDG->setInfoMsg(msg);
+		int nRet = m_pConfirmAddFriendDG->exec();
+		{
+		    net::COperateFriendRequestPtr pData = std::make_shared<net::COperateFriendRequest>();
+		    pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
+		    pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
 
-        //    CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
-        //}
-    }
-    //else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
-    //{
-    //    QString msg = QString(" %1 æ‹’ç»äº†åŠ å¥½å‹è¯·æ±‚").arg(pAddFriendInfo->m_szAccountName);
-    //    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("æ‹’ç»å¥½å‹è¯·æ±‚"));
-    //    m_pConfirmAddFriendDG->setInfoMsg(msg);
-    //    m_pConfirmAddFriendDG->exec();
-    //}
-    //else if (pAddFriendInfo->m_uCmd == protocol::Agree)
-    //{
-    //    QString msg = QString(" æ‚¨å’Œ %1 å·²ç»æ˜¯å¥½å‹å•¦ï¼Œå¼€å§‹èŠå¤©å§").arg(pAddFriendInfo->m_szAccountName);
-    //    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("æˆåŠŸåŠ å¥½å‹"));
-    //    m_pConfirmAddFriendDG->setInfoMsg(msg);
-    //    m_pConfirmAddFriendDG->exec();
-    //}
+		    CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+		}
+	}
+	else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
+	{
+	    QString msg = QString(" %1 ¾Ü¾øÁË¼ÓºÃÓÑÇëÇó").arg(pAddFriendInfo->m_szAccountName);
+	    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("¾Ü¾øºÃÓÑÇëÇó"));
+	    m_pConfirmAddFriendDG->setInfoMsg(msg);
+	    m_pConfirmAddFriendDG->exec();
+	}
+	else if (pAddFriendInfo->m_uCmd == protocol::Agree)
+	{
+	    QString msg = QString(" ÄúºÍ %1 ÒÑ¾­ÊÇºÃÓÑÀ²£¬¿ªÊ¼ÁÄÌì°É").arg(pAddFriendInfo->m_szAccountName);
+	    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("³É¹¦¼ÓºÃÓÑ"));
+	    m_pConfirmAddFriendDG->setInfoMsg(msg);
+	    m_pConfirmAddFriendDG->exec();
+	}
 #endif
 }
 
 void CQueryForAddDialog::onHandleFindFirend(const std::string& strMsg)
 {
-    m_strBuffer = strMsg;
-    emit sigOnFindFirendCallBack();
+	m_strBuffer = strMsg;
+	emit sigOnFindFirendCallBack();
 }
 
 void CQueryForAddDialog::onAddFirend(const std::string& strMsg)
 {
-    m_strBuffer = strMsg;
-    emit sigOnAddFirendCB();
+	m_strBuffer = strMsg;
+	emit sigOnAddFirendCB();
 }
