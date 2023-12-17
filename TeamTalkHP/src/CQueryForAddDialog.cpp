@@ -70,7 +70,6 @@ void CQueryForAddDialog::slotOnFindFirendCallBack()
 
 void CQueryForAddDialog::slotOnAddFirendCB()
 {
-#if 1
 	net::COperateFriendResultPtr pAddFriendInfo = std::make_shared<net::COperateFriendResult>();
 	pAddFriendInfo->decodePackage(m_strBuffer);
 
@@ -79,32 +78,31 @@ void CQueryForAddDialog::slotOnAddFirendCB()
 	{
 		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("加好友"));
 		QString msg = QString(" %1 请求加您为好友,  是否同意").arg(pAddFriendInfo->m_szAccountName);
-		
+
 		m_pConfirmAddFriendDG->setInfoMsg(msg);
 		int nRet = m_pConfirmAddFriendDG->exec();
 		{
-		    net::COperateFriendRequestPtr pData = std::make_shared<net::COperateFriendRequest>();
-		    pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
-		    pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
+			net::COperateFriendRequestPtr pData = std::make_shared<net::COperateFriendRequest>();
+			pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
+			pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
 
-		    CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
+			CUserClientCenter::instance()->request_async(pData, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 		}
 	}
 	else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
 	{
-	    QString msg = QString(" %1 拒绝了加好友请求").arg(pAddFriendInfo->m_szAccountName);
-	    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("拒绝好友请求"));
-	    m_pConfirmAddFriendDG->setInfoMsg(msg);
-	    m_pConfirmAddFriendDG->exec();
+		QString msg = QString(" %1 拒绝了加好友请求").arg(pAddFriendInfo->m_szAccountName);
+		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("拒绝好友请求"));
+		m_pConfirmAddFriendDG->setInfoMsg(msg);
+		m_pConfirmAddFriendDG->exec();
 	}
 	else if (pAddFriendInfo->m_uCmd == protocol::Agree)
 	{
-	    QString msg = QString(" 您和 %1 已经是好友啦，开始聊天吧").arg(pAddFriendInfo->m_szAccountName);
-	    m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("成功加好友"));
-	    m_pConfirmAddFriendDG->setInfoMsg(msg);
-	    m_pConfirmAddFriendDG->exec();
+		QString msg = QString(" 您和 %1 已经是好友啦，开始聊天吧").arg(pAddFriendInfo->m_szAccountName);
+		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("成功加好友"));
+		m_pConfirmAddFriendDG->setInfoMsg(msg);
+		m_pConfirmAddFriendDG->exec();
 	}
-#endif
 }
 
 void CQueryForAddDialog::onHandleFindFirend(const std::string& strMsg)
