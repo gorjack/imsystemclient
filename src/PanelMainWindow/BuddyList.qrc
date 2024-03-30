@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/BuddyList">
-        <file>Resources/buddy.qss</file>
-        <file>Resources/c.png</file>
-        <file>Resources/arrowDown.png</file>
-        <file>Resources/arrowRight.png</file>
-        <file>Resources/headlabel.png</file>
-    </qresource>
-</RCC>
