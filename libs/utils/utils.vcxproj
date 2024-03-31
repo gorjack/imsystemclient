@@ -78,7 +78,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)_runtime\$(Platform).$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)_builder\$(Platform).$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)src\QtFlamingo;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,7 +107,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;UTILS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(QT5DIR)\include;$(QT5DIR)\include\QtCore;$(SolutionDir)libs;$(SolutionDir)src\QtFlamingo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT158);$(QT5DIR)\include;$(QT5DIR)\include\QtCore;$(SolutionDir)libs;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>

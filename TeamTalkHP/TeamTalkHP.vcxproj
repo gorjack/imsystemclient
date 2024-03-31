@@ -81,7 +81,7 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -130,11 +130,13 @@
     <ClCompile Include="src\capture\workers\imgur\loadspinner.cpp" />
     <ClCompile Include="src\capture\workers\imgur\notificationwidget.cpp" />
     <ClCompile Include="src\CConfirmAddFriendDG.cpp" />
+    <ClCompile Include="src\CImageCenter.cpp" />
     <ClCompile Include="src\cmainwindow.cpp" />
     <ClCompile Include="src\commonutils.cpp" />
     <ClCompile Include="src\contactitem.cpp" />
     <ClCompile Include="src\CQueryForAddDialog.cpp" />
     <ClCompile Include="src\CRegistDialog.cpp" />
+    <ClCompile Include="src\CUiResource.cpp" />
     <ClCompile Include="src\custommenu.cpp" />
     <ClCompile Include="src\emotionlabelitem.cpp" />
     <ClCompile Include="src\emotiontable.cpp" />
@@ -173,8 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="inc\CConfirmAddFriendDG.h" />
+    <ClInclude Include="inc\CImageCenter.h" />
     <ClInclude Include="inc\commonutils.h" />
     <QtMoc Include="inc\CQueryForAddDialog.h" />
+    <ClInclude Include="inc\CUiResource.h" />
     <ClInclude Include="inc\flowlayout.h" />
     <ClInclude Include="src\capture\screenshot.h" />
     <QtMoc Include="src\CRegistDialog.h" />

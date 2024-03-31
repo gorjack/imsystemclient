@@ -10,6 +10,7 @@
 #include "utils/directory.h"
 #include "UserClientCenter/CUserManager.h"
 #include "cmainwindow.h"
+#include "CUiResource.h"
 
 static const char* const c_szAccountFile = "user.ini";
 UserLogin::UserLogin(QWidget *parent)
@@ -18,8 +19,14 @@ UserLogin::UserLogin(QWidget *parent)
     ui.setupUi(this);
 	setAttribute(Qt::WA_DeleteOnClose);
 	initTitleBar();
+
+	QString strLoginDir = QApplication::applicationDirPath() + QDir::separator() + 
+		QString("..") + QDir::separator() + QString("resource") + QDir::separator() + QString("login") + QDir::separator();
+	CUiResource::instance()->parseImage(strLoginDir);
+
 	setTitleBarTitle("", ":/TeamTalkHP/Resources/MainWindow/qqlogoclassic.png");
-    loadStyleSheet("UserLogin");
+    
+	loadStyleSheet("UserLogin");
 	initControl();
 
 	CUserClientCenter::instance()->resetClient();
@@ -35,8 +42,8 @@ void UserLogin::initControl()
 {
 	QLabel* headlabel = new QLabel(this);
 	headlabel->setFixedSize(68, 68);
-	QPixmap pix(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
-	headlabel->setPixmap(getRoundImage(QPixmap(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg"), pix, headlabel->size()));
+
+	headlabel->setPixmap(getRoundImage((*TT_PIXMAP("login")), const_cast<QPixmap&>((*TT_PIXMAP("head_mask"))), headlabel->size()));
 	headlabel->move(width()/2 - 34, ui.titleWidget->height() - 34);
 
 	connect(ui.loginBtn, &QPushButton::clicked, this, &UserLogin::onLoginBtnClicked);
@@ -70,15 +77,15 @@ void UserLogin::onRegistStatus(int status, QString msg)
 {
 	if (status == protocol::REGISTER_EXIST)
 	{
-		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("您注册的手机号已经被注册, 建议更换号码"));
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("The mobile phone number you registered has already been registered. It is recommended to change the number."));
 	}
 	else if (status == protocol::REGISTER_SUCCESS)
 	{
-		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("恭喜您，注册成功"));
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("Congratulations, your registration is successful"));
 	}
 	else
 	{
-		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("网络故障，注册失败，请稍后重试！"));
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("Network failure, registration failed, please try again later!"));
 	}
 }
 
@@ -93,7 +100,7 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 	{
 	case STATUS_LOGINING:
 	{
-		ui.loginBtn->setText("登录中...");
+		ui.loginBtn->setText(QObject::tr("Logining...."));
 		ui.loginBtn->setEnabled(false);
 		break;
 	}
@@ -126,20 +133,20 @@ void UserLogin::onLogindStatus(UserLoginStatus status, QString strError)
 	}
 	case STATUS_ERROR:
 	{
-		ui.loginBtn->setText(QString::fromLocal8Bit("登录"));
+		ui.loginBtn->setText(QObject::tr("Login"));
 		ui.loginBtn->setEnabled(true);
-		QMessageBox::information(this, QString::fromLocal8Bit("提示"), strError );
+		QMessageBox::information(this, QObject::tr("Hint"), strError );
 		break;
 	}
 	case STATUS_CONNECTING:
 	{
-		ui.loginBtn->setText("连接中...");
+		ui.loginBtn->setText(QObject::tr("connecting"));
 		ui.loginBtn->setEnabled(false);
 		break;
 	}
 	case STATUS_CONNECTED:
 	{
-		ui.loginBtn->setText(QString::fromLocal8Bit("登录"));
+		ui.loginBtn->setText(QObject::tr("Login"));
 		ui.loginBtn->setEnabled(true);
 		break;
 	}
@@ -156,8 +163,22 @@ void UserLogin::onFriendList()
 {
 	close();
 
-	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text());
+	//先初始化资源
+	QString strUserDir = QApplication::applicationDirPath() + QDir::separator() +
+		QString("..") + QDir::separator() + QString("userdata") + QDir::separator() + 
+		QString("users") + QDir::separator() + 
+		ui.editUserAccount->text() + QDir::separator() + 
+		QString("resource") + QDir::separator();;
 	
+	CUiResource::instance()->parseImage(strUserDir);
+
+	strUserDir = QApplication::applicationDirPath() + QDir::separator() +
+		QString("..") + QDir::separator() + QString("resource");
+	CUiResource::instance()->parseImage(strUserDir);
+
+	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text());
+
+
 	pMainwindow->exec();
 	pMainwindow->raise();
 }

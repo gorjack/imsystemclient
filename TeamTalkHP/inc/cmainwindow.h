@@ -3,6 +3,7 @@
 
 #include "BasicWindow.h"
 #include "ui_cmainwindow.h"
+#include "UserClientCenter/CUserBusinessCenter.h"
 
 class QTreeWidgetItem;
 class CMainWindow : public BasicWindow
@@ -17,11 +18,11 @@ public:
 	//设置等级
 	void setLevelPixmap(int level);
 	//设置头像
-	void setHeadPixmap(const QString& headPath);
+	void setHeadPixmap();
 	//设置用户名称
 	void setUserName(const QString& username);
 	//设置状态下拉菜单图标
-	void setStatusMenuIcon(const QString& statusPath);
+	void setStatusMenuIcon();
 	//添加其它APP应用
 	QWidget* addOtherAppExtension(const QString& apppath, const QString& appName);
 	//初始化好友列表
@@ -45,11 +46,10 @@ private slots:
 private:
 	void initControl();
 	void initStrangerTree();
-	void addMyFriendInfo(QTreeWidgetItem* pRootGroupItem);
+	void addMyFriendInfo(QTreeWidgetItem* pRootGroupItem, PC::CBuddyInfo*);
 	void addStarngerInfo(QTreeWidgetItem* pRootGroupItem);
 	void updateSeachStyle();
 
-	void updateBuddyList();
 private:
 	void resizeEvent(QResizeEvent *event) override;
 	bool eventFilter(QObject *watched, QEvent *event) override;

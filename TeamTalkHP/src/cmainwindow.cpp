@@ -19,6 +19,9 @@
 #include <ProtocolData/rpc_structs.h>
 
 #include "CQueryForAddDialog.h"
+#include "CConfirmAddFriendDG.h"
+
+#include "CUiResource.h"
 
 class CustomProxyStyle : public QProxyStyle
 {
@@ -73,8 +76,8 @@ void CMainWindow::initControl()
 
 	setLevelPixmap(0);
 	setUserName(m_strUserName);
-	setHeadPixmap(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg");
-	setStatusMenuIcon(":/TeamTalkHP/Resources/MainWindow/StatusSucceeded.png");
+	setHeadPixmap();
+	setStatusMenuIcon();
 
 	QHBoxLayout *flowLayout = new QHBoxLayout();
 	flowLayout->setContentsMargins(0, 0, 0, 0);
@@ -118,45 +121,10 @@ void CMainWindow::updateSeachStyle()
 								QPushButton#searchBtn {border-image:url(:/TeamTalkHP/Resources/MainWindow/search/search_icon.png);}").arg(m_colorBackGround.red()).arg(m_colorBackGround.green()).arg(m_colorBackGround.blue()));
 }
 
-void CMainWindow::updateBuddyList()
+void CMainWindow::setHeadPixmap()
 {
-	//const PC::CBuddyList& buddyList = CUserManager::instance()->getFirendList();
-	//for (const auto& iter : buddyList.m_arrBuddyTeamInfo)
-	//{
-	//	QListWidgetItem* newItem = new QListWidgetItem(QIcon(":/BuddyList/Resources/arrowRight.png"), QString::fromStdString(iter->m_strName));    //创建一个Item  
-	//	newItem->setSizeHint(QSize(this->width(), 25));
-	//	this->addItem(newItem);
-	//	m_groupMap.insert(newItem, newItem);
-	//	m_isHideMap.insert(newItem, false);
-	//	m_pCurrentItem = newItem;
-	//	for (const auto& subIter : iter->m_arrBuddyInfo)
-	//	{
-	//		CBuddyItem* buddy = new CBuddyItem(this);
-	//		buddy->m_pHeadPath = ":/BuddyList/Resources/c";
-	//		buddy->m_pName->setText(QString::fromStdString(subIter->m_strNickName));
-	//		buddy->m_pSign->setText(QString::fromStdString(subIter->m_strSign));
-	//		buddy->m_nId = subIter->m_uUserID;
-
-	//		QList<QListWidgetItem*> tem = m_groupMap.keys(m_pCurrentItem);
-	//		QListWidgetItem* newItem = new QListWidgetItem(this);
-
-	//		this->insertItem(row(m_pCurrentItem) + tem.count(), newItem);
-	//		this->setItemWidget(newItem, buddy);
-
-	//		m_groupMap.insert(newItem, m_pCurrentItem);
-	//		if (m_isHideMap.value(m_pCurrentItem))
-	//			newItem->setHidden(true);
-	//		else
-	//			newItem->setHidden(false);
-	//	}
-	//}
-}
-
-void CMainWindow::setHeadPixmap(const QString& headPath)
-{
-    QPixmap pix1;
-    pix1.load(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
-    ui.headLabel->setPixmap(getRoundImage(QPixmap(headPath), pix1, ui.headLabel->size()));
+	ui.headLabel->setPixmap(getRoundImage((*TT_PIXMAP(m_strUserName)), 
+		const_cast<QPixmap&>((*TT_PIXMAP("head_mask"))), ui.headLabel->size()));
 }
 
 void CMainWindow::setUserName(const QString& username)
@@ -166,13 +134,13 @@ void CMainWindow::setUserName(const QString& username)
 	ui.nameLabel->setText(name);
 }
 
-void CMainWindow::setStatusMenuIcon(const QString& statusPath)
+void CMainWindow::setStatusMenuIcon()
 {
 	QPixmap statusBtnPixmap(ui.statusBtn->size());
 	statusBtnPixmap.fill(Qt::transparent);
 	QPainter painter(&statusBtnPixmap);
-	painter.drawPixmap(4, 4, QPixmap(statusPath));
-	painter.drawPixmap(16, 3, QPixmap(":/TeamTalkHP/Resources/MainWindow/arrow_normal.gft.png"));
+	painter.drawPixmap(4, 4, (*TT_PIXMAP("StatusSucceeded")));
+	painter.drawPixmap(16, 3, (*TT_PIXMAP("arrow_normal_down")));
 	ui.statusBtn->setIcon(statusBtnPixmap);
 	ui.statusBtn->setIconSize(ui.statusBtn->size());
 }
@@ -269,39 +237,49 @@ void CMainWindow::initContactTree()
 	connect(ui.treeWidget, SIGNAL(itemExpanded(QTreeWidgetItem *)), this, SLOT(onItemExpanded(QTreeWidgetItem *)));
 	connect(ui.treeWidget, SIGNAL(itemCollapsed(QTreeWidgetItem *)), this, SLOT(onItemCollapsed(QTreeWidgetItem *)));
 	connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(onItemDoubleClicked(QTreeWidgetItem *, int)));
-	//分组节点
-	QTreeWidgetItem *pRootFriendItem = new QTreeWidgetItem();
-	pRootFriendItem->setChildIndicatorPolicy(QTreeWidgetItem::ShowIndicator);
-	//设置Data用于区分，Item是分组节点还是子节点，0代表分组节点，1代表子节点
-	pRootFriendItem->setData(0, Qt::UserRole, 0);
-	RootContatItem *pItemName = new RootContatItem(ui.treeWidget);
-	
-	int nMyFriendNum = 6;
-	QString qsGroupName = QString::fromLocal8Bit("我的好友 %1/%2").arg(0).arg(nMyFriendNum);
-	pItemName->setText(qsGroupName);
-	//擦入分组节点
-	ui.treeWidget->addTopLevelItem(pRootFriendItem);
-	ui.treeWidget->setItemWidget(pRootFriendItem, 0, pItemName);
 
-	for (int nIndex = 0; nIndex < nMyFriendNum; ++nIndex)
+
+	const PC::CBuddyList& buddyList = CUserManager::instance()->getFirendList();
+	std::vector<PC::CBuddyTeamInfo*> teamFriendList = buddyList.m_arrBuddyTeamInfo;
+	for (const auto& iter : teamFriendList)
 	{
-		//添加子节点
-		addMyFriendInfo(pRootFriendItem);
+		//分组节点
+		QTreeWidgetItem* pRootFriendItem = new QTreeWidgetItem();
+		pRootFriendItem->setChildIndicatorPolicy(QTreeWidgetItem::ShowIndicator);
+		//设置Data用于区分，Item是分组节点还是子节点，0代表分组节点，1代表子节点
+		pRootFriendItem->setData(0, Qt::UserRole, 0);
+
+		RootContatItem* pItemName = new RootContatItem(ui.treeWidget);
+		pItemName->setText(QString::fromStdString(iter->m_strName));
+		//擦入分组节点
+		ui.treeWidget->addTopLevelItem(pRootFriendItem);
+		ui.treeWidget->setItemWidget(pRootFriendItem, 0, pItemName);
+
+		for (int nIndex = 0; nIndex < iter->GetBuddyCount(); ++nIndex)
+		{
+			//添加子节点
+			PC::CBuddyInfo* pFriendInfo = iter->GetBuddy(nIndex);
+			addMyFriendInfo(pRootFriendItem, pFriendInfo);
+		}
+
+		onItemClicked(pRootFriendItem, 0);
 	}
 }
 
-void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem)
+void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem, PC::CBuddyInfo* pFriendInfo)
 {
 	QTreeWidgetItem *pChild = new QTreeWidgetItem();
-    QPixmap pix1;
-    pix1.load(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
+
 	//添加子节点
 	pChild->setData(0, Qt::UserRole, 1);
 	pChild->setData(0, Qt::UserRole + 1, QString::number((int)pChild));
+
 	ContactItem* pContactItem = new ContactItem(ui.treeWidget);
-    pContactItem->setHeadPixmap(getRoundImage(QPixmap(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg"), pix1, pContactItem->getHeadLabelSize()));
-	pContactItem->setUserName(QString::fromLocal8Bit("雨田哥-工作号"));
-	pContactItem->setSignName(QString::fromLocal8Bit("欢迎访问雨田哥工作号"));
+    pContactItem->setHeadPixmap(getRoundImage( (*TT_PIXMAP(QString::fromStdString(pFriendInfo->m_strAccount))), 
+		(*TT_PIXMAP("head_mask")), pContactItem->getHeadLabelSize()) );
+
+	pContactItem->setUserName(QString::fromStdString(pFriendInfo->m_strNickName));
+	pContactItem->setSignName(QString::fromStdString(pFriendInfo->m_strMarkName));
 	pRootGroupItem->addChild(pChild);
 	ui.treeWidget->setItemWidget(pChild, 0, pContactItem);
 }
@@ -397,7 +375,40 @@ void CMainWindow::onOperateFriends(const std::string& req)
 
 void CMainWindow::slotOnAddFirendCB(const std::string& param)
 {
-	return;
+	net::COperateFriendResultPtr pAddFriendInfo = std::make_shared<net::COperateFriendResult>();
+	pAddFriendInfo->decodePackage(param);
+
+	CConfirmAddFriendDG confirmAddFriendDg;
+	//别人加自己
+	if (pAddFriendInfo->m_uCmd == protocol::Apply)
+	{
+		confirmAddFriendDg.setWindowTitle(QObject::tr("Add friend"));
+		QString msg = QString(QObject::tr("%1 requests to add you as a friend, do you agree?")).arg(pAddFriendInfo->m_szAccountName);
+
+		confirmAddFriendDg.setInfoMsg(msg);
+		int nRet = confirmAddFriendDg.exec();
+		{
+			net::COperateFriendRequestPtr pData = std::make_shared<net::COperateFriendRequest>();
+			pData->m_uCmd = (nRet == QDialog::Accepted) ? protocol::Agree : protocol::Refuse;
+			pData->m_uAccountID = pAddFriendInfo->m_uAccountID;
+
+			CUserClientCenter::instance()->request_async(pData, NULL);
+		}
+	}
+	else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
+	{
+		QString msg = QString(QObject::tr("%1 declined the friend request")).arg(pAddFriendInfo->m_szAccountName);
+		confirmAddFriendDg.setWindowTitle(QObject::tr("Decline friend request"));
+		confirmAddFriendDg.setInfoMsg(msg);
+		confirmAddFriendDg.exec();
+	}
+	else if (pAddFriendInfo->m_uCmd == protocol::Agree)
+	{
+		QString msg = QString(QObject::tr("You and %1 are already friends, let's start chatting")).arg(pAddFriendInfo->m_szAccountName);
+		confirmAddFriendDg.setWindowTitle(QObject::tr("Added friend successfully"));
+		confirmAddFriendDg.setInfoMsg(msg);
+		confirmAddFriendDg.exec();
+	}
 }
 
 void CMainWindow::slotOnAddFirendBtnClicked(bool)

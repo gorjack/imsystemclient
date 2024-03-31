@@ -84,7 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(QT5DIR)\include\QtCore;$(QT5DIR)\include;$(SolutionDir)src;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)src\QtFlamingo</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(QT5DIR)\include\QtCore;$(QT5DIR)\include;$(SolutionDir)src;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>

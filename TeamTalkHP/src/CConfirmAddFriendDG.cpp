@@ -7,7 +7,6 @@
 CConfirmAddFriendDG::CConfirmAddFriendDG(QWidget *parent /*= Q_NULLPTR*/)
     : QDialog(parent)
 {
-   // ui.setupUi(this);
     createUi();
     connect(m_pAgreeBtn, SIGNAL(clicked()), this, SLOT(slotAgree()));
     connect(m_pRejectBtn, SIGNAL(clicked()), this, SLOT(slotReject()));

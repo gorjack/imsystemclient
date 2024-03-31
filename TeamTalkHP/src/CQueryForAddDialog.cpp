@@ -16,7 +16,6 @@ CQueryForAddDialog::CQueryForAddDialog(QWidget* parent)
 	connect(this, SIGNAL(sigOnAddFirendCB()), this, SLOT(slotOnAddFirendCB()));
 	m_pConfirmAddFriendDG = new CConfirmAddFriendDG(this);
 	CUserClientCenter::instance()->registCallBack(protocol::msg_type_finduser, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
-	CUserClientCenter::instance()->registCallBack(protocol::msg_type_operatefriend, std::bind(&CQueryForAddDialog::onAddFirend, this, std::placeholders::_1));
 }
 
 
@@ -46,7 +45,7 @@ void CQueryForAddDialog::slotFindFriend()
 	bool nRet = CUserClientCenter::instance()->request_async(pRequestPtr, std::bind(&CQueryForAddDialog::onHandleFindFirend, this, std::placeholders::_1));
 	if (!nRet)
 	{
-		QMessageBox::information(this, "提示", "客户端还没连上服务器");
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("The client has not connected to the server yet"));
 	}
 }
 
@@ -58,12 +57,12 @@ void CQueryForAddDialog::slotOnFindFirendCallBack()
 	long nResultCode = pDataPtr->m_nResultCode;
 
 	if (nResultCode == protocol::FIND_FRIEND_NOT_FOUND)
-		QMessageBox::information(this, "提示", "您查找的账户不存在！");
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("The account you are looking for does not exist!"));
 	else if (nResultCode == protocol::FIND_FRIEND_FAILED)
-		QMessageBox::information(this, "提示", "网络故障，查找账户失败！");
+		QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("Network failure, account search failed!"));
 	else if (nResultCode == protocol::FIND_FRIEND_FOUND)
 	{
-		QMessageBox::information(this, "提示", "您的请求已发送请等待");
+		//QMessageBox::information(this, QObject::tr("Hint"), QObject::tr("Your request has been sent please wait"));
 		addFirend(pDataPtr->m_uAccountID);
 	}
 }
@@ -76,8 +75,8 @@ void CQueryForAddDialog::slotOnAddFirendCB()
 	//别人加自己
 	if (pAddFriendInfo->m_uCmd == protocol::Apply)
 	{
-		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("加好友"));
-		QString msg = QString(" %1 请求加您为好友,  是否同意").arg(pAddFriendInfo->m_szAccountName);
+		m_pConfirmAddFriendDG->setWindowTitle(QObject::tr("Add friend"));
+		QString msg = QString(QObject::tr("%1 requests to add you as a friend, do you agree?")).arg(pAddFriendInfo->m_szAccountName);
 
 		m_pConfirmAddFriendDG->setInfoMsg(msg);
 		int nRet = m_pConfirmAddFriendDG->exec();
@@ -91,15 +90,15 @@ void CQueryForAddDialog::slotOnAddFirendCB()
 	}
 	else if (pAddFriendInfo->m_uCmd == protocol::Refuse)
 	{
-		QString msg = QString(" %1 拒绝了加好友请求").arg(pAddFriendInfo->m_szAccountName);
-		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("拒绝好友请求"));
+		QString msg = QString(QObject::tr("%1 declined the friend request")).arg(pAddFriendInfo->m_szAccountName);
+		m_pConfirmAddFriendDG->setWindowTitle(QObject::tr("Decline friend request"));
 		m_pConfirmAddFriendDG->setInfoMsg(msg);
 		m_pConfirmAddFriendDG->exec();
 	}
 	else if (pAddFriendInfo->m_uCmd == protocol::Agree)
 	{
-		QString msg = QString(" 您和 %1 已经是好友啦，开始聊天吧").arg(pAddFriendInfo->m_szAccountName);
-		m_pConfirmAddFriendDG->setWindowTitle(QString::fromLocal8Bit("成功加好友"));
+		QString msg = QString(QObject::tr("You and %1 are already friends, let's start chatting")).arg(pAddFriendInfo->m_szAccountName);
+		m_pConfirmAddFriendDG->setWindowTitle(QObject::tr("Added friend successfully"));
 		m_pConfirmAddFriendDG->setInfoMsg(msg);
 		m_pConfirmAddFriendDG->exec();
 	}

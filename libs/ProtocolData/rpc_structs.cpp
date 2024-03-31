@@ -432,7 +432,7 @@ namespace net
 
                 pUserBasicInfo->uAccountID = JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["userid"].asUInt();
 
-#ifdef _DEBUG
+#if/*def _DEBUG*/0
                 //为了调试方便加上userid
                 sprintf_s(pUserBasicInfo->szAccountName, 32, "%s - %d", JsonRoot["userinfo"][(UINT)i]["members"][(UINT)j]["username"].asString().c_str(), pUserBasicInfo->uAccountID);
 #else

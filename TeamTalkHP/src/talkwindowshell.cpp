@@ -25,7 +25,7 @@ void TalkWindowShell::initControl()
 {
 	loadStyleSheet("TalkWindow");
 	setWindowIcon(QIcon(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg"));
-	setWindowTitle(QString::fromLocal8Bit("ÓêÌï¸ç-ÁÄÌì´°¿Ú"));
+	setWindowTitle(QString::fromLocal8Bit("¸ß¸ç-ÁÄÌì´°¿Ú"));
 
 	m_emotionWindow = new EmotionWindow;
 	m_emotionWindow->hide();

@@ -100,7 +100,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\QtFlamingo;$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)libs\winlog;$(BOOST_ROOT158)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)libs;$(SolutionDir)libs\NetLib;$(SolutionDir)libs\winlog;$(BOOST_ROOT158)</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
       <PreprocessorDefinitions>PROTOCOLDATA_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>

@@ -226,6 +226,12 @@
     <ClCompile Include="src\CConfirmAddFriendDG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CImageCenter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CUiResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="inc\BasicWindow.h">
@@ -403,6 +409,12 @@
     </ClInclude>
     <ClInclude Include="src\utils\desktopinfo.h">
       <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CImageCenter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CUiResource.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

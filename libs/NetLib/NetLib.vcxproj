@@ -101,7 +101,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WIN32;EVENTLOOP_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\QtFlamingo;$(SolutionDir)libs\winlog</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)libs\winlog</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
