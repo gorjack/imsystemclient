@@ -48,8 +48,8 @@ void TalkWindow::initControl()
 	connect(ui.sendBtn, SIGNAL(clicked(bool)), this, SLOT(onSendBtnClicked(bool)));
 
 	ui.fontWidget->setVisible(false);
-	//ui.msgWidget->setShowSkinControl(ui.skinLabel);
-	//ui.skinLabel->setSpliterButton(ui.msgWidget->getTalkWindowSpliterButton());
+	ui.msgWidget->setShowSkinControl(ui.skinLabel);
+	ui.skinLabel->setSpliterButton(ui.msgWidget->getTalkWindowSpliterButton());
 }
 
 void TalkWindow::initFontWidget()

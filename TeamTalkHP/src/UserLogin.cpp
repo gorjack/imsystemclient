@@ -179,6 +179,5 @@ void UserLogin::onFriendList()
 	CMainWindow* pMainwindow = new CMainWindow(ui.editUserAccount->text());
 
 
-	pMainwindow->exec();
-	pMainwindow->raise();
+	pMainwindow->show();
 }

@@ -2,6 +2,7 @@
 #include "commonutils.h"
 
 #include <QDebug>
+#include "CUiResource.h"
 
 TalkWindowItem::TalkWindowItem(QWidget *parent)
 	: QWidget(parent)
@@ -24,12 +25,13 @@ void TalkWindowItem::initControl()
 void TalkWindowItem::setMsgLabelContent(const QString& msg)
 {
 	ui.msgLabel->setText(msg);
+	setHeadPixmap(msg);
 }
 
 void TalkWindowItem::setHeadPixmap(const QString& headpath)
 {
-	QPixmap head = QPixmap(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg");
-	QPixmap mask = QPixmap(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
+	QPixmap head = (*TT_PIXMAP(headpath));
+	QPixmap mask = (*TT_PIXMAP("head_mask"));
 
 	const QPixmap&& headpixmap = CommonUtils::getRoundImage(head, mask, ui.headlabel->size());
 	ui.headlabel->setPixmap(headpixmap);

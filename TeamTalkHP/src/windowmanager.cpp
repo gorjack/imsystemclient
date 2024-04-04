@@ -58,9 +58,9 @@ void WindowManager::addNewTalkWindow(const QString& uid)
 	{
 		TalkWindow* talkwindow1 = new TalkWindow(m_talkwindowshell, uid);
 		TalkWindowItem* talkwindowItem1 = new TalkWindowItem(talkwindow1);
-		talkwindow1->setWindowName(QStringLiteral("ÓêÌï¸ç-¹¤×÷ºÅ-1ºÅ"));
-		talkwindowItem1->setMsgLabelContent(QStringLiteral("ÓêÌï¸ç-1ºÅ"));
-		talkwindow1->setWindowSignName(QStringLiteral("»¶Ó­ÍÂ²Û¡¢ÓêÌï¸ç-¹¤×÷ºÅ-1ºÅ"));
+		talkwindow1->setWindowName(uid);
+		talkwindowItem1->setMsgLabelContent(uid);
+		talkwindow1->setWindowSignName(uid + QString("hello"));
 		m_talkwindowshell->addTalkWindow(talkwindow1, talkwindowItem1);
 	}
 	else
@@ -68,5 +68,6 @@ void WindowManager::addNewTalkWindow(const QString& uid)
 		m_talkwindowshell->setCurrentWidget(widget);
 	}
 	m_talkwindowshell->show();
+	m_talkwindowshell->raise();
 	m_talkwindowshell->activateWindow();
 }

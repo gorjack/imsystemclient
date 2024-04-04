@@ -3,6 +3,7 @@
 #include "talkwindowitem.h"
 #include "commonutils.h"
 #include "emotionwindow.h"
+#include "CUiResource.h"
 
 #include <QDebug>
 #include <QPainter>
@@ -24,8 +25,7 @@ TalkWindowShell::~TalkWindowShell()
 void TalkWindowShell::initControl()
 {
 	loadStyleSheet("TalkWindow");
-	setWindowIcon(QIcon(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg"));
-	setWindowTitle(QString::fromLocal8Bit("¸ß¸ç-ÁÄÌì´°¿Ú"));
+	setWindowIcon(*(TT_ICON("login")));
 
 	m_emotionWindow = new EmotionWindow;
 	m_emotionWindow->hide();
@@ -69,7 +69,6 @@ void TalkWindowShell::addTalkWindow(TalkWindow* talkwindow, TalkWindowItem* talk
 	m_talkwindowItemMap.insert(aItem, talkwindow);
 
 	aItem->setSelected(true);
-	talkwindowitem->setHeadPixmap("");
 	ui.listWidget->addItem(aItem);
 	ui.listWidget->setItemWidget(aItem, talkwindowitem);
 

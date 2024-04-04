@@ -272,7 +272,7 @@ void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem, PC::CBuddyInf
 
 	//添加子节点
 	pChild->setData(0, Qt::UserRole, 1);
-	pChild->setData(0, Qt::UserRole + 1, QString::number((int)pChild));
+	pChild->setData(0, Qt::UserRole + 1, QString::fromStdString(pFriendInfo->m_strAccount));
 
 	ContactItem* pContactItem = new ContactItem(ui.treeWidget);
     pContactItem->setHeadPixmap(getRoundImage( (*TT_PIXMAP(QString::fromStdString(pFriendInfo->m_strAccount))), 

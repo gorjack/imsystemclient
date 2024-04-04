@@ -78,7 +78,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>欢迎访问雨田哥-工作号</string>
+      <string>hint text</string>
      </property>
     </widget>
    </item>
