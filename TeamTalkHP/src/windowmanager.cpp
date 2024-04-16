@@ -68,6 +68,5 @@ void WindowManager::addNewTalkWindow(const QString& uid)
 		m_talkwindowshell->setCurrentWidget(widget);
 	}
 	m_talkwindowshell->show();
-	m_talkwindowshell->raise();
 	m_talkwindowshell->activateWindow();
 }

@@ -73,9 +73,6 @@
     <ClCompile Include="src\emotionwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\flowlayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -393,9 +390,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\commonutils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\flowlayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\capture\screenshot.h">

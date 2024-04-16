@@ -141,7 +141,6 @@
     <ClCompile Include="src\emotionlabelitem.cpp" />
     <ClCompile Include="src\emotiontable.cpp" />
     <ClCompile Include="src\emotionwindow.cpp" />
-    <ClCompile Include="src\flowlayout.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\msgscrollarea.cpp" />
     <ClCompile Include="src\msgwebview.cpp" />
@@ -179,7 +178,6 @@
     <ClInclude Include="inc\commonutils.h" />
     <QtMoc Include="inc\CQueryForAddDialog.h" />
     <ClInclude Include="inc\CUiResource.h" />
-    <ClInclude Include="inc\flowlayout.h" />
     <ClInclude Include="src\capture\screenshot.h" />
     <QtMoc Include="src\CRegistDialog.h" />
     <ClInclude Include="src\utils\confighandler.h" />
