@@ -356,5 +356,6 @@
         <file>Resources/MainWindow/menu/mune_select_bkgSetting.png</file>
         <file>Resources/MainWindow/back.png</file>
         <file>Resources/MainWindow/gao.jpg</file>
+        <file>Resources/MainWindow/mei1.png</file>
     </qresource>
 </RCC>
