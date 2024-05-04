@@ -11,10 +11,10 @@
 #include <QDebug>
 
 BasicWindow::BasicWindow(QWidget *parent)
-	: QDialog(parent)
+	: QWidget(parent)
 {
 	m_colorBackGround = CommonUtils::getDefaultSkinColor();
-	setWindowFlags(Qt::FramelessWindowHint);
+	setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
 	setAttribute(Qt::WA_TranslucentBackground, true);
 	connect(NotifyManager::getInstance(), SIGNAL(signalSkinChanged(const QColor&)), this, SLOT(onSignalSkinChanged(const QColor&)));
 }
@@ -82,7 +82,7 @@ void BasicWindow::initBackGroundColor()
 void BasicWindow::paintEvent(QPaintEvent *event)
 {
 	initBackGroundColor();
-	QDialog::paintEvent(event);
+	QWidget::paintEvent(event);
 }
 
 

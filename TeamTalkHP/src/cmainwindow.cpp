@@ -45,7 +45,7 @@ CMainWindow::CMainWindow(QString userName, QWidget *parent)
 	, m_strUserName(userName)
 {
 	ui.setupUi(this);
-	setWindowFlags(windowFlags() | Qt::Tool);
+	//setWindowFlags(windowFlags() | Qt::Tool);
     loadStyleSheet("MainWindow");
     initControl();
 

@@ -6,7 +6,7 @@
 #include "titlebar.h"
 #define BACK_SHADOW_WIDTH 8
 
-class BasicWindow : public QDialog
+class BasicWindow : public QWidget
 {
 	Q_OBJECT
 
