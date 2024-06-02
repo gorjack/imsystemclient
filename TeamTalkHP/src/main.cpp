@@ -17,6 +17,9 @@
 #include "utils/CConfig.h"
 #include "UserClientCenter/CUserClientCenter.h"
 #include "UserLogin.h"
+#include <QSharedMemory>
+#include <QSystemSemaphore>
+#include <QMessageBox>
 
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
@@ -78,6 +81,41 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
+
+    // 防多开功能
+		// 定义唯一标识符
+	const QString uniqueKey = "MyUniqueAppIdentifier";
+
+	// 互斥信号量
+	//QSystemSemaphore semaphore(uniqueKey, 1, QSystemSemaphore::Open);
+	//semaphore.acquire(); // 加锁
+
+	// 共享内存
+	QSharedMemory sharedMemory(uniqueKey);
+	bool isAlreadyRunning = false;
+
+	if (sharedMemory.attach()) {
+		// 如果可以附加共享内存，说明已有一个实例在运行
+		isAlreadyRunning = true;
+	}
+	else {
+		if (sharedMemory.create(1)) {
+			// 创建共享内存，表示没有其他实例在运行
+			isAlreadyRunning = false;
+		}
+		else {
+			QMessageBox::critical(nullptr, "Error", "Unable to create shared memory.");
+			//semaphore.release(); // 释放锁
+			return 1;
+		}
+	}
+
+	//semaphore.release(); // 释放锁
+
+	if (isAlreadyRunning) {
+		QMessageBox::warning(nullptr, "Warning", "An instance of this application is already running.");
+		return 1;
+	}
 
 
     if (!InitSocket())
