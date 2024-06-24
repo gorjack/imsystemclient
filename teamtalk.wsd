@@ -1,0 +1,41 @@
+@startuml
+
+package "登录" {
+[登录] as login
+note left of login 
+     给服务器用户名密码
+     于验证合法性
+end note
+
+[注册] as regist
+note left of regist
+    向服务器数据库写入用户名、
+    密码
+end note
+} 
+
+package "主窗口" {
+[好友展示] as friendlist
+note left of friendlist
+    向服务器请求好友列表
+end note
+}
+
+package "会话" {
+[文字交流] as textchat
+}
+
+"登录"..down.>"主窗口":登录成功显示主窗口组件
+
+"主窗口".down.>"会话":点击某个好友开始一个会话
+
+'注释----------------'
+
+@enduml
+
+
+
+
+
+
+
