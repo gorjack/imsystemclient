@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QApplication>
 #include <QColor>
+#include <QDir>
 
 CommonUtils::CommonUtils()
 {
@@ -79,5 +80,16 @@ QColor CommonUtils::getDefaultSkinColor()
 	color.setGreen(settings.value("DefaultSkin/green").toInt());
 	color.setBlue(settings.value("DefaultSkin/blue").toInt());
 	return color;
+}
+
+QString CommonUtils::getUserNamePicPath()
+{
+	QString strUserDir = QApplication::applicationDirPath() + QDir::separator() +
+		QString("..") + QDir::separator() + QString("userdata") + QDir::separator() +
+		QString("users") + QDir::separator() +
+		QString("@@@@@") + QDir::separator() +
+		QString("resource") + QDir::separator() + QDir::separator() + QString("@@@@@.png");
+
+	return strUserDir;
 }
 

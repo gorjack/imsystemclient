@@ -155,7 +155,7 @@ void MsgWebView::runJavaScriptFinished(const QVariant& result)
 	}
 }
 
-void MsgWebView::appendMsg(const QString& html)
+void MsgWebView::appendMsg(QString userName, const QString& html)
 {
 	m_updateDownArrowtimer->start();
 
@@ -189,7 +189,11 @@ void MsgWebView::appendMsg(const QString& html)
 			qsMsg += msgLst.at(index).at(1);
 		}
 	}
-	msgObj.insert("HEADIMAGE", "E:\\workspace\\imsystemclient\\TeamTalkHP\\Resources\\MainWindow\\skin.jpg");
+
+	QString userNamePath = CommonUtils::getUserNamePicPath();
+	userNamePath = userNamePath.replace("@@@@@", userName);
+
+	msgObj.insert("HEADIMAGE", userNamePath);
 	msgObj.insert("MSG", qsMsg);
 	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
 	this->page()->runJavaScript(QString("recvHtml(%1)").arg(Msg), 

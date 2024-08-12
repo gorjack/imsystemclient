@@ -38,6 +38,7 @@ public:
 	static QString CharacterEscaping(QString content);
 	static void setDefaultSkinColor(const QColor& color);
 	static QColor getDefaultSkinColor();
+	static QString  getUserNamePicPath();
 };
 
 #endif // COMMONUTILS_H

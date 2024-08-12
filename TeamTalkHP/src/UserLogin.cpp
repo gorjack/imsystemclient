@@ -168,7 +168,7 @@ void UserLogin::onFriendList()
 		QString("..") + QDir::separator() + QString("userdata") + QDir::separator() + 
 		QString("users") + QDir::separator() + 
 		ui.editUserAccount->text() + QDir::separator() + 
-		QString("resource") + QDir::separator();;
+		QString("resource") + QDir::separator();
 	
 	CUiResource::instance()->parseImage(strUserDir);
 

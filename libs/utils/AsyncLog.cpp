@@ -448,7 +448,6 @@ bool CAsyncLog::createNewFile(const char* pszLogFileName)
 
     //始终新建文件
     m_hLogFile = fopen(pszLogFileName, "w+");
-    //m_hLogFile = fopen("E:\\flamingo\\flamingoclient\\Win32\\Debug\\logs\\20201021_20_45_00_14112.log", "w+");
     return m_hLogFile != nullptr;
 }
 

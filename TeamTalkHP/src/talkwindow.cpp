@@ -235,7 +235,7 @@ void TalkWindow::onSendBtnClicked(bool)
 	ui.textEdit->clear();
 	ui.textEdit->delteAllEmotionImage();
 
-	ui.msgWidget->appendMsg(html);
+	ui.msgWidget->appendMsg(m_talkId, html);
 }
 
 void TalkWindow::addEmotionImage(int emotionNum)

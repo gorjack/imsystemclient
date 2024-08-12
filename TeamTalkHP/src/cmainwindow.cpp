@@ -22,6 +22,7 @@
 #include "CConfirmAddFriendDG.h"
 
 #include "CUiResource.h"
+#include "utils/IULog.h"
 
 class CustomProxyStyle : public QProxyStyle
 {
@@ -67,7 +68,7 @@ CMainWindow::CMainWindow(QString userName, QWidget *parent)
 
 CMainWindow::~CMainWindow()
 {
-
+	
 }
 
 void CMainWindow::initControl()
@@ -123,6 +124,7 @@ void CMainWindow::updateSeachStyle()
 
 void CMainWindow::setHeadPixmap()
 {
+	LOG_INFO("m_strUserName:%s", m_strUserName.toStdString().c_str());
 	ui.headLabel->setPixmap(getRoundImage((*TT_PIXMAP(m_strUserName)), 
 		const_cast<QPixmap&>((*TT_PIXMAP("head_mask"))), ui.headLabel->size()));
 }

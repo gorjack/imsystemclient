@@ -139,12 +139,16 @@
     <ClCompile Include="src\CUiResource.cpp" />
     <ClCompile Include="src\custommenu.cpp" />
     <ClCompile Include="src\emotionlabelitem.cpp" />
-    <ClCompile Include="src\emotiontable.cpp" />
+    <ClCompile Include="src\emotiontable.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\emotionwindow.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\msgscrollarea.cpp" />
     <ClCompile Include="src\msgwebview.cpp" />
-    <ClCompile Include="src\msgwidget.cpp" />
+    <ClCompile Include="src\msgwidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\notifymanager.cpp" />
     <ClCompile Include="src\qclicklabel.cpp" />
     <ClCompile Include="src\qmsgtextedit.cpp" />
@@ -222,11 +226,15 @@
     <QtMoc Include="inc\qmsgtextedit.h" />
     <QtMoc Include="inc\qclicklabel.h" />
     <QtMoc Include="inc\notifymanager.h" />
-    <QtMoc Include="inc\msgwidget.h" />
+    <QtMoc Include="inc\msgwidget.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtMoc>
     <QtMoc Include="inc\msgwebview.h" />
     <QtMoc Include="inc\msgscrollarea.h" />
     <QtMoc Include="inc\emotionwindow.h" />
-    <QtMoc Include="inc\emotiontable.h" />
+    <QtMoc Include="inc\emotiontable.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtMoc>
     <QtMoc Include="inc\emotionlabelitem.h" />
     <QtMoc Include="inc\custommenu.h" />
     <QtMoc Include="inc\contactitem.h" />
@@ -261,6 +269,9 @@
     <ProjectReference Include="..\libs\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="Resources\TeamTalkIM_zh.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

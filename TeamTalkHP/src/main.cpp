@@ -134,6 +134,7 @@ int main(int argc, char *argv[])
     CConfig::instance()->loadData();
 
     CUserClientCenter::instance()->init(g_pEventLoop);
+    CIULog::Init(true, true, "debug.log");
 
 	UserLogin* w = new UserLogin;
 	w->show();
@@ -148,5 +149,6 @@ int main(int argc, char *argv[])
     }
 
     CConfig::instance()->save();
+    CIULog::Uninit();
     return nRet;
 }

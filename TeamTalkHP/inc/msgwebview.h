@@ -50,7 +50,7 @@ public:
 	~MsgWebView();
 
 public:
-	void appendMsg(const QString& html);
+	void appendMsg(QString userName, const QString& html);
 	void setShowSkinControl(QWidget* skinWidget);
 	QWidget* getTalkWindowSpliterButton() const;
 	void MsgWebView::runJavaScriptFinished(const QVariant& result);

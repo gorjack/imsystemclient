@@ -9,6 +9,7 @@
 #include <QFileInfoList>
 #include <QDir>
 #include <iostream>
+#include "utils/IULog.h"
 
 CImageCenter::CImageCenter()
     : m_defaultPixmap(0, 0)
@@ -72,12 +73,12 @@ void CImageCenter::parse(QString qsDir)
 
 QPixmap* CImageCenter::getPixmap(QString qsKey)
 {
-    QMap<QString, QPixmap>::iterator cIter = m_pixmapMap.find(qsKey);
-    if (m_pixmapMap.end() != cIter)
-    {
-        return &(*cIter);
-    }
-    QMap<QString, QString>::iterator sIter = m_keyToImagePath.find(qsKey);
+	QMap<QString, QPixmap>::iterator cIter = m_pixmapMap.find(qsKey);
+	if (m_pixmapMap.end() != cIter)
+	{
+		return &(*cIter);
+	}
+	QMap<QString, QString>::iterator sIter = m_keyToImagePath.find(qsKey);
     if (m_keyToImagePath.end() != sIter)
     {
         QPixmap pImage;
@@ -88,6 +89,8 @@ QPixmap* CImageCenter::getPixmap(QString qsKey)
 
             if (!pImage.loadFromData(data))
             {
+                bool temp1 = pImage.load(*sIter);
+                std::string temp = (*sIter).toStdString();
                 std::cout << "file read error" << (*sIter).toStdString();
             }
         }
@@ -96,7 +99,7 @@ QPixmap* CImageCenter::getPixmap(QString qsKey)
         m_pixmapMap[qsKey] = pImage;
         return &m_pixmapMap[qsKey];
     }
-    return &m_defaultPixmap;
+    return NULL;
 }
 
 const QIcon* CImageCenter::getIcon(QString qsKey) const
@@ -118,6 +121,7 @@ const QIcon* CImageCenter::getIcon(QString qsKey) const
 
 void CImageCenter::setImage(QString qsKey, QString qsImageFile)
 {
+    LOG_INFO("qsImageFile :%s", qsImageFile.toStdString().c_str());
     m_keyToImagePath[qsKey] = qsImageFile;
 }
 

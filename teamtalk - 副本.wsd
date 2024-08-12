@@ -1,0 +1,141 @@
+@startuml
+
+package "MainUI"
+{
+    class BasicWindow
+    {
+    }
+
+    class CMainWindow
+    {
+    }
+
+    class SkinWindow
+    {
+    }
+
+    class TalkWindowShell
+    {
+    }
+
+    class TalkWindow
+    {
+    }
+
+    class UserLogin
+    {
+    }
+
+    class TalkWindowItem
+    {
+
+    }
+
+    UserLogin--up--|>BasicWindow
+    CMainWindow--up--|>BasicWindow
+    SkinWindow--up--|>BasicWindow
+    TalkWindowShell--up--|>BasicWindow
+}
+
+package "webpage"
+{
+    class MsgWebPage
+    {
+    }
+
+    class MsgHtmlObj
+    {
+    }
+
+    class MsgWebView
+    {
+    }
+
+}
+
+
+
+class CConfirmAddFriendDG
+{
+
+}
+
+class CImageCenter
+{
+
+}
+
+class CommonUtils
+{
+
+}
+
+class NotifyManager
+{
+
+}
+NotifyManager...up...>BasicWindow : 通知 
+NotifyManager...up...>SkinWindow : 通知 
+NotifyManager...up...>CMainWindow : 通知 
+
+
+class CustomMenu
+{
+
+}
+
+class TitleBar
+{
+
+}
+
+
+
+
+package "emotion"
+{
+    class EmotionWindow
+    {
+
+    }
+    class QClickLabel
+    {
+
+    }
+    class EmotionLabelItem
+    {
+
+    }
+
+}
+
+class QMsgTextEdit
+{
+
+}
+
+class RootContatItem
+{
+
+}
+
+class SysTray
+{
+
+}
+
+
+
+CommonUtils..up..>BasicWindow : 包含
+CommonUtils..up..>NotifyManager
+CommonUtils..up..>CustomMenu
+CommonUtils..up..>TalkWindowItem
+CommonUtils..up..>EmotionWindow
+@enduml
+
+
+
+
+
+
+

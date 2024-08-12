@@ -1,5 +1,7 @@
 @startuml
 
+actor Actor as User
+
 package "登录" {
 [登录] as login
 note left of login 
@@ -12,7 +14,7 @@ note left of regist
     向服务器数据库写入用户名、
     密码
 end note
-} 
+}
 
 package "主窗口" {
 [好友展示] as friendlist
@@ -30,6 +32,7 @@ package "会话" {
 "主窗口".down.>"会话":点击某个好友开始一个会话
 
 '注释----------------'
+
 
 @enduml
 

@@ -13,7 +13,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils", "libs\utils\utils.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "libs\zlib\zlib.vcxproj", "{A340469E-3EB5-440A-8F74-D5857A990B22}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TeamTalkHP", "TeamTalkHP\TeamTalkHP.vcxproj", "{F7755372-CBB1-41DC-837E-CD70D9683337}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TeamTalkIM", "TeamTalkHP\TeamTalkHP.vcxproj", "{F7755372-CBB1-41DC-837E-CD70D9683337}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProtocolData", "libs\ProtocolData\ProtocolData.vcxproj", "{62AAFD1A-16A7-45AC-9BBF-4302EF394815}"
 EndProject
@@ -61,6 +61,7 @@ Global
 		{A340469E-3EB5-440A-8F74-D5857A990B22}.Release|x86.Build.0 = Release|Win32
 		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x64.ActiveCfg = Debug|x64
 		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x64.Build.0 = Debug|x64
+		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x64.Deploy.0 = Debug|x64
 		{F7755372-CBB1-41DC-837E-CD70D9683337}.Debug|x86.ActiveCfg = Debug|x64
 		{F7755372-CBB1-41DC-837E-CD70D9683337}.Release|x64.ActiveCfg = Release|x64
 		{F7755372-CBB1-41DC-837E-CD70D9683337}.Release|x64.Build.0 = Release|x64

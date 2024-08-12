@@ -73,8 +73,17 @@ bool CIULog::Init(bool bToFile, bool bTruncateLongLog, const char* pszLogFileNam
             lpPos = _tcschr(lpPos, _T('/'));
         }
     }
+
+    _stprintf_s(szLogDirectory, _T("%s\\Logs\\%s"), szHomePath, pszLogFileName);
+    ::OutputDebugStringA(szLogDirectory);
+
+    {
+        FILE* pFile = fopen("test.log", "a");
+        fprintf(pFile, "log file====%s\n", szLogDirectory);
+        fclose(pFile);
+    }
 		
-    m_hLogFile = ::CreateFile(pszLogFileName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+    m_hLogFile = ::CreateFile(szLogDirectory, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
     if (m_hLogFile == INVALID_HANDLE_VALUE)
         return false;
 
@@ -149,6 +158,11 @@ bool CIULog::Log(long nLevel, PCTSTR pszFmt, ...)
     strDebugInfo += strLogMsgAscii;
 	strDebugInfo += "\r\n";
 	
+	{
+		FILE* pFile = fopen("test.log", "a");
+		fprintf(pFile, "log file====%s %p\n", strDebugInfo.c_str(), m_bToFile);
+		fclose(pFile);
+	}
 	if(m_bToFile)
 	{
 		if(m_hLogFile == INVALID_HANDLE_VALUE)
