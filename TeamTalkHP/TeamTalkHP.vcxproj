@@ -68,7 +68,7 @@
       <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\workspace\imsystemclient\libs\NetLib;E:\workspace\imsystemclient\libs;E:\workspace\imsystemclient\src\User;E:\workspace\imsystemclient;$(BOOST_ROOT158);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\mycodes\imsystemclient\libs\NetLib;E:\mycodes\imsystemclient\libs;E:\mycodes\imsystemclient\src\User;E:\mycodes\imsystemclient;$(BOOST_ROOT158);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
     </ClCompile>

@@ -68,6 +68,7 @@ private:
 public:
 	void setWindowName(const QString& name);
 	void setWindowSignName(const QString& name);
+	void handleChatMsg(const std::string& strMsg);
 
 private:
 	void initControl();

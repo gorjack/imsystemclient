@@ -73,14 +73,18 @@ void CImageCenter::parse(QString qsDir)
 
 QPixmap* CImageCenter::getPixmap(QString qsKey)
 {
+    LOG_INFO("CImageCenter qsKey:%s, m_pixmapMap size:%d\n", qsKey.toStdString().c_str(), m_pixmapMap.size());
 	QMap<QString, QPixmap>::iterator cIter = m_pixmapMap.find(qsKey);
 	if (m_pixmapMap.end() != cIter)
 	{
 		return &(*cIter);
 	}
+
+    LOG_INFO("m_keyToImagePath qsKey:%s, m_keyToImagePath size:%d\n", qsKey.toStdString().c_str(), m_keyToImagePath.size());
 	QMap<QString, QString>::iterator sIter = m_keyToImagePath.find(qsKey);
     if (m_keyToImagePath.end() != sIter)
     {
+        LOG_INFO("m_keyToImagePath sIter:%s\n", (*sIter).toStdString().c_str());
         QPixmap pImage;
         QFile file(*sIter);
         if (file.open(QIODevice::ReadOnly))
@@ -89,9 +93,7 @@ QPixmap* CImageCenter::getPixmap(QString qsKey)
 
             if (!pImage.loadFromData(data))
             {
-                bool temp1 = pImage.load(*sIter);
-                std::string temp = (*sIter).toStdString();
-                std::cout << "file read error" << (*sIter).toStdString();
+                LOG_INFO("file read error:%s\n", (*sIter).toStdString().c_str());
             }
         }
         file.close();

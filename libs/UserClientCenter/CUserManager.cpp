@@ -31,7 +31,7 @@ void CUserManager::queryFirendList()
 void CUserManager::onGetFirendListCallBack(const std::string & data)
 {
     ClearUserInfo();
-#if 1
+
     using namespace net;
     CUserBasicInfoResultPtr pResult(new CUserBasicInfoResult);
     pResult->decodePackage(data);
@@ -90,11 +90,12 @@ void CUserManager::onGetFirendListCallBack(const std::string & data)
             pBuddyInfo->m_nTeamIndex = 0;
             pTeamInfo->m_arrBuddyInfo.push_back(pBuddyInfo);
             m_mapAllUsers[pBuddyInfo->m_uUserID] = pBuddyInfo;
+            m_mapID[pBuddyInfo->m_strAccount] = pBuddyInfo->m_uMsgID;
         }
     }
 
     emit sigFinishGetFriendListReq();
-#endif
+
 }
 
 PC::CBuddyInfo* CUserManager::getBuddyInfoById(int nId)
@@ -114,6 +115,11 @@ void CUserManager::setUserId(unsigned int id)
 unsigned int CUserManager::getUserId()
 {
     return m_nId;
+}
+
+std::map<std::string, int> CUserManager::getMapId()
+{
+    return m_mapID;
 }
 
 void CUserManager::ClearUserInfo()
@@ -142,4 +148,6 @@ void CUserManager::ClearUserInfo()
         //删除最后一个元素
         m_BuddyList.m_arrBuddyTeamInfo.pop_back();
     }
+
+    m_mapID.clear();
 }

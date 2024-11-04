@@ -196,7 +196,23 @@ void MsgWebView::appendMsg(QString userName, const QString& html)
 	msgObj.insert("HEADIMAGE", userNamePath);
 	msgObj.insert("MSG", qsMsg);
 	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
-	this->page()->runJavaScript(QString("recvHtml(%1)").arg(Msg), 
+	this->page()->runJavaScript(QString("appendHtml(%1)").arg(Msg), 
+		[this](const QVariant& result) { runJavaScriptFinished(result); });
+}
+
+/*
+* brief: 接收从服务传来的消息
+*/
+void MsgWebView::appendMsgFromUser(QString userName, const QString& strMessage)
+{
+	QJsonObject msgObj;
+	QString userNamePath = CommonUtils::getUserNamePicPath();
+	userNamePath = userNamePath.replace("@@@@@", userName);
+
+	msgObj.insert("HEADIMAGE", userNamePath);
+	msgObj.insert("MSG", strMessage);
+	const QString&& Msg = QJsonDocument(msgObj).toJson(QJsonDocument::Compact);
+	this->page()->runJavaScript(QString("recvHtml(%1)").arg(Msg),
 		[this](const QVariant& result) { runJavaScriptFinished(result); });
 }
 

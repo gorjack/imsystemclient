@@ -20,6 +20,7 @@ public:
     PC::CBuddyInfo* getBuddyInfoById(int nId);
     void setUserId(unsigned int id);
     unsigned int getUserId();
+    std::map<std::string, int> getMapId();
 Q_SIGNALS:
     void sigFinishGetFriendListReq();
 
@@ -30,5 +31,6 @@ private:
     //PC::CBuddyInfo		               m_UserInfo;
     PC::CBuddyList		               m_BuddyList;
     std::map<int, PC::CBuddyInfo*>         m_mapAllUsers;
+    std::map<std::string, int>         m_mapID;
 };
 #endif

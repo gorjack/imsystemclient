@@ -51,6 +51,7 @@ public:
 
 public:
 	void appendMsg(QString userName, const QString& html);
+	void appendMsgFromUser(QString userName, const QString& strMessage);
 	void setShowSkinControl(QWidget* skinWidget);
 	QWidget* getTalkWindowSpliterButton() const;
 	void MsgWebView::runJavaScriptFinished(const QVariant& result);

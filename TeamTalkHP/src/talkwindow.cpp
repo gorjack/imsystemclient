@@ -15,7 +15,9 @@
 #include <QUuid>
 #include <QKeyEvent>
 #include <QToolTip>
-
+#include "ProtocolData/rpc_structs.h"
+#include "UserClientCenter/CUserManager.h"
+#include "UserClientCenter/CUserClientCenter.h"
 TalkWindow::TalkWindow(QWidget *parent, const QString& uid)
 	: QWidget(parent)
 {
@@ -25,6 +27,8 @@ TalkWindow::TalkWindow(QWidget *parent, const QString& uid)
 	ui.setupUi(this);
 	initControl();
 	initFontWidget();
+
+	CUserClientCenter::instance()->registCallBack(protocol::msg_type_chat, std::bind(&TalkWindow::handleChatMsg, this, std::placeholders::_1));
 }
 
 TalkWindow::~TalkWindow()
@@ -218,6 +222,13 @@ void TalkWindow::setWindowSignName(const QString& name)
 	ui.signLabel->setText(name);
 }
 
+void TalkWindow::handleChatMsg(const std::string& strMsg)
+{
+	net::CBuddyMessagePtr pData = std::make_shared<net::CBuddyMessage>();
+	pData->decodePackage(strMsg);
+	
+}
+
 void TalkWindow::onSignalWindowclosed()
 {
 	close();
@@ -232,10 +243,16 @@ void TalkWindow::onSendBtnClicked(bool)
 	}
 
 	const QString&& html = ui.textEdit->document()->toHtml();
-	ui.textEdit->clear();
-	ui.textEdit->delteAllEmotionImage();
-
 	ui.msgWidget->appendMsg(m_talkId, html);
+
+	//默认一定能发成功 暂时不写发不成功时的特殊情况
+	net::CBuddyMessagePtr pData = std::make_shared<net::CBuddyMessage>();
+
+	pData->parse(ui.textEdit->toPlainText().toStdString());
+	pData->m_nTargetId = (CUserManager::instance()->getMapId())[m_talkId.toStdString()];
+	pData->m_nSendId = CUserManager::instance()->getUserId();
+	
+	CUserClientCenter::instance()->request_async(pData);
 }
 
 void TalkWindow::addEmotionImage(int emotionNum)
