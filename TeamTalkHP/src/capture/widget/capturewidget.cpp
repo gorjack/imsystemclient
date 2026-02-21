@@ -296,7 +296,7 @@ void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
 
 		//move the m_amplifierWidget position
 		QPoint amplifierPoint(m_mousePos + QPoint(10, 14));
-		QRect deskrect = qApp->desktop()->screenGeometry(0);
+		QRect deskrect = QGuiApplication::primaryScreen()->geometry();
 		if (amplifierPoint.x() + m_amplifierWidget->width() >= deskrect.width())
 		{
 			amplifierPoint.setX(deskrect.width() - m_amplifierWidget->width());

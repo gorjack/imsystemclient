@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <QString>
-#include <QTextCodec>
+#include <QtCore/QTextCodec>
 
 
 namespace utils

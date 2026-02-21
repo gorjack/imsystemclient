@@ -19,7 +19,7 @@ private:
 	void initControl();
 
 private:
-	void enterEvent(QEvent *event) override;
+	void enterEvent(QEvent*event) override;
 	void leaveEvent(QEvent *event) override;
 
 public:

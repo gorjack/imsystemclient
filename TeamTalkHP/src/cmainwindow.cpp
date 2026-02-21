@@ -1,4 +1,4 @@
-#include "cmainwindow.h"
+ï»¿#include "cmainwindow.h"
 #include "contactitem.h"
 #include "rootcontatitem.h"
 #include "skinwindow.h"
@@ -153,11 +153,11 @@ void CMainWindow::setLevelPixmap(int level)
 	levelPixmap.fill(Qt::transparent);
 	QPainter painter(&levelPixmap);
 	painter.drawPixmap(0, 4, QPixmap(":/TeamTalkHP/Resources/MainWindow/lv.png"));
-	int unitNum = level / 1 % 10;//È¡¸öÎ»Êı×Ö
-	int tenNum = level / 10 % 10;//È¡Ê®Î»Êı×Ö
-	//Ê®Î»
+	int unitNum = level / 1 % 10;//å–ä¸ªä½æ•°å­—
+	int tenNum = level / 10 % 10;//å–åä½æ•°å­—
+	//åä½
 	painter.drawPixmap(10, 4, QPixmap(":/TeamTalkHP/Resources/MainWindow/levelvalue.png"), tenNum * 6, 0, 6, 7);
-	//¸öÎ»
+	//ä¸ªä½
 	painter.drawPixmap(16, 4, QPixmap(":/TeamTalkHP/Resources/MainWindow/levelvalue.png"), unitNum * 6, 0, 6, 7);
 	ui.levelBtn->setIcon(levelPixmap);
 	ui.levelBtn->setIconSize(ui.levelBtn->size());
@@ -195,7 +195,7 @@ void CMainWindow::onAppIconCliked()
 
 void CMainWindow::resizeEvent(QResizeEvent *event)
 {
-	setUserName(QString::fromLocal8Bit("ÓêÌï¸ç-¹¤×÷ºÅ"));
+	setUserName(QString::fromLocal8Bit("é›¨ç”°å“¥-å·¥ä½œå·"));
     BasicWindow::resizeEvent(event);
 }
 
@@ -234,7 +234,7 @@ void CMainWindow::mousePressEvent(QMouseEvent *event)
 
 void CMainWindow::initContactTree()
 {
-	//Õ¹¿ªºÍÊÕËõÊ±ĞÅºÅ£¬ÒÔ´ïµ½±ä¸üÎÒÈı½ÇÍ¼Æ¬£»
+	//å±•å¼€å’Œæ”¶ç¼©æ—¶ä¿¡å·ï¼Œä»¥è¾¾åˆ°å˜æ›´æˆ‘ä¸‰è§’å›¾ç‰‡ï¼›
 	connect(ui.treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(onItemClicked(QTreeWidgetItem *, int)));
 	connect(ui.treeWidget, SIGNAL(itemExpanded(QTreeWidgetItem *)), this, SLOT(onItemExpanded(QTreeWidgetItem *)));
 	connect(ui.treeWidget, SIGNAL(itemCollapsed(QTreeWidgetItem *)), this, SLOT(onItemCollapsed(QTreeWidgetItem *)));
@@ -245,21 +245,21 @@ void CMainWindow::initContactTree()
 	std::vector<PC::CBuddyTeamInfo*> teamFriendList = buddyList.m_arrBuddyTeamInfo;
 	for (const auto& iter : teamFriendList)
 	{
-		//·Ö×é½Úµã
+		//åˆ†ç»„èŠ‚ç‚¹
 		QTreeWidgetItem* pRootFriendItem = new QTreeWidgetItem();
 		pRootFriendItem->setChildIndicatorPolicy(QTreeWidgetItem::ShowIndicator);
-		//ÉèÖÃDataÓÃÓÚÇø·Ö£¬ItemÊÇ·Ö×é½Úµã»¹ÊÇ×Ó½Úµã£¬0´ú±í·Ö×é½Úµã£¬1´ú±í×Ó½Úµã
+		//è®¾ç½®Dataç”¨äºåŒºåˆ†ï¼ŒItemæ˜¯åˆ†ç»„èŠ‚ç‚¹è¿˜æ˜¯å­èŠ‚ç‚¹ï¼Œ0ä»£è¡¨åˆ†ç»„èŠ‚ç‚¹ï¼Œ1ä»£è¡¨å­èŠ‚ç‚¹
 		pRootFriendItem->setData(0, Qt::UserRole, 0);
 
 		RootContatItem* pItemName = new RootContatItem(ui.treeWidget);
 		pItemName->setText(QString::fromStdString(iter->m_strName));
-		//²ÁÈë·Ö×é½Úµã
+		//æ“¦å…¥åˆ†ç»„èŠ‚ç‚¹
 		ui.treeWidget->addTopLevelItem(pRootFriendItem);
 		ui.treeWidget->setItemWidget(pRootFriendItem, 0, pItemName);
 
 		for (int nIndex = 0; nIndex < iter->GetBuddyCount(); ++nIndex)
 		{
-			//Ìí¼Ó×Ó½Úµã
+			//æ·»åŠ å­èŠ‚ç‚¹
 			PC::CBuddyInfo* pFriendInfo = iter->GetBuddy(nIndex);
 			addMyFriendInfo(pRootFriendItem, pFriendInfo);
 		}
@@ -272,7 +272,7 @@ void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem, PC::CBuddyInf
 {
 	QTreeWidgetItem *pChild = new QTreeWidgetItem();
 
-	//Ìí¼Ó×Ó½Úµã
+	//æ·»åŠ å­èŠ‚ç‚¹
 	pChild->setData(0, Qt::UserRole, 1);
 	pChild->setData(0, Qt::UserRole + 1, QString::fromStdString(pFriendInfo->m_strAccount));
 
@@ -288,23 +288,23 @@ void CMainWindow::addMyFriendInfo(QTreeWidgetItem* pRootGroupItem, PC::CBuddyInf
 
 void CMainWindow::initStrangerTree()
 {
-	//·Ö×é½Úµã
+	//åˆ†ç»„èŠ‚ç‚¹
 	QTreeWidgetItem *pRootFriendItem = new QTreeWidgetItem();
 	pRootFriendItem->setChildIndicatorPolicy(QTreeWidgetItem::ShowIndicator);
-	//ÉèÖÃDataÓÃÓÚÇø·Ö£¬ItemÊÇ·Ö×é½Úµã»¹ÊÇ×Ó½Úµã£¬0´ú±í·Ö×é½Úµã£¬1´ú±í×Ó½Úµã
+	//è®¾ç½®Dataç”¨äºåŒºåˆ†ï¼ŒItemæ˜¯åˆ†ç»„èŠ‚ç‚¹è¿˜æ˜¯å­èŠ‚ç‚¹ï¼Œ0ä»£è¡¨åˆ†ç»„èŠ‚ç‚¹ï¼Œ1ä»£è¡¨å­èŠ‚ç‚¹
 	pRootFriendItem->setData(0, Qt::UserRole, 0);
 	RootContatItem *pItemName = new RootContatItem(ui.treeWidget);
 
 	int nMyFriendNum = 8;
-	QString qsGroupName = QString::fromLocal8Bit("ÎÒµÄºÃÓÑ %1/%2").arg(0).arg(nMyFriendNum);
+	QString qsGroupName = QString::fromLocal8Bit("æˆ‘çš„å¥½å‹ %1/%2").arg(0).arg(nMyFriendNum);
 	pItemName->setText(qsGroupName);
-	//²ÁÈë·Ö×é½Úµã
+	//æ“¦å…¥åˆ†ç»„èŠ‚ç‚¹
 	ui.treeWidget->addTopLevelItem(pRootFriendItem);
 	ui.treeWidget->setItemWidget(pRootFriendItem, 0, pItemName);
 
 	for (int nIndex = 0; nIndex < nMyFriendNum; ++nIndex)
 	{
-		//Ìí¼Ó×Ó½Úµã
+		//æ·»åŠ å­èŠ‚ç‚¹
 		addStarngerInfo(pRootFriendItem);
 	}
 }
@@ -315,13 +315,13 @@ void CMainWindow::addStarngerInfo(QTreeWidgetItem* pRootGroupItem)
     pix1.load(":/TeamTalkHP/Resources/MainWindow/yutiange.jpg");
     pix2.load(":/TeamTalkHP/Resources/MainWindow/head_mask.png");
 	QTreeWidgetItem *pChild = new QTreeWidgetItem();
-	//Ìí¼Ó×Ó½Úµã
+	//æ·»åŠ å­èŠ‚ç‚¹
 	pChild->setData(0, Qt::UserRole, 1);
 	pChild->setData(0, Qt::UserRole + 1, QString::number((int)pChild));
 	ContactItem* pContactItem = new ContactItem(ui.treeWidget);
     pContactItem->setHeadPixmap(getRoundImage(pix1, pix2, pContactItem->getHeadLabelSize()));
-	pContactItem->setUserName(QString::fromLocal8Bit("ÓêÌï¸ç-¹¤×÷ºÅ-Ä°ÉúÈË2"));
-	pContactItem->setSignName(QString::fromLocal8Bit("»¶Ó­·ÃÎÊÓêÌï¸ç¹¤×÷ºÅ-Ä°ÉúÈË1"));
+	pContactItem->setUserName(QString::fromLocal8Bit("é›¨ç”°å“¥-å·¥ä½œå·-é™Œç”Ÿäºº2"));
+	pContactItem->setSignName(QString::fromLocal8Bit("æ¬¢è¿è®¿é—®é›¨ç”°å“¥å·¥ä½œå·-é™Œç”Ÿäºº1"));
 	pRootGroupItem->addChild(pChild);
 	ui.treeWidget->setItemWidget(pChild, 0, pContactItem);
 }
@@ -381,7 +381,7 @@ void CMainWindow::slotOnAddFirendCB(const std::string& param)
 	pAddFriendInfo->decodePackage(param);
 
 	CConfirmAddFriendDG confirmAddFriendDg;
-	//±ğÈË¼Ó×Ô¼º
+	//åˆ«äººåŠ è‡ªå·±
 	if (pAddFriendInfo->m_uCmd == protocol::Apply)
 	{
 		confirmAddFriendDg.setWindowTitle(QObject::tr("Add friend"));

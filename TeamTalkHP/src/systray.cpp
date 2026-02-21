@@ -1,4 +1,4 @@
-#include "systray.h"
+ï»¿#include "systray.h"
 #include "custommenu.h"
 
 #define TRAY_ICON	      ":/TeamTalkHP/Resources/MainWindow/app/logo.ico"
@@ -18,7 +18,7 @@ SysTray::~SysTray()
 
 void SysTray::initSysTemTray()
 {
-	setToolTip(QStringLiteral("QQ-ÓêÌï¸ç"));
+	setToolTip(QStringLiteral("QQ-é›¨ç”°å“¥"));
 	setIcon(QIcon(TRAY_ICON));
 	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onIconActivated(QSystemTrayIcon::ActivationReason)));
 }
@@ -39,10 +39,10 @@ void SysTray::onIconActivated(QSystemTrayIcon::ActivationReason reason)
 void SysTray::addSysTrayMenu()
 {
 	CustomMenu* customMenu = new CustomMenu(m_parent);
-	customMenu->addCustomMenu("onShow", TRAY_ICON, QStringLiteral("ÏÔÊ¾"));
-	customMenu->addCustomMenu("onShow", ":/TeamTalkHP/Resources/MainWindow/app/face_setting_btn_normal.png", QStringLiteral("ÉèÖÃ"));
+	customMenu->addCustomMenu("onShow", TRAY_ICON, QStringLiteral("æ˜¾ç¤º"));
+	customMenu->addCustomMenu("onShow", ":/TeamTalkHP/Resources/MainWindow/app/face_setting_btn_normal.png", QStringLiteral("è®¾ç½®"));
 	customMenu->addSeparator();
-	customMenu->addCustomMenu("onQuit", ":/TeamTalkHP/Resources/MainWindow/app/page_close_btn_hover.png", QStringLiteral("ÍË³ö"));
+	customMenu->addCustomMenu("onQuit", ":/TeamTalkHP/Resources/MainWindow/app/page_close_btn_hover.png", QStringLiteral("é€€å‡º"));
 
 	connect(customMenu->getAction("onShow"), SIGNAL(triggered(bool)), m_parent, SLOT(onShowNormal(bool)));
 	connect(customMenu->getAction("onQuit"), SIGNAL(triggered(bool)), m_parent, SLOT(onShowQuit(bool)));

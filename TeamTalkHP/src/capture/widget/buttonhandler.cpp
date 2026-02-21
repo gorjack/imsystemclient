@@ -3,8 +3,9 @@
 
 #include <QPoint>
 #include <QDebug>
-#include <QDesktopWidget>
+#include <QtWidgets/QDesktopWidget>
 #include <QApplication>
+#include <QScreen>
 #include <QDebug>
 
 // ButtonHandler is a habdler for every active button. It makes easier to
@@ -51,7 +52,8 @@ void ButtonHandler::updatePosition(const QRect &selection) {
 	
 	QPoint btnWidgetPoint;
 	QPoint colorWidgetPoint;
-	QRect deskrect = qApp->desktop()->screenGeometry(0);
+	
+	QRect deskrect = qApp->primaryScreen()->geometry();
 	if (selection.bottom() + getToolSpacePosition() >= deskrect.bottom() && selection.top() < getToolSpacePosition())
 	{
 		int btnWidgetPointX = selection.topRight().x() - m_btnWidget->width();

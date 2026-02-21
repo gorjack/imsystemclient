@@ -3,7 +3,7 @@
 #include <QScreen>
 #include <QGuiApplication>
 #include <QApplication>
-#include <QDesktopWidget>
+#include <QtWidgets/QDesktopWidget>
 
 ScreenGrabber::ScreenGrabber(QObject *parent) : QObject(parent) {
 
@@ -17,12 +17,11 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool &ok) {
     }
 
     QPixmap p(QApplication::primaryScreen()->grabWindow(
-                  QApplication::desktop()->winId(),
+                  0,
                   geometry.x(),
                   geometry.y(),
                   geometry.width(),
                   geometry.height())
               );
-    p.setDevicePixelRatio(QApplication::desktop()->devicePixelRatio());
     return p;
 }

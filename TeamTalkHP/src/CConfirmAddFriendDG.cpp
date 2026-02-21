@@ -17,7 +17,7 @@ void CConfirmAddFriendDG::setInfoMsg(const QString& msg)
     if (NULL != m_pInfoMsg)
     {
         QFontMetrics metric(font());
-        int nWidth = metric.width(msg);
+        int nWidth = metric.horizontalAdvance(msg);
         m_pInfoMsg->setText(msg);
         m_pInfoMsg->setFixedWidth(nWidth);
     }
@@ -36,12 +36,12 @@ void CConfirmAddFriendDG::slotReject()
 void CConfirmAddFriendDG::createUi()
 {
     QVBoxLayout *pVLayout = new QVBoxLayout(this);
-    pVLayout->setMargin(0);
+    pVLayout->setContentsMargins(0, 0, 0, 0);
     pVLayout->setSpacing(0);
 
     {
         QHBoxLayout *pHLayout = new QHBoxLayout;
-        pHLayout->setMargin(10);
+        pHLayout->setContentsMargins(0, 0, 0, 0);
         pHLayout->setSpacing(10);
 
         m_pInfoMsg = new QLabel;
@@ -52,7 +52,7 @@ void CConfirmAddFriendDG::createUi()
 
     {
         QHBoxLayout *pHLayout = new QHBoxLayout;
-        pHLayout->setMargin(10);
+        pHLayout->setContentsMargins(10, 10, 10, 10);
         pHLayout->setSpacing(10);
 
         m_pAgreeBtn = new QPushButton;

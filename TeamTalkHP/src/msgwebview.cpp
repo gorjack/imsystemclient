@@ -1,7 +1,7 @@
 #include "msgwebview.h"
 #include "commonutils.h"
 
-#include <QWebChannel>
+#include <QtWebChannel/QWebChannel>
 #include <QMessageBox>
 #include <QJsonObject>
 #include <QJsonArray>

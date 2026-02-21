@@ -38,7 +38,7 @@ void TalkWindowItem::setHeadPixmap(const QString& headpath)
 }
 
 
-void TalkWindowItem::enterEvent(QEvent *event)
+void TalkWindowItem::enterEvent(QEvent*event)
 {
 	ui.tclosebtn->setVisible(true);
 	__super::enterEvent(event);

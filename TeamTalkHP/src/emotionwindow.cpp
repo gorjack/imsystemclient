@@ -55,7 +55,7 @@ void EmotionWindow::addEmotion(int emotionNum)
 void EmotionWindow::paintEvent(QPaintEvent *event)
 {
 	QStyleOption opt;
-	opt.init(this);
+	opt.initFrom(this);
 	QPainter p(this);
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 	__super::paintEvent(event);

@@ -15,7 +15,7 @@ public:
 	void setSpliterButton(QWidget* spliterBtn){ m_spliterBtn = spliterBtn; };
 
 private:
-	void enterEvent(QEvent *event) override;
+	void enterEvent(QEvent* event) override;
 	void leaveEvent(QEvent *event) override;
 
 private:

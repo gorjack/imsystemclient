@@ -1,4 +1,4 @@
-#ifndef TALKWINDOW_H
+ï»¿#ifndef TALKWINDOW_H
 #define TALKWINDOW_H
 
 #include <QWidget>
@@ -19,7 +19,7 @@ class TalkWindow : public QWidget
 
 		TexteditFont_t()
 		{
-			family = QStringLiteral("Î¢ÈíÑÅºÚ");
+			family = QStringLiteral("å¾®è½¯é›…é»‘");
 			fontsize = 9;
 			bold = QFont::Normal;
 			ital = false;

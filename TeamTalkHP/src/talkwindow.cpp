@@ -1,4 +1,4 @@
-#include "talkwindow.h"
+ï»¿#include "talkwindow.h"
 #include "capture/widget/capturewidget.h"
 #include "windowmanager.h"
 
@@ -18,6 +18,8 @@
 #include "ProtocolData/rpc_structs.h"
 #include "UserClientCenter/CUserManager.h"
 #include "UserClientCenter/CUserClientCenter.h"
+#include <QAction>
+#include <QActionGroup>
 TalkWindow::TalkWindow(QWidget *parent, const QString& uid)
 	: QWidget(parent)
 {
@@ -145,7 +147,7 @@ void TalkWindow::onUnderBtnCLicked(bool)
 void TalkWindow::onColorBtnCLicked(bool)
 {
 	QColorDialog colorDialog;
-	QColor color = colorDialog.getColor(ui.textEdit->textColor(), this, QStringLiteral("Ñ¡Ôñ×ÖÌåÑÕÉ«"));
+	QColor color = colorDialog.getColor(ui.textEdit->textColor(), this, QStringLiteral("é€‰æ‹©å­—ä½“é¢œè‰²"));
 	m_font.color = color;
 	QTextCharFormat fmt;
 	fmt.setForeground(color);
@@ -238,14 +240,14 @@ void TalkWindow::onSendBtnClicked(bool)
 {
 	if (ui.textEdit->toPlainText().isEmpty())
 	{
-		QToolTip::showText(this->mapToGlobal(QPoint(630, 660)), QStringLiteral("·¢ËÍÏûÏ¢²»ÄÜÎª¿Õ"), this, QRect(0, 0, 120, 100), 2000);
+		QToolTip::showText(this->mapToGlobal(QPoint(630, 660)), QStringLiteral("å‘é€æ¶ˆæ¯ä¸èƒ½ä¸ºç©º"), this, QRect(0, 0, 120, 100), 2000);
 		return;
 	}
 
 	const QString&& html = ui.textEdit->document()->toHtml();
 	ui.msgWidget->appendMsg(m_talkId, html);
 
-	//Ä¬ÈÏÒ»¶¨ÄÜ·¢³É¹¦ ÔİÊ±²»Ğ´·¢²»³É¹¦Ê±µÄÌØÊâÇé¿ö
+	//é»˜è®¤ä¸€å®šèƒ½å‘æˆåŠŸ æš‚æ—¶ä¸å†™å‘ä¸æˆåŠŸæ—¶çš„ç‰¹æ®Šæƒ…å†µ
 	net::CBuddyMessagePtr pData = std::make_shared<net::CBuddyMessage>();
 
 	pData->parse(ui.textEdit->toPlainText().toStdString());
@@ -267,8 +269,8 @@ void TalkWindow::setSendBtnMenu()
 	menu->setWindowFlags(menu->windowFlags() | Qt::FramelessWindowHint);
 	menu->setAttribute(Qt::WA_TranslucentBackground);
 	menu->setObjectName("senMenu");
-	m_sendAction = menu->addAction(QStringLiteral("°´Enter¼ü£¬·¢ËÍÏûÏ¢"), this, SLOT(onEnterAction()));
-	m_ctrlSendAction = menu->addAction(QStringLiteral("°´Enter+Ctrl¼ü£¬·¢ËÍÏûÏ¢"), this, SLOT(onEnterCtrlAction()));
+	m_sendAction = menu->addAction(QStringLiteral("æŒ‰Enteré”®ï¼Œå‘é€æ¶ˆæ¯"), this, SLOT(onEnterAction()));
+	m_ctrlSendAction = menu->addAction(QStringLiteral("æŒ‰Enter+Ctrlé”®ï¼Œå‘é€æ¶ˆæ¯"), this, SLOT(onEnterCtrlAction()));
 	
 	QActionGroup* actiongroup = new QActionGroup(this);
 	m_sendAction->setCheckable(true);

@@ -33,6 +33,8 @@
 
 # vs
 .vs
+.git
+.gitee
 _builder
 TeamTalkHP/x64/*
 _builder/Win32.Debug/*

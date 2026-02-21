@@ -33,7 +33,7 @@ void EmotionLabelItem::setEmotionName(int emotionName)
 	setMovie(m_apngMovie);
 }
 
-void EmotionLabelItem::enterEvent(QEvent *event)
+void EmotionLabelItem::enterEvent(QEvent*event)
 {
 	m_apngMovie->start();
 	__super::enterEvent(event);

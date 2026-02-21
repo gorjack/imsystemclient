@@ -32,7 +32,7 @@ void SkinWindow::initControl()
 			});
 			label->setFixedSize(84, 84);
 			QPalette palette;
-			palette.setColor(QPalette::Background, colorLst.at(4 * row + column));
+			palette.setColor(QPalette::Dark, colorLst.at(4 * row + column));
 			label->setAutoFillBackground(true);
 			label->setPalette(palette);
 

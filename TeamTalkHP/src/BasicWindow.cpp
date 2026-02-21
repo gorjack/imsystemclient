@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QMouseEvent>
+#include <QScreen>
 #include <QDebug>
 
 BasicWindow::BasicWindow(QWidget *parent)
@@ -74,7 +75,7 @@ void BasicWindow::initBackGroundColor()
 {
 	// 背景图
 	QStyleOption opt;
-	opt.init(this);
+	opt.initFrom(this);
 	QPainter p(this);
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
@@ -185,7 +186,7 @@ void BasicWindow::onButtonRestoreClicked()
 void BasicWindow::onButtonMaxClicked()
 {
     _titleBar->saveRestoreInfo(this->pos(), QSize(this->width(), this->height()));
-    QRect desktopRect = QApplication::desktop()->availableGeometry();
+    QRect desktopRect = this->screen()->availableGeometry();
     QRect FactRect = QRect(desktopRect.x() - 3, desktopRect.y() - 3, desktopRect.width() + 6, desktopRect.height() + 6);
     setGeometry(FactRect);
 }

@@ -12,7 +12,7 @@ QSkinLabel::~QSkinLabel()
 
 }
 
-void QSkinLabel::enterEvent(QEvent *event)
+void QSkinLabel::enterEvent(QEvent*event)
 {
 	m_spliterBtn->setVisible(true);
 	__super::enterEvent(event);

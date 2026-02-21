@@ -23,7 +23,7 @@ private:
 	void initControl();
 
 private:
-	void enterEvent(QEvent *event);
+	void enterEvent(QEvent*event);
 	void leaveEvent(QEvent *event);
 	void resizeEvent(QResizeEvent *event);
 
