@@ -166,7 +166,9 @@
     <ClCompile Include="src\utils\desktopfileparse.cpp" />
     <ClCompile Include="src\utils\desktopinfo.cpp" />
     <ClCompile Include="src\utils\screengrabber.cpp" />
-    <ClCompile Include="src\windowmanager.cpp" />
+    <ClCompile Include="src\windowmanager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="TeamTalkHP.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -270,9 +272,6 @@
     <ProjectReference Include="..\libs\utils\utils.vcxproj">
       <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <QtTranslation Include="Resources\TeamTalkIM_zh.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,361 +1,361 @@
 <RCC>
     <qresource prefix="/TeamTalkHP">
-        <file>Resources/MainWindow/qqlogoclassic.png</file>
-        <file>Resources/QSS/MainWindow.css</file>
-        <file>Resources/MainWindow/yutiange.jpg</file>
-        <file>Resources/MainWindow/2014_btn_down.gft.png</file>
-        <file>Resources/MainWindow/2014_btn_hover.gft.png</file>
-        <file>Resources/MainWindow/AccProt_disable.png</file>
-        <file>Resources/MainWindow/BriAni_3.png</file>
-        <file>Resources/MainWindow/btn_close_down.gft.png</file>
-        <file>Resources/MainWindow/btn_close_highlight.gft.png</file>
-        <file>Resources/MainWindow/btn_close_normal.gft.png</file>
-        <file>Resources/MainWindow/btn_medalwall_dark.png</file>
-        <file>Resources/MainWindow/btn_mini_down.gft.png</file>
-        <file>Resources/MainWindow/btn_mini_highlight.gft.png</file>
-        <file>Resources/MainWindow/btn_mini_normal.gft.png</file>
-        <file>Resources/MainWindow/medalwall_ani.png</file>
-        <file>Resources/MainWindow/head_mask.png</file>
-        <file>Resources/MainWindow/levelvalue.png</file>
-        <file>Resources/MainWindow/lv.png</file>
-        <file>Resources/MainWindow/0.png</file>
-        <file>Resources/MainWindow/15.png</file>
-        <file>Resources/MainWindow/30.png</file>
-        <file>Resources/MainWindow/45.png</file>
-        <file>Resources/MainWindow/60.png</file>
-        <file>Resources/MainWindow/75.png</file>
-        <file>Resources/MainWindow/90.png</file>
-        <file>Resources/MainWindow/StatusSucceeded.png</file>
-        <file>Resources/MainWindow/arrow_normal.gft.png</file>
-        <file>Resources/MainWindow/edit.png</file>
-        <file>Resources/MainWindow/app/app_1.png</file>
-        <file>Resources/MainWindow/app/app_2.png</file>
-        <file>Resources/MainWindow/app/app_3.png</file>
-        <file>Resources/MainWindow/app/app_4.png</file>
-        <file>Resources/MainWindow/app/app_5.png</file>
-        <file>Resources/MainWindow/app/app_6.png</file>
-        <file>Resources/MainWindow/app/app_7.png</file>
-        <file>Resources/MainWindow/app/app_8.png</file>
-        <file>Resources/MainWindow/app/app_9.png</file>
-        <file>Resources/MainWindow/app/app_10.png</file>
-        <file>Resources/MainWindow/app/app_11.png</file>
-        <file>Resources/MainWindow/search/main_search_deldown.png</file>
-        <file>Resources/MainWindow/search/main_search_delhighdown.png</file>
-        <file>Resources/MainWindow/search/main_search_delhighlight.png</file>
-        <file>Resources/MainWindow/search/search_icon.png</file>
-        <file>Resources/MainWindow/app/skin.png</file>
-        <file>Resources/MainWindow/main_tabbtn_down.gft.png</file>
-        <file>Resources/MainWindow/main_tabbtn_highlight.gft.png</file>
-        <file>Resources/MainWindow/main_tabctrl_arrow.png</file>
-        <file>Resources/MainWindow/main_tabctrl_background.gft.png</file>
-        <file>Resources/MainWindow/tab/icon_contacts_hover.png</file>
-        <file>Resources/MainWindow/tab/icon_contacts_normal.png</file>
-        <file>Resources/MainWindow/tab/icon_contacts_selected.png</file>
-        <file>Resources/MainWindow/tab/icon_group_hover.png</file>
-        <file>Resources/MainWindow/tab/icon_group_normal.png</file>
-        <file>Resources/MainWindow/tab/icon_group_selected.png</file>
-        <file>Resources/MainWindow/tab/icon_last_hover.png</file>
-        <file>Resources/MainWindow/tab/icon_last_normal.png</file>
-        <file>Resources/MainWindow/tab/icon_last_selected.png</file>
-        <file>Resources/MainWindow/bottom/filemanager.png</file>
-        <file>Resources/MainWindow/bottom/filemanager_down.png</file>
-        <file>Resources/MainWindow/bottom/filemanager_hover.png</file>
-        <file>Resources/MainWindow/bottom/filemanager2.png</file>
-        <file>Resources/MainWindow/bottom/filemanager2_down.png</file>
-        <file>Resources/MainWindow/bottom/filemanager2_hover.png</file>
-        <file>Resources/MainWindow/bottom/find.png</file>
-        <file>Resources/MainWindow/bottom/find_down.png</file>
-        <file>Resources/MainWindow/bottom/find_hover.png</file>
-        <file>Resources/MainWindow/bottom/menu_btn_highlight.png</file>
-        <file>Resources/MainWindow/bottom/menu_btn_normal.png</file>
-        <file>Resources/MainWindow/bottom/menu_btn2_down.png</file>
-        <file>Resources/MainWindow/bottom/message_down.png</file>
-        <file>Resources/MainWindow/bottom/message_highlight.png</file>
-        <file>Resources/MainWindow/bottom/mycollection_mainpanel.png</file>
-        <file>Resources/MainWindow/bottom/myCollection_mainpanel_down.png</file>
-        <file>Resources/MainWindow/bottom/myCollection_mainpanel_hover.png</file>
-        <file>Resources/MainWindow/bottom/tools.png</file>
-        <file>Resources/MainWindow/bottom/tools_down.png</file>
-        <file>Resources/MainWindow/bottom/tools_hover.png</file>
-        <file>Resources/MainWindow/bottom/message.png</file>
-        <file>Resources/MainWindow/bottom/qplusentrancebtn.png</file>
-        <file>Resources/MainWindow/arrow.png</file>
-        <file>Resources/QSS/SkinWindow.css</file>
-        <file>Resources/QSS/UserLogin.css</file>
-        <file>Resources/MainWindow/Title/close.png</file>
-        <file>Resources/MainWindow/Title/max.png</file>
-        <file>Resources/MainWindow/Title/min.png</file>
-        <file>Resources/MainWindow/Title/restore.png</file>
-        <file>Resources/QSS/Title.css</file>
-        <file>Resources/MainWindow/checkbox_hightlight.png</file>
-        <file>Resources/MainWindow/checkbox_normal.png</file>
-        <file>Resources/MainWindow/checkbox_tick_highlight.png</file>
-        <file>Resources/MainWindow/checkbox_tick_normal.png</file>
-        <file>Resources/MainWindow/emotion/0.png</file>
-        <file>Resources/MainWindow/emotion/1.png</file>
-        <file>Resources/MainWindow/emotion/2.png</file>
-        <file>Resources/MainWindow/emotion/3.png</file>
-        <file>Resources/MainWindow/emotion/4.png</file>
-        <file>Resources/MainWindow/emotion/5.png</file>
-        <file>Resources/MainWindow/emotion/6.png</file>
-        <file>Resources/MainWindow/emotion/7.png</file>
-        <file>Resources/MainWindow/emotion/8.png</file>
-        <file>Resources/MainWindow/emotion/9.png</file>
-        <file>Resources/MainWindow/emotion/10.png</file>
-        <file>Resources/MainWindow/emotion/11.png</file>
-        <file>Resources/MainWindow/emotion/12.png</file>
-        <file>Resources/MainWindow/emotion/13.png</file>
-        <file>Resources/MainWindow/emotion/14.png</file>
-        <file>Resources/MainWindow/emotion/15.png</file>
-        <file>Resources/MainWindow/emotion/16.png</file>
-        <file>Resources/MainWindow/emotion/17.png</file>
-        <file>Resources/MainWindow/emotion/18.png</file>
-        <file>Resources/MainWindow/emotion/19.png</file>
-        <file>Resources/MainWindow/emotion/20.png</file>
-        <file>Resources/MainWindow/emotion/21.png</file>
-        <file>Resources/MainWindow/emotion/22.png</file>
-        <file>Resources/MainWindow/emotion/23.png</file>
-        <file>Resources/MainWindow/emotion/24.png</file>
-        <file>Resources/MainWindow/emotion/25.png</file>
-        <file>Resources/MainWindow/emotion/26.png</file>
-        <file>Resources/MainWindow/emotion/27.png</file>
-        <file>Resources/MainWindow/emotion/28.png</file>
-        <file>Resources/MainWindow/emotion/29.png</file>
-        <file>Resources/MainWindow/emotion/30.png</file>
-        <file>Resources/MainWindow/emotion/31.png</file>
-        <file>Resources/MainWindow/emotion/32.png</file>
-        <file>Resources/MainWindow/emotion/33.png</file>
-        <file>Resources/MainWindow/emotion/34.png</file>
-        <file>Resources/MainWindow/emotion/35.png</file>
-        <file>Resources/MainWindow/emotion/36.png</file>
-        <file>Resources/MainWindow/emotion/37.png</file>
-        <file>Resources/MainWindow/emotion/38.png</file>
-        <file>Resources/MainWindow/emotion/39.png</file>
-        <file>Resources/MainWindow/emotion/40.png</file>
-        <file>Resources/MainWindow/emotion/41.png</file>
-        <file>Resources/MainWindow/emotion/42.png</file>
-        <file>Resources/MainWindow/emotion/43.png</file>
-        <file>Resources/MainWindow/emotion/44.png</file>
-        <file>Resources/MainWindow/emotion/45.png</file>
-        <file>Resources/MainWindow/emotion/46.png</file>
-        <file>Resources/MainWindow/emotion/47.png</file>
-        <file>Resources/MainWindow/emotion/48.png</file>
-        <file>Resources/MainWindow/emotion/49.png</file>
-        <file>Resources/MainWindow/emotion/50.png</file>
-        <file>Resources/MainWindow/emotion/51.png</file>
-        <file>Resources/MainWindow/emotion/52.png</file>
-        <file>Resources/MainWindow/emotion/53.png</file>
-        <file>Resources/MainWindow/emotion/54.png</file>
-        <file>Resources/MainWindow/emotion/55.png</file>
-        <file>Resources/MainWindow/emotion/56.png</file>
-        <file>Resources/MainWindow/emotion/57.png</file>
-        <file>Resources/MainWindow/emotion/58.png</file>
-        <file>Resources/MainWindow/emotion/59.png</file>
-        <file>Resources/MainWindow/emotion/60.png</file>
-        <file>Resources/MainWindow/emotion/61.png</file>
-        <file>Resources/MainWindow/emotion/62.png</file>
-        <file>Resources/MainWindow/emotion/63.png</file>
-        <file>Resources/MainWindow/emotion/64.png</file>
-        <file>Resources/MainWindow/emotion/65.png</file>
-        <file>Resources/MainWindow/emotion/66.png</file>
-        <file>Resources/MainWindow/emotion/67.png</file>
-        <file>Resources/MainWindow/emotion/68.png</file>
-        <file>Resources/MainWindow/emotion/69.png</file>
-        <file>Resources/MainWindow/emotion/70.png</file>
-        <file>Resources/MainWindow/emotion/71.png</file>
-        <file>Resources/MainWindow/emotion/72.png</file>
-        <file>Resources/MainWindow/emotion/73.png</file>
-        <file>Resources/MainWindow/emotion/74.png</file>
-        <file>Resources/MainWindow/emotion/75.png</file>
-        <file>Resources/MainWindow/emotion/76.png</file>
-        <file>Resources/MainWindow/emotion/77.png</file>
-        <file>Resources/MainWindow/emotion/78.png</file>
-        <file>Resources/MainWindow/emotion/79.png</file>
-        <file>Resources/MainWindow/emotion/80.png</file>
-        <file>Resources/MainWindow/emotion/81.png</file>
-        <file>Resources/MainWindow/emotion/82.png</file>
-        <file>Resources/MainWindow/emotion/83.png</file>
-        <file>Resources/MainWindow/emotion/84.png</file>
-        <file>Resources/MainWindow/emotion/85.png</file>
-        <file>Resources/MainWindow/emotion/86.png</file>
-        <file>Resources/MainWindow/emotion/87.png</file>
-        <file>Resources/MainWindow/emotion/88.png</file>
-        <file>Resources/MainWindow/emotion/89.png</file>
-        <file>Resources/MainWindow/emotion/90.png</file>
-        <file>Resources/MainWindow/emotion/91.png</file>
-        <file>Resources/MainWindow/emotion/92.png</file>
-        <file>Resources/MainWindow/emotion/93.png</file>
-        <file>Resources/MainWindow/emotion/94.png</file>
-        <file>Resources/MainWindow/emotion/95.png</file>
-        <file>Resources/MainWindow/emotion/96.png</file>
-        <file>Resources/MainWindow/emotion/97.png</file>
-        <file>Resources/MainWindow/emotion/98.png</file>
-        <file>Resources/MainWindow/emotion/99.png</file>
-        <file>Resources/MainWindow/emotion/100.png</file>
-        <file>Resources/MainWindow/emotion/101.png</file>
-        <file>Resources/MainWindow/emotion/102.png</file>
-        <file>Resources/MainWindow/emotion/103.png</file>
-        <file>Resources/MainWindow/emotion/104.png</file>
-        <file>Resources/MainWindow/emotion/105.png</file>
-        <file>Resources/MainWindow/emotion/106.png</file>
-        <file>Resources/MainWindow/emotion/107.png</file>
-        <file>Resources/MainWindow/emotion/108.png</file>
-        <file>Resources/MainWindow/emotion/109.png</file>
-        <file>Resources/MainWindow/emotion/110.png</file>
-        <file>Resources/MainWindow/emotion/111.png</file>
-        <file>Resources/MainWindow/emotion/112.png</file>
-        <file>Resources/MainWindow/emotion/113.png</file>
-        <file>Resources/MainWindow/emotion/114.png</file>
-        <file>Resources/MainWindow/emotion/115.png</file>
-        <file>Resources/MainWindow/emotion/116.png</file>
-        <file>Resources/MainWindow/emotion/117.png</file>
-        <file>Resources/MainWindow/emotion/118.png</file>
-        <file>Resources/MainWindow/emotion/119.png</file>
-        <file>Resources/MainWindow/emotion/120.png</file>
-        <file>Resources/MainWindow/emotion/121.png</file>
-        <file>Resources/MainWindow/emotion/122.png</file>
-        <file>Resources/MainWindow/emotion/123.png</file>
-        <file>Resources/MainWindow/emotion/124.png</file>
-        <file>Resources/MainWindow/emotion/125.png</file>
-        <file>Resources/MainWindow/emotion/126.png</file>
-        <file>Resources/MainWindow/emotion/127.png</file>
-        <file>Resources/MainWindow/emotion/128.png</file>
-        <file>Resources/MainWindow/emotion/129.png</file>
-        <file>Resources/MainWindow/emotion/130.png</file>
-        <file>Resources/MainWindow/emotion/131.png</file>
-        <file>Resources/MainWindow/emotion/132.png</file>
-        <file>Resources/MainWindow/emotion/133.png</file>
-        <file>Resources/MainWindow/emotion/134.png</file>
-        <file>Resources/MainWindow/emotion/135.png</file>
-        <file>Resources/MainWindow/emotion/136.png</file>
-        <file>Resources/MainWindow/emotion/137.png</file>
-        <file>Resources/MainWindow/emotion/138.png</file>
-        <file>Resources/MainWindow/emotion/139.png</file>
-        <file>Resources/MainWindow/emotion/140.png</file>
-        <file>Resources/MainWindow/emotion/141.png</file>
-        <file>Resources/MainWindow/emotion/142.png</file>
-        <file>Resources/MainWindow/emotion/143.png</file>
-        <file>Resources/MainWindow/emotion/144.png</file>
-        <file>Resources/MainWindow/emotion/145.png</file>
-        <file>Resources/MainWindow/emotion/146.png</file>
-        <file>Resources/MainWindow/emotion/147.png</file>
-        <file>Resources/MainWindow/emotion/148.png</file>
-        <file>Resources/MainWindow/emotion/149.png</file>
-        <file>Resources/MainWindow/emotion/150.png</file>
-        <file>Resources/MainWindow/emotion/151.png</file>
-        <file>Resources/MainWindow/emotion/152.png</file>
-        <file>Resources/MainWindow/emotion/153.png</file>
-        <file>Resources/MainWindow/emotion/154.png</file>
-        <file>Resources/MainWindow/emotion/155.png</file>
-        <file>Resources/MainWindow/emotion/156.png</file>
-        <file>Resources/MainWindow/emotion/157.png</file>
-        <file>Resources/MainWindow/emotion/158.png</file>
-        <file>Resources/MainWindow/emotion/159.png</file>
-        <file>Resources/MainWindow/emotion/160.png</file>
-        <file>Resources/MainWindow/emotion/161.png</file>
-        <file>Resources/MainWindow/emotion/162.png</file>
-        <file>Resources/MainWindow/emotion/163.png</file>
-        <file>Resources/MainWindow/emotion/164.png</file>
-        <file>Resources/MainWindow/emotion/165.png</file>
-        <file>Resources/MainWindow/emotion/166.png</file>
-        <file>Resources/MainWindow/emotion/167.png</file>
-        <file>Resources/MainWindow/emotion/168.png</file>
-        <file>Resources/MainWindow/emotion/169.png</file>
-        <file>Resources/MainWindow/emotion/170.png</file>
-        <file>Resources/MainWindow/MsgHtml/jquery-3.3.1.min.js</file>
-        <file>Resources/MainWindow/MsgHtml/msgleftTmpl.html</file>
-        <file>Resources/MainWindow/MsgHtml/msgrightTmpl.html</file>
-        <file>Resources/MainWindow/MsgHtml/msgtime.html</file>
-        <file>Resources/MainWindow/MsgHtml/msgTmpl.html</file>
-        <file>Resources/MainWindow/MsgHtml/msgtmpl.js</file>
-        <file>Resources/MainWindow/MsgHtml/qwebchannel.js</file>
-        <file>Resources/MainWindow/MsgHtml/ui.css</file>
-        <file>Resources/MainWindow/screenImg/Arrow.png</file>
-        <file>Resources/MainWindow/screenImg/Brush.PNG</file>
-        <file>Resources/MainWindow/screenImg/Circle.png</file>
-        <file>Resources/MainWindow/screenImg/cursor-move.png</file>
-        <file>Resources/MainWindow/screenImg/Exit.png</file>
-        <file>Resources/MainWindow/screenImg/Finish.png</file>
-        <file>Resources/MainWindow/screenImg/line_weight_3.png</file>
-        <file>Resources/MainWindow/screenImg/line_weight_4.png</file>
-        <file>Resources/MainWindow/screenImg/line_weight_5.png</file>
-        <file>Resources/MainWindow/screenImg/Magnifier.png</file>
-        <file>Resources/MainWindow/screenImg/Mosaic.png</file>
-        <file>Resources/MainWindow/screenImg/Rectangle.png</file>
-        <file>Resources/MainWindow/screenImg/Save.png</file>
-        <file>Resources/MainWindow/screenImg/Text.png</file>
-        <file>Resources/MainWindow/screenImg/Undo.png</file>
-        <file>Resources/MainWindow/aio_quickbar_cut.png</file>
-        <file>Resources/MainWindow/aio_quickbar_cut_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_face.png</file>
-        <file>Resources/MainWindow/aio_quickbar_face_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_font.png</file>
-        <file>Resources/MainWindow/aio_quickbar_font_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_inputassist.png</file>
-        <file>Resources/MainWindow/aio_quickbar_inputassist_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_register.png</file>
-        <file>Resources/MainWindow/aio_quickbar_register_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_richface.png</file>
-        <file>Resources/MainWindow/aio_quickbar_richface_hover.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_bold_highlight.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_bold_normal.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_bold_push.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_color_highlight.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_color_normal.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_color_push.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_italic_highlight.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_italic_normal.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_italic_push.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_underline_highlight.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_underline_normal.png</file>
-        <file>Resources/MainWindow/aio_quickbar_sysfont_underline_push.png</file>
-        <file>Resources/MainWindow/aio_setting_white_down.png</file>
-        <file>Resources/MainWindow/aio_setting_white_hover.png</file>
-        <file>Resources/MainWindow/aio_setting_white_normal.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_left_down.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_left_hover.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_left_normal.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_right_down.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_right_hover.png</file>
-        <file>Resources/MainWindow/aio_splitbutton_right_normal.png</file>
-        <file>Resources/MainWindow/aio_toobar_add.png</file>
-        <file>Resources/MainWindow/aio_toobar_addhuman.png</file>
-        <file>Resources/MainWindow/aio_toobar_app.png</file>
-        <file>Resources/MainWindow/aio_toobar_report.png</file>
-        <file>Resources/MainWindow/aio_toobar_tool.png</file>
-        <file>Resources/MainWindow/border_normal.gft.png</file>
-        <file>Resources/MainWindow/close.png</file>
-        <file>Resources/MainWindow/close-hover.png</file>
-        <file>Resources/MainWindow/emoback.png</file>
-        <file>Resources/MainWindow/list_down.png</file>
-        <file>Resources/MainWindow/menu_bkg.gft.png</file>
-        <file>Resources/MainWindow/menu_check.png</file>
-        <file>Resources/MainWindow/scrollbar_down_normal.gft.png</file>
-        <file>Resources/MainWindow/scrollbar_top_normal.gft.png</file>
-        <file>Resources/MainWindow/skin.jpg</file>
-        <file>Resources/MainWindow/skin.png</file>
-        <file>Resources/MainWindow/sysbtn_close_down.png</file>
-        <file>Resources/MainWindow/sysbtn_close_hover.png</file>
-        <file>Resources/MainWindow/sysbtn_close_normal.png</file>
-        <file>Resources/MainWindow/sysbtn_min_down.png</file>
-        <file>Resources/MainWindow/sysbtn_min_hover.png</file>
-        <file>Resources/MainWindow/sysbtn_min_normal.png</file>
-        <file>Resources/MainWindow/video.png</file>
-        <file>Resources/QSS/EmotionWindow.css</file>
-        <file>Resources/QSS/TalkWindow.css</file>
-        <file>Resources/MainWindow/app/logo.ico</file>
-        <file>Resources/MainWindow/app/page_close_btn_hover.png</file>
-        <file>Resources/MainWindow/app/face_setting_btn_normal.png</file>
-        <file>Resources/QSS/Menu.css</file>
-        <file>Resources/MainWindow/menu/menu_separate.png</file>
-        <file>Resources/MainWindow/menu/menuex_backgroundSetting.png</file>
-        <file>Resources/MainWindow/menu/menuitem_border.png</file>
-        <file>Resources/MainWindow/menu/menuItemEx_arrowTextureSetting.png</file>
-        <file>Resources/MainWindow/menu/menuItemEx_checkTexture.png</file>
-        <file>Resources/MainWindow/menu/menuitemex_seperatordraw.png</file>
-        <file>Resources/MainWindow/menu/mune_select_bkgSetting.png</file>
-        <file>Resources/MainWindow/back.png</file>
-        <file>Resources/MainWindow/gao.jpg</file>
-        <file>Resources/MainWindow/mei1.png</file>
+        <file alias="Resources/MainWindow/qqlogoclassic.png">../_runtime/resource/MainWindow/qqlogoclassic.png</file>
+        <file alias="Resources/QSS/MainWindow.css">../_runtime/resource/QSS/MainWindow.css</file>
+        <file alias="Resources/MainWindow/yutiange.jpg">../_runtime/resource/MainWindow/yutiange.jpg</file>
+        <file alias="Resources/MainWindow/2014_btn_down.gft.png">../_runtime/resource/MainWindow/2014_btn_down.gft.png</file>
+        <file alias="Resources/MainWindow/2014_btn_hover.gft.png">../_runtime/resource/MainWindow/2014_btn_hover.gft.png</file>
+        <file alias="Resources/MainWindow/AccProt_disable.png">../_runtime/resource/MainWindow/AccProt_disable.png</file>
+        <file alias="Resources/MainWindow/BriAni_3.png">../_runtime/resource/MainWindow/BriAni_3.png</file>
+        <file alias="Resources/MainWindow/btn_close_down.gft.png">../_runtime/resource/MainWindow/btn_close_down.gft.png</file>
+        <file alias="Resources/MainWindow/btn_close_highlight.gft.png">../_runtime/resource/MainWindow/btn_close_highlight.gft.png</file>
+        <file alias="Resources/MainWindow/btn_close_normal.gft.png">../_runtime/resource/MainWindow/btn_close_normal.gft.png</file>
+        <file alias="Resources/MainWindow/btn_medalwall_dark.png">../_runtime/resource/MainWindow/btn_medalwall_dark.png</file>
+        <file alias="Resources/MainWindow/btn_mini_down.gft.png">../_runtime/resource/MainWindow/btn_mini_down.gft.png</file>
+        <file alias="Resources/MainWindow/btn_mini_highlight.gft.png">../_runtime/resource/MainWindow/btn_mini_highlight.gft.png</file>
+        <file alias="Resources/MainWindow/btn_mini_normal.gft.png">../_runtime/resource/MainWindow/btn_mini_normal.gft.png</file>
+        <file alias="Resources/MainWindow/medalwall_ani.png">../_runtime/resource/MainWindow/medalwall_ani.png</file>
+        <file alias="Resources/MainWindow/head_mask.png">../_runtime/resource/MainWindow/head_mask.png</file>
+        <file alias="Resources/MainWindow/levelvalue.png">../_runtime/resource/MainWindow/levelvalue.png</file>
+        <file alias="Resources/MainWindow/lv.png">../_runtime/resource/MainWindow/lv.png</file>
+        <file alias="Resources/MainWindow/0.png">../_runtime/resource/MainWindow/0.png</file>
+        <file alias="Resources/MainWindow/15.png">../_runtime/resource/MainWindow/15.png</file>
+        <file alias="Resources/MainWindow/30.png">../_runtime/resource/MainWindow/30.png</file>
+        <file alias="Resources/MainWindow/45.png">../_runtime/resource/MainWindow/45.png</file>
+        <file alias="Resources/MainWindow/60.png">../_runtime/resource/MainWindow/60.png</file>
+        <file alias="Resources/MainWindow/75.png">../_runtime/resource/MainWindow/75.png</file>
+        <file alias="Resources/MainWindow/90.png">../_runtime/resource/MainWindow/90.png</file>
+        <file alias="Resources/MainWindow/StatusSucceeded.png">../_runtime/resource/MainWindow/StatusSucceeded.png</file>
+        <file alias="Resources/MainWindow/arrow_normal.gft.png">../_runtime/resource/MainWindow/arrow_normal.gft.png</file>
+        <file alias="Resources/MainWindow/edit.png">../_runtime/resource/MainWindow/edit.png</file>
+        <file alias="Resources/MainWindow/app/app_1.png">../_runtime/resource/MainWindow/app/app_1.png</file>
+        <file alias="Resources/MainWindow/app/app_2.png">../_runtime/resource/MainWindow/app/app_2.png</file>
+        <file alias="Resources/MainWindow/app/app_3.png">../_runtime/resource/MainWindow/app/app_3.png</file>
+        <file alias="Resources/MainWindow/app/app_4.png">../_runtime/resource/MainWindow/app/app_4.png</file>
+        <file alias="Resources/MainWindow/app/app_5.png">../_runtime/resource/MainWindow/app/app_5.png</file>
+        <file alias="Resources/MainWindow/app/app_6.png">../_runtime/resource/MainWindow/app/app_6.png</file>
+        <file alias="Resources/MainWindow/app/app_7.png">../_runtime/resource/MainWindow/app/app_7.png</file>
+        <file alias="Resources/MainWindow/app/app_8.png">../_runtime/resource/MainWindow/app/app_8.png</file>
+        <file alias="Resources/MainWindow/app/app_9.png">../_runtime/resource/MainWindow/app/app_9.png</file>
+        <file alias="Resources/MainWindow/app/app_10.png">../_runtime/resource/MainWindow/app/app_10.png</file>
+        <file alias="Resources/MainWindow/app/app_11.png">../_runtime/resource/MainWindow/app/app_11.png</file>
+        <file alias="Resources/MainWindow/search/main_search_deldown.png">../_runtime/resource/MainWindow/search/main_search_deldown.png</file>
+        <file alias="Resources/MainWindow/search/main_search_delhighdown.png">../_runtime/resource/MainWindow/search/main_search_delhighdown.png</file>
+        <file alias="Resources/MainWindow/search/main_search_delhighlight.png">../_runtime/resource/MainWindow/search/main_search_delhighlight.png</file>
+        <file alias="Resources/MainWindow/search/search_icon.png">../_runtime/resource/MainWindow/search/search_icon.png</file>
+        <file alias="Resources/MainWindow/app/skin.png">../_runtime/resource/MainWindow/app/skin.png</file>
+        <file alias="Resources/MainWindow/main_tabbtn_down.gft.png">../_runtime/resource/MainWindow/main_tabbtn_down.gft.png</file>
+        <file alias="Resources/MainWindow/main_tabbtn_highlight.gft.png">../_runtime/resource/MainWindow/main_tabbtn_highlight.gft.png</file>
+        <file alias="Resources/MainWindow/main_tabctrl_arrow.png">../_runtime/resource/MainWindow/main_tabctrl_arrow.png</file>
+        <file alias="Resources/MainWindow/main_tabctrl_background.gft.png">../_runtime/resource/MainWindow/main_tabctrl_background.gft.png</file>
+        <file alias="Resources/MainWindow/tab/icon_contacts_hover.png">../_runtime/resource/MainWindow/tab/icon_contacts_hover.png</file>
+        <file alias="Resources/MainWindow/tab/icon_contacts_normal.png">../_runtime/resource/MainWindow/tab/icon_contacts_normal.png</file>
+        <file alias="Resources/MainWindow/tab/icon_contacts_selected.png">../_runtime/resource/MainWindow/tab/icon_contacts_selected.png</file>
+        <file alias="Resources/MainWindow/tab/icon_group_hover.png">../_runtime/resource/MainWindow/tab/icon_group_hover.png</file>
+        <file alias="Resources/MainWindow/tab/icon_group_normal.png">../_runtime/resource/MainWindow/tab/icon_group_normal.png</file>
+        <file alias="Resources/MainWindow/tab/icon_group_selected.png">../_runtime/resource/MainWindow/tab/icon_group_selected.png</file>
+        <file alias="Resources/MainWindow/tab/icon_last_hover.png">../_runtime/resource/MainWindow/tab/icon_last_hover.png</file>
+        <file alias="Resources/MainWindow/tab/icon_last_normal.png">../_runtime/resource/MainWindow/tab/icon_last_normal.png</file>
+        <file alias="Resources/MainWindow/tab/icon_last_selected.png">../_runtime/resource/MainWindow/tab/icon_last_selected.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager.png">../_runtime/resource/MainWindow/bottom/filemanager.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager_down.png">../_runtime/resource/MainWindow/bottom/filemanager_down.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager_hover.png">../_runtime/resource/MainWindow/bottom/filemanager_hover.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager2.png">../_runtime/resource/MainWindow/bottom/filemanager2.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager2_down.png">../_runtime/resource/MainWindow/bottom/filemanager2_down.png</file>
+        <file alias="Resources/MainWindow/bottom/filemanager2_hover.png">../_runtime/resource/MainWindow/bottom/filemanager2_hover.png</file>
+        <file alias="Resources/MainWindow/bottom/find.png">../_runtime/resource/MainWindow/bottom/find.png</file>
+        <file alias="Resources/MainWindow/bottom/find_down.png">../_runtime/resource/MainWindow/bottom/find_down.png</file>
+        <file alias="Resources/MainWindow/bottom/find_hover.png">../_runtime/resource/MainWindow/bottom/find_hover.png</file>
+        <file alias="Resources/MainWindow/bottom/menu_btn_highlight.png">../_runtime/resource/MainWindow/bottom/menu_btn_highlight.png</file>
+        <file alias="Resources/MainWindow/bottom/menu_btn_normal.png">../_runtime/resource/MainWindow/bottom/menu_btn_normal.png</file>
+        <file alias="Resources/MainWindow/bottom/menu_btn2_down.png">../_runtime/resource/MainWindow/bottom/menu_btn2_down.png</file>
+        <file alias="Resources/MainWindow/bottom/message_down.png">../_runtime/resource/MainWindow/bottom/message_down.png</file>
+        <file alias="Resources/MainWindow/bottom/message_highlight.png">../_runtime/resource/MainWindow/bottom/message_highlight.png</file>
+        <file alias="Resources/MainWindow/bottom/mycollection_mainpanel.png">../_runtime/resource/MainWindow/bottom/mycollection_mainpanel.png</file>
+        <file alias="Resources/MainWindow/bottom/myCollection_mainpanel_down.png">../_runtime/resource/MainWindow/bottom/myCollection_mainpanel_down.png</file>
+        <file alias="Resources/MainWindow/bottom/myCollection_mainpanel_hover.png">../_runtime/resource/MainWindow/bottom/myCollection_mainpanel_hover.png</file>
+        <file alias="Resources/MainWindow/bottom/tools.png">../_runtime/resource/MainWindow/bottom/tools.png</file>
+        <file alias="Resources/MainWindow/bottom/tools_down.png">../_runtime/resource/MainWindow/bottom/tools_down.png</file>
+        <file alias="Resources/MainWindow/bottom/tools_hover.png">../_runtime/resource/MainWindow/bottom/tools_hover.png</file>
+        <file alias="Resources/MainWindow/bottom/message.png">../_runtime/resource/MainWindow/bottom/message.png</file>
+        <file alias="Resources/MainWindow/bottom/qplusentrancebtn.png">../_runtime/resource/MainWindow/bottom/qplusentrancebtn.png</file>
+        <file alias="Resources/MainWindow/arrow.png">../_runtime/resource/MainWindow/arrow.png</file>
+        <file alias="Resources/QSS/SkinWindow.css">../_runtime/resource/QSS/SkinWindow.css</file>
+        <file alias="Resources/QSS/UserLogin.css">../_runtime/resource/QSS/UserLogin.css</file>
+        <file alias="Resources/MainWindow/Title/close.png">../_runtime/resource/MainWindow/Title/close.png</file>
+        <file alias="Resources/MainWindow/Title/max.png">../_runtime/resource/MainWindow/Title/max.png</file>
+        <file alias="Resources/MainWindow/Title/min.png">../_runtime/resource/MainWindow/Title/min.png</file>
+        <file alias="Resources/MainWindow/Title/restore.png">../_runtime/resource/MainWindow/Title/restore.png</file>
+        <file alias="Resources/QSS/Title.css">../_runtime/resource/QSS/Title.css</file>
+        <file alias="Resources/MainWindow/checkbox_hightlight.png">../_runtime/resource/MainWindow/checkbox_hightlight.png</file>
+        <file alias="Resources/MainWindow/checkbox_normal.png">../_runtime/resource/MainWindow/checkbox_normal.png</file>
+        <file alias="Resources/MainWindow/checkbox_tick_highlight.png">../_runtime/resource/MainWindow/checkbox_tick_highlight.png</file>
+        <file alias="Resources/MainWindow/checkbox_tick_normal.png">../_runtime/resource/MainWindow/checkbox_tick_normal.png</file>
+        <file alias="Resources/MainWindow/emotion/0.png">../_runtime/resource/MainWindow/emotion/0.png</file>
+        <file alias="Resources/MainWindow/emotion/1.png">../_runtime/resource/MainWindow/emotion/1.png</file>
+        <file alias="Resources/MainWindow/emotion/2.png">../_runtime/resource/MainWindow/emotion/2.png</file>
+        <file alias="Resources/MainWindow/emotion/3.png">../_runtime/resource/MainWindow/emotion/3.png</file>
+        <file alias="Resources/MainWindow/emotion/4.png">../_runtime/resource/MainWindow/emotion/4.png</file>
+        <file alias="Resources/MainWindow/emotion/5.png">../_runtime/resource/MainWindow/emotion/5.png</file>
+        <file alias="Resources/MainWindow/emotion/6.png">../_runtime/resource/MainWindow/emotion/6.png</file>
+        <file alias="Resources/MainWindow/emotion/7.png">../_runtime/resource/MainWindow/emotion/7.png</file>
+        <file alias="Resources/MainWindow/emotion/8.png">../_runtime/resource/MainWindow/emotion/8.png</file>
+        <file alias="Resources/MainWindow/emotion/9.png">../_runtime/resource/MainWindow/emotion/9.png</file>
+        <file alias="Resources/MainWindow/emotion/10.png">../_runtime/resource/MainWindow/emotion/10.png</file>
+        <file alias="Resources/MainWindow/emotion/11.png">../_runtime/resource/MainWindow/emotion/11.png</file>
+        <file alias="Resources/MainWindow/emotion/12.png">../_runtime/resource/MainWindow/emotion/12.png</file>
+        <file alias="Resources/MainWindow/emotion/13.png">../_runtime/resource/MainWindow/emotion/13.png</file>
+        <file alias="Resources/MainWindow/emotion/14.png">../_runtime/resource/MainWindow/emotion/14.png</file>
+        <file alias="Resources/MainWindow/emotion/15.png">../_runtime/resource/MainWindow/emotion/15.png</file>
+        <file alias="Resources/MainWindow/emotion/16.png">../_runtime/resource/MainWindow/emotion/16.png</file>
+        <file alias="Resources/MainWindow/emotion/17.png">../_runtime/resource/MainWindow/emotion/17.png</file>
+        <file alias="Resources/MainWindow/emotion/18.png">../_runtime/resource/MainWindow/emotion/18.png</file>
+        <file alias="Resources/MainWindow/emotion/19.png">../_runtime/resource/MainWindow/emotion/19.png</file>
+        <file alias="Resources/MainWindow/emotion/20.png">../_runtime/resource/MainWindow/emotion/20.png</file>
+        <file alias="Resources/MainWindow/emotion/21.png">../_runtime/resource/MainWindow/emotion/21.png</file>
+        <file alias="Resources/MainWindow/emotion/22.png">../_runtime/resource/MainWindow/emotion/22.png</file>
+        <file alias="Resources/MainWindow/emotion/23.png">../_runtime/resource/MainWindow/emotion/23.png</file>
+        <file alias="Resources/MainWindow/emotion/24.png">../_runtime/resource/MainWindow/emotion/24.png</file>
+        <file alias="Resources/MainWindow/emotion/25.png">../_runtime/resource/MainWindow/emotion/25.png</file>
+        <file alias="Resources/MainWindow/emotion/26.png">../_runtime/resource/MainWindow/emotion/26.png</file>
+        <file alias="Resources/MainWindow/emotion/27.png">../_runtime/resource/MainWindow/emotion/27.png</file>
+        <file alias="Resources/MainWindow/emotion/28.png">../_runtime/resource/MainWindow/emotion/28.png</file>
+        <file alias="Resources/MainWindow/emotion/29.png">../_runtime/resource/MainWindow/emotion/29.png</file>
+        <file alias="Resources/MainWindow/emotion/30.png">../_runtime/resource/MainWindow/emotion/30.png</file>
+        <file alias="Resources/MainWindow/emotion/31.png">../_runtime/resource/MainWindow/emotion/31.png</file>
+        <file alias="Resources/MainWindow/emotion/32.png">../_runtime/resource/MainWindow/emotion/32.png</file>
+        <file alias="Resources/MainWindow/emotion/33.png">../_runtime/resource/MainWindow/emotion/33.png</file>
+        <file alias="Resources/MainWindow/emotion/34.png">../_runtime/resource/MainWindow/emotion/34.png</file>
+        <file alias="Resources/MainWindow/emotion/35.png">../_runtime/resource/MainWindow/emotion/35.png</file>
+        <file alias="Resources/MainWindow/emotion/36.png">../_runtime/resource/MainWindow/emotion/36.png</file>
+        <file alias="Resources/MainWindow/emotion/37.png">../_runtime/resource/MainWindow/emotion/37.png</file>
+        <file alias="Resources/MainWindow/emotion/38.png">../_runtime/resource/MainWindow/emotion/38.png</file>
+        <file alias="Resources/MainWindow/emotion/39.png">../_runtime/resource/MainWindow/emotion/39.png</file>
+        <file alias="Resources/MainWindow/emotion/40.png">../_runtime/resource/MainWindow/emotion/40.png</file>
+        <file alias="Resources/MainWindow/emotion/41.png">../_runtime/resource/MainWindow/emotion/41.png</file>
+        <file alias="Resources/MainWindow/emotion/42.png">../_runtime/resource/MainWindow/emotion/42.png</file>
+        <file alias="Resources/MainWindow/emotion/43.png">../_runtime/resource/MainWindow/emotion/43.png</file>
+        <file alias="Resources/MainWindow/emotion/44.png">../_runtime/resource/MainWindow/emotion/44.png</file>
+        <file alias="Resources/MainWindow/emotion/45.png">../_runtime/resource/MainWindow/emotion/45.png</file>
+        <file alias="Resources/MainWindow/emotion/46.png">../_runtime/resource/MainWindow/emotion/46.png</file>
+        <file alias="Resources/MainWindow/emotion/47.png">../_runtime/resource/MainWindow/emotion/47.png</file>
+        <file alias="Resources/MainWindow/emotion/48.png">../_runtime/resource/MainWindow/emotion/48.png</file>
+        <file alias="Resources/MainWindow/emotion/49.png">../_runtime/resource/MainWindow/emotion/49.png</file>
+        <file alias="Resources/MainWindow/emotion/50.png">../_runtime/resource/MainWindow/emotion/50.png</file>
+        <file alias="Resources/MainWindow/emotion/51.png">../_runtime/resource/MainWindow/emotion/51.png</file>
+        <file alias="Resources/MainWindow/emotion/52.png">../_runtime/resource/MainWindow/emotion/52.png</file>
+        <file alias="Resources/MainWindow/emotion/53.png">../_runtime/resource/MainWindow/emotion/53.png</file>
+        <file alias="Resources/MainWindow/emotion/54.png">../_runtime/resource/MainWindow/emotion/54.png</file>
+        <file alias="Resources/MainWindow/emotion/55.png">../_runtime/resource/MainWindow/emotion/55.png</file>
+        <file alias="Resources/MainWindow/emotion/56.png">../_runtime/resource/MainWindow/emotion/56.png</file>
+        <file alias="Resources/MainWindow/emotion/57.png">../_runtime/resource/MainWindow/emotion/57.png</file>
+        <file alias="Resources/MainWindow/emotion/58.png">../_runtime/resource/MainWindow/emotion/58.png</file>
+        <file alias="Resources/MainWindow/emotion/59.png">../_runtime/resource/MainWindow/emotion/59.png</file>
+        <file alias="Resources/MainWindow/emotion/60.png">../_runtime/resource/MainWindow/emotion/60.png</file>
+        <file alias="Resources/MainWindow/emotion/61.png">../_runtime/resource/MainWindow/emotion/61.png</file>
+        <file alias="Resources/MainWindow/emotion/62.png">../_runtime/resource/MainWindow/emotion/62.png</file>
+        <file alias="Resources/MainWindow/emotion/63.png">../_runtime/resource/MainWindow/emotion/63.png</file>
+        <file alias="Resources/MainWindow/emotion/64.png">../_runtime/resource/MainWindow/emotion/64.png</file>
+        <file alias="Resources/MainWindow/emotion/65.png">../_runtime/resource/MainWindow/emotion/65.png</file>
+        <file alias="Resources/MainWindow/emotion/66.png">../_runtime/resource/MainWindow/emotion/66.png</file>
+        <file alias="Resources/MainWindow/emotion/67.png">../_runtime/resource/MainWindow/emotion/67.png</file>
+        <file alias="Resources/MainWindow/emotion/68.png">../_runtime/resource/MainWindow/emotion/68.png</file>
+        <file alias="Resources/MainWindow/emotion/69.png">../_runtime/resource/MainWindow/emotion/69.png</file>
+        <file alias="Resources/MainWindow/emotion/70.png">../_runtime/resource/MainWindow/emotion/70.png</file>
+        <file alias="Resources/MainWindow/emotion/71.png">../_runtime/resource/MainWindow/emotion/71.png</file>
+        <file alias="Resources/MainWindow/emotion/72.png">../_runtime/resource/MainWindow/emotion/72.png</file>
+        <file alias="Resources/MainWindow/emotion/73.png">../_runtime/resource/MainWindow/emotion/73.png</file>
+        <file alias="Resources/MainWindow/emotion/74.png">../_runtime/resource/MainWindow/emotion/74.png</file>
+        <file alias="Resources/MainWindow/emotion/75.png">../_runtime/resource/MainWindow/emotion/75.png</file>
+        <file alias="Resources/MainWindow/emotion/76.png">../_runtime/resource/MainWindow/emotion/76.png</file>
+        <file alias="Resources/MainWindow/emotion/77.png">../_runtime/resource/MainWindow/emotion/77.png</file>
+        <file alias="Resources/MainWindow/emotion/78.png">../_runtime/resource/MainWindow/emotion/78.png</file>
+        <file alias="Resources/MainWindow/emotion/79.png">../_runtime/resource/MainWindow/emotion/79.png</file>
+        <file alias="Resources/MainWindow/emotion/80.png">../_runtime/resource/MainWindow/emotion/80.png</file>
+        <file alias="Resources/MainWindow/emotion/81.png">../_runtime/resource/MainWindow/emotion/81.png</file>
+        <file alias="Resources/MainWindow/emotion/82.png">../_runtime/resource/MainWindow/emotion/82.png</file>
+        <file alias="Resources/MainWindow/emotion/83.png">../_runtime/resource/MainWindow/emotion/83.png</file>
+        <file alias="Resources/MainWindow/emotion/84.png">../_runtime/resource/MainWindow/emotion/84.png</file>
+        <file alias="Resources/MainWindow/emotion/85.png">../_runtime/resource/MainWindow/emotion/85.png</file>
+        <file alias="Resources/MainWindow/emotion/86.png">../_runtime/resource/MainWindow/emotion/86.png</file>
+        <file alias="Resources/MainWindow/emotion/87.png">../_runtime/resource/MainWindow/emotion/87.png</file>
+        <file alias="Resources/MainWindow/emotion/88.png">../_runtime/resource/MainWindow/emotion/88.png</file>
+        <file alias="Resources/MainWindow/emotion/89.png">../_runtime/resource/MainWindow/emotion/89.png</file>
+        <file alias="Resources/MainWindow/emotion/90.png">../_runtime/resource/MainWindow/emotion/90.png</file>
+        <file alias="Resources/MainWindow/emotion/91.png">../_runtime/resource/MainWindow/emotion/91.png</file>
+        <file alias="Resources/MainWindow/emotion/92.png">../_runtime/resource/MainWindow/emotion/92.png</file>
+        <file alias="Resources/MainWindow/emotion/93.png">../_runtime/resource/MainWindow/emotion/93.png</file>
+        <file alias="Resources/MainWindow/emotion/94.png">../_runtime/resource/MainWindow/emotion/94.png</file>
+        <file alias="Resources/MainWindow/emotion/95.png">../_runtime/resource/MainWindow/emotion/95.png</file>
+        <file alias="Resources/MainWindow/emotion/96.png">../_runtime/resource/MainWindow/emotion/96.png</file>
+        <file alias="Resources/MainWindow/emotion/97.png">../_runtime/resource/MainWindow/emotion/97.png</file>
+        <file alias="Resources/MainWindow/emotion/98.png">../_runtime/resource/MainWindow/emotion/98.png</file>
+        <file alias="Resources/MainWindow/emotion/99.png">../_runtime/resource/MainWindow/emotion/99.png</file>
+        <file alias="Resources/MainWindow/emotion/100.png">../_runtime/resource/MainWindow/emotion/100.png</file>
+        <file alias="Resources/MainWindow/emotion/101.png">../_runtime/resource/MainWindow/emotion/101.png</file>
+        <file alias="Resources/MainWindow/emotion/102.png">../_runtime/resource/MainWindow/emotion/102.png</file>
+        <file alias="Resources/MainWindow/emotion/103.png">../_runtime/resource/MainWindow/emotion/103.png</file>
+        <file alias="Resources/MainWindow/emotion/104.png">../_runtime/resource/MainWindow/emotion/104.png</file>
+        <file alias="Resources/MainWindow/emotion/105.png">../_runtime/resource/MainWindow/emotion/105.png</file>
+        <file alias="Resources/MainWindow/emotion/106.png">../_runtime/resource/MainWindow/emotion/106.png</file>
+        <file alias="Resources/MainWindow/emotion/107.png">../_runtime/resource/MainWindow/emotion/107.png</file>
+        <file alias="Resources/MainWindow/emotion/108.png">../_runtime/resource/MainWindow/emotion/108.png</file>
+        <file alias="Resources/MainWindow/emotion/109.png">../_runtime/resource/MainWindow/emotion/109.png</file>
+        <file alias="Resources/MainWindow/emotion/110.png">../_runtime/resource/MainWindow/emotion/110.png</file>
+        <file alias="Resources/MainWindow/emotion/111.png">../_runtime/resource/MainWindow/emotion/111.png</file>
+        <file alias="Resources/MainWindow/emotion/112.png">../_runtime/resource/MainWindow/emotion/112.png</file>
+        <file alias="Resources/MainWindow/emotion/113.png">../_runtime/resource/MainWindow/emotion/113.png</file>
+        <file alias="Resources/MainWindow/emotion/114.png">../_runtime/resource/MainWindow/emotion/114.png</file>
+        <file alias="Resources/MainWindow/emotion/115.png">../_runtime/resource/MainWindow/emotion/115.png</file>
+        <file alias="Resources/MainWindow/emotion/116.png">../_runtime/resource/MainWindow/emotion/116.png</file>
+        <file alias="Resources/MainWindow/emotion/117.png">../_runtime/resource/MainWindow/emotion/117.png</file>
+        <file alias="Resources/MainWindow/emotion/118.png">../_runtime/resource/MainWindow/emotion/118.png</file>
+        <file alias="Resources/MainWindow/emotion/119.png">../_runtime/resource/MainWindow/emotion/119.png</file>
+        <file alias="Resources/MainWindow/emotion/120.png">../_runtime/resource/MainWindow/emotion/120.png</file>
+        <file alias="Resources/MainWindow/emotion/121.png">../_runtime/resource/MainWindow/emotion/121.png</file>
+        <file alias="Resources/MainWindow/emotion/122.png">../_runtime/resource/MainWindow/emotion/122.png</file>
+        <file alias="Resources/MainWindow/emotion/123.png">../_runtime/resource/MainWindow/emotion/123.png</file>
+        <file alias="Resources/MainWindow/emotion/124.png">../_runtime/resource/MainWindow/emotion/124.png</file>
+        <file alias="Resources/MainWindow/emotion/125.png">../_runtime/resource/MainWindow/emotion/125.png</file>
+        <file alias="Resources/MainWindow/emotion/126.png">../_runtime/resource/MainWindow/emotion/126.png</file>
+        <file alias="Resources/MainWindow/emotion/127.png">../_runtime/resource/MainWindow/emotion/127.png</file>
+        <file alias="Resources/MainWindow/emotion/128.png">../_runtime/resource/MainWindow/emotion/128.png</file>
+        <file alias="Resources/MainWindow/emotion/129.png">../_runtime/resource/MainWindow/emotion/129.png</file>
+        <file alias="Resources/MainWindow/emotion/130.png">../_runtime/resource/MainWindow/emotion/130.png</file>
+        <file alias="Resources/MainWindow/emotion/131.png">../_runtime/resource/MainWindow/emotion/131.png</file>
+        <file alias="Resources/MainWindow/emotion/132.png">../_runtime/resource/MainWindow/emotion/132.png</file>
+        <file alias="Resources/MainWindow/emotion/133.png">../_runtime/resource/MainWindow/emotion/133.png</file>
+        <file alias="Resources/MainWindow/emotion/134.png">../_runtime/resource/MainWindow/emotion/134.png</file>
+        <file alias="Resources/MainWindow/emotion/135.png">../_runtime/resource/MainWindow/emotion/135.png</file>
+        <file alias="Resources/MainWindow/emotion/136.png">../_runtime/resource/MainWindow/emotion/136.png</file>
+        <file alias="Resources/MainWindow/emotion/137.png">../_runtime/resource/MainWindow/emotion/137.png</file>
+        <file alias="Resources/MainWindow/emotion/138.png">../_runtime/resource/MainWindow/emotion/138.png</file>
+        <file alias="Resources/MainWindow/emotion/139.png">../_runtime/resource/MainWindow/emotion/139.png</file>
+        <file alias="Resources/MainWindow/emotion/140.png">../_runtime/resource/MainWindow/emotion/140.png</file>
+        <file alias="Resources/MainWindow/emotion/141.png">../_runtime/resource/MainWindow/emotion/141.png</file>
+        <file alias="Resources/MainWindow/emotion/142.png">../_runtime/resource/MainWindow/emotion/142.png</file>
+        <file alias="Resources/MainWindow/emotion/143.png">../_runtime/resource/MainWindow/emotion/143.png</file>
+        <file alias="Resources/MainWindow/emotion/144.png">../_runtime/resource/MainWindow/emotion/144.png</file>
+        <file alias="Resources/MainWindow/emotion/145.png">../_runtime/resource/MainWindow/emotion/145.png</file>
+        <file alias="Resources/MainWindow/emotion/146.png">../_runtime/resource/MainWindow/emotion/146.png</file>
+        <file alias="Resources/MainWindow/emotion/147.png">../_runtime/resource/MainWindow/emotion/147.png</file>
+        <file alias="Resources/MainWindow/emotion/148.png">../_runtime/resource/MainWindow/emotion/148.png</file>
+        <file alias="Resources/MainWindow/emotion/149.png">../_runtime/resource/MainWindow/emotion/149.png</file>
+        <file alias="Resources/MainWindow/emotion/150.png">../_runtime/resource/MainWindow/emotion/150.png</file>
+        <file alias="Resources/MainWindow/emotion/151.png">../_runtime/resource/MainWindow/emotion/151.png</file>
+        <file alias="Resources/MainWindow/emotion/152.png">../_runtime/resource/MainWindow/emotion/152.png</file>
+        <file alias="Resources/MainWindow/emotion/153.png">../_runtime/resource/MainWindow/emotion/153.png</file>
+        <file alias="Resources/MainWindow/emotion/154.png">../_runtime/resource/MainWindow/emotion/154.png</file>
+        <file alias="Resources/MainWindow/emotion/155.png">../_runtime/resource/MainWindow/emotion/155.png</file>
+        <file alias="Resources/MainWindow/emotion/156.png">../_runtime/resource/MainWindow/emotion/156.png</file>
+        <file alias="Resources/MainWindow/emotion/157.png">../_runtime/resource/MainWindow/emotion/157.png</file>
+        <file alias="Resources/MainWindow/emotion/158.png">../_runtime/resource/MainWindow/emotion/158.png</file>
+        <file alias="Resources/MainWindow/emotion/159.png">../_runtime/resource/MainWindow/emotion/159.png</file>
+        <file alias="Resources/MainWindow/emotion/160.png">../_runtime/resource/MainWindow/emotion/160.png</file>
+        <file alias="Resources/MainWindow/emotion/161.png">../_runtime/resource/MainWindow/emotion/161.png</file>
+        <file alias="Resources/MainWindow/emotion/162.png">../_runtime/resource/MainWindow/emotion/162.png</file>
+        <file alias="Resources/MainWindow/emotion/163.png">../_runtime/resource/MainWindow/emotion/163.png</file>
+        <file alias="Resources/MainWindow/emotion/164.png">../_runtime/resource/MainWindow/emotion/164.png</file>
+        <file alias="Resources/MainWindow/emotion/165.png">../_runtime/resource/MainWindow/emotion/165.png</file>
+        <file alias="Resources/MainWindow/emotion/166.png">../_runtime/resource/MainWindow/emotion/166.png</file>
+        <file alias="Resources/MainWindow/emotion/167.png">../_runtime/resource/MainWindow/emotion/167.png</file>
+        <file alias="Resources/MainWindow/emotion/168.png">../_runtime/resource/MainWindow/emotion/168.png</file>
+        <file alias="Resources/MainWindow/emotion/169.png">../_runtime/resource/MainWindow/emotion/169.png</file>
+        <file alias="Resources/MainWindow/emotion/170.png">../_runtime/resource/MainWindow/emotion/170.png</file>
+        <file alias="Resources/MainWindow/MsgHtml/jquery-3.3.1.min.js">../_runtime/resource/MainWindow/MsgHtml/jquery-3.3.1.min.js</file>
+        <file alias="Resources/MainWindow/MsgHtml/msgleftTmpl.html">../_runtime/resource/MainWindow/MsgHtml/msgleftTmpl.html</file>
+        <file alias="Resources/MainWindow/MsgHtml/msgrightTmpl.html">../_runtime/resource/MainWindow/MsgHtml/msgrightTmpl.html</file>
+        <file alias="Resources/MainWindow/MsgHtml/msgtime.html">../_runtime/resource/MainWindow/MsgHtml/msgtime.html</file>
+        <file alias="Resources/MainWindow/MsgHtml/msgTmpl.html">../_runtime/resource/MainWindow/MsgHtml/msgTmpl.html</file>
+        <file alias="Resources/MainWindow/MsgHtml/msgtmpl.js">../_runtime/resource/MainWindow/MsgHtml/msgtmpl.js</file>
+        <file alias="Resources/MainWindow/MsgHtml/qwebchannel.js">../_runtime/resource/MainWindow/MsgHtml/qwebchannel.js</file>
+        <file alias="Resources/MainWindow/MsgHtml/ui.css">../_runtime/resource/MainWindow/MsgHtml/ui.css</file>
+        <file alias="Resources/MainWindow/screenImg/Arrow.png">../_runtime/resource/MainWindow/screenImg/Arrow.png</file>
+        <file alias="Resources/MainWindow/screenImg/Brush.PNG">../_runtime/resource/MainWindow/screenImg/Brush.PNG</file>
+        <file alias="Resources/MainWindow/screenImg/Circle.png">../_runtime/resource/MainWindow/screenImg/Circle.png</file>
+        <file alias="Resources/MainWindow/screenImg/cursor-move.png">../_runtime/resource/MainWindow/screenImg/cursor-move.png</file>
+        <file alias="Resources/MainWindow/screenImg/Exit.png">../_runtime/resource/MainWindow/screenImg/Exit.png</file>
+        <file alias="Resources/MainWindow/screenImg/Finish.png">../_runtime/resource/MainWindow/screenImg/Finish.png</file>
+        <file alias="Resources/MainWindow/screenImg/line_weight_3.png">../_runtime/resource/MainWindow/screenImg/line_weight_3.png</file>
+        <file alias="Resources/MainWindow/screenImg/line_weight_4.png">../_runtime/resource/MainWindow/screenImg/line_weight_4.png</file>
+        <file alias="Resources/MainWindow/screenImg/line_weight_5.png">../_runtime/resource/MainWindow/screenImg/line_weight_5.png</file>
+        <file alias="Resources/MainWindow/screenImg/Magnifier.png">../_runtime/resource/MainWindow/screenImg/Magnifier.png</file>
+        <file alias="Resources/MainWindow/screenImg/Mosaic.png">../_runtime/resource/MainWindow/screenImg/Mosaic.png</file>
+        <file alias="Resources/MainWindow/screenImg/Rectangle.png">../_runtime/resource/MainWindow/screenImg/Rectangle.png</file>
+        <file alias="Resources/MainWindow/screenImg/Save.png">../_runtime/resource/MainWindow/screenImg/Save.png</file>
+        <file alias="Resources/MainWindow/screenImg/Text.png">../_runtime/resource/MainWindow/screenImg/Text.png</file>
+        <file alias="Resources/MainWindow/screenImg/Undo.png">../_runtime/resource/MainWindow/screenImg/Undo.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_cut.png">../_runtime/resource/MainWindow/aio_quickbar_cut.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_cut_hover.png">../_runtime/resource/MainWindow/aio_quickbar_cut_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_face.png">../_runtime/resource/MainWindow/aio_quickbar_face.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_face_hover.png">../_runtime/resource/MainWindow/aio_quickbar_face_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_font.png">../_runtime/resource/MainWindow/aio_quickbar_font.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_font_hover.png">../_runtime/resource/MainWindow/aio_quickbar_font_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_inputassist.png">../_runtime/resource/MainWindow/aio_quickbar_inputassist.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_inputassist_hover.png">../_runtime/resource/MainWindow/aio_quickbar_inputassist_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_register.png">../_runtime/resource/MainWindow/aio_quickbar_register.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_register_hover.png">../_runtime/resource/MainWindow/aio_quickbar_register_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_richface.png">../_runtime/resource/MainWindow/aio_quickbar_richface.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_richface_hover.png">../_runtime/resource/MainWindow/aio_quickbar_richface_hover.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_bold_highlight.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_bold_highlight.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_bold_normal.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_bold_normal.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_bold_push.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_bold_push.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_color_highlight.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_color_highlight.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_color_normal.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_color_normal.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_color_push.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_color_push.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_italic_highlight.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_italic_highlight.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_italic_normal.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_italic_normal.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_italic_push.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_italic_push.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_underline_highlight.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_underline_highlight.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_underline_normal.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_underline_normal.png</file>
+        <file alias="Resources/MainWindow/aio_quickbar_sysfont_underline_push.png">../_runtime/resource/MainWindow/aio_quickbar_sysfont_underline_push.png</file>
+        <file alias="Resources/MainWindow/aio_setting_white_down.png">../_runtime/resource/MainWindow/aio_setting_white_down.png</file>
+        <file alias="Resources/MainWindow/aio_setting_white_hover.png">../_runtime/resource/MainWindow/aio_setting_white_hover.png</file>
+        <file alias="Resources/MainWindow/aio_setting_white_normal.png">../_runtime/resource/MainWindow/aio_setting_white_normal.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_left_down.png">../_runtime/resource/MainWindow/aio_splitbutton_left_down.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_left_hover.png">../_runtime/resource/MainWindow/aio_splitbutton_left_hover.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_left_normal.png">../_runtime/resource/MainWindow/aio_splitbutton_left_normal.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_right_down.png">../_runtime/resource/MainWindow/aio_splitbutton_right_down.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_right_hover.png">../_runtime/resource/MainWindow/aio_splitbutton_right_hover.png</file>
+        <file alias="Resources/MainWindow/aio_splitbutton_right_normal.png">../_runtime/resource/MainWindow/aio_splitbutton_right_normal.png</file>
+        <file alias="Resources/MainWindow/aio_toobar_add.png">../_runtime/resource/MainWindow/aio_toobar_add.png</file>
+        <file alias="Resources/MainWindow/aio_toobar_addhuman.png">../_runtime/resource/MainWindow/aio_toobar_addhuman.png</file>
+        <file alias="Resources/MainWindow/aio_toobar_app.png">../_runtime/resource/MainWindow/aio_toobar_app.png</file>
+        <file alias="Resources/MainWindow/aio_toobar_report.png">../_runtime/resource/MainWindow/aio_toobar_report.png</file>
+        <file alias="Resources/MainWindow/aio_toobar_tool.png">../_runtime/resource/MainWindow/aio_toobar_tool.png</file>
+        <file alias="Resources/MainWindow/border_normal.gft.png">../_runtime/resource/MainWindow/border_normal.gft.png</file>
+        <file alias="Resources/MainWindow/close.png">../_runtime/resource/MainWindow/close.png</file>
+        <file alias="Resources/MainWindow/close-hover.png">../_runtime/resource/MainWindow/close-hover.png</file>
+        <file alias="Resources/MainWindow/emoback.png">../_runtime/resource/MainWindow/emoback.png</file>
+        <file alias="Resources/MainWindow/list_down.png">../_runtime/resource/MainWindow/list_down.png</file>
+        <file alias="Resources/MainWindow/menu_bkg.gft.png">../_runtime/resource/MainWindow/menu_bkg.gft.png</file>
+        <file alias="Resources/MainWindow/menu_check.png">../_runtime/resource/MainWindow/menu_check.png</file>
+        <file alias="Resources/MainWindow/scrollbar_down_normal.gft.png">../_runtime/resource/MainWindow/scrollbar_down_normal.gft.png</file>
+        <file alias="Resources/MainWindow/scrollbar_top_normal.gft.png">../_runtime/resource/MainWindow/scrollbar_top_normal.gft.png</file>
+        <file alias="Resources/MainWindow/skin.jpg">../_runtime/resource/MainWindow/skin.jpg</file>
+        <file alias="Resources/MainWindow/skin.png">../_runtime/resource/MainWindow/skin.png</file>
+        <file alias="Resources/MainWindow/sysbtn_close_down.png">../_runtime/resource/MainWindow/sysbtn_close_down.png</file>
+        <file alias="Resources/MainWindow/sysbtn_close_hover.png">../_runtime/resource/MainWindow/sysbtn_close_hover.png</file>
+        <file alias="Resources/MainWindow/sysbtn_close_normal.png">../_runtime/resource/MainWindow/sysbtn_close_normal.png</file>
+        <file alias="Resources/MainWindow/sysbtn_min_down.png">../_runtime/resource/MainWindow/sysbtn_min_down.png</file>
+        <file alias="Resources/MainWindow/sysbtn_min_hover.png">../_runtime/resource/MainWindow/sysbtn_min_hover.png</file>
+        <file alias="Resources/MainWindow/sysbtn_min_normal.png">../_runtime/resource/MainWindow/sysbtn_min_normal.png</file>
+        <file alias="Resources/MainWindow/video.png">../_runtime/resource/MainWindow/video.png</file>
+        <file alias="Resources/QSS/EmotionWindow.css">../_runtime/resource/QSS/EmotionWindow.css</file>
+        <file alias="Resources/QSS/TalkWindow.css">../_runtime/resource/QSS/TalkWindow.css</file>
+        <file alias="Resources/MainWindow/app/logo.ico">../_runtime/resource/MainWindow/app/logo.ico</file>
+        <file alias="Resources/MainWindow/app/page_close_btn_hover.png">../_runtime/resource/MainWindow/app/page_close_btn_hover.png</file>
+        <file alias="Resources/MainWindow/app/face_setting_btn_normal.png">../_runtime/resource/MainWindow/app/face_setting_btn_normal.png</file>
+        <file alias="Resources/QSS/Menu.css">../_runtime/resource/QSS/Menu.css</file>
+        <file alias="Resources/MainWindow/menu/menu_separate.png">../_runtime/resource/MainWindow/menu/menu_separate.png</file>
+        <file alias="Resources/MainWindow/menu/menuex_backgroundSetting.png">../_runtime/resource/MainWindow/menu/menuex_backgroundSetting.png</file>
+        <file alias="Resources/MainWindow/menu/menuitem_border.png">../_runtime/resource/MainWindow/menu/menuitem_border.png</file>
+        <file alias="Resources/MainWindow/menu/menuItemEx_arrowTextureSetting.png">../_runtime/resource/MainWindow/menu/menuItemEx_arrowTextureSetting.png</file>
+        <file alias="Resources/MainWindow/menu/menuItemEx_checkTexture.png">../_runtime/resource/MainWindow/menu/menuItemEx_checkTexture.png</file>
+        <file alias="Resources/MainWindow/menu/menuitemex_seperatordraw.png">../_runtime/resource/MainWindow/menu/menuitemex_seperatordraw.png</file>
+        <file alias="Resources/MainWindow/menu/mune_select_bkgSetting.png">../_runtime/resource/MainWindow/menu/mune_select_bkgSetting.png</file>
+        <file alias="Resources/MainWindow/back.png">../_runtime/resource/MainWindow/back.png</file>
+        <file alias="Resources/MainWindow/gao.jpg">../_runtime/resource/MainWindow/gao.jpg</file>
+        <file alias="Resources/MainWindow/mei1.png">../_runtime/resource/MainWindow/mei1.png</file>
     </qresource>
 </RCC>
