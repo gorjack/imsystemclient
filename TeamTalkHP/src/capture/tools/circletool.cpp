@@ -1,4 +1,4 @@
-// Copyright 2017 Alejandro Sirgo Rica
+ï»¿// Copyright 2017 Alejandro Sirgo Rica
 //
 // This file is part of Flameshot.
 //
@@ -35,11 +35,11 @@ QString CircleTool::iconName() const {
 }
 
 QString CircleTool::name() const {
-    return QStringLiteral("ÍÖÔ²¹¤¾ß");
+    return QStringLiteral("æ¤­åœ†å·¥å…·");
 }
 
 QString CircleTool::description() const {
-	return QStringLiteral("ÍÖÔ²¹¤¾ß");
+	return QStringLiteral("æ¤­åœ†å·¥å…·");
 }
 
 CaptureTool::ToolWorkType CircleTool::toolType() const {

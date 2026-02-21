@@ -2,7 +2,7 @@
 #include "notifymanager.h"
 #include "commonutils.h"
 
-#include <QDesktopWidget>
+#include <QtWidgets/QDesktopWidget>
 #include <QApplication>
 #include <QFile>
 #include <QPainter>

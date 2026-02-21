@@ -538,7 +538,7 @@ namespace net
             strChatContent.erase(n, 1);
         }
 
-        //std::string strContent = boost::str(boost::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,") % time(NULL) % m_nSendId % m_nTargetId);
+        //std::string strContent = std::str(std::format("{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,") % time(NULL) % m_nSendId % m_nTargetId);
         
         char strTemp[4096] = { 0 };
         sprintf_s(strTemp, "{\"msgType\":1,\"time\":%llu,\"clientType\":1,\"sendid\":%d,\"targetid\":%d,", time(NULL), m_nSendId, m_nTargetId);

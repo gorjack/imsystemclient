@@ -5,16 +5,88 @@
 #include <vector>
 #include <map>
 #include <iostream>
-#include <boost/thread.hpp>
 #include <string>
-#include <boost/utility.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/algorithm/string.hpp>
+#include <sstream>
+#include <type_traits>
+#include <mutex>
+#include <memory>
+#include <stdexcept>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
 namespace utils
 {
+    // Minimal replacement for boost::lexical_cast used in this header.
+    // Supports conversions: From arbitrary type -> To (using ostringstream/isosstream).
+    template<typename To, typename From>
+    typename std::enable_if<!std::is_same<To, std::string>::value, To>::type
+    lexical_cast(const From& src)
+    {
+        std::ostringstream oss;
+        oss << src;
+        std::istringstream iss(oss.str());
+        To dst;
+        if (!(iss >> dst))
+        {
+            throw std::invalid_argument("bad lexical_cast");
+        }
+        return dst;
+    }
+
+    // Specialization / overload when target is string
+    template<typename To = std::string, typename From>
+    typename std::enable_if<std::is_same<To, std::string>::value, To>::type
+    lexical_cast(const From& src)
+    {
+        std::ostringstream oss;
+        oss << src;
+        return oss.str();
+    }
+
+    // Overload: convert from string to To
+    template<typename To>
+    typename std::enable_if<!std::is_same<To, std::string>::value, To>::type
+    lexical_cast(const std::string& src)
+    {
+        std::istringstream iss(src);
+        To dst;
+        if (!(iss >> dst))
+        {
+            throw std::invalid_argument("bad lexical_cast");
+        }
+        return dst;
+    }
+
+    // Overload: string -> string (identity)
+    inline std::string lexical_cast_string(const std::string& src)
+    {
+        return src;
+    }
+
+    // Replacement for boost::algorithm::split(..., is_any_of(delims))
+    inline void splitString(const std::string& input, std::vector<std::string>& output, const std::string& delims)
+    {
+        output.clear();
+        if (input.empty())
+        {
+            return;
+        }
+        size_t start = 0;
+        while (start <= input.size())
+        {
+            size_t pos = input.find_first_of(delims, start);
+            if (pos == std::string::npos)
+            {
+                output.push_back(input.substr(start));
+                break;
+            }
+            output.push_back(input.substr(start, pos - start));
+            start = pos + 1;
+        }
+    }
+
     class UTILS_EXPORT Configuration
     {
     public:
@@ -74,7 +146,7 @@ namespace utils
 
         //读取vec类型的配置
         template<typename T>
-        static void readVecConfig(boost::shared_ptr<utils::Configuration> config, std::vector<T>& vec, string section, string propertyStr, string splitStr = ",")
+        static void readVecConfig(std::shared_ptr<utils::Configuration> config, std::vector<T>& vec, string section, string propertyStr, string splitStr = ",")
         {
             if (config == NULL)
             {
@@ -82,7 +154,7 @@ namespace utils
             }
             string ps = config->read(section, propertyStr);
             vector<string> tmpTS;
-            boost::split(tmpTS, ps, boost::is_any_of(splitStr));
+            utils::splitString(ps, tmpTS, splitStr);
             vec.clear();
             for (size_t i = 0; i < tmpTS.size(); i++)
             {
@@ -90,90 +162,12 @@ namespace utils
                 {
                     try
                     {
-                        vec.push_back(boost::lexical_cast<T>(tmpTS[i].c_str()));
+                        vec.push_back(utils::lexical_cast<T>(tmpTS[i]));
                     }
-                    catch (const boost::bad_lexical_cast& e)
+                    catch (const std::exception& e)
                     {
                         std::cerr << "get bson value error, " << e.what() << std::endl;
                     }
-                }
-            }
-        }
-
-        //读取map类型的配置 例如"1;10012:0",  firstSplitStr含义是;切分平台用，secSplitStr是区分平台和内容 mapDefaultData是搭配的业务通用值，即没被平台特化的值，
-        //比如例子的1 defaultData是读取不到配置的时候的缺省值
-        template<typename TSec, typename TFir>
-        static typename boost::disable_if< boost::is_enum<TSec>, void>::type
-            readMapConfig(boost::shared_ptr<utils::Configuration> config, std::map<TFir, TSec>& mapData, TSec& mapDefaultData, string section, string propertyStr, \
-            TSec defaultData, string firstSplitStr = ";", string secSplitStr = ":")
-        {
-            if (config == NULL)
-            {
-                return;
-            }
-            string ps = config->read(section, propertyStr);
-            vector<string> tmpTS;
-            boost::split(tmpTS, ps, boost::is_any_of(firstSplitStr));
-            for (vector<string>::iterator it = tmpTS.begin(); it != tmpTS.end(); ++it)
-            {
-                try
-                {
-                    size_t pos = it->find(secSplitStr);
-                    if (pos == std::string::npos)
-                    {
-                        if (it->empty())
-                        {
-                            *it = boost::lexical_cast<string>(defaultData);
-                        }
-                        mapDefaultData = (boost::lexical_cast<TSec>(it->substr(0, pos)));
-                    }
-                    else
-                    {
-                        TFir platform = boost::lexical_cast<TFir>(it->substr(0, pos));
-                        mapData[platform] = (boost::lexical_cast<TSec>(it->substr(pos + 1, it->length() - pos - 1)));
-                    }
-                }
-                catch (const boost::bad_lexical_cast& e)
-                {
-                    std::cerr << "get bson value error, " << e.what() << std::endl;
-                }
-            }
-        }
-
-        template<typename TSec, typename TFir>
-        static typename boost::enable_if< boost::is_enum<TSec>, void>::type
-            readMapConfig(boost::shared_ptr<utils::Configuration> config, std::map<TFir, TSec>& mapData, TSec& mapDefaultData, string section, string propertyStr, \
-            TSec defaultData, string firstSplitStr = ";", string secSplitStr = ":")
-        {
-            if (config == NULL)
-            {
-                return;
-            }
-            string ps = config->read(section, propertyStr);
-            vector<string> tmpTS;
-            boost::split(tmpTS, ps, boost::is_any_of(firstSplitStr));
-            for (vector<string>::iterator it = tmpTS.begin(); it != tmpTS.end(); ++it)
-            {
-                try
-                {
-                    size_t pos = it->find(secSplitStr);
-                    if (pos == std::string::npos)
-                    {
-                        if (it->empty())
-                        {
-                            *it = boost::lexical_cast<string>(defaultData);
-                        }
-                        mapDefaultData = (TSec)(atoi(it->substr(0, pos).c_str()));
-                    }
-                    else
-                    {
-                        TFir platform = boost::lexical_cast<TFir>(it->substr(0, pos));
-                        mapData[platform] = (TSec)(atoi(it->substr(pos + 1, it->length() - pos - 1).c_str()));
-                    }
-                }
-                catch (const boost::bad_lexical_cast& e)
-                {
-                    std::cerr << "get bson value error, " << e.what() << std::endl;
                 }
             }
         }
@@ -187,10 +181,10 @@ namespace utils
         string              m_configFilePath;   // 配置文件路径
         bool                     m_needToLower;        // 是否需要强制小写
         map<string, map<string,string> > m_properties; // 属性表
-        boost::recursive_mutex  m_lock; 
+        std::recursive_mutex  m_lock; 
     };
 
-    typedef boost::shared_ptr<Configuration> ConfigurationPtr;
+    typedef std::shared_ptr<Configuration> ConfigurationPtr;
 }
 
 #endif

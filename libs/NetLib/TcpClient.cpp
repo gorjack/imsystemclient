@@ -102,7 +102,7 @@ TcpClient::~TcpClient()
     {
         connector_->stop();
         // FIXME: HACK
-        // loop_->runAfter(1, boost::bind(&detail::removeConnector, connector_));
+        // loop_->runAfter(1, std::bind(&detail::removeConnector, connector_));
     }
 }
 

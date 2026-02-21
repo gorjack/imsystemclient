@@ -1,4 +1,4 @@
-#include "blurtool.h"
+ï»¿#include "blurtool.h"
 #include <QPainter>
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
@@ -21,11 +21,11 @@ QString BlurTool::iconName() const {
 }
 
 QString BlurTool::name() const {
-    return QStringLiteral("ÂíÈü¿Ë¹¤¾ß");
+    return QStringLiteral("é©¬èµ›å…‹å·¥å…·");
 }
 
 QString BlurTool::description() const {
-	return QStringLiteral("ÂíÈü¿Ë¹¤¾ß");
+	return QStringLiteral("é©¬èµ›å…‹å·¥å…·");
 }
 
 CaptureTool::ToolWorkType BlurTool::toolType() const {

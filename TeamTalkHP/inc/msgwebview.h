@@ -2,7 +2,7 @@
 #define MSGWEBVIEW_H
 
 #include <QtWebEngineWidgets/QWebEngineView>
-#include <QDomNode>
+#include <QtXml/QDomNode>
 
 class MsgHtmlObj : public QObject
 {

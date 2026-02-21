@@ -4,7 +4,6 @@
 #include <ProtocolData/rpc_structs.h>
 #include <ProtocolData/rpc_proEnum.h>
 #include <QtWidgets/QMessageBox>
-#include <boost/make_shared.hpp>
 
 CQueryForAddDialog::CQueryForAddDialog(QWidget* parent)
 	: QDialog(parent)

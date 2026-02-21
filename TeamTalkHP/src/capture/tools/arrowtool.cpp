@@ -1,4 +1,4 @@
-// Copyright 2017 Alejandro Sirgo Rica
+ï»¿// Copyright 2017 Alejandro Sirgo Rica
 //
 // This file is part of Flameshot.
 //
@@ -75,11 +75,11 @@ QString ArrowTool::iconName() const {
 }
 
 QString ArrowTool::name() const {
-    return QStringLiteral("¼ýÍ·¹¤¾ß");
+    return QStringLiteral("ç®­å¤´å·¥å…·");
 }
 
 QString ArrowTool::description() const {
-	return QStringLiteral("¼ýÍ·¹¤¾ß");
+	return QStringLiteral("ç®­å¤´å·¥å…·");
 }
 
 CaptureTool::ToolWorkType ArrowTool::toolType() const {

@@ -12,8 +12,7 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <boost/shared_ptr.hpp>
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
 using namespace std;
 
@@ -31,9 +30,9 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    Value getMapValue(const boost::unordered_map<Key, Value>& m, const Key& key, const Value& defautV = Value())
+    Value getMapValue(const std::unordered_map<Key, Value>& m, const Key& key, const Value& defautV = Value())
     {
-        typename boost::unordered_map<Key, Value>::const_iterator iter = m.find(key);
+        typename std::unordered_map<Key, Value>::const_iterator iter = m.find(key);
         if (iter != m.end())
         {
             return iter->second;
@@ -55,9 +54,9 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    Value& getMapValueRef(boost::unordered_map<Key, Value>& m, const Key& key)
+    Value& getMapValueRef(std::unordered_map<Key, Value>& m, const Key& key)
     {
-        typename boost::unordered_map<Key, Value>::iterator iter = m.find(key);
+        typename std::unordered_map<Key, Value>::iterator iter = m.find(key);
         if (iter != m.end())
         {
             return iter->second;
@@ -83,9 +82,9 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    const Value& getMapValueConstRef(const boost::unordered_map<Key, Value>& m, const Key& key)
+    const Value& getMapValueConstRef(const std::unordered_map<Key, Value>& m, const Key& key)
     {
-        typename boost::unordered_map<Key, Value>::const_iterator iter = m.find(key);
+        typename std::unordered_map<Key, Value>::const_iterator iter = m.find(key);
         if (iter != m.end())
         {
             return iter->second;
@@ -110,9 +109,9 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    bool remove(boost::unordered_map<Key, Value>& m, const Key& key)
+    bool remove(std::unordered_map<Key, Value>& m, const Key& key)
     {
-        typename boost::unordered_map<Key, Value>::iterator iter = m.find(key);
+        typename std::unordered_map<Key, Value>::iterator iter = m.find(key);
         if (iter != m.end())
         {
             m.erase(iter);
@@ -229,9 +228,9 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    bool contain(const boost::unordered_map<Key, Value>& m, const Key& key)
+    bool contain(const std::unordered_map<Key, Value>& m, const Key& key)
     {
-        typename boost::unordered_map<Key, Value>::const_iterator iter = m.find(key);
+        typename std::unordered_map<Key, Value>::const_iterator iter = m.find(key);
         return iter != m.end();
     }
 
@@ -251,13 +250,13 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    vector<Key> keys(const boost::unordered_map<Key, Value>& m)
+    vector<Key> keys(const std::unordered_map<Key, Value>& m)
     {
         vector<Key> ret;
         if (!m.empty())
         {
             ret.reserve(m.size());
-            for (typename boost::unordered_map<Key, Value>::const_iterator iter = m.begin(); iter != m.end(); ++iter)
+            for (typename std::unordered_map<Key, Value>::const_iterator iter = m.begin(); iter != m.end(); ++iter)
             {
                 ret.push_back(iter->first);
             }
@@ -281,13 +280,13 @@ namespace utils
     }
 
     template <typename Key, typename Value>
-    vector<Value> values(const boost::unordered_map<Key, Value>& m)
+    vector<Value> values(const std::unordered_map<Key, Value>& m)
     {
         vector<Value> ret;
         if (!m.empty())
         {
             ret.reserve(m.size());
-            for (typename boost::unordered_map<Key, Value>::const_iterator iter = m.begin(); iter != m.end(); ++iter)
+            for (typename std::unordered_map<Key, Value>::const_iterator iter = m.begin(); iter != m.end(); ++iter)
             {
                 ret.push_back(iter->second);
             }
@@ -339,14 +338,14 @@ namespace utils
 
 
     template <typename Key, typename Value>
-    void replacePtr(std::map<Key, boost::shared_ptr<Value> >& m, const Key& key, const Value& value)
+    void replacePtr(std::map<Key, std::shared_ptr<Value> >& m, const Key& key, const Value& value)
     {
-        boost::shared_ptr<Value> ptrValue = utils::getMapValue(m, key);
+        std::shared_ptr<Value> ptrValue = utils::getMapValue(m, key);
         if (NULL != ptrValue)
         {
             *ptrValue = value;
         } else {
-            replace(m, key, boost::shared_ptr<Value>(new Value(value)));
+            replace(m, key, std::shared_ptr<Value>(new Value(value)));
         }
     }
 
@@ -358,13 +357,13 @@ namespace utils
     }
 
     template <typename Key, typename Base, typename Extend>
-    void dynamic_pointer_cast(const map<Key, boost::shared_ptr<Base> >& raw, map<Key, boost::shared_ptr<Extend> >& ret)
+    void dynamic_pointer_cast(const map<Key, std::shared_ptr<Base> >& raw, map<Key, std::shared_ptr<Extend> >& ret)
     {
-        for (typename map<Key, boost::shared_ptr<Base> >::const_iterator iter = raw.begin(); iter != raw.end(); ++iter)
+        for (typename map<Key, std::shared_ptr<Base> >::const_iterator iter = raw.begin(); iter != raw.end(); ++iter)
         {
             if (NULL != iter->second)
             {
-                ret.insert(make_pair(iter->first, boost::dynamic_pointer_cast<Extend>(iter->second)));
+                ret.insert(make_pair(iter->first, std::dynamic_pointer_cast<Extend>(iter->second)));
             }
         }
     }
@@ -414,12 +413,12 @@ namespace utils
     }
 
     //template <typename Base, typename Extend>
-    //vector<boost::shared_ptr<Extend> > dynamic_pointer_cast(const vector<boost::shared_ptr<Base> >& raw)
+    //vector<std::shared_ptr<Extend> > dynamic_pointer_cast(const vector<std::shared_ptr<Base> >& raw)
     //{
-    //    vector<boost::shared_ptr<Extend> > ret(raw.size());
+    //    vector<std::shared_ptr<Extend> > ret(raw.size());
     //    for (size_t i = 0; i < raw.size(); ++i)
     //    {
-    //        ret[i] = boost::dynamic_pointer_cast<Extend>(raw[i]);
+    //        ret[i] = std::dynamic_pointer_cast<Extend>(raw[i]);
     //    }
     //    return ret;
     //}

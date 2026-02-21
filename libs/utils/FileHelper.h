@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <stdio.h>
+#include <list>
 
 using namespace std;
 

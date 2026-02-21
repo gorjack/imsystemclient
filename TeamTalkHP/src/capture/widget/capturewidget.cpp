@@ -18,7 +18,7 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QButtonGroup>
-#include <QDesktopWidget>
+#include <QtWidgets/QDesktopWidget>
 
 namespace {
 	// size of the handlers at the corners of the selection

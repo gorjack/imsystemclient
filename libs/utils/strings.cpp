@@ -1,7 +1,7 @@
 #include "strings.h"
 #include <vector>
-#include <boost/algorithm/string.hpp>
 #include <sstream>
+#include "StringUtil.h"
 
 namespace utils
 {
@@ -25,7 +25,7 @@ namespace utils
     UTILS_EXPORT void getIpPort(const string& data, string& ip, unsigned short& port)
     {
         vector<string> items;
-        boost::split(items, data, boost::is_any_of(":"));
+        StringUtil::split(data, items, ":");
         if (items.size() == 2)
         {
             ip = items[0];

@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F7755372-CBB1-41DC-837E-CD70D9683337}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.26100.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
     <ProjectName>TeamTalkIM</ProjectName>
@@ -21,7 +21,8 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -32,7 +33,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>5.15</QtInstall>
+    <QtInstall>Qt6</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -64,11 +65,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT158)\stage\lib64;D:\QtVersion\qtwebengine-everywhere-src-5.15.5\build\lib;$(QT5DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QT5DIR)\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\mycodes\imsystemclient\libs\NetLib;E:\mycodes\imsystemclient\libs;E:\mycodes\imsystemclient\src\User;E:\mycodes\imsystemclient;$(BOOST_ROOT158);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(QT5DIR)\include;$(SolutionDir)libs\NetLib;$(SolutionDir)\libs;$(SolutionDir)\src\User;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>qtflamingo.h</ForcedIncludeFiles>
     </ClCompile>

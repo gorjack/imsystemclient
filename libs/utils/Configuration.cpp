@@ -1,10 +1,10 @@
 ﻿#include "Configuration.h"
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/format.hpp>
 #include "FileHelper.h"
 #include "strings.h"
 #include "STLHelper.h"
+#include "StringUtil.h"
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -28,9 +28,10 @@ namespace utils
     }
 
     /* 加载配置文件 */
+
     bool Configuration::load(string configFilePath)
     {
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
 
         if (!configFilePath.empty())
         {
@@ -44,17 +45,17 @@ namespace utils
 
     bool Configuration::parse(string content)
     {
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
         m_properties.clear();
 
         string section;
         vector<string> lines;
-        boost::split(lines, content, boost::is_any_of("\r\n"));
+        utils::splitString(content, lines, "\r\n");
 
         for (size_t i = 0; i < lines.size(); i++)
         {
             string line = lines[i];
-            boost::algorithm::trim(line);
+            StringUtil::trim(line);
 
             /* 去掉注释后面的部分 */
             size_t semi_pos = line.find("#");
@@ -62,7 +63,7 @@ namespace utils
             {
                 line = line.substr(0, semi_pos);
             }
-            boost::algorithm::trim(line);
+            StringUtil::trim(line);
             /* 每行至少两个字符才能构成有效信息 */
             if (line.size() < 2)
             {
@@ -73,10 +74,14 @@ namespace utils
             if (line[0] == '[' && line[line.size() - 1] == ']')
             {
                 section = line.substr(1, line.size() - 2);
-                boost::algorithm::trim(section);
+                StringUtil::trim(section);
                 if (m_needToLower)
                 {
-                    boost::algorithm::to_lower(section);
+					std::transform(section.begin(), section.end(),
+						section.begin(),
+						[](unsigned char c) {
+							return std::tolower(c);
+						});
                 }
                 m_properties[section] = map<string, string>();
             }
@@ -87,12 +92,16 @@ namespace utils
                 {
                     string property = line.substr(0, pos);
                     string value = line.substr(pos + 1);
-                    boost::algorithm::trim(property);
+                    StringUtil::trim(property);
                     if (m_needToLower)
                     {
-                        boost::algorithm::to_lower(property);
+						std::transform(property.begin(), property.end(),
+                            property.begin(),
+							[](unsigned char c) {
+								return std::tolower(c);
+							});
                     }
-                    boost::algorithm::trim(value);
+                    StringUtil::trim(value);
                     m_properties[section][property] = value;
                 }
             }
@@ -103,7 +112,7 @@ namespace utils
     /* 保存配置文件 */
     bool Configuration::save()
     {
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
         string data = dump();
         return save(data);
     }
@@ -111,7 +120,7 @@ namespace utils
     string Configuration::dump()
     {
         stringstream buffer;
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
         map<string, map<string, string> >::const_iterator iter;
         for (iter = m_properties.begin(); iter != m_properties.end(); iter++)
         {
@@ -128,7 +137,7 @@ namespace utils
 
     bool Configuration::save(string content)
     {
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
 
         FILE* outf = fopen(m_configFilePath.c_str(), "wb");
         if (outf == NULL)
@@ -163,13 +172,22 @@ namespace utils
 
         if (m_needToLower)
         {
-            boost::algorithm::to_lower(sec);
-            boost::algorithm::to_lower(prop);
-        }
-        boost::algorithm::trim(sec);
-        boost::algorithm::trim(prop);
+			std::transform(sec.begin(), sec.end(),
+                sec.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
 
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+			std::transform(prop.begin(), prop.end(),
+                prop.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
+        }
+        StringUtil::trim(sec);
+        StringUtil::trim(prop);
+
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
 
         map<string, map<string, string> >::iterator iter = m_properties.find(sec);
         if (iter != m_properties.end())
@@ -194,7 +212,7 @@ namespace utils
             {
                 return ret;
             }
-            ret = boost::lexical_cast<int>(strNum);
+            try { ret = utils::lexical_cast<int>(strNum); } catch(...) { /* keep default */ }
         }
         catch (...)
         {
@@ -210,7 +228,7 @@ namespace utils
         double ret = defaultValue;
         try
         {
-            ret = boost::lexical_cast<double>(strNum);
+            ret = std::stod(strNum);
         }
         catch (...)
         {
@@ -224,10 +242,10 @@ namespace utils
     {
         string items = read(section, property);
         vector<string> ret;
-        boost::split(ret, items, boost::is_any_of(sep));
+        StringUtil::split(items, ret, sep.c_str());
         for (size_t i = 0; i < ret.size(); i++)
         {
-            boost::algorithm::trim(ret[i]);
+            StringUtil::trim(ret[i]);
         }
 
         // 删除最后一个空元素
@@ -248,14 +266,23 @@ namespace utils
 
         if (m_needToLower)
         {
-            boost::algorithm::to_lower(sec);
-            boost::algorithm::to_lower(prop);
-        }
-        boost::algorithm::trim(sec);
-        boost::algorithm::trim(prop);
-        boost::algorithm::trim(val);
+			std::transform(sec.begin(), sec.end(),
+				sec.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
 
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+			std::transform(prop.begin(), prop.end(),
+				prop.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
+        }
+        StringUtil::trim(sec);
+        StringUtil::trim(prop);
+        StringUtil::trim(val);
+
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
         map<string, map<string, string> >::iterator iter = m_properties.find(sec);
         if (iter != m_properties.end())
         {
@@ -271,14 +298,14 @@ namespace utils
     /* 写入某个section的某个属性的整数值 */
     void Configuration::write(string section, string property, int value)
     {
-        string val = (boost::format("%1%") % value).str();
+        string val = std::to_string(value);
         write(section, property, val);
     }
 
     /* 写入某个section的某个属性的浮点数值 */
     void Configuration::write(string section, string property, double value)
     {
-        string val = (boost::format("%1%") % value).str();
+        string val = std::to_string(value);
         write(section, property, val);
     }
 
@@ -296,7 +323,7 @@ namespace utils
     /* 读取section列表 */
     vector<string> Configuration::getSections()
     {
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
 
         vector<string> sections;
         map<string, map<string, string> >::const_iterator iter;
@@ -315,10 +342,15 @@ namespace utils
 
         if (m_needToLower)
         {
-            boost::algorithm::to_lower(sec);
+			std::transform(sec.begin(), sec.end(),
+				sec.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
+
         }
 
-        boost::recursive_mutex::scoped_lock lock(m_lock);
+        std::lock_guard<std::recursive_mutex> lock(m_lock);;
         map<string, map<string, string> >::const_iterator iter = m_properties.find(sec);
         if (iter != m_properties.end())
         {
@@ -338,7 +370,11 @@ namespace utils
         string sec = section;
         if (m_needToLower)
         {
-            boost::algorithm::to_lower(sec);
+			std::transform(sec.begin(), sec.end(),
+				sec.begin(),
+				[](unsigned char c) {
+					return std::tolower(c);
+				});
         }
         return utils::getMapValueConstRef(m_properties, sec);
     }

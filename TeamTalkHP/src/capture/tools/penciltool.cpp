@@ -1,4 +1,4 @@
-// Copyright 2017 Alejandro Sirgo Rica
+ï»¿// Copyright 2017 Alejandro Sirgo Rica
 //
 // This file is part of Flameshot.
 //
@@ -35,11 +35,11 @@ QString PencilTool::iconName() const {
 }
 
 QString PencilTool::name() const {
-    return QStringLiteral("»­Ë¢¹¤¾ß");
+    return QStringLiteral("ç”»åˆ·å·¥å…·");
 }
 
 QString PencilTool::description() const {
-	return QStringLiteral("»­Ë¢¹¤¾ß");
+	return QStringLiteral("ç”»åˆ·å·¥å…·");
 }
 
 CaptureTool::ToolWorkType PencilTool::toolType() const {
