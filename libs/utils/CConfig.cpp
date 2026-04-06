@@ -1,4 +1,4 @@
-#include "CConfig.h"
+﻿#include "CConfig.h"
 #include <utils/CSingletonT.hpp>
 #include <utils/strings.h>
 #include "directory.h"
@@ -133,7 +133,7 @@ bool CConfig::save()
     return true;
 }
 
-std::map<SERVERTYPE, QString>& CConfig::getServers()
+std::map<SERVERTYPE, QString> CConfig::getServers()
 {
     return m_servers;
 }

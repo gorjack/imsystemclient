@@ -80,7 +80,18 @@ MsgWebView::MsgWebView(QWidget* parent) :QWebEngineView(parent)
 
 MsgWebView::~MsgWebView()
 {
-
+	// 停止定时器，避免在析构过程中触发回调
+	if (m_updateDownArrowtimer)
+	{
+		m_updateDownArrowtimer->stop();
+	}
+	
+	// Qt WebEngine 会自动清理资源，但我们需要确保页面不再执行 JavaScript
+	// 通过设置空页面来确保 WebEngine 资源被正确释放
+	if (page())
+	{
+		setPage(nullptr);
+	}
 }
 
 QWidget* MsgWebView::getTalkWindowSpliterButton() const

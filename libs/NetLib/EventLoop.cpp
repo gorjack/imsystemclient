@@ -25,6 +25,28 @@ thread_local  EventLoop* t_loopInThisThread = 0;
 
 const int kPollTimeMs = 1;
 
+void UnInitSocket()
+{
+	::WSACleanup();
+}
+
+BOOL InitSocket()
+{
+	WORD wVersionRequested = MAKEWORD(2, 2);
+	WSADATA wsaData;
+	int nErrorID = ::WSAStartup(wVersionRequested, &wsaData);
+	if (nErrorID != 0)
+		return FALSE;
+
+	if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2)
+	{
+		UnInitSocket();
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
 EventLoop* getEventLoopOfCurrentThread()
 {
     return t_loopInThisThread;
@@ -41,6 +63,8 @@ EventLoop::EventLoop()
     iteration_(0L),
     currentActiveChannel_(NULL)
 {
+    InitSocket();
+
     createWakeupfd();
 
 #ifdef WIN32
@@ -71,6 +95,8 @@ EventLoop::EventLoop()
 
 EventLoop::~EventLoop()
 {
+    
+
     assertInLoopThread();
     LOGD("EventLoop 0x%x destructs.", this);
 
@@ -93,6 +119,8 @@ EventLoop::~EventLoop()
     //_close(fdpipe_[1]);
 
     t_loopInThisThread = NULL;
+
+    UnInitSocket();
 }
 
 void EventLoop::loop()
@@ -125,10 +153,10 @@ void EventLoop::loop()
         eventHandling_ = false;
         doPendingFunctors();
 
-        if (frameFunctor_)
-        {
-            frameFunctor_();
-        }
+        //if (frameFunctor_)
+        //{
+        //    frameFunctor_();
+        //}
     }
 
     LOGD("EventLoop 0x%0x stop looping", this);

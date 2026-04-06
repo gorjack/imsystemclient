@@ -27,7 +27,7 @@ public:
     bool loadFromFile(QString strFileName);
     bool save();
 
-    std::map<SERVERTYPE, QString>&    getServers();
+    std::map<SERVERTYPE, QString>    getServers();
 protected:
     string                             m_strNickName;
     QString                            m_strUserName;

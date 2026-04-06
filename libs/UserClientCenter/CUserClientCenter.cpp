@@ -52,7 +52,7 @@ CUserClientCenter::~CUserClientCenter()
 
 void CUserClientCenter::resetClient()
 {
-    std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
+    std::map<SERVERTYPE, QString> servers = CConfig::instance()->getServers();
     std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
     for (; iter != servers.end(); ++iter)
     {
@@ -84,7 +84,7 @@ void CUserClientCenter::resetClient()
 
 void CUserClientCenter::resetAddress()
 {
-    std::map<SERVERTYPE, QString>& servers = CConfig::instance()->getServers();
+    std::map<SERVERTYPE, QString> servers = CConfig::instance()->getServers();
     std::map<SERVERTYPE, QString>::const_iterator iter = servers.begin();
     for (; iter != servers.end(); ++iter)
     {
