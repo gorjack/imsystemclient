@@ -145,7 +145,8 @@ SOCKET sockets::createOrDie()
     SOCKET sockfd = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (sockfd < 0)
     {
-        LOGF("sockets::createNonblockingOrDie");
+        
+        //LOGF("sockets::createNonblockingOrDie");
     }
 #else
     SOCKET sockfd = ::socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP);

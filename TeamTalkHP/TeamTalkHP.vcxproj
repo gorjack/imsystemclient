@@ -65,8 +65,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalLibraryDirectories>$(QT5DIR)\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QT5DIR)\lib;$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5WebEngined.lib;Qt5WebEngineWidgetsd.lib;Qt5Xmld.lib;Qt5WebChanneld.lib;NetLib.lib;utils.lib;zlib.lib;ProtocolData.lib;UserClientCenter.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(QT5DIR)\include;$(SolutionDir)libs\NetLib;$(SolutionDir)\libs;$(SolutionDir)\src\User;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -258,20 +258,6 @@
     <QtUic Include="ui\talkwindowitem.ui" />
     <QtUic Include="ui\talkwindowshell.ui" />
     <QtUic Include="ui\UserLogin.ui" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\libs\NetLib\NetLib.vcxproj">
-      <Project>{d9d8153f-5a09-4d1d-964f-70e43ae58a62}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libs\ProtocolData\ProtocolData.vcxproj">
-      <Project>{62aafd1a-16a7-45ac-9bbf-4302ef394815}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libs\UserClientCenter\UserClientCenter.vcxproj">
-      <Project>{516b9d6f-da55-427e-9df6-891d54126901}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libs\utils\utils.vcxproj">
-      <Project>{6536023d-d8be-4631-af9a-dcc04f3e0abd}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
